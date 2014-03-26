@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- Lo siguiente que haremos será configurar una constante que le indicará 
+		a Struts que nos encontramos en la etapa de desarrollo, con esto generará 
+		más mensajes de salida para que sepamos si estamos haciendo algo mal, y nos 
+		mostrará los errores de una forma más clara. -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="i18n" />
+
+	<!-- Esta constante permite que cuando modifiquemos los archivos de configuración 
+		de Struts 2 no tengamos que volver a hacer un deploy de la aplicación para 
+		que los cambios tomen efecto: -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.mapper.action.prefix.enabled" value="false" />
+	<!-- enable 'method' attribute -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+	<package name="com.prestafacturaService" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="authenticationInterceptor"
+				class="com.prestafacturaService.interceptor.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="loginAction"
+			class="com.prestafacturaService.vista.action.login.LoginAction">
+			<result name="successA">/WEB-INF/bienvenido.jsp</result>
+			<result name="successU">/WEB-INF/bienvenido.jsp</result>
+			<result name="error">/WEB-INF/error.jsp</result>
+			<result name="input">/WEB-INF/inicio.jsp</result>
+		</action>
+
+		<action name="logout"
+			class="com.prestafacturaService.vista.action.login.LogoutAction">
+			<result name="SUCCESS" type="redirectAction">
+				<param name="actionName">loginAction</param>
+			</result>
+		</action>
+
+		<action name="bienvenido">
+			<interceptor-ref name="secureStack"></interceptor-ref>
+			<result>/WEB-INF/bienvenido.jsp</result>
+			<result name="login">/WEB-INF/inicio.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
