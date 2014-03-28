@@ -32,10 +32,10 @@
 
 		<action name="loginAction"
 			class="com.prestafacturaService.vista.action.login.LoginAction">
-			<result name="successA">/WEB-INF/bienvenido.jsp</result>
-			<result name="successU">/WEB-INF/bienvenido.jsp</result>
-			<result name="error">/WEB-INF/error.jsp</result>
-			<result name="input">/WEB-INF/inicio.jsp</result>
+			<result name="successA">/bienvenido.jsp</result>
+			<result name="successU">/bienvenido.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/inicio.jsp</result>
 		</action>
 
 		<action name="logout"
@@ -47,8 +47,8 @@
 
 		<action name="bienvenido">
 			<interceptor-ref name="secureStack"></interceptor-ref>
-			<result>/WEB-INF/bienvenido.jsp</result>
-			<result name="login">/WEB-INF/inicio.jsp</result>
+			<result>/bienvenido.jsp</result>
+			<result name="login">/inicio.jsp</result>
 		</action>
 
 	</package>
