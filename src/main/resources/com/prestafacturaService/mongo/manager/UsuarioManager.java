@@ -3,6 +3,8 @@ package com.prestafacturaService.mongo.manager;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.prestafacturaService.mongo.dto.Usuario;
@@ -20,10 +22,10 @@ public class UsuarioManager {
 		return usuarioRepository.save(user);
 	}
 	
-	public Usuario getUsuario(Usuario user){
-		//UsuarioRepository m = ctx.getBean(UsuarioRepository.class);
-		//return m.findOne(user.getID());
-		return new Usuario();//usuarioRepository.findOne(user.getID());	
+	public Usuario getUsuario(String nombre, String password){
+		return usuarioRepository.getUsuario(nombre, password);
+		
+		 //usuarioRepository.findOne(user.getID());	
 	}
 	
 	public List<Usuario> obtenerUsuarios(){
