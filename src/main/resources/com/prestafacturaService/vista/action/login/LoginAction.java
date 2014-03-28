@@ -5,8 +5,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.struts2.interceptor.SessionAware;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.prestafacturaService.mongo.dto.Permiso;
 import com.prestafacturaService.mongo.dto.Rol;
@@ -15,7 +16,7 @@ import com.prestafacturaService.mongo.manager.PermisoManager;
 import com.prestafacturaService.mongo.manager.RolManager;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
-public class LoginAction extends ActionSupport implements SessionAware{
+public class LoginAction extends ActionSupport implements ServletRequestAware {
 	
 	
 	private static final long serialVersionUID = -2596761911912878030L;
@@ -32,14 +33,22 @@ public class LoginAction extends ActionSupport implements SessionAware{
     Map<String, String> p=new HashMap<String, String>();
     private Rol rol;
     boolean gUsuarios=false,gFactura=false,gRoles=false,gProveedores=false,gDatosInternos=false,gClientes=false, gFirmaElectronica=false,gInformacion=false, gFacturasAlmacenadas=false;
-	private Map<String, Object> session;
 	private UsuarioManager usuarioManager;
+	private HttpServletRequest servletRequest;
 
 	
 
-	private Boolean validUser(Usuario user){
-		Usuario u= usuarioManager.getUsuario(user);
-		if(user.getLogin().equals(u.getEmail())&& user.getPassword().equals(u.getPassword())){
+	public HttpServletRequest getServletRequest() {
+		return servletRequest;
+	}
+
+	public void setServletRequest(HttpServletRequest servletRequest) {
+		this.servletRequest = servletRequest;
+	}
+
+	private Boolean validUser(String nameUser, String passUser){
+		Usuario user= usuarioManager.getUsuario(nameUser, passUser);
+		if(user.getLogin().equals(nameUser)&& user.getPassword().equals(passUser)){
 			return true;
 		}else{
 			return false;
@@ -49,12 +58,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	@Override
 		public String execute(){
 			clearFieldErrors();
-			Usuario user=(Usuario) session.get("user");
 			
-			if(user!=null && validUser(user)){
-				
-				Usuario u=(Usuario) session.get("user");
-				session.put("user", u);
+			String nameUser= (String) servletRequest.getSession().getAttribute("username");
+			String passUser= (String) servletRequest.getSession().getAttribute("password");
+			if(nameUser!=null && passUser!=null && validUser(nameUser,passUser )){
+				Usuario u= usuarioManager.getUsuario(nameUser,passUser);
+				servletRequest.setAttribute("usuario", u);
 				
 				rol=rolManager.obtenerRolByID(u.getRol().getID());
 				perm=permisoManager.ObtenerPermisosRol(rol);
@@ -205,7 +214,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	    	         
 	        	 }
 	        	 
-	        	 session.put("permisos", p);
+	        	 servletRequest.setAttribute("permisos", p);
 	        	 
 	        	 
 	        	 
@@ -230,12 +239,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public void setRolManager(RolManager rolManager) {
 		this.rolManager = rolManager;
 	}
-	public Map<String, Object> getSession() {
-		return session;
-	}
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
+
+
 	
 
 	
