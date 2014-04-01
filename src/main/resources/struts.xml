@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">  
+
+<struts>
+	<!-- Lo siguiente que haremos será configurar una constante que le indicará 
+		a Struts que nos encontramos en la etapa de desarrollo, con esto generará 
+		más mensajes de salida para que sepamos si estamos haciendo algo mal, y nos 
+		mostrará los errores de una forma más clara. -->
+	<constant name="struts.devMode" value="true" />
+	<!-- enable 'method' attribute -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+	<package name="default" namespace="/" extends="struts-default">
+<!-- 
+		<interceptors>
+			<interceptor name="authenticationInterceptor"
+				class="com.prestafacturaService.interceptor.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="LoginActionSpring"
+			class="LoginActionSpring">
+			
+			<result name="successA">bienvenido.jsp</result>
+			<result name="successU">bienvenido.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		 -->
+		<action name="LoginAction"
+			class="com.prestafacturaService.vista.action.login.LoginAction">
+			<result name="successA">bienvenido.jsp</result>
+			<result name="successU">bienvenido.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+<!-- 
+	<package name="logout" namespace="/" 
+		<action name="logout"
+			class="com.prestafacturaService.vista.action.login.LogoutAction">
+			<result name="SUCCESS" type="redirectAction">
+				<param name="actionName">loginAction</param>
+			</result>
+		</action>
+
+		<action name="bienvenido">
+			<interceptor-ref name="secureStack"></interceptor-ref>
+			<result>/bienvenido.jsp</result>
+			<result name="login">/inicio.jsp</result>
+		</action>
+ -->
+	</package>
+
+</struts>
