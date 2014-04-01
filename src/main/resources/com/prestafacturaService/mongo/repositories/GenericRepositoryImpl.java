@@ -1,7 +1,5 @@
 package com.prestafacturaService.mongo.repositories;
 
-import java.io.Serializable;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
