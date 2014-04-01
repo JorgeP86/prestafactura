@@ -5,15 +5,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-<display-name>PrestafacturaService</display-name>
+<display-name>Prestafactura</display-name>
 
 <filter>
     <filter-name>struts2</filter-name>
     <filter-class>
     	org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
 	</filter-class>
+	<!-- 
+	<init-param>
+		<param-name>struts.convention.action.package</param-name>
+		<param-value>com.prestafacturaService.vista.action.login</param-value>
+	</init-param>
+	 -->
 </filter>
 
+
+<filter-mapping>
+	<filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<!-- 
 <context-param>
     <param-name>applicationContext</param-name>
 	<param-value>/WEB-INF/applicationContext.xml</param-value>
@@ -21,9 +33,9 @@
 
 <context-param>
     <param-name>struts-config</param-name>
-	<param-value>/WEB-INF/struts-config.xml</param-value>
+	<param-value>/struts-config.xml</param-value>
 </context-param>
-
+ -->
 <listener>
 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
@@ -32,10 +44,6 @@
 	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 </listener>
 
-<filter-mapping>
-	<filter-name>struts2</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
  
 <welcome-file-list>
 	<welcome-file>inicio.jsp</welcome-file>
