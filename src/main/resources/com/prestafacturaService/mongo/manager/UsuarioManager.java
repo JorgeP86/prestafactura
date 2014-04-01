@@ -3,8 +3,6 @@ package com.prestafacturaService.mongo.manager;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.prestafacturaService.mongo.dto.Usuario;
