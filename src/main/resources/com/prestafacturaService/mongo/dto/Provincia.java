@@ -15,7 +15,7 @@ public class Provincia extends BaseEntity implements Comparable<Object>{
 	private static final long serialVersionUID = -4381836497330168644L;
 	private String provincia;
 	@DBRef
-	private Set localidades;
+	private Set<Localidad> localidades;
 	
 
 	public String getProvincia() {
@@ -24,10 +24,10 @@ public class Provincia extends BaseEntity implements Comparable<Object>{
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
-	public Set getLocalidades() {
+	public Set<Localidad> getLocalidades() {
 		return localidades;
 	}
-	public void setLocalidades(Set localidades) {
+	public void setLocalidades(Set<Localidad> localidades) {
 		this.localidades = localidades;
 	}
 	public int compareTo(Object o) {

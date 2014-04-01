@@ -1,12 +1,9 @@
 package com.prestafacturaService.mongo.dto;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.prestafacturaService.mongo.util.CascadeSave;
 
 @Document(collection="rol")
 public class Rol extends BaseEntity{
