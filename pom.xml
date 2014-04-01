@@ -5,7 +5,7 @@
   <artifactId>prestafacturaService</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>prueba Maven Webapp</name>
+  <name>prestafactura</name>
   <url>http://maven.apache.org</url>
 
 	<properties>
@@ -63,7 +63,12 @@
 		<artifactId>spring-context</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
-
+	<dependency>
+	<groupId>org.apache.struts</groupId>
+		<artifactId>struts2-config-browser-plugin</artifactId>
+		<version>2.3.16.1</version>
+	</dependency>
+	
   </dependencies>
 	<build>
 		<finalName>prestafacturaService</finalName>
