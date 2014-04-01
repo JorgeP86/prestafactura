@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.prestafacturaService.mongo.dto.Permiso;
 import com.prestafacturaService.mongo.dto.Rol;
@@ -18,13 +19,11 @@ import com.prestafacturaService.mongo.manager.UsuarioManager;
 
 public class LoginAction extends ActionSupport implements ServletRequestAware {
 	
-	
 	private static final long serialVersionUID = -2596761911912878030L;
 	public static final String ERROR = "error";
 	public static final String INPUT = "input";
 	private static final String SuccessU = "successU";
 	private static final String SuccessA = "successA";
-	
 	
 	private PermisoManager permisoManager;
 	private RolManager rolManager;
@@ -33,18 +32,13 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
     Map<String, String> p=new HashMap<String, String>();
     private Rol rol;
     boolean gUsuarios=false,gFactura=false,gRoles=false,gProveedores=false,gDatosInternos=false,gClientes=false, gFirmaElectronica=false,gInformacion=false, gFacturasAlmacenadas=false;
-	private UsuarioManager usuarioManager;
+    private UsuarioManager usuarioManager;
 	private HttpServletRequest servletRequest;
+	private String username;
+	private String password;
 
 	
 
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
-	}
-
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
-	}
 
 	private Boolean validUser(String nameUser, String passUser){
 		Usuario user= usuarioManager.getUsuario(nameUser, passUser);
@@ -59,14 +53,12 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 		public String execute(){
 			clearFieldErrors();
 			
-			String nameUser= (String) servletRequest.getSession().getAttribute("username");
-			String passUser= (String) servletRequest.getSession().getAttribute("password");
-			if(nameUser!=null && passUser!=null && validUser(nameUser,passUser )){
-				Usuario u= usuarioManager.getUsuario(nameUser,passUser);
-				servletRequest.setAttribute("usuario", u);
+			if(username!=null && password!=null && validUser(username,password)){
+				Usuario u = usuarioManager.getUsuario(username,password);
+				servletRequest.setAttribute("user", u);
 				
-				rol=rolManager.obtenerRolByID(u.getRol().getID());
-				perm=permisoManager.ObtenerPermisosRol(rol);
+				rol = rolManager.obtenerRolByID(u.getRol().getID());
+				perm = permisoManager.ObtenerPermisosRol(rol);
 				Iterator<Permiso> it= perm.iterator();
 	        	 while(it.hasNext()){
 	    	         Permiso permiso=(Permiso) it.next();
@@ -228,7 +220,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 					addFieldError("invalid","Usuario o Password incorrecto");
 				}	
 			}
-			return INPUT;
+			return SuccessA;
 	}
 
 	
@@ -238,6 +230,30 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	}
 	public void setRolManager(RolManager rolManager) {
 		this.rolManager = rolManager;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public HttpServletRequest getServletRequest() {
+		return servletRequest;
+	}
+
+	public void setServletRequest(HttpServletRequest servletRequest) {
+		this.servletRequest = servletRequest;
 	}
 
 
