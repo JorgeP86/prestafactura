@@ -62,7 +62,7 @@ public class UsuarioRepositoryTest {
 		permisos.add(permiso);
 		Rol rol = new Rol();
 		rol.setNombre("Administrador");
-		rol.setDescripcion("descripción");
+		rol.setDescripcion("descripcion");
 		rol.setPermisos(permisos);
 		
 		Usuario usuario = new Usuario();
@@ -85,6 +85,14 @@ public class UsuarioRepositoryTest {
 		Usuario usuario = usuarios.get(0);
 		assertUsuario(usuarios, usuario.getNombre());
 		System.out.println(usuario.toString());
+	}
+	
+	@Test
+	public void testGetUsuario(){
+		String nombre = "JorgeP86";
+		String password = "jorge";
+		Usuario usuario = usuarioManager.getUsuario(nombre, password);
+		assertNotNull(usuario);
 	}
 	
 	@After
