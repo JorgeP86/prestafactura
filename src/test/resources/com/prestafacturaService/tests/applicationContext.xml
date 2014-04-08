@@ -28,17 +28,9 @@
   	</bean>
 	
 	<mongo:repositories base-package="com.prestafacturaService.mongo.repositories" factory-class="com.prestafacturaService.mongo.repositories.MongoRepoFactory">
- 		<mongo:repository id="cabeceraRepository"/>
  	</mongo:repositories>
-
- 	<!-- Service -->
- 	<bean id="usuarioManager" class="com.prestafacturaService.mongo.manager.UsuarioManager"></bean>
-	<bean id="rolManager" class="com.prestafacturaService.mongo.manager.RolManager"></bean>
-	<bean id="permisoManager" class="com.prestafacturaService.mongo.manager.PermisoManager"></bean>
- 	
- 	<!-- Actions -->
- 	<bean id="LoginAction" class="com.prestafacturaService.vista.action.login.LoginAction">
- 	</bean>
- 	
+	
+	<bean id="usurioRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.UsuarioRepositoryImpl"></bean>
+	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
 </beans>
