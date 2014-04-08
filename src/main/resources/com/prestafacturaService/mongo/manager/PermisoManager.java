@@ -1,6 +1,6 @@
 package com.prestafacturaService.mongo.manager;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,8 @@ public class PermisoManager {
 	private PermisoRepository permisoRepository;
 
 	@SuppressWarnings("unchecked")
-	public Collection<Permiso> ObtenerPermisosRol(Rol rol) {
-		return (Collection<Permiso>)permisoRepository.findOne(rol.getID());
+	public List<Permiso> ObtenerPermisosRol(Rol rol) {
+		return (List<Permiso>) permisoRepository.findOne(rol.getID());
 	}
 	
 	public Permiso savePermiso(Permiso permiso){
