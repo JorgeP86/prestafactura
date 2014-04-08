@@ -19,10 +19,9 @@ public class UsuarioManager {
 	public Usuario saveUsuario(Usuario user){
 		return usuarioRepository.save(user);
 	}
-	
+
 	public Usuario getUsuario(String nombre, String password){
 		return usuarioRepository.getUsuario(nombre, password);
-		
 		 //usuarioRepository.findOne(user.getID());	
 	}
 	
