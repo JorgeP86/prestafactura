@@ -1,6 +1,7 @@
 package com.prestafacturaService.mongo.repositories;
 
-import org.bson.types.ObjectId;
+import java.io.Serializable;
+
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.query.MongoEntityInformation;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.repository.support.MongoRepositoryFactor
 import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
 
-public class MongoRepoFactory<T extends MongoRepository<S,ObjectId>, S> extends MongoRepositoryFactoryBean<T,S,ObjectId>{
+public class MongoRepoFactory<T extends MongoRepository<S,ID>, S, ID extends Serializable> extends MongoRepositoryFactoryBean<T,S,ID>{
 	
 	protected RepositoryFactorySupport createRepositoryFactory(MongoOperations mongoOperations){
 		return new BaseFactoryRepository(mongoOperations);
