@@ -17,8 +17,8 @@ public class Usuario extends BaseEntity implements Serializable{
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
-	private String Login;
-	private String Password;
+	private String login;
+	private String password;
 	private String email;
 	private String departamento;
     private Date fechaAlta;
@@ -58,10 +58,10 @@ public class Usuario extends BaseEntity implements Serializable{
 		this.fechaAlta = fechaAlta;
 	}
 	public String getLogin() {
-		return Login;
+		return login;
 	}
 	public void setLogin(String login) {
-		Login = login;
+		this.login = login;
 	}
 	public String getNombre() {
 		return nombre;
@@ -70,10 +70,10 @@ public class Usuario extends BaseEntity implements Serializable{
 		this.nombre = nombre;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
 	public Rol getRol() {
