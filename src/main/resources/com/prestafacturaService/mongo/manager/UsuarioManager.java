@@ -28,4 +28,8 @@ public class UsuarioManager {
 	public List<Usuario> obtenerUsuarios(){
 		return usuarioRepository.findAll();
 	}
+	
+	public Boolean existeUsuario(String nombre, String password){
+		return usuarioRepository.existsUsuario(nombre, password);
+	}
 }
