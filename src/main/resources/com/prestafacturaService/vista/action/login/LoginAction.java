@@ -45,12 +45,16 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 
 
 	private Boolean validUser(String nameUser, String passUser){
-		Usuario user= usuarioManager.getUsuario(nameUser, passUser);
-		if(user.getLogin().equals(nameUser)&& user.getPassword().equals(passUser)){
-			return true;
-		}else{
-			return false;
+		Boolean existeUsuario=usuarioManager.existeUsuario(nameUser, passUser);
+		if(existeUsuario){
+			Usuario user= usuarioManager.getUsuario(nameUser, passUser);
+			if(user.getLogin().equals(nameUser)&& user.getPassword().equals(passUser)){
+				return true;
+			}else{
+				return false;
+			}
 		}
+		return false;
 	}
 	
 	@Override
@@ -60,6 +64,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 		if(username!=null && password!=null && validUser(username,password)){
 			Usuario u = usuarioManager.getUsuario(username,password);
 			servletRequest.setAttribute("user", u);
+			servletRequest.setAttribute("username", u.getNombre());
 			
 			rol = u.getRol();
 			perm = rol.getPermisos();
@@ -212,17 +217,31 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	       	servletRequest.setAttribute("permisos", p);
 	       	 
 	       	if((gClientes || gDatosInternos || gFactura || gFacturasAlmacenadas || 
-	       			gFirmaElectronica || gInformacion || gProveedores )&& (!gUsuarios && !gRoles))
+	       			gFirmaElectronica || gInformacion || gProveedores )&& (!gUsuarios && !gRoles)){
 				return SuccessU;
-			if(gUsuarios || gRoles){
+	       	}if(gUsuarios || gRoles){
 				return SuccessA;
-		 
 			}else{
-				addFieldError("invalid","Usuario o Password incorrecto");
-			}	
+				return SuccessA;
+			}
+			
+		}else{
+			addFieldError("invalid","Usuario o Password incorrecto");
 		}
-		return SuccessA;
-	}
+		return INPUT;
+		}
+	
+	
+	
+	 public void validate() {
+		 if(username==null || username.trim().equals("")){
+			 addFieldError("nombre",getText("username.Invalid"));
+		 }
+		 if(password==null || password.trim().equals("")){
+			 addFieldError("nombre",getText("password.Invalid"));
+		 }
+		 
+	 }
 
 	
 	
