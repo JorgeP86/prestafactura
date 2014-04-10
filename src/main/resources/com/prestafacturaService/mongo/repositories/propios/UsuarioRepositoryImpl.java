@@ -19,4 +19,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom{
 		
 		return mongoTemplate.findOne(query,Usuario.class);
 	}
+	
+	public Boolean existsUsuario(String username, String password){
+		Query query= new Query();
+		query.addCriteria(Criteria.where("login").is(username).and("password").is(password));
+		
+		return mongoTemplate.exists(query, Usuario.class);
+		
+	}
+	
 }

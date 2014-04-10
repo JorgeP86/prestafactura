@@ -6,5 +6,6 @@ import com.prestafacturaService.mongo.dto.Usuario;
 public interface UsuarioRepositoryCustom{
 
 	Usuario getUsuario(String username, String password);
+	public Boolean existsUsuario(String username, String password);
 
 }
