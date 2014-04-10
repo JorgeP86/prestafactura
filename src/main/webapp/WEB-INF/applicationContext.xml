@@ -31,6 +31,7 @@
 	
 	<!-- Repositorio de metodos propios -->
 	<bean id="usurioRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.UsuarioRepositoryImpl"></bean>
+	<bean id="rolRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RolRepositoryImpl"></bean>
 	
  	<!-- Service -->
  	<bean id="usuarioManager" class="com.prestafacturaService.mongo.manager.UsuarioManager"></bean>

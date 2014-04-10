@@ -12,12 +12,12 @@
     <filter-class>
     	org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
 	</filter-class>
-	<!-- 
+	
 	<init-param>
 		<param-name>struts.convention.action.package</param-name>
-		<param-value>com.prestafacturaService.vista.action.login</param-value>
+		<param-value>com.prestafacturaService.vista.action</param-value>
 	</init-param>
-	 -->
+	 
 </filter>
 
 
@@ -33,9 +33,9 @@
 
 <context-param>
     <param-name>struts-config</param-name>
-	<param-value>/struts-config.xml</param-value>
+	<param-value>/WEF-INF/classes/struts.xml</param-value>
 </context-param>
- -->
+-->
 <listener>
 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
