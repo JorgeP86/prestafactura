@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.prestafacturaService.mongo.dto.Rol;
 import com.prestafacturaService.mongo.dto.Usuario;
 import com.prestafacturaService.mongo.repositories.UsuarioRepository;
 
@@ -31,5 +32,10 @@ public class UsuarioManager {
 	
 	public Boolean existeUsuario(String nombre, String password){
 		return usuarioRepository.existsUsuario(nombre, password);
+	}
+
+	public List usuariosConRol(Rol rol) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.usuariosConRol(rol);
 	}
 }
