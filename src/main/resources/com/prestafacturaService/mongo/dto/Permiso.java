@@ -19,20 +19,30 @@ public class Permiso extends BaseEntity{
 	@DBRef
 	@CascadeSave
 	private Recurso recurso;
-	Map<String,String> permisos=new HashMap<String, String>();
+	private Rol rol;
+	Map<Recurso, Rol> permisosPR=new HashMap<Recurso, Rol>();
 	
-	public Recurso getPagina() {
+	
+	public Rol getRol() {
+		return rol;
+	}
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+	
+	public Recurso getRecurso() {
 		return recurso;
 	}
-	public void setPagina(Recurso recurso) {
+	public void setRecurso(Recurso recurso) {
 		this.recurso = recurso;
 	}
-	public Map<String,String> getPermisos() {
-		return permisos;
+	public Map<Recurso, Rol> getPermisos() {
+		return permisosPR;
 	}
-	public void setPermisos(Map<String,String> permisos) {
-		this.permisos = permisos;
+	public void setPermisos(Map<Recurso, Rol> permisos) {
+		this.permisosPR = permisos;
 	}
+	
 	
 	
 	
