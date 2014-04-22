@@ -73,139 +73,139 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	       		Permiso permiso=(Permiso) it.next();
 	   	         
 	   	         //Modulo Usuario
-	   	         if(permiso.getPagina().getPath().equals("altaUsuario")){
+	   	         if(permiso.getRecurso().getPath().equals("altaUsuario")){
 	   	        	 p.put("altaUsuario", "altaUsuario");
 	   	        	 gUsuarios=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("bajaUsuario")){
+	   	         if(permiso.getRecurso().getPath().equals("bajaUsuario")){
 	   	        	 p.put("bajaUsuario", "bajaUsuario");
 	   	        	 gUsuarios=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("editarUsuario")){
+	   	         if(permiso.getRecurso().getPath().equals("editarUsuario")){
 	   	        	 p.put("editarUsuario", "editarUsuario");
 	   	        	 gUsuarios=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("bajaUsuario")){
+	   	         if(permiso.getRecurso().getPath().equals("bajaUsuario")){
 	   	        	 p.put("consultarUsuario", "consultarUsuario");
 	   	        	 gUsuarios=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("listarUsuario")){
+	   	         if(permiso.getRecurso().getPath().equals("listarUsuario")){
 	   	        	 p.put("listarUsuario", "listarUsuario");
 	   	        	 gUsuarios=true;
 	   	         }
 	   	         
 	   	         //M�dulo Roles
-	   	         if(permiso.getPagina().getPath().equals("altaRol")){
+	   	         if(permiso.getRecurso().getPath().equals("altaRol")){
 	   	        	 p.put("altaRol","altaRol");
 	   	        	 gRoles=true;
-	   	         } if(permiso.getPagina().getPath().equals("bajaRol")){
+	   	         } if(permiso.getRecurso().getPath().equals("bajaRol")){
 	   	        	 p.put("bajaRol","bajaRol");
 	   	        	 gRoles=true;
-	   	         } if(permiso.getPagina().getPath().equals("consultarRol")){
+	   	         } if(permiso.getRecurso().getPath().equals("consultarRol")){
 	   	        	 p.put("consultarRol","consultarRol");
 	   	        	 gRoles=true;
-	   	         } if(permiso.getPagina().getPath().equals("editarRol")){
+	   	         } if(permiso.getRecurso().getPath().equals("editarRol")){
 	   	        	 p.put("editarRol","editarRol");
 	   	        	 gRoles=true;
-	   	         } if(permiso.getPagina().getPath().equals("listarRol")){
+	   	         } if(permiso.getRecurso().getPath().equals("listarRol")){
 	   	        	 p.put("listarRol","listarRol");
 	   	        	 gRoles=true;
 	   	         }
 	   	         
 	   	         //M�dulo Clientes
-	   	         if(permiso.getPagina().getPath().equals("altaCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("altaCliente")){
 	   	        	 p.put("altaCliente", "altaCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("bajaCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("bajaCliente")){
 	   	        	 p.put("bajaCliente", "bajaCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("consultarCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarCliente")){
 	   	        	 p.put("consultarCliente", "consultarCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("editarCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("editarCliente")){
 	   	        	 p.put("editarCliente", "editarCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("listarCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("listarCliente")){
 	   	        	 p.put("listarCliente", "listarCliente");
 	   	        	 gClientes=true;
 	   	         }
 	   	         
 	   	         //M�dulo Proveedores
-	   	         if(permiso.getPagina().getPath().equals("altaProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("altaProveedores")){
 	   	        	 p.put("altaProveedores", "altaProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getPagina().getPath().equals("bajaProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("bajaProveedores")){
 	   	        	 p.put("bajaProveedores", "bajaProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getPagina().getPath().equals("editarProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("editarProveedores")){
 	   	        	 p.put("editaProveedores", "editarProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getPagina().getPath().equals("consultarProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarProveedores")){
 	   	        	 p.put("consultarProveedores", "consultarProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getPagina().getPath().equals("altaProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("altaProveedores")){
 	   	        	 p.put("listarProveedores", "listarProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
 	   	         
 	   	         //M�dulo Factura
 	   	         
-	   	         if(permiso.getPagina().getPath().equals("crearFactura")){
+	   	         if(permiso.getRecurso().getPath().equals("crearFactura")){
 	   	        	 p.put("crearFactura", "crearFactura");
 	   	        	 gFactura=true;
 	   	         }
 	       	
 	   	         //M�dulo Datos Internos
-	   	         if(permiso.getPagina().getPath().equals("altaDatos")){
+	   	         if(permiso.getRecurso().getPath().equals("altaDatos")){
 	   	        	 p.put("altaDatos", "altaDatos");
 	   	        	 gDatosInternos=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("editarDatos")){
+	   	         if(permiso.getRecurso().getPath().equals("editarDatos")){
 	   	        	 p.put("editarDatos", "editarDatos");
 	   	        	 gDatosInternos=true;
 	   	        }
-	   	         if(permiso.getPagina().getPath().equals("consultarDatos")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarDatos")){
 	   	        	 p.put("consultarDatos", "consultarDatos");
 	   	        	 gDatosInternos=true;
 	   	         }
 	   	         
 	   	         //M�dulo Informaci�n
-	   	         if(permiso.getPagina().getPath().equals("consultarInformacion")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarInformacion")){
 	   	        	 p.put("consultarInformacion", "consultarInformacion");
 	   	        	 gInformacion=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("eliminarInformacion")){
+	   	         if(permiso.getRecurso().getPath().equals("eliminarInformacion")){
 	   	        	 p.put("eliminarInformacion", "eliminarInformacion");
 	   	        	 gInformacion=true;
 		    	     }
-	   	         if(permiso.getPagina().getPath().equals("publicarInformacion")){
+	   	         if(permiso.getRecurso().getPath().equals("publicarInformacion")){
 	   	        	 p.put("publicarInformacion", "publicarInformacion");
 	   	        	 gInformacion=true;
 		    	     }
 	   	         //Modulo Factura Almacenadas
-	   	         if(permiso.getPagina().getPath().equals("consultarFactura")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarFactura")){
 	   	        	 p.put("consultarFactura","consultarFactura");
 	   	        	 gFacturasAlmacenadas=true;
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("descargarFactura")){
+	   	         if(permiso.getRecurso().getPath().equals("descargarFactura")){
 	   	        	 p.put("descargarFactura","descargarFactura");
 	   	        	 gFacturasAlmacenadas=true;
 	   	         }
 	   	         //Firma Electronica
-	   	         if(permiso.getPagina().getPath().equals("generarFirmaElectronica")){
+	   	         if(permiso.getRecurso().getPath().equals("generarFirmaElectronica")){
 	   	        	 p.put("generarFirmaElectronica", "generarFirmaElectronica");
 	   	        	 gFirmaElectronica=true;
 	   	        	    	        	 
 	   	         }
-	   	         if(permiso.getPagina().getPath().equals("consultarFirmaElectronica")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarFirmaElectronica")){
 	   	        	 p.put("consultarFirmaElectronica", "consultarFirmaElectronica");
 	   	        	 gFirmaElectronica=true;
 	   	         }

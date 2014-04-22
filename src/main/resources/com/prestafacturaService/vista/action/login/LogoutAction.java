@@ -1,28 +1,37 @@
 package com.prestafacturaService.vista.action.login;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LogoutAction extends ActionSupport implements SessionAware{
+public class LogoutAction extends ActionSupport implements ServletRequestAware {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3277337689500567507L;
-	private Map<String, Object> session;
-	
-	public void setSession(Map<String, Object> session) {
-		this.session=session;
-		
-	}
+	private static final long serialVersionUID = -5504945475323171912L;
+	private HttpServletRequest servletRequest;
+	private static final String Success = "success";
+
+
 	@Override
 	public String execute(){
-		session.remove("user");
-		return SUCCESS;
-		
+		servletRequest.getSession().invalidate();
+		return SUCCESS;	
 	}
+	
+	
+	public HttpServletRequest getServletRequest() {
+		return servletRequest;
+	}
+
+
+	public void setServletRequest(HttpServletRequest servletRequest) {
+		this.servletRequest = servletRequest;
+	}
+
+	
 
 }
