@@ -1,5 +1,6 @@
 package com.prestafacturaService.mongo.manager;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,32 @@ public class UsuarioManager {
 	public List usuariosConRol(Rol rol) {
 		// TODO Auto-generated method stub
 		return usuarioRepository.usuariosConRol(rol);
+	}
+
+	public boolean existeNombreUsuario(String nombre) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.existsNombreUsuario(nombre);
+	}
+
+	public Usuario obtenerUsuarioByid(int idUsuario) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.obtenerUsuarioByid(idUsuario);
+	}
+
+	public Usuario updateUsuario(Usuario usuarioUpdate) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.updateUsuario(usuarioUpdate);
+	}
+
+	public Collection busquedaUsuario(String nombreBus, String apellido1Bus,
+			String apellido2Bus, String departamentoBus, Rol rol) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.busquedaUsuario(nombreBus, apellido1Bus,apellido2Bus,
+				departamentoBus, rol);
+	}
+
+	public void eliminarUsuario(int idUsuario) {
+		// TODO Auto-generated method stub
+		usuarioRepository.eliminarUsuario(idUsuario);
 	}
 }

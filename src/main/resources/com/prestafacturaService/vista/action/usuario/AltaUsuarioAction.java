@@ -1,6 +1,7 @@
 package com.prestafacturaService.vista.action.usuario;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +25,7 @@ public class AltaUsuarioAction extends ActionSupport implements ServletRequestAw
 	
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
+	public static final String SUCCESSB = "successB";
 	
 	private String nombre;
 	private String apellido1;
@@ -42,31 +44,75 @@ public class AltaUsuarioAction extends ActionSupport implements ServletRequestAw
 	@Autowired
 	private UsuarioManager usuarioManager;
     
-    
+    private int idUsuario= (Integer) servletRequest.getAttribute("idUsuario");
 	public String execute(){
 		clearFieldErrors();
 	try{
-		Rol rolUsuario=rolManager.ObtenerRolByName(nombreRol);
-		Usuario usuarioNuevo=new Usuario();
-		usuarioNuevo.setNombre(nombre);
-		usuarioNuevo.setApellido1(apellido1);
-		usuarioNuevo.setApellido2(apellido2);
-		usuarioNuevo.setDepartamento(departamento);
-		usuarioNuevo.setEmail(email);
-		usuarioNuevo.setLogin(login);
-		usuarioNuevo.setPassword(password);
-		usuarioNuevo.setRol(rolUsuario);
-		usuarioNuevo.setFechaAlta(new Date());
 		
-			Usuario usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
-			servletRequest.setAttribute("usuarioCreado", usuarioCreado);
-			return SUCCESS;
+		if(idUsuario==0){ //Alta
+			//Comprobamos que no existe el Usuario con el mismo password y login
+			if(usuarioManager.existeUsuario(login, password)
+					|| usuarioManager.existeNombreUsuario(login)){
+				Rol rolUsuario=rolManager.ObtenerRolByName(nombreRol);
+				Usuario usuarioNuevo=new Usuario();
+				usuarioNuevo.setIdUsuario(new Integer(UUID.randomUUID().toString()));
+				usuarioNuevo.setNombre(nombre);
+				usuarioNuevo.setApellido1(apellido1);
+				usuarioNuevo.setApellido2(apellido2);
+				usuarioNuevo.setDepartamento(departamento);
+				usuarioNuevo.setEmail(email);
+				usuarioNuevo.setLogin(login);
+				usuarioNuevo.setPassword(password);
+				usuarioNuevo.setRol(rolUsuario);
+				usuarioNuevo.setFechaAlta(new Date());
+		
+				Usuario usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
+				servletRequest.setAttribute("usuarioCreado", usuarioCreado);
+				return SUCCESS;
+		
+			}else{
+				addActionError("El usuario ya existe");
+				return INPUT;
+			}
+		}if(idUsuario>0){ //Modificación
+			if(usuarioManager.existeUsuario(login, password)
+					|| usuarioManager.existeNombreUsuario(login)){
+				Usuario usuario=usuarioManager.obtenerUsuarioByid(idUsuario);
+				Rol rolUsuario=rolManager.ObtenerRolByName(nombreRol);
+				Usuario usuarioUpdate=new Usuario();
+				usuarioUpdate.setIdUsuario(idUsuario);
+				usuarioUpdate.setNombre(nombre);
+				usuarioUpdate.setApellido1(apellido1);
+				usuarioUpdate.setApellido2(apellido2);
+				usuarioUpdate.setDepartamento(departamento);
+				usuarioUpdate.setEmail(email);
+				usuarioUpdate.setLogin(login);
+				usuarioUpdate.setPassword(password);
+				usuarioUpdate.setRol(rolUsuario);
+				usuarioUpdate.setFechaAlta(new Date());
+				
+				Usuario usuarioModificado=usuarioManager.updateUsuario(usuarioUpdate);
+				servletRequest.setAttribute("usuarioModificado", usuarioModificado);
+				return SUCCESS;
+				
+				
+				
+			}else{
+				addActionError("El usuario ya existe");
+				return INPUT;
+			}
+			
+		}
 		
 		} catch (Exception e){
 			addFieldError("invalidUsuarioAlta","El usuario no se ha creado correctamente");
+			return INPUT;
 		}
-	return INPUT;
+	addActionError("Continuar");
+	return SUCCESSB;
+	
 }
+	
 	
 	 public void validate() {
 		 if(nombre==null || nombre.trim().equals("")){

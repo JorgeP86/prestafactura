@@ -39,6 +39,11 @@
 			<result name="error">error.jsp</result>
 			<result name="input">inicio.jsp</result>
 		</action>
+		
+		<action name="LogoutAction"
+			class="com.prestafacturaService.vista.action.login.LogoutAction">
+			<result name="success">inicio.jsp</result>
+		</action>
 <!-- 
 	<package name="logout" namespace="/" 
 		<action name="logout"
