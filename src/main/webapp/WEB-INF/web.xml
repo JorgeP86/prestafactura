@@ -25,21 +25,23 @@
 	<filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
 </filter-mapping>
-<!-- 
+
 <context-param>
-    <param-name>applicationContext</param-name>
+	<param-name>applicationContext</param-name>
 	<param-value>/WEB-INF/applicationContext.xml</param-value>
 </context-param>
 
 <context-param>
-    <param-name>struts-config</param-name>
-	<param-value>/WEF-INF/classes/struts.xml</param-value>
+    <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+	<param-value>/WEB-INF/tile-defs/tiles-definitions.xml</param-value>
 </context-param>
--->
+
 <listener>
 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
-     
+<listener>
+	<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+</listener>
 <listener>
 	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 </listener>
