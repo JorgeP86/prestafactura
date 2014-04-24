@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="defaultTemplate" template="/WEB-INF/template/default/templatePrestafactura.jsp">
+		<put-attribute name="title" type="string" value="Prestafactura"/>
+		<put-attribute name="header" value="/WEB-INF/template/default/header.jsp"/>
+		<put-attribute name="menuComun" value="/WEB-INF/template/default/menuComun.jsp"/>
+		<put-attribute name="menuAdministrador" value="/WEB-INF/template/default/menuAdministrador.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/template/default/productosPrestashop.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp"/>
+	</definition>
+	<definition name="crearFactura" extends="defaultTemplate">
+		<put-attribute name="title" value="Factura"/>
+		<put-attribute name="body" value="/WEB-INF/template/default/crearFactura.jsp"/>
+	</definition>
+</tiles-definitions>
