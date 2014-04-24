@@ -32,15 +32,33 @@
 	<!-- Repositorio de metodos propios -->
 	<bean id="usurioRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.UsuarioRepositoryImpl"></bean>
 	<bean id="rolRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RolRepositoryImpl"></bean>
+	<bean id="permisoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.PermisoRepositoryImpl"></bean>
+	<bean id="recursoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RecursoRepositoryImpl"></bean>
+	
 	
  	<!-- Service -->
  	<bean id="usuarioManager" class="com.prestafacturaService.mongo.manager.UsuarioManager"></bean>
 	<bean id="rolManager" class="com.prestafacturaService.mongo.manager.RolManager"></bean>
 	<bean id="permisoManager" class="com.prestafacturaService.mongo.manager.PermisoManager"></bean>
+	<bean id="recursoManager" class="com.prestafacturaService.mongo.manager.RecursoManager"></bean>
  	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
  	
  	<!-- Actions -->
- 	<bean id="LoginAction" class="com.prestafacturaService.vista.action.login.LoginAction">
- 	</bean>
+ 		<!-- login-->
+ 	<bean id="LoginAction" class="com.prestafacturaService.vista.action.login.LoginAction"></bean>
+ 	<bean id="LogoutAction" class="com.prestafacturaService.vista.action.login.LogoutAction"></bean>
+ 		<!-- rol-->
+ 	<bean id="AccesoRolAction" class="com.prestafacturaService.vista.action.rol.AccesoRolAction"></bean>
+ 	<bean id="AltaRolAction" class="com.prestafacturaService.vista.action.rol.AltaRolAction"></bean>
+ 	<bean id="BusquedaRolAction" class="com.prestafacturaService.vista.action.rol.BusquedaRolAction"></bean>
+ 	<bean id="ModificacionRolAction" class="com.prestafacturaService.vista.action.rol.ModificacionRolAction"></bean>
+ 	<bean id="TratarRolAction" class="com.prestafacturaService.vista.action.rol.TratarRolAction"></bean>
+ 		<!-- usuario-->
+	<bean id="AccesoUsuarioAction" class="com.prestafacturaService.vista.action.usuario.AccesoUsuarioAction"></bean>
+ 	<bean id="AltaUsuarioAction" class="com.prestafacturaService.vista.action.usuario.AltaUsuarioAction"></bean>
+ 	<bean id="BusquedaUsuarioAction" class="com.prestafacturaService.vista.action.usuario.BusquedaUsuarioAction"></bean>
+ 	<bean id="ModificacionUsuariosAction" class="com.prestafacturaService.vista.action.usuario.ModificacionUsuariosAction"></bean>
+ 	<bean id="TratarUsuariosAction" class="com.prestafacturaService.vista.action.usuario.TratarUsuariosAction"></bean>
+ 	
 </beans>
