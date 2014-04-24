@@ -54,7 +54,7 @@ public class UsuarioRepositoryTest {
 		recurso.setPath("www.marca.com");
 		
 		Permiso permiso = new Permiso();
-		permiso.setPagina(recurso);
+		permiso.setRecurso(recurso);
 
 		permisoManager.savePermiso(permiso);
 		
