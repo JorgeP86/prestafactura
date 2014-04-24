@@ -1,19 +1,21 @@
 package com.prestafacturaService.mongo.dto;
 
-
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.prestafacturaService.mongo.util.CascadeSave;
 
 
-//parties (2.0)
-@Document(collection="figuraFactura")
-public class FiguraFactura extends BaseEntity{
+@Document(collection="Cliente")
+public class Cliente extends BaseEntity{
+
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -634718540335904109L;
-	//TaxIdentification
-	
+	private static final long serialVersionUID = 1L;
+	@DBRef
+	@CascadeSave
 	private IdentificacionFiscal identificacionFiscal;
 	//partyIdentification (2.1.2) (Identificaci�n de la entidad; Rellenar con el n�mero de referencia de la entidad del programa de facturaci�n que utilice)
 	private String identificacionDeFigura;
@@ -23,20 +25,17 @@ public class FiguraFactura extends BaseEntity{
 	private String apellido2;
 	private String apellido1;
 	//Endpoint (nuevo campo Facturae 4.0 -> El EndpointID es un elemento que permite especificar la direcci�n de entrega de la factura electr�nica. Sustituye al centro administrativo)
-	
+	@DBRef
 	private Direccion dirEntrega;
 	//legalEntity (2.1.4) (Persona jur�dica y otras)
-	
+	@DBRef
 	private EntidadLegal entidadLegal;
 	//ContactDetails (2.1.3.1.7)
-	
+	@DBRef
 	private DetallesContacto detallesContacto;
 	//Address (2.1.3.1.4.1) (en Facturae 4.0 ya no hay distimci�n entre addressInSpain y OverseasAddress)
-
+	@DBRef
 	private Direccion direccion;
-	
-	private Cliente cliente;
-	private Proveedor proveedor;
 	
 	public IdentificacionFiscal getIdentificacionFiscal() {
 		return identificacionFiscal;
