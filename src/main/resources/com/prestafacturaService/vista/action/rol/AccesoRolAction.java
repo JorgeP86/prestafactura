@@ -2,18 +2,16 @@ package com.prestafacturaService.vista.action.rol;
 
 import java.util.Collection;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.prestafacturaService.mongo.dto.Rol;
 import com.prestafacturaService.mongo.manager.RolManager;
 
 
 
 
-public class AccesoRolAction extends ActionSupport implements ServletRequestAware{/**
+public class AccesoRolAction extends ActionSupport{/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5134879089245551269L;
@@ -21,17 +19,16 @@ public class AccesoRolAction extends ActionSupport implements ServletRequestAwar
 
 	@Autowired
 	private RolManager rolManager;
-	private HttpServletRequest servletRequest;
+	private Collection<Rol> roles;
 	
 	 public static final String ERROR = "error";
 	 public static final String SUCCESS = "success";
 	
 	 public String execute(){
 		 try {
-			Collection roles=rolManager.ObtenerRoles();
-			servletRequest.setAttribute("roles", roles);
-			 
-		 } catch (Exception e) {
+			Collection<Rol> rolesAux = rolManager.ObtenerRoles();
+			this.setRoles(rolesAux);
+		 }catch (Exception e) {
 			 addFieldError("FalloBusquedaListaRoles",getText("busquedaListaRoles.Invalid"));
 			 return ERROR;	 
 		 }
@@ -40,13 +37,12 @@ public class AccesoRolAction extends ActionSupport implements ServletRequestAwar
 		 
 	 }
 	
-	
-	
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
+
+	public Collection<Rol> getRoles() {
+		return roles;
 	}
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+	public void setRoles(Collection<Rol> roles) {
+		this.roles = roles;
 	}
 	public RolManager getRolManager() {
 		return rolManager;
