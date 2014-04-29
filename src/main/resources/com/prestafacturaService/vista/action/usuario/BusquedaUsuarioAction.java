@@ -2,24 +2,22 @@ package com.prestafacturaService.vista.action.usuario;
 
 import java.util.Collection;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.prestafacturaService.mongo.dto.Rol;
+import com.prestafacturaService.mongo.dto.Usuario;
 import com.prestafacturaService.mongo.manager.RolManager;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
-public class BusquedaUsuarioAction extends ActionSupport implements ServletRequestAware{
+public class BusquedaUsuarioAction extends ActionSupport{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4966141920094210279L;
 	
-	private HttpServletRequest servletRequest;
+	
 	
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
@@ -36,15 +34,17 @@ public class BusquedaUsuarioAction extends ActionSupport implements ServletReque
 	private String departamentoBus;
 	private String nombreRolBus;
 	
+	private Collection<Usuario> busquedaUsuarios;
+	
 	
 	
 	public String execute(){
 		
 		try{
 			Rol rol=rolManager.ObtenerRolByName(nombreRolBus);
-			Collection usuarios=usuarioManager.busquedaUsuario(nombreBus,apellido1Bus,apellido2Bus, departamentoBus,rol);
+			Collection<Usuario> usuarios=usuarioManager.busquedaUsuario(nombreBus,apellido1Bus,apellido2Bus, departamentoBus,rol);
 			
-			servletRequest.setAttribute("busquedaUsuarios", usuarios);
+			this.setBusquedaUsuarios(usuarios);
 			if(usuarios.size()==0){
 				addActionMessage("No hay usuarios con esos valores");
 				return SUCCESS;
@@ -76,13 +76,17 @@ public class BusquedaUsuarioAction extends ActionSupport implements ServletReque
 		}
 	}
 
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
+	
+
+	public Collection getBusquedaUsuarios() {
+		return busquedaUsuarios;
 	}
 
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+
+	public void setBusquedaUsuarios(Collection busquedaUsuarios) {
+		this.busquedaUsuarios = busquedaUsuarios;
 	}
+
 
 	public RolManager getRolManager() {
 		return rolManager;

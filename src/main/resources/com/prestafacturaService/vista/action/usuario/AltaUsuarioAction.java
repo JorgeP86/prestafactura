@@ -3,9 +3,6 @@ package com.prestafacturaService.vista.action.usuario;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -14,7 +11,7 @@ import com.prestafacturaService.mongo.dto.Usuario;
 import com.prestafacturaService.mongo.manager.RolManager;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
-public class AltaUsuarioAction extends ActionSupport implements ServletRequestAware{
+public class AltaUsuarioAction extends ActionSupport{
 	
 	
 	/**
@@ -36,15 +33,16 @@ public class AltaUsuarioAction extends ActionSupport implements ServletRequestAw
 	private String departamento;
     private String nombreRol;
     
-    private HttpServletRequest servletRequest;
-  
+    private Usuario usuarioCreado;
+    private Usuario usuarioModificado;
+    private Integer idUsuario;
 
 	@Autowired
     private RolManager rolManager;
 	@Autowired
 	private UsuarioManager usuarioManager;
     
-    private int idUsuario= (Integer) servletRequest.getAttribute("idUsuario");
+    
 	public String execute(){
 		clearFieldErrors();
 	try{
@@ -67,7 +65,7 @@ public class AltaUsuarioAction extends ActionSupport implements ServletRequestAw
 				usuarioNuevo.setFechaAlta(new Date());
 		
 				Usuario usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
-				servletRequest.setAttribute("usuarioCreado", usuarioCreado);
+				this.setUsuarioCreado(usuarioCreado);
 				return SUCCESS;
 		
 			}else{
@@ -92,7 +90,7 @@ public class AltaUsuarioAction extends ActionSupport implements ServletRequestAw
 				usuarioUpdate.setFechaAlta(new Date());
 				
 				Usuario usuarioModificado=usuarioManager.updateUsuario(usuarioUpdate);
-				servletRequest.setAttribute("usuarioModificado", usuarioModificado);
+				this.setUsuarioModificado(usuarioModificado);
 				return SUCCESS;
 				
 				
@@ -205,14 +203,38 @@ public class AltaUsuarioAction extends ActionSupport implements ServletRequestAw
 	public void setNombreRol(String nombreRol) {
 		this.nombreRol = nombreRol;
 	}
-	
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
+
+
+	public Usuario getUsuarioCreado() {
+		return usuarioCreado;
 	}
 
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+
+	public void setUsuarioCreado(Usuario usuarioCreado) {
+		this.usuarioCreado = usuarioCreado;
 	}
+
+
+	public Usuario getUsuarioModificado() {
+		return usuarioModificado;
+	}
+
+
+	public void setUsuarioModificado(Usuario usuarioModificado) {
+		this.usuarioModificado = usuarioModificado;
+	}
+
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	
+	
 
 
 	

@@ -1,55 +1,52 @@
 package com.prestafacturaService.vista.action.usuario;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.prestafacturaService.mongo.dto.Usuario;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
-public class TratarUsuariosAction extends ActionSupport implements ServletRequestAware{
+public class TratarUsuariosAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1427604303248130420L;
 
-	
-private HttpServletRequest servletRequest;
-	
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
 	public static final String ERROR = "error";
-	
+
 	@Autowired
 	private UsuarioManager usuarioManager;
-	
-	private int idUsuario;
-	
-	public String execute(){
-		
-		try{
-			//Definimos si se ha elegido alta o modificacion
-			servletRequest.setAttribute("idUsuario", idUsuario);
-			
-			if(idUsuario>0){
-				Usuario usuario= usuarioManager.obtenerUsuarioByid(idUsuario);
-				servletRequest.setAttribute("UsuarioModificacion", usuario);
+
+	private Integer idUsuario;
+	private Usuario usuarioModificacion;
+
+	public String execute() {
+
+		try {
+			// Definimos si se ha elegido alta o modificacion
+
+			if (idUsuario > 0) {
+				Usuario usuario = usuarioManager.obtenerUsuarioByid(idUsuario);
+				this.setUsuarioModificacion(usuario);
 			}
-			
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			addActionError("Fallo al tratar el Usuario");
 			return ERROR;
 		}
 		return SUCCESS;
 	}
 
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+	public Usuario getUsuarioModificacion() {
+		return usuarioModificacion;
+	}
+
+	public void setUsuarioModificacion(Usuario usuarioModificacion) {
+		this.usuarioModificacion = usuarioModificacion;
 	}
 
 	public UsuarioManager getUsuarioManager() {
@@ -67,7 +64,5 @@ private HttpServletRequest servletRequest;
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
-	
-	
+
 }
