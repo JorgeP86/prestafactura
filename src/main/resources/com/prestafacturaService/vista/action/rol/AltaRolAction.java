@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,82 +16,77 @@ import com.prestafacturaService.mongo.manager.PermisoManager;
 import com.prestafacturaService.mongo.manager.RecursoManager;
 import com.prestafacturaService.mongo.manager.RolManager;
 
-
-
-public class AltaRolAction extends ActionSupport implements ServletRequestAware{
+public class AltaRolAction extends ActionSupport {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6555855280536309585L;
 
-	 private HttpServletRequest servletRequest;
-	 public static final String INPUT = "input";
-	 public static final String SUCCESS = "success";
-	 public static final String SUCCESSEDITAR = "successEditar";
-	 public static final String ERROR = "error";
-	 
-	 @Autowired
-	 private RolManager rolManager;
-	 @Autowired
-	 private PermisoManager permisoManager;
-	 @Autowired
-	 private RecursoManager recursoManager;
-	 
-	 
-	 private String nombreRol;
-	 private String descripcionRol;
-	 
-	 private Collection paginas=null;
-	 
-	 //Permisos
-	 private int altaCliente;
-	 private int altaDatos;
-	 private int altaProveedor;
-	 private int altaRol;
-	 private int altaUsuario;
-	 
-	 private int bajaCliente;
-	 private int bajaProveedor;
-	 private int bajaRol;
-	 private int bajaUsuario;
-	 
-	 private int consultarCliente;
-	 private int consultarDatos;
-	 private int consultarFactura;
-	 private int consultarFirmaElectronica;
-	 private int consultarInformacion;
-	 private int consultarRol;
-	 private int consultarProveedor;
-	 private int consultarUsuario;
-	 
-	 private int crearFactura;
-	 private int descargarFactura;
-	 
-	 private int editarCliente;
-	 private int editarProveedor;
-	 private int editarRol;
-	 private int editarUsuario;
-	 
-	 private int eliminarInformacion;
-	 private int generarFirmaElectronica;
-	 
-	 private int listarClientes;
-	 private int listarProveedores;
-	 private int listarRoles;
-	 private int listarUsuario;
-	 
-	 private int publicarInformacion;
-	 
-	 private int id;
-	 private int idpagina;
-	 
-	 
-	 public String execute(){
+	public static final String INPUT = "input";
+	public static final String SUCCESS = "success";
+	public static final String SUCCESSEDITAR = "successEditar";
+	public static final String ERROR = "error";
+
+	@Autowired
+	private RolManager rolManager;
+	@Autowired
+	private PermisoManager permisoManager;
+	@Autowired
+	private RecursoManager recursoManager;
+
+	private String nombreRol;
+	private String descripcionRol;
+
+	private Collection paginas;
+
+	// Permisos
+	private int altaCliente;
+	private int altaDatos;
+	private int altaProveedor;
+	private int altaRol;
+	private int altaUsuario;
+
+	private int bajaCliente;
+	private int bajaProveedor;
+	private int bajaRol;
+	private int bajaUsuario;
+
+	private int consultarCliente;
+	private int consultarDatos;
+	private int consultarFactura;
+	private int consultarFirmaElectronica;
+	private int consultarInformacion;
+	private int consultarRol;
+	private int consultarProveedor;
+	private int consultarUsuario;
+
+	private int crearFactura;
+	private int descargarFactura;
+
+	private int editarCliente;
+	private int editarProveedor;
+	private int editarRol;
+	private int editarUsuario;
+
+	private int eliminarInformacion;
+	private int generarFirmaElectronica;
+
+	private int listarClientes;
+	private int listarProveedores;
+	private int listarRoles;
+	private int listarUsuario;
+
+	private int publicarInformacion;
+
+	private int idRol;
+	private int idpagina;
+
+	public String execute(){
 			clearFieldErrors();
 		try{
-			id = Integer.parseInt((String) servletRequest.getAttribute("idrol"));
-			if(id==0){
+			
+			if(idRol==0){
 			//Comprobamos que no existe un rol con ese nombre
 			Boolean existsNombreRol= rolManager.existsNombreRol(nombreRol);
 			if(existsNombreRol){
@@ -185,8 +177,8 @@ public class AltaRolAction extends ActionSupport implements ServletRequestAware{
 				addFieldError("AltaPermisoOK", "AltaPermisoOK");
 				
 			}
-		}else if(id>0){ //Modificación
-			Rol rol= rolManager.ObtenerRolByidRol(id);
+		}else if(idRol>0){ //Modificación
+			Rol rol= rolManager.ObtenerRolByidRol(idRol);
 			
 			if(nombreRol!=null && nombreRol.trim().length()>0){
 				rol.setNombre(nombreRol);
@@ -385,97 +377,87 @@ public class AltaRolAction extends ActionSupport implements ServletRequestAware{
 			return ERROR;
 	}
 	
-		servletRequest.setAttribute("idRol", id);
-		servletRequest.setAttribute("paginas", paginas);
-		addFieldError("continuarRol",getText("rol.continuar"));	
+		
+		this.setPaginas(paginas);
+		addActionMessage("Se ha creado el Rol correctamente");	
 	return SUCCESS;
 }
-	 
-	 
-	 
-		private void eliminarPermiso(int idpag, Rol rol) {
-			Permiso permiso=null;
-			Recurso pagina=null;
-			List lista=null;
-			try{
-				 pagina=recursoManager.obtenerPaginaById(idpag);
-//				comprobamos si hay un permiso con esa pág para este rol
-				 lista=permisoManager.buscarPermisoConPagRol(pagina,rol);
-//				Comprobamos si la lista no es vacía es que existe y debemos eleminarlo
-				if(lista.size()!=0){
-					 permiso=(Permiso) lista.get(0);
-					permisoManager.bajaPermiso(permiso);
-				}
-			}catch(Exception e) {
-				addFieldError ("eliminarPermiso",getText("permiso.eliminar"));
+
+	private void eliminarPermiso(int idpag, Rol rol) {
+		Permiso permiso = null;
+		Recurso pagina = null;
+		List lista = null;
+		try {
+			pagina = recursoManager.obtenerPaginaById(idpag);
+			// comprobamos si hay un permiso con esa pág para este rol
+			lista = permisoManager.buscarPermisoConPagRol(pagina, rol);
+			// Comprobamos si la lista no es vacía es que existe y debemos
+			// eleminarlo
+			if (lista.size() != 0) {
+				permiso = (Permiso) lista.get(0);
+				permisoManager.bajaPermiso(permiso);
 			}
+		} catch (Exception e) {
+			addFieldError("eliminarPermiso", getText("permiso.eliminar"));
 		}
-		
-	
-
-
-
-		//Método que permite crear el permiso
-		public  void crearPermiso(int seleccion, Rol rol){
-			Permiso permiso=new Permiso();
-			List permisos=null;
-			try{
-			//obtenemos la pág seleccionada en el combox
-				Recurso pagina=recursoManager.obtenerPaginaById(new Integer(seleccion));
-			//creamos un permiso con esa pag y el rol
-				//comprobamos si existia o no anteriormente
-				
-				permisos=permisoManager.buscarPermisoConPagRol(pagina, rol);
-				if(permisos.size()==0){
-					permiso.setRecurso(pagina);
-					permiso.setRol(rol);
-					Map<Recurso, Rol> mapa= new HashMap<Recurso, Rol>();
-					mapa.put(pagina, rol);
-					permiso.setPermisos(mapa);
-					permisoManager.altaPermiso(permiso);
-				}
-			}catch(Exception e) {
-				 addFieldError("InvalidPermiso",getText("permiso.Invalid"));
-				 
-				}
-			 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	public String getNombreRol() {
-			return nombreRol;
-		}
-
-
-
-		public void setNombreRol(String nombreRol) {
-			this.nombreRol = nombreRol;
-		}
-
-
-
-		public String getDescripcionRol() {
-			return descripcionRol;
-		}
-
-
-
-		public void setDescripcionRol(String descripcionRol) {
-			this.descripcionRol = descripcionRol;
-		}
-
-
-
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
 	}
 
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+	// Método que permite crear el permiso
+	public void crearPermiso(int seleccion, Rol rol) {
+		Permiso permiso = new Permiso();
+		List permisos = null;
+		try {
+			// obtenemos la pág seleccionada en el combox
+			Recurso pagina = recursoManager.obtenerPaginaById(new Integer(
+					seleccion));
+			// creamos un permiso con esa pag y el rol
+			// comprobamos si existia o no anteriormente
+
+			permisos = permisoManager.buscarPermisoConPagRol(pagina, rol);
+			if (permisos.size() == 0) {
+				permiso.setRecurso(pagina);
+				permiso.setRol(rol);
+				Map<Recurso, Rol> mapa = new HashMap<Recurso, Rol>();
+				mapa.put(pagina, rol);
+				permiso.setPermisos(mapa);
+				permisoManager.altaPermiso(permiso);
+			}
+		} catch (Exception e) {
+			addFieldError("InvalidPermiso", getText("permiso.Invalid"));
+
+		}
+	}
+
+	public String getNombreRol() {
+		return nombreRol;
+	}
+
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
+	}
+
+	public String getDescripcionRol() {
+		return descripcionRol;
+	}
+
+	public void setDescripcionRol(String descripcionRol) {
+		this.descripcionRol = descripcionRol;
+	}
+
+	public int getIdRol() {
+		return idRol;
+	}
+
+	public void setIdRol(int idRol) {
+		this.idRol = idRol;
+	}
+
+	public Collection getPaginas() {
+		return paginas;
+	}
+
+	public void setPaginas(Collection paginas) {
+		this.paginas = paginas;
 	}
 
 }

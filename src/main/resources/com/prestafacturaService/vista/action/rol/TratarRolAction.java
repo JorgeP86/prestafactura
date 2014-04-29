@@ -3,9 +3,6 @@ package com.prestafacturaService.vista.action.rol;
 import java.util.Collection;
 import java.util.Iterator;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,12 +15,11 @@ import com.prestafacturaService.mongo.manager.RolManager;
 
 
 
-public class TratarRolAction extends ActionSupport implements ServletRequestAware{
+public class TratarRolAction extends ActionSupport {
 
 	private static final long serialVersionUID = -1843765847169709920L;
 
 	
-	private HttpServletRequest servletRequest;
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
 	public static final String SUCCESSEDITAR = "successEditar";
@@ -36,6 +32,11 @@ public class TratarRolAction extends ActionSupport implements ServletRequestAwar
 	@Autowired
 	private PermisoManager permisoManager;
 	
+	private Integer idRol;
+	private Rol rolTratar;
+	private Collection<Permiso> permisoTratar;
+	private Collection<Recurso> resultTratar;
+	
 	public String execute(){
 	 	
     	boolean es=false;
@@ -46,7 +47,7 @@ public class TratarRolAction extends ActionSupport implements ServletRequestAwar
 			//Rescatamos las páginas que determinan los permisos existentes
 			Collection paginas=recursoManager.obtenerPaginas();
 			//Definimos si se ha elegido alta o modificacion
-			int idRol=(Integer) servletRequest.getAttribute("idRol");
+			
 			if(idRol> 0){
 				//ObtenerRol
 				Rol rol=rolManager.ObtenerRolByidRol(idRol);
@@ -68,11 +69,12 @@ public class TratarRolAction extends ActionSupport implements ServletRequestAwar
 		    				}
 		    			}
 	    		}
-	    		servletRequest.setAttribute("rol", rol);
-	    		servletRequest.setAttribute("permisos", permisos);
+	    		this.setPermisoTratar(permisos);
+	    		this.setRolTratar(rol);
+	    	
 	    		return SUCCESSEDITAR;
 			}
-			servletRequest.setAttribute("paginas", result);
+			this.setResultTratar(result);
 			
 		} catch (Exception e) {
 			addActionError("Fallo al eliminar el Rol");
@@ -81,13 +83,19 @@ public class TratarRolAction extends ActionSupport implements ServletRequestAwar
 		return SUCCESS;
 	}
 
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
+	
+
+	public Collection<Recurso> getResultTratar() {
+		return resultTratar;
 	}
 
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+
+
+	public void setResultTratar(Collection<Recurso> resultTratar) {
+		this.resultTratar = resultTratar;
 	}
+
+
 
 	public RolManager getRolManager() {
 		return rolManager;
@@ -111,6 +119,42 @@ public class TratarRolAction extends ActionSupport implements ServletRequestAwar
 
 	public void setPermisoManager(PermisoManager permisoManager) {
 		this.permisoManager = permisoManager;
+	}
+
+
+
+	public Integer getIdRol() {
+		return idRol;
+	}
+
+
+
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
+	}
+
+
+
+	public Rol getRolTratar() {
+		return rolTratar;
+	}
+
+
+
+	public void setRolTratar(Rol rolTratar) {
+		this.rolTratar = rolTratar;
+	}
+
+
+
+	public Collection<Permiso> getPermisoTratar() {
+		return permisoTratar;
+	}
+
+
+
+	public void setPermisoTratar(Collection<Permiso> permisoTratar) {
+		this.permisoTratar = permisoTratar;
 	}
 
 	

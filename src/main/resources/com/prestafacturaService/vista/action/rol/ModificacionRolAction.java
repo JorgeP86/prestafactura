@@ -2,9 +2,6 @@ package com.prestafacturaService.vista.action.rol;
 
 import java.util.Collection;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,17 +9,18 @@ import com.prestafacturaService.mongo.dto.Rol;
 import com.prestafacturaService.mongo.manager.RolManager;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
-public class ModificacionRolAction extends ActionSupport implements ServletRequestAware{
+public class ModificacionRolAction extends ActionSupport{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 909700589759645941L;
 
-	private HttpServletRequest servletRequest;
+	
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
-	int idRol= (Integer) servletRequest.getAttribute("idRol");
+	private Integer idRol;
+	private Collection<Rol> rolesTrasBorrar;
 	
 	@Autowired
 	 private RolManager rolManager;
@@ -41,8 +39,8 @@ public class ModificacionRolAction extends ActionSupport implements ServletReque
 				rolManager.bajaRol(rol);
 				addActionError("Operación de borrar correcta");	
 			}
-				Collection roles=rolManager.ObtenerRoles();
-				servletRequest.setAttribute("RolesTrasBorrar", roles);
+				Collection<Rol> roles=rolManager.ObtenerRoles();
+				this.setRolesTrasBorrar(roles);
 			
 		} catch (Exception e) {
 			
@@ -56,14 +54,27 @@ public class ModificacionRolAction extends ActionSupport implements ServletReque
 		
 		
 	}
-
-	public HttpServletRequest getServletRequest() {
-		return servletRequest;
+	
+	
+	public Collection<Rol> getRolesTrasBorrar() {
+		return rolesTrasBorrar;
 	}
 
-	public void setServletRequest(HttpServletRequest servletRequest) {
-		this.servletRequest = servletRequest;
+
+	public void setRolesTrasBorrar(Collection<Rol> rolesTrasBorrar) {
+		this.rolesTrasBorrar = rolesTrasBorrar;
 	}
+
+
+	public Integer getIdRol() {
+		return idRol;
+	}
+
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
+	}
+
+	
 	
 	
 	
