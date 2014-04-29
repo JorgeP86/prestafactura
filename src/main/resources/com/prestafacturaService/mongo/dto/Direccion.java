@@ -11,6 +11,7 @@ public class Direccion extends BaseEntity{
 	 * 
 	 */
 	private static final long serialVersionUID = 7586580940674569187L;
+	private String tipodireccion;
 	//StreetName (antes llamado Address)
 	private String calle;
 	//BuildingNumber (Nuevo campo FacturaE 4.0)
@@ -33,6 +34,15 @@ public class Direccion extends BaseEntity{
 	//PostBox
 	private String postBox;
 	
+	
+	
+	
+	public String getTipodireccion() {
+		return tipodireccion;
+	}
+	public void setTipodireccion(String tipodireccion) {
+		this.tipodireccion = tipodireccion;
+	}
 	public String getCalle() {
 		return calle;
 	}

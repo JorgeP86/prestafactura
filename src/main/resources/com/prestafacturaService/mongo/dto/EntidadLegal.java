@@ -3,6 +3,8 @@ package com.prestafacturaService.mongo.dto;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.prestafacturaService.mongo.util.CascadeSave;
+
 
 //Se utiliza una �nica entidad para especificar a la parte. No es necesario especificar entre entidad
 //jur�dica o individuo
@@ -25,9 +27,11 @@ public class EntidadLegal extends BaseEntity{
 	//Address (2.1.3.1.4) (En FacturaE 4.0 -> No hay distinci�n entre direcci�n 
 	//postal en Espa�a y en el extranjero.
 	@DBRef
+	@CascadeSave
 	private Direccion direccion;
 	//ContactDetails (2.1.3.1.5) 
 	@DBRef
+	@CascadeSave
 	private DetallesContacto detallesContacto;
 	
 	public String getRazonSocial() {
