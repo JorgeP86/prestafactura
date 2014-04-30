@@ -44,6 +44,14 @@ public class Cliente extends BaseEntity{
 	@CascadeSave
 	private Direccion direccion;
 	
+	
+	
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
 	public IdentificacionFiscal getIdentificacionFiscal() {
 		return identificacionFiscal;
 	}
