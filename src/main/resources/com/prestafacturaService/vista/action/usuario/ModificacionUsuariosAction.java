@@ -2,6 +2,7 @@ package com.prestafacturaService.vista.action.usuario;
 
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,6 +17,8 @@ public class ModificacionUsuariosAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 4644318210726965409L;
 
+	private static final Logger logger = Logger.getLogger(ModificacionUsuariosAction.class);
+	
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
 	public static final String ERROR = "error";
@@ -31,13 +34,15 @@ public class ModificacionUsuariosAction extends ActionSupport {
 	public String execute() {
 
 		try {
-
+			
 			usuarioManager.eliminarUsuario(idUsuario);
+			logger.info("eliminacion usuario por id");
 			addActionMessage("El usuario de ha eliminado correctamente");
 
 			// obtenemos la lista de usuarios ya actualizados
-			Collection usuariostrasborrar = usuarioManager.obtenerUsuarios();
+			Collection<Usuario> usuariostrasborrar = usuarioManager.obtenerUsuarios();
 			this.setUsuariosTrasBorrar(usuariostrasborrar);
+			logger.info("obtener la lista actualizada despues de borrar un usuario");
 			
 		} catch (Exception e) {
 			addActionError("La eliminación del usuario ha fallado");

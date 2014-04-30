@@ -2,6 +2,7 @@ package com.prestafacturaService.vista.action.usuario;
 
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,7 +17,7 @@ public class BusquedaUsuarioAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 4966141920094210279L;
-	
+	private static final Logger logger = Logger.getLogger(BusquedaUsuarioAction.class);
 	
 	
 	public static final String INPUT = "input";
@@ -42,7 +43,9 @@ public class BusquedaUsuarioAction extends ActionSupport{
 		
 		try{
 			Rol rol=rolManager.ObtenerRolByName(nombreRolBus);
+			logger.info("Obtiene rolByNombre");
 			Collection<Usuario> usuarios=usuarioManager.busquedaUsuario(nombreBus,apellido1Bus,apellido2Bus, departamentoBus,rol);
+			logger.info("Busqueda de usuarios por parámetros");
 			
 			this.setBusquedaUsuarios(usuarios);
 			if(usuarios.size()==0){

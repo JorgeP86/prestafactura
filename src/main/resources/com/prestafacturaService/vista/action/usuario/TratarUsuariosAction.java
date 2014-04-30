@@ -1,5 +1,6 @@
 package com.prestafacturaService.vista.action.usuario;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -9,6 +10,8 @@ import com.prestafacturaService.mongo.manager.UsuarioManager;
 public class TratarUsuariosAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1427604303248130420L;
+	
+	private static final Logger logger = Logger.getLogger(TratarUsuariosAction.class);
 
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
@@ -26,8 +29,12 @@ public class TratarUsuariosAction extends ActionSupport {
 			// Definimos si se ha elegido alta o modificacion
 
 			if (idUsuario > 0) {
+				 logger.info("definir si es alta o modificacion usuario");
+
 				Usuario usuario = usuarioManager.obtenerUsuarioByid(idUsuario);
 				this.setUsuarioModificacion(usuario);
+				logger.info("obtener usuario por id");
+
 			}
 
 		} catch (Exception e) {

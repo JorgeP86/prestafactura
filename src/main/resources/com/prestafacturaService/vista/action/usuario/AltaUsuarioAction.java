@@ -3,6 +3,7 @@ package com.prestafacturaService.vista.action.usuario;
 import java.util.Date;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,7 +19,7 @@ public class AltaUsuarioAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = -2284495396765182580L;
-	
+	private static final Logger logger = Logger.getLogger(AltaUsuarioAction.class);
 	
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
@@ -49,6 +50,7 @@ public class AltaUsuarioAction extends ActionSupport{
 		
 		if(idUsuario==0){ //Alta
 			//Comprobamos que no existe el Usuario con el mismo password y login
+			logger.info("Comenzando alta, comprueba si existe el usuario para crearlo");
 			if(usuarioManager.existeUsuario(login, password)
 					|| usuarioManager.existeNombreUsuario(login)){
 				Rol rolUsuario=rolManager.ObtenerRolByName(nombreRol);
@@ -65,6 +67,7 @@ public class AltaUsuarioAction extends ActionSupport{
 				usuarioNuevo.setFechaAlta(new Date());
 		
 				Usuario usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
+				 logger.info("Creado el usuario Nuevo");
 				this.setUsuarioCreado(usuarioCreado);
 				return SUCCESS;
 		
@@ -72,7 +75,9 @@ public class AltaUsuarioAction extends ActionSupport{
 				addActionError("El usuario ya existe");
 				return INPUT;
 			}
+			
 		}if(idUsuario>0){ //Modificación
+			logger.info("Comienza operacion modificar");
 			if(usuarioManager.existeUsuario(login, password)
 					|| usuarioManager.existeNombreUsuario(login)){
 				Usuario usuario=usuarioManager.obtenerUsuarioByid(idUsuario);
@@ -90,6 +95,7 @@ public class AltaUsuarioAction extends ActionSupport{
 				usuarioUpdate.setFechaAlta(new Date());
 				
 				Usuario usuarioModificado=usuarioManager.updateUsuario(usuarioUpdate);
+				logger.info("Usuario modificado");
 				this.setUsuarioModificado(usuarioModificado);
 				return SUCCESS;
 				
