@@ -23,7 +23,7 @@ public class ClienteManager {
 		
 	}
 
-	public Collection<Cliente> obtenerUsuarios() {
+	public Collection<Cliente> obtenerClientes() {
 		// TODO Auto-generated method stub
 		return clienteRepository.findAll();
 	}
@@ -31,5 +31,23 @@ public class ClienteManager {
 	public void guardarCliente(Cliente clienteNuevo) {
 		// TODO Auto-generated method stub
 		clienteRepository.save(clienteNuevo);
+	}
+
+	public Cliente obtenerClienteById(Integer idCliente) {
+		// TODO Auto-generated method stub
+		return clienteRepository.obtenerClienteById(idCliente);
+	}
+
+	public Cliente updateCliente(Cliente clienteUpdate) {
+		// TODO Auto-generated method stub
+		return clienteRepository.updateCliente(clienteUpdate);
+		
+	}
+
+	public void eliminarCliente(Integer idCliente) {
+		Cliente clienteBorrar=clienteRepository.obtenerClienteById(idCliente);
+		clienteRepository.delete(clienteBorrar);
+		// TODO Auto-generated method stub
+		
 	}
 }
