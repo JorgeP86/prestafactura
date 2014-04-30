@@ -21,8 +21,7 @@ public class Proveedor extends BaseEntity{
 	@DBRef
 	@CascadeSave
 	private IdentificacionFiscal identificacionFiscal;
-	//partyIdentification (2.1.2) (Identificaci�n de la entidad; Rellenar con el n�mero de referencia de la entidad del programa de facturaci�n que utilice)
-	private String identificacionDeFigura;
+	
 	//Name
 	private String nombre;
 	//surname
@@ -49,12 +48,7 @@ public class Proveedor extends BaseEntity{
 	public void setIdentificacionFiscal(IdentificacionFiscal identificacionFiscal) {
 		this.identificacionFiscal = identificacionFiscal;
 	}
-	public String getIdentificacionDeFigura() {
-		return identificacionDeFigura;
-	}
-	public void setIdentificacionDeFigura(String identificacionDeFigura) {
-		this.identificacionDeFigura = identificacionDeFigura;
-	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -92,5 +86,12 @@ public class Proveedor extends BaseEntity{
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
+	public Integer getIdProveedor() {
+		return idProveedor;
+	}
+	public void setIdProveedor(Integer idProveedor) {
+		this.idProveedor = idProveedor;
+	}
+	
 
 }

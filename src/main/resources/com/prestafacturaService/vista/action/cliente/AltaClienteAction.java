@@ -251,7 +251,7 @@ public class AltaClienteAction extends ActionSupport{
 					
 				//Creación del Cliente
 					Cliente clienteNuevo=new Cliente();
-					clienteNuevo.setIdentificacionDeFigura("Cliente");
+					
 					
 					//Si el cliente es una persona se crea el objeto sólo con sus datos
 					if(nombreCliente!=null || !nombreCliente.trim().equals("")){
@@ -440,39 +440,37 @@ public class AltaClienteAction extends ActionSupport{
 					
 					logger.info("Modificar de Entidad Legal");
 
-					
-				//Creación del Cliente
-					Cliente clienteUpdate=new Cliente();
+				
 					
 					
 					//Si el cliente es una persona se crea el objeto sólo con sus datos
 					if(nombreCliente!=null || !nombreCliente.trim().equals("")){
 						
-						clienteUpdate.setNombre(nombreCliente);
-						clienteUpdate.setApellido1(apellidoPCliente);
-						clienteUpdate.setApellido2(apellidoSCliente);
-						clienteUpdate.setIdentificacionFiscal(idFiscal);
-						clienteUpdate.setDireccion(diCliente);
-						clienteUpdate.setDirEntrega(diEntrega);
+						clienteModificacion.setNombre(nombreCliente);
+						clienteModificacion.setApellido1(apellidoPCliente);
+						clienteModificacion.setApellido2(apellidoSCliente);
+						clienteModificacion.setIdentificacionFiscal(idFiscal);
+						clienteModificacion.setDireccion(diCliente);
+						clienteModificacion.setDirEntrega(diEntrega);
 						//Si detalles Contacto se ha rellenado
 						if(this.telefono!=null || !telefono.trim().equals("") &&
 							this.fax!=null || !fax.trim().equals("") &&
 							this.direccionWeb!=null || !direccionWeb.trim().equals("") &&
 							this.mail!=null || !mail.trim().equals("") &&
 							this.personaContacto!=null || !personaContacto.trim().equals("")){
-							clienteUpdate.setDetallesContacto(dcCliente);
+							clienteModificacion.setDetallesContacto(dcCliente);
 						}
 						
 						
 						//Si es una empresa se crea la entidadLegal en el cliente
 					}if(nombreComercial!=null && !nombreComercial.trim().equals("")){
-						clienteUpdate.setEntidadLegal(eLCliente);
-						clienteUpdate.setIdentificacionFiscal(idFiscal);
-						clienteUpdate.setDirEntrega(diEntrega);
+						clienteModificacion.setEntidadLegal(eLCliente);
+						clienteModificacion.setIdentificacionFiscal(idFiscal);
+						clienteModificacion.setDirEntrega(diEntrega);
 					}
 					
 					//revisar el clientemodificacion
-					clienteModificacion=clienteManager.updateCliente(clienteUpdate);
+					clienteModificacion=clienteManager.updateCliente(clienteModificacion);
 					addActionMessage("El Cliente se ha modificado correctamente");
 					logger.info("Modificacion CLIENTE");
 					

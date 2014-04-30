@@ -20,9 +20,7 @@ public class Cliente extends BaseEntity{
 	@DBRef
 	@CascadeSave
 	private IdentificacionFiscal identificacionFiscal;
-	//partyIdentification (2.1.2) (Identificaci�n de la entidad; Rellenar con el n�mero de referencia de la entidad del programa de facturaci�n que utilice)
-	private String identificacionDeFigura;
-	//Name
+	//nombre
 	private String nombre;
 	//surname
 	private String apellido2;
@@ -58,12 +56,7 @@ public class Cliente extends BaseEntity{
 	public void setIdentificacionFiscal(IdentificacionFiscal identificacionFiscal) {
 		this.identificacionFiscal = identificacionFiscal;
 	}
-	public String getIdentificacionDeFigura() {
-		return identificacionDeFigura;
-	}
-	public void setIdentificacionDeFigura(String identificacionDeFigura) {
-		this.identificacionDeFigura = identificacionDeFigura;
-	}
+	
 	public String getNombre() {
 		return nombre;
 	}
