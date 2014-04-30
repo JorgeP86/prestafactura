@@ -2,6 +2,7 @@ package com.prestafacturaService.vista.action.cliente;
 
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -14,6 +15,9 @@ public class AccesoClientesAction extends ActionSupport {
 
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
+	
+	private static final Logger logger = Logger.getLogger(AccesoClientesAction.class);
+
 
 	@Autowired
 	private ClienteManager clienteManager;
@@ -23,7 +27,9 @@ public class AccesoClientesAction extends ActionSupport {
 	public String execute(){
 		 
 		try {
-			 listaClientes=clienteManager.obtenerUsuarios();
+			 listaClientes=clienteManager.obtenerClientes();
+				logger.info("Obtenida lista de clientes");
+
 			 if(listaClientes.size()==0){
 				 addActionMessage("No hay clientes para mostrar"); 
 			 }
