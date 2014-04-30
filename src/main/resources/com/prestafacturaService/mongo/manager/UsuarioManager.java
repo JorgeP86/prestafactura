@@ -35,7 +35,7 @@ public class UsuarioManager {
 		return usuarioRepository.existsUsuario(nombre, password);
 	}
 
-	public List usuariosConRol(Rol rol) {
+	public List<Usuario> usuariosConRol(Rol rol) {
 		// TODO Auto-generated method stub
 		return usuarioRepository.usuariosConRol(rol);
 	}
@@ -55,7 +55,7 @@ public class UsuarioManager {
 		return usuarioRepository.updateUsuario(usuarioUpdate);
 	}
 
-	public Collection busquedaUsuario(String nombreBus, String apellido1Bus,
+	public Collection<Usuario> busquedaUsuario(String nombreBus, String apellido1Bus,
 			String apellido2Bus, String departamentoBus, Rol rol) {
 		// TODO Auto-generated method stub
 		return usuarioRepository.busquedaUsuario(nombreBus, apellido1Bus,apellido2Bus,

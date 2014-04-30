@@ -16,7 +16,7 @@ public class PermisoRepositoryImpl implements PermisoRepositoryCustom {
 	MongoTemplate mongoTemplate;
 	
 
-	public List buscarPermisoConPagRol(Recurso pagina, Rol rol) {
+	public List<Permiso> buscarPermisoConPagRol(Recurso pagina, Rol rol) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("pagina").is(pagina).and("rol").is(rol));
 		return mongoTemplate.find(query,Permiso.class);

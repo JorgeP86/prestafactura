@@ -12,7 +12,7 @@ public class RecursoManager {
 	@Autowired
 	private RecursoRepository recursoRepository;
 
-	public Collection obtenerPaginas() {
+	public Collection<Recurso> obtenerPaginas() {
 		// TODO Auto-generated method stub
 		return recursoRepository.findAll();
 	}

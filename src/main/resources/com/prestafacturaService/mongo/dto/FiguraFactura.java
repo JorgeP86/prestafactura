@@ -93,5 +93,17 @@ public class FiguraFactura extends BaseEntity{
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
 
 }

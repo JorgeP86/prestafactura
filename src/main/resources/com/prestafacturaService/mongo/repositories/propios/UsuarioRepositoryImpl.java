@@ -33,7 +33,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom{
 		
 	}
 
-	public List usuariosConRol(Rol rol) {
+	public List<Usuario> usuariosConRol(Rol rol) {
 		Query query= new Query();
 		query.addCriteria(Criteria.where("rol").is(rol));
 		return mongoTemplate.find(query, Usuario.class);
@@ -71,7 +71,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom{
 		
 		return mongoTemplate.findAndModify(query, update, Usuario.class);
 	}
-	public Collection busquedaUsuario(String nombreBus, String apellido1Bus,String apellido2Bus,String departamentoBus, Rol rol){
+	public Collection<Usuario> busquedaUsuario(String nombreBus, String apellido1Bus,String apellido2Bus,String departamentoBus, Rol rol){
 			Query query= new Query();
 	query.addCriteria(Criteria.where("nombre").is(nombreBus).and("apellido1").is(apellido1Bus)
 			.and("apellido2").is(apellido2Bus).and("departamento").is(departamentoBus).and("rol").is(rol));	

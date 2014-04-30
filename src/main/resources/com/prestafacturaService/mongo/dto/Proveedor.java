@@ -61,12 +61,6 @@ public class Proveedor extends BaseEntity{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Direccion getDirEntrega() {
-		return dirEntrega;
-	}
-	public void setDirEntrega(Direccion dirEntrega) {
-		this.dirEntrega = dirEntrega;
-	}
 
 	public String getApellido2() {
 		return apellido2;

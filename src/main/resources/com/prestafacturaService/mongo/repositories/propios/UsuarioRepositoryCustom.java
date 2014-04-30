@@ -11,10 +11,10 @@ public interface UsuarioRepositoryCustom{
 
 	Usuario getUsuario(String username, String password);
 	Boolean existsUsuario(String username, String password);
-	List usuariosConRol(Rol rol);
+	List<Usuario> usuariosConRol(Rol rol);
 	Boolean existsNombreUsuario(String nombre);
 	Usuario obtenerUsuarioByid(int idUsuario);
 	Usuario updateUsuario(Usuario usuarioUpdate);
-	Collection busquedaUsuario(String nombreBus, String apellido1Bus,String apellido2Bus,String departamentoBus, Rol rol);
+	Collection<Usuario> busquedaUsuario(String nombreBus, String apellido1Bus,String apellido2Bus,String departamentoBus, Rol rol);
 	void eliminarUsuario(int idUsuario);
 }

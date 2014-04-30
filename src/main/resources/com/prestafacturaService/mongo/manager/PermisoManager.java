@@ -25,7 +25,7 @@ public class PermisoManager {
 		return permisoRepository.save(permiso);
 	}
 
-	public List buscarPermisoConPagRol(Recurso pagina, Rol rol) {	
+	public List<Permiso> buscarPermisoConPagRol(Recurso pagina, Rol rol) {	
 		return permisoRepository.buscarPermisoConPagRol(pagina,rol);
 	}
 
