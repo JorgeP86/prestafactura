@@ -16,6 +16,8 @@
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
 		</result-types>
+
+<!-- Login -->	
 		<action name="LoginAction"
 			class="com.prestafacturaService.vista.action.login.LoginAction" method="execute">
 			<result name="successA" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
@@ -23,6 +25,109 @@
 			<result name="error">error.jsp</result>
 			<result name="input">inicio.jsp</result>
 		</action>
+		<action name="LogoutAction"
+			class="com.prestafacturaService.vista.action.login.LogoutAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		
+<!-- Rol -->		
+		<action name="AccesoRolAction"
+			class="com.prestafacturaService.vista.action.rol.AccesoRolAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="AltaRolAction"
+			class="com.prestafacturaService.vista.action.rol.AltaRolAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="BusquedaRolAction"
+			class="com.prestafacturaService.vista.action.rol.BusquedaRolAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="ModificacionRolAction"
+			class="com.prestafacturaService.vista.action.rol.ModificacionRolAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="TratarRolAction"
+			class="com.prestafacturaService.vista.action.rol.TratarRolAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		
+<!-- Usuario -->		
+		<action name="AccesoUsuarioAction"
+			class="com.prestafacturaService.vista.action.usuario.AccesoUsuarioAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="AltaUsuarioAction"
+			class="com.prestafacturaService.vista.action.usuario.AltaUsuarioAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="BusquedaUsuarioAction"
+			class="com.prestafacturaService.vista.action.usuario.BusquedaUsuarioAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="ModificacionUsuariosAction"
+			class="com.prestafacturaService.vista.action.usuario.ModificacionUsuariosAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="TratarUsuariosAction"
+			class="com.prestafacturaService.vista.action.usuario.TratarUsuariosAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		
+
+<!-- Cliente -->		
+		<action name="AccesoClientesAction"
+			class="com.prestafacturaService.vista.action.cliente.AccesoClientesAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="AltaClienteAction"
+			class="com.prestafacturaService.vista.action.cliente.AltaClienteAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="ModificacionClienteAction"
+			class="com.prestafacturaService.vista.action.cliente.ModificacionClienteAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="TratarClientesAction"
+			class="com.prestafacturaService.vista.action.cliente.TratarClientesAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+	
+	
+	
+	
+	
+	
 		
 <!-- 
 		<interceptors>
