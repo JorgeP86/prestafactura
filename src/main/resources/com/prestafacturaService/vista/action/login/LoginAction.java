@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,6 +28,9 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	private static final String SuccessU = "successU";
 	private static final String SuccessA = "successA";
 	
+	private static final Logger logger = Logger.getLogger(LoginAction.class);
+
+	
     @Autowired
     private UsuarioManager usuarioManager;
     @Autowired
@@ -45,6 +49,8 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 
 
 	private Boolean validUser(String nameUser, String passUser){
+		logger.info("Operacion validar user");
+
 		Boolean existeUsuario=usuarioManager.existeUsuario(nameUser, passUser);
 		if(existeUsuario){
 			Usuario user= usuarioManager.getUsuario(nameUser, passUser);
@@ -62,12 +68,16 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 		clearFieldErrors();
 		
 		if(username!=null && password!=null && validUser(username,password)){
+			logger.info("Realizada validacion user");
+
 			Usuario u = usuarioManager.getUsuario(username,password);
-			servletRequest.setAttribute("user", u);
-			servletRequest.setAttribute("username", u.getNombre());
-			
+			servletRequest.getSession().setAttribute("user", u);
+			logger.info("Guardado el usuario en session");
+
 			rol = u.getRol();
 			perm = rol.getPermisos();
+			logger.info("Obtener los permisos del rol");
+
 			Iterator<Permiso> it = perm.iterator();
 	       	while(it.hasNext()){
 	       		Permiso permiso=(Permiso) it.next();
@@ -214,8 +224,9 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	   	         
 	      	 }
 	       	 
-	       	servletRequest.setAttribute("permisos", p);
-	       	 
+	       	servletRequest.getSession().setAttribute("permisos", p);
+			logger.info("Guardado los permisos del rol en session");
+
 	       	if((gClientes || gDatosInternos || gFactura || gFacturasAlmacenadas || 
 	       			gFirmaElectronica || gInformacion || gProveedores )&& (!gUsuarios && !gRoles)){
 				return SuccessU;
@@ -282,12 +293,3 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	
 
 }
-			
-	
-		
-		
-	
-	
-	
-	
-
