@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prestafacturaService.mongo.dto.Cliente;
+import com.prestafacturaService.mongo.dto.IdentificacionFiscal;
 import com.prestafacturaService.mongo.repositories.ClienteRepository;
 
 
@@ -49,5 +50,10 @@ public class ClienteManager {
 		clienteRepository.delete(clienteBorrar);
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Cliente buscarClienteByCIF(IdentificacionFiscal idFiscal) {
+		// TODO Auto-generated method stub
+		return clienteRepository.buscarClienteBycif(idFiscal);
 	}
 }

@@ -11,6 +11,12 @@ import com.prestafacturaService.mongo.manager.ClienteManager;
 
 public class BusquedaClienteAction extends ActionSupport{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	private static final Logger logger = Logger.getLogger(BusquedaClienteAction.class);
 	
 	

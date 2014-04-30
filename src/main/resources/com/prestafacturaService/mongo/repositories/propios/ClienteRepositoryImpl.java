@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.prestafacturaService.mongo.dto.Cliente;
+import com.prestafacturaService.mongo.dto.IdentificacionFiscal;
 
 public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 	
@@ -49,6 +50,15 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 			
 		}
 		return mongoTemplate.findAndModify(query, update, Cliente.class);
+		
+	}
+
+	public Cliente buscarClienteBycif(IdentificacionFiscal idFiscal) {
+		// TODO Auto-generated method stub
+		Query query=new Query();
+		query.addCriteria(Criteria.where("identificacionFiscal").is(idFiscal));
+		// TODO Auto-generated method stub
+		return mongoTemplate.findOne(query, Cliente.class);
 		
 	}
 
