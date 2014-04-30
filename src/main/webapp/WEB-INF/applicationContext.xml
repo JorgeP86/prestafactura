@@ -34,6 +34,8 @@
 	<bean id="rolRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RolRepositoryImpl"></bean>
 	<bean id="permisoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.PermisoRepositoryImpl"></bean>
 	<bean id="recursoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RecursoRepositoryImpl"></bean>
+	<bean id="provinciaRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProvinciaRepositoryImpl"></bean>
+	<bean id="clienteRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ClienteRepositoryImpl"></bean>
 	
 	
  	<!-- Service -->
@@ -41,6 +43,9 @@
 	<bean id="rolManager" class="com.prestafacturaService.mongo.manager.RolManager"></bean>
 	<bean id="permisoManager" class="com.prestafacturaService.mongo.manager.PermisoManager"></bean>
 	<bean id="recursoManager" class="com.prestafacturaService.mongo.manager.RecursoManager"></bean>
+ 	<bean id="provinciaManager" class="com.prestafacturaService.mongo.manager.ProvinciaManager"></bean>
+ 	<bean id="proveedorManager" class="com.prestafacturaService.mongo.manager.ProveedorManager"></bean>
+ 	<bean id="clienteManager" class="com.prestafacturaService.mongo.manager.ClienteManager"></bean>
  	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
  	
@@ -60,7 +65,18 @@
  	<bean id="BusquedaUsuarioAction" class="com.prestafacturaService.vista.action.usuario.BusquedaUsuarioAction"></bean>
  	<bean id="ModificacionUsuariosAction" class="com.prestafacturaService.vista.action.usuario.ModificacionUsuariosAction"></bean>
  	<bean id="TratarUsuariosAction" class="com.prestafacturaService.vista.action.usuario.TratarUsuariosAction"></bean>
+ 		<!-- Cliente-->
+ 	<bean id="AccesoClienteAction" class="com.prestafacturaService.vista.action.cliente.AccesoClientesAction"></bean>
+ 	<bean id="AltaClienteAction" class="com.prestafacturaService.vista.action.cliente.AltaClienteAction"></bean>
+ 	<bean id="BusquedaClienteAction" class="com.prestafacturaService.vista.action.cliente.BusquedaClienteAction"></bean>
+ 	<bean id="ModificacionClienteAction" class="com.prestafacturaService.vista.action.cliente.ModificacionClienteAction"></bean>
+ 	<bean id="TratarClientesAction" class="com.prestafacturaService.vista.action.cliente.TratarClientesAction"></bean>	
+ 		<!-- Proveedor-->
+ 	 <bean id="AccesoProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction"></bean>
  	
+ 		
+ 		
+ 		
  	 	 	<!-- Tiles -->
  	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
  		<property name="definitions">
