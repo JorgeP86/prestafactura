@@ -2,6 +2,7 @@ package com.prestafacturaService.vista.action.rol;
 
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,6 +16,7 @@ public class AccesoRolAction extends ActionSupport{/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5134879089245551269L;
+	private static final Logger logger = Logger.getLogger(AccesoRolAction.class);
 
 
 	@Autowired
@@ -28,6 +30,8 @@ public class AccesoRolAction extends ActionSupport{/**
 		 try {
 			Collection<Rol> rolesAux = rolManager.ObtenerRoles();
 			this.setRoles(rolesAux);
+			 logger.info("Se obtienen los roles");
+
 		 }catch (Exception e) {
 			 addFieldError("FalloBusquedaListaRoles",getText("busquedaListaRoles.Invalid"));
 			 return ERROR;	 

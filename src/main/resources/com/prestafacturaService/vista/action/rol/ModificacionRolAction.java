@@ -2,6 +2,7 @@ package com.prestafacturaService.vista.action.rol;
 
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,6 +16,8 @@ public class ModificacionRolAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 909700589759645941L;
+	
+	private static final Logger logger = Logger.getLogger(ModificacionRolAction.class);
 
 	
 	public static final String ERROR = "error";
@@ -30,6 +33,8 @@ public class ModificacionRolAction extends ActionSupport{
 	public String execute(){
 		try{
 			Rol rol=rolManager.ObtenerRolByidRol(idRol);
+			 logger.info("Obtener rol por id");
+
 			//Comprobamos que no existe al menos un usuario asignado a ese rol
     		//pues si existe no daremos posibilidad de eliminarlo ante de quitar
     		//la relación
@@ -37,10 +42,13 @@ public class ModificacionRolAction extends ActionSupport{
 				addActionError("No se puede eliminar ese Rol porque tiene un Usuario asociado.");
 			}else{
 				rolManager.bajaRol(rol);
+				 logger.info("Borrado el rol");
 				addActionError("Operación de borrar correcta");	
 			}
 				Collection<Rol> roles=rolManager.ObtenerRoles();
 				this.setRolesTrasBorrar(roles);
+				 logger.info("Obtener roles tras borrar un rol");
+
 			
 		} catch (Exception e) {
 			

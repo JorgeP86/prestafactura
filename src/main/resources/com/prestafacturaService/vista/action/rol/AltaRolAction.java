@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,6 +23,8 @@ public class AltaRolAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = -6555855280536309585L;
+
+	private static final Logger logger = Logger.getLogger(AltaRolAction.class);
 
 	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
@@ -89,6 +92,8 @@ public class AltaRolAction extends ActionSupport {
 			if(idRol==0){
 			//Comprobamos que no existe un rol con ese nombre
 			Boolean existsNombreRol= rolManager.existsNombreRol(nombreRol);
+			 logger.info("Comprobacion si existe el rol");
+
 			if(existsNombreRol){
 				addFieldError("invalidNombreRolAlta","El nombre del Rol ya existe");
 			}else{
@@ -99,7 +104,8 @@ public class AltaRolAction extends ActionSupport {
 				}if(descripcionRol!=null && descripcionRol.trim().length()>0){
 					rol.setDescripcion(descripcionRol);
 				}
-			
+				 logger.info("Creacion del rol");
+
 					//Altas
 				if(altaCliente!=0){
 					this.crearPermiso(altaCliente,rol);
@@ -179,7 +185,8 @@ public class AltaRolAction extends ActionSupport {
 			}
 		}else if(idRol>0){ //Modificación
 			Rol rol= rolManager.ObtenerRolByidRol(idRol);
-			
+			 logger.info("Obtener el  rol");
+
 			if(nombreRol!=null && nombreRol.trim().length()>0){
 				rol.setNombre(nombreRol);
 			}if(descripcionRol!=null && descripcionRol.trim().length()>0){
@@ -187,6 +194,8 @@ public class AltaRolAction extends ActionSupport {
 			}
 			
 			Rol rolmodificado=rolManager.UpdateRol(rol);
+			 logger.info("Rol modificado");
+
 			
 			//Eliminación o creación de permisos
 			//Altas
@@ -371,6 +380,8 @@ public class AltaRolAction extends ActionSupport {
 		}		
 		//Obtenemos las paginas para mostrarlas	
 			paginas=recursoManager.obtenerPaginas();
+			 logger.info("Obtener las paginas para editarlas");
+
 			
 	} catch (Exception e){
 			addFieldError("invalidRolAlta",getText("rol.error"));
@@ -384,18 +395,26 @@ public class AltaRolAction extends ActionSupport {
 }
 
 	private void eliminarPermiso(int idpag, Rol rol) {
+		 logger.info("Comienza la operacion eliminar permiso");
+
 		Permiso permiso = null;
 		Recurso pagina = null;
 		List lista = null;
 		try {
 			pagina = recursoManager.obtenerPaginaById(idpag);
 			// comprobamos si hay un permiso con esa pág para este rol
+			 logger.info("Obtener la pagina por id");
+
 			lista = permisoManager.buscarPermisoConPagRol(pagina, rol);
 			// Comprobamos si la lista no es vacía es que existe y debemos
 			// eleminarlo
+			 logger.info("comprobamos si hay un permiso con esa pág para este rol");
+
 			if (lista.size() != 0) {
 				permiso = (Permiso) lista.get(0);
 				permisoManager.bajaPermiso(permiso);
+				 logger.info("eliminamos el permiso");
+
 			}
 		} catch (Exception e) {
 			addFieldError("eliminarPermiso", getText("permiso.eliminar"));
@@ -404,16 +423,22 @@ public class AltaRolAction extends ActionSupport {
 
 	// Método que permite crear el permiso
 	public void crearPermiso(int seleccion, Rol rol) {
+		 logger.info("Comienza la operacion crear permiso");
+
 		Permiso permiso = new Permiso();
 		List permisos = null;
 		try {
 			// obtenemos la pág seleccionada en el combox
 			Recurso pagina = recursoManager.obtenerPaginaById(new Integer(
 					seleccion));
+			 logger.info("obtenemos la pág seleccionada en el combox");
+
 			// creamos un permiso con esa pag y el rol
 			// comprobamos si existia o no anteriormente
 
 			permisos = permisoManager.buscarPermisoConPagRol(pagina, rol);
+			 logger.info("obtenemos el permiso con pagina y rol");
+
 			if (permisos.size() == 0) {
 				permiso.setRecurso(pagina);
 				permiso.setRol(rol);
@@ -421,6 +446,8 @@ public class AltaRolAction extends ActionSupport {
 				mapa.put(pagina, rol);
 				permiso.setPermisos(mapa);
 				permisoManager.altaPermiso(permiso);
+				 logger.info("Damos de alta el permiso");
+
 			}
 		} catch (Exception e) {
 			addFieldError("InvalidPermiso", getText("permiso.Invalid"));

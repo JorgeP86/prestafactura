@@ -1,5 +1,6 @@
 package com.prestafacturaService.vista.action.rol;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,6 +14,8 @@ public class BusquedaRolAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = -1807399587308146073L;
 	
+	private static final Logger logger = Logger.getLogger(BusquedaRolAction.class);
+
 	
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
@@ -31,7 +34,8 @@ public class BusquedaRolAction extends ActionSupport{
 					descripcionRol!=null && descripcionRol.trim().length()>0){
 				Rol rol= rolManager.ObtenerRolByName(nombreRol);
 				this.setRolBusqueda(rol);
-			
+				 logger.info("Obtener rol por nombre");
+
 			}
 			
 		} catch (Exception e) {
