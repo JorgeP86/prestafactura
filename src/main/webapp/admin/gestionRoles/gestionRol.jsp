@@ -14,11 +14,8 @@
 	
 	function borrar(id) {
 		if (confirm("Se eliminará el rol seleccionado.¿Está seguro?")) {
-			var param = encodeURI("<s:property value=''/>");
-			window.location = ${};
-			<%-- window.location.href = "/modificarRol.do?idRol=" + id;--%>
+			window.location.href = "/modificarRol.action?idRol=" + id;
 		};
-
 	};
 </script>
 <body>
@@ -64,7 +61,8 @@
 
 	<%----------- LISTAR ROLES ------------%>
 
-	<s:if test="!empty roles">
+	<s:set name="listaRoles" value="roles"/>
+	<s:if test="%{!empty #listaRoles}">
 		<table width="95%" border="0" cellspacing="0" cellpadding="0"
 			class="tabla">
 			<tr>
@@ -82,7 +80,7 @@
 				</s:url>
 				
 				<sjg:grid gridModel="roles" 
-						id="idRol"
+						id="idTable"
 						caption="roles alamcenados"
 						href="%{accesoRolAction}"
 						dataType="html"
@@ -95,11 +93,29 @@
 					<sjg:gridColumn name="descripcion" index="descripcion"
 						title="Descripcion"></sjg:gridColumn>
 					<sjg:gridColumn name="editar" href="%{editarRol}"><img src="/WEB-INF/image/editar.gif" alt="editar" border="0" longdesc="Editar Roles"/></sjg:gridColumn>
-					<sjg:gridColumn name="eliminar"><s:a href="javascript:borrar(idRol)"><img src="/WEB-INF/image/eliminar.gif"/></s:a></sjg:gridColumn>
+					<sjg:gridColumn name="eliminar">
+						<a href="javascript:borrar(<s:property value='idRol.idrol'/>);">
+							<img src="/WEB-INF/image/eliminar.gif"/>
+						</a>
+					</sjg:gridColumn>
 				</sjg:grid>
 			</div>
 		</sj:tabbedpanel>
 	</s:if>
-
+	<s:if test="%{empty #listaRoles && borrado!=1}">
+		<table width="95%" border="0" cellspacing="0" cellpadding="0" class="tabla">
+			<tr>
+	    		<td class="texto">
+	    			<b>No se encontraron resultados con esos criterios de b&uacute;squeda.</b>
+	    		</td>
+	 	  		
+	 	  	 	<td class="privTexto"><br>
+	 	  	 		<a target="cont" href="<s:url forward="login"/>">
+	 	  	 			<img src="<html:rewrite page='/images/botones/inicio.gif'/>" alt="Inicio" width="61" height="19" border="0" longdesc="Inicio">
+	 	  	 		</a>
+	 	  	 	</td>
+			</tr>
+		</table>
+	</s:if>
 </body>
 </html>
