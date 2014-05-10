@@ -8,28 +8,27 @@
 		a Struts que nos encontramos en la etapa de desarrollo, con esto generará 
 		más mensajes de salida para que sepamos si estamos haciendo algo mal, y nos 
 		mostrará los errores de una forma más clara. -->
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<!-- enable 'method' attribute -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	
 
 	<package name="default" namespace="/" extends="struts-default">
 		<result-types>
-			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" ></result-type>
 		</result-types>
 
 <!-- Login -->	
 		<action name="LoginAction"
 			class="com.prestafacturaService.vista.action.login.LoginAction" method="execute">
-			<result name="successA" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="successU" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="successA" type="tiles">crearFactura</result>
+			<result name="successU" type="tiles">crearFactura</result>
 			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="input" type="tiles">crearFactura</result>
 		</action>
 		<action name="LogoutAction"
 			class="com.prestafacturaService.vista.action.login.LogoutAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success">/inicio.jsp</result>
 		</action>
 		
 <!-- Rol -->		
