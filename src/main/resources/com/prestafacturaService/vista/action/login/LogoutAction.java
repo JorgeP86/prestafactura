@@ -14,7 +14,7 @@ public class LogoutAction extends ActionSupport implements ServletRequestAware {
 	 */
 	private static final long serialVersionUID = -5504945475323171912L;
 	private HttpServletRequest servletRequest;
-	private static final String Success = "success";
+	private static final String SUCCESS = "success";
 	
 	private static final Logger logger = Logger.getLogger(LogoutAction.class);
 

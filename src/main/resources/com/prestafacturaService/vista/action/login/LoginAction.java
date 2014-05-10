@@ -71,7 +71,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 			logger.info("Realizada validacion user");
 
 			Usuario u = usuarioManager.getUsuario(username,password);
-			servletRequest.getSession().setAttribute("user", u);
+			servletRequest.getSession().setAttribute("usuario", u);
 			logger.info("Guardado el usuario en session");
 
 			rol = u.getRol();
