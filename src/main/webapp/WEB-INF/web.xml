@@ -20,7 +20,6 @@
 	 
 </filter>
 
-
 <filter-mapping>
 	<filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
@@ -32,8 +31,8 @@
 </context-param>
 
 <context-param>
-    <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-	<param-value>/WEB-INF/tile-defs/tiles-definitions.xml</param-value>
+    <param-name>tilesDefinitions</param-name>
+	<param-value>/WEB-INF/tiles.xml</param-value>
 </context-param>
 
 <listener>

@@ -74,14 +74,12 @@
  		<!-- Proveedor-->
  	 <bean id="AccesoProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction"></bean>
  	
- 		
- 		
- 		
- 	 	 	<!-- Tiles -->
+ 	
+ 	<!-- Tiles -->
  	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
  		<property name="definitions">
  			<list>
- 				<value>/WEB-INF/tile-defs/tiles-definitions.xml</value>
+ 				<value>/WEB-INF/tiles.xml</value>
  			</list>
  		</property>
  	</bean>

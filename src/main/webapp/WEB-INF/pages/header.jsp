@@ -5,7 +5,7 @@
 	<tr>
 		<td align="left"><h3><strong>Prestafactura</strong></h3></td>
 		<td align="right">Bienvenido:<s:property value="username"/></td>
-		<td><a href="action/logout">Logout</a></td>
+		<td><a href="<s:url action='LogoutAction'/>">Logout</a></td>
 	</tr>
 </table>
 </html>
