@@ -36,6 +36,8 @@
 	<bean id="recursoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RecursoRepositoryImpl"></bean>
 	<bean id="provinciaRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProvinciaRepositoryImpl"></bean>
 	<bean id="clienteRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ClienteRepositoryImpl"></bean>
+	<bean id="datosPropiosRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.DatosPropiosRepositoryImpl"></bean>
+	<bean id="proveedorRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProveedorRepositoryImpl"></bean>
 	
 	
  	<!-- Service -->
@@ -46,6 +48,7 @@
  	<bean id="provinciaManager" class="com.prestafacturaService.mongo.manager.ProvinciaManager"></bean>
  	<bean id="proveedorManager" class="com.prestafacturaService.mongo.manager.ProveedorManager"></bean>
  	<bean id="clienteManager" class="com.prestafacturaService.mongo.manager.ClienteManager"></bean>
+ 	<bean id="datosPropiosManager" class="com.prestafacturaService.mongo.manager.DatosPropiosManager"></bean>
  	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
  	
@@ -72,7 +75,15 @@
  	<bean id="ModificacionClienteAction" class="com.prestafacturaService.vista.action.cliente.ModificacionClienteAction"></bean>
  	<bean id="TratarClientesAction" class="com.prestafacturaService.vista.action.cliente.TratarClientesAction"></bean>	
  		<!-- Proveedor-->
- 	 <bean id="AccesoProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction"></bean>
+ 	<bean id="AccesoProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction"></bean>
+ 	<bean id="AltaProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AltaProveedorAction"></bean>
+ 	<bean id="BusquedaProveedorAction" class="com.prestafacturaService.vista.action.proveedor.BusquedaProveedorAction"></bean>
+ 	<bean id="ModificacionProveedorAction" class="com.prestafacturaService.vista.action.proveedor.ModificacionProveedorAction"></bean>
+ 	<bean id="TratarProveedoresAction" class="com.prestafacturaService.vista.action.proveedor.TratarProveedoresAction"></bean>	
+ 		<!-- Datos Propios-->
+ 	<bean id="AccesoDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction"></bean>
+ 	<bean id="AltaDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction"></bean>
+ 	
  	
  	
  	<!-- Tiles -->

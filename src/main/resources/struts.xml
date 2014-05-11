@@ -121,8 +121,58 @@
 			<result name="error">error.jsp</result>
 			<result name="input">inicio.jsp</result>
 		</action>
+		<action name="BusquedaClienteAction"
+			class="com.prestafacturaService.vista.action.cliente.BusquedaClienteAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
 	
+<!-- Proveedor -->		
+		<action name="AccesoProveedorAction"
+			class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="AltaProveedorAction"
+			class="com.prestafacturaService.vista.action.proveedor.AltaProveedorAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="ModificacionProveedorAction"
+			class="com.prestafacturaService.vista.action.proveedor.ModificacionProveedorAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="TratarProveedoresAction"
+			class="com.prestafacturaService.vista.action.proveedor.TratarProveedoresAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+			<action name="BusquedaProveedorAction"
+			class="com.prestafacturaService.vista.action.proveedor.BusquedaProveedorAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
 	
+	<!-- Datos Propios -->		
+		<action name="AccesoDatosPropiosAction"
+			class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
+		<action name="AltaDatosPropiosAction"
+			class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction" method="execute">
+			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">inicio.jsp</result>
+		</action>
 	
 	
 	
