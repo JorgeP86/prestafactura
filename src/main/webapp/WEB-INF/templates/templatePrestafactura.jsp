@@ -10,24 +10,21 @@
 </head>
 <body>
 
-    <tiles:insertAttribute name="header"/>
+    <s:div><tiles:insertAttribute name="header"/></s:div>
 	<hr/>
-	<table>
+	<table width="80%" border="0" cellspacing="0" cellpadding="0" class="tabla">
 		<tr>
-			<td>
+			<td class="td_template_menu">
 				<s:div><tiles:insertAttribute name="menuComun"/></s:div>
 				
 				<s:if test="%{#session.usuario.getRol().getNombre() == 'Administrador'}">
 					<s:div><tiles:insertAttribute name="menuAdministrador"/></s:div>
 				</s:if>
 			</td>
-			<td><tiles:insertAttribute name="body"/></td>
-		</tr>
-		<tr>
-			<tiles:insertAttribute name="footer"/>
+			<td class="td_template_body"><tiles:insertAttribute name="body"/></td>
 		</tr>
 	</table>
 	
-
+	<s:div><tiles:insertAttribute name="footer"/></s:div>
 </body>
 </html>
