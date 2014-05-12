@@ -4,17 +4,17 @@
 
 <tiles-definitions>
 
-	<definition name="defaultTemplate" template="/WEB-INF/templates/templatePrestafactura.jsp">
+	<definition name="defaultTemplate" template="/templates/templatePrestafactura.jsp">
 		<put-attribute name="title" type="string" value="Prestafactura"/>
-		<put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
-		<put-attribute name="menuComun" value="/WEB-INF/pages/menuComun.jsp"/>
-		<put-attribute name="menuAdministrador" value="/WEB-INF/pages/menuAdministrador.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/pages/body.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/pages/footer.jsp"/>
+		<put-attribute name="header" value="/pages/header.jsp"/>
+		<put-attribute name="menuComun" value="/pages/menuComun.jsp"/>
+		<put-attribute name="menuAdministrador" value="/pages/menuAdministrador.jsp"/>
+		<put-attribute name="body" value="/pages/body.jsp"/>
+		<put-attribute name="footer" value="/pages/footer.jsp"/>
 	</definition>
 	
 	<definition name="crearFactura" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/body.jsp"/>
+		<put-attribute name="body" value="/pages/body.jsp"/>
 	</definition>
 	
 </tiles-definitions>
