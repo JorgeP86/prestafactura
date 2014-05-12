@@ -37,4 +37,10 @@ public class ProveedorRepositoryImpl implements ProveedorRepositoryCustom {
 		return null;
 	}
 
+	public Proveedor obtenerProveedorBycif(IdentificacionFiscal idFiscal) {
+		Query query=new Query();
+		query.addCriteria(Criteria.where("identificacionFiscal").is(idFiscal));
+		return mongoTemplate.findOne(query, Proveedor.class);
+	}
+
 }

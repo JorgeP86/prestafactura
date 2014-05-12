@@ -40,6 +40,17 @@ public class ProveedorManager {
 		// TODO Auto-generated method stub
 		return proveedorRepository.updateProveedor(proveedorSelec);
 	}
+
+	public Proveedor obtenerProveedorporCif(IdentificacionFiscal idFiscal) {
+		// TODO Auto-generated method stub
+		return proveedorRepository.obtenerProveedorBycif(idFiscal);
+	}
+
+	public void eliminarProveedor(Integer idProveedor) {
+		// TODO Auto-generated method stub
+		Proveedor proeliminar=proveedorRepository.obtenerProveedorByid(idProveedor);
+		proveedorRepository.delete(proeliminar);
+	}
 	
 	
 	

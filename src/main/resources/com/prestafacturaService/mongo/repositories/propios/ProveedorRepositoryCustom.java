@@ -7,4 +7,5 @@ public interface ProveedorRepositoryCustom {
 	public boolean existsProveedor(IdentificacionFiscal idFiscal);
 	public Proveedor obtenerProveedorByid(Integer idProveedor);
 	public Proveedor updateProveedor(Proveedor proveedorSelec);
+	public Proveedor obtenerProveedorBycif(IdentificacionFiscal idFiscal);
 }
