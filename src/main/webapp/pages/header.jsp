@@ -3,7 +3,7 @@
 <html>
 <table width="80%" border="1" cellpadding="2" cellspacing="2" align="left">
 	<tr>
-		<td align="left"><img alt="Logo" src="/WEB-INF/images/Prestafactura.png"></td>
+		<td align="left"><img alt="Logo" src="<s:url value='/images/Prestafactura.png'/>"></td>
 		<td align="right">Bienvenido:<s:property value="%{#session.usuario.getLogin()}"/></td>
 		<td><a href="<s:url action='LogoutAction'/>">Logout</a></td>
 	</tr>
