@@ -1,68 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib uri="/struts-tags" prefix="s"%>
+	<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<script src= "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#cssmenu ul ul li:odd').addClass('odd');
-			$('#cssmenu ul ul li:even').addClass('even');
-			$('#cssmenu > ul > li > a').click(function() {
-				$('#cssmenu li').removeClass('active');
-				$(this).closest('li').addClass('active');
-				var checkElement = $(this).next();
-				if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-					$(this).closest('li').removeClass('active');
-					checkElement.slideUp('normal');
-				}
-				if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-					$('#cssmenu ul ul:visible').slideUp('normal');
-					checkElement.slideDown('normal');
-				}
-				if ($(this).closest('li').find('ul').children().length == 0) {
-					return true;
-				} else {
-					return false;
-				}
-			});
-		});
-	</script>
-	
-	<link rel="stylesheet" type="text/css" href="/pages/css/menu_comun.css"/>
 </head>
 <body>
+	<s:div><h3>Men&uacute;</h3></s:div>
+	<hr>
 	<div id="cssmenu">
 		<ul>
-			<li class="active"><a href="/inicio.jsp"><span>Home</span></a></li>
+			<li class="active"><a href="<s:url action='home'/>"><span>Home</span></a></li>
 			<li class="has-sub"><a href="#"><span>Gesti&oacute;n
 						Factura</span></a>
 				<ul>
-					<li><a href="#"><span>Crear Factura</span></a></li>
-					<li><a href="#"><span>Facturas recibidas</span></a></li>
-					<li class="last"><a href="#"><span>Facturas
+					<li><a href="<s:url action='CrearFacturaAction'/>"><span>Crear Factura</span></a></li>
+					<li><a href="<s:url action='FacturasRecibidasAction'/>"><span>Facturas recibidas</span></a></li>
+					<li class="last"><a href="<s:url action='FacturasEnviadasAction'/>"><span>Facturas
 								enviadas</span></a></li>
 				</ul></li>
 			<li class="has-sub"><a href="#"><span>Gesti&oacute;n
 						Clientes</span></a>
 				<ul>
-					<li><a href="#"><span>Alta cliente</span></a></li>
-					<li class="last"><a href="#"><span>Cartera de
+					<li><a href="<s:url action='AltaClienteAction'/>"><span>Alta cliente</span></a></li>
+					<li class="last"><a href="<s:url action='AccesoClientesAction'/>"><span>Cartera de
 								clientes</span></a></li>
 				</ul></li>
 			<li class="has-sub"><a href="#"><span>Gesti&oacute;n
 						Proveedores</span></a>
 				<ul>
-					<li><a href="#"><span>Alta Proveedor</span></a></li>
-					<li class="last"><a href="#"><span>Proveedores</span></a></li>
+					<li><a href="<s:url action='AltaProveedorAction'/>"><span>Alta Proveedor</span></a></li>
+					<li class="last"><a href="<s:url action='AccesoProveedorAction'/>"><span>Proveedores</span></a></li>
 				</ul></li>
 				
-			<li class="last"><a href="#"><span>Gesti&oacute;n de
+			<li class="last"><a href="<s:url action='AccesoGestionDatosPropios'/>"><span>Gesti&oacute;n de
 						Datos Propios</span></a></li>
-
 		</ul>
 	</div>
 
