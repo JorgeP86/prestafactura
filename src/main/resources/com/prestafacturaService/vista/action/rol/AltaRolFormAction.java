@@ -10,10 +10,6 @@ import com.prestafacturaService.mongo.dto.Recurso;
 import com.prestafacturaService.mongo.manager.RecursoManager;
 
 public class AltaRolFormAction extends ActionSupport {
-
-	
-	
-
 	/**
 	 * 
 	 */
@@ -32,9 +28,9 @@ public class AltaRolFormAction extends ActionSupport {
 	
 	public String execute() {
 		try{
-			
-			recursos=(Collection<Recurso>) recursoManager.obtenerPaginas();
-
+			logger.info("Obteniendo Recursos");
+			recursos = recursoManager.obtenerPaginas();
+			logger.info("Recursos Obtenidos");
 		}catch(Exception e){
 			addActionError("Fallo al obtener datos para el formulario AltaRol");
 			return ERROR;

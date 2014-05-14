@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class AltaRolAction extends ActionSupport {
 	private String nombreRol;
 	private String descripcionRol;
 
-	private Collection paginas;
+	private Collection<Recurso> paginas;
 
 	// Permisos
 	private int altaCliente;
@@ -97,14 +96,16 @@ public class AltaRolAction extends ActionSupport {
 			if(existsNombreRol){
 				addFieldError("invalidNombreRolAlta","El nombre del Rol ya existe");
 			}else{
+				logger.info("nombre del rol no existe");
 				Rol rol= new Rol();
-				  rol.setIdrol(new Integer(UUID.randomUUID().toString()));
+				//rol.setIdrol(new Integer(UUID.randomUUID().toString()));
+				
 				if(nombreRol!=null && nombreRol.trim().length()>0){
 					rol.setNombre(nombreRol);
 				}if(descripcionRol!=null && descripcionRol.trim().length()>0){
 					rol.setDescripcion(descripcionRol);
 				}
-				 logger.info("Creacion del rol");
+				logger.info("Creacion del rol");
 
 					//Altas
 				if(altaCliente!=0){
@@ -379,18 +380,16 @@ public class AltaRolAction extends ActionSupport {
 			
 		}		
 		//Obtenemos las paginas para mostrarlas	
-			paginas=recursoManager.obtenerPaginas();
-			 logger.info("Obtener las paginas para editarlas");
+		paginas=recursoManager.obtenerPaginas();
+		logger.info("Obtener las paginas para editarlas");
 
-			
 	} catch (Exception e){
-			addFieldError("invalidRolAlta",getText("rol.error"));
-			return ERROR;
+		addFieldError("invalidRolAlta",getText("rol.error"));
+		return ERROR;
 	}
-	
 		
-		this.setPaginas(paginas);
-		addActionMessage("Se ha creado el Rol correctamente");	
+	this.setPaginas(paginas);
+	addActionMessage("Se ha creado el Rol correctamente");	
 	return SUCCESS;
 }
 
@@ -399,7 +398,7 @@ public class AltaRolAction extends ActionSupport {
 
 		Permiso permiso = null;
 		Recurso pagina = null;
-		List lista = null;
+		List<Permiso> lista = null;
 		try {
 			pagina = recursoManager.obtenerPaginaById(idpag);
 			// comprobamos si hay un permiso con esa pág para este rol
@@ -426,7 +425,7 @@ public class AltaRolAction extends ActionSupport {
 		 logger.info("Comienza la operacion crear permiso");
 
 		Permiso permiso = new Permiso();
-		List permisos = null;
+		List<Permiso> permisos = null;
 		try {
 			// obtenemos la pág seleccionada en el combox
 			Recurso pagina = recursoManager.obtenerPaginaById(new Integer(
@@ -479,11 +478,11 @@ public class AltaRolAction extends ActionSupport {
 		this.idRol = idRol;
 	}
 
-	public Collection getPaginas() {
+	public Collection<Recurso> getPaginas() {
 		return paginas;
 	}
 
-	public void setPaginas(Collection paginas) {
+	public void setPaginas(Collection<Recurso> paginas) {
 		this.paginas = paginas;
 	}
 

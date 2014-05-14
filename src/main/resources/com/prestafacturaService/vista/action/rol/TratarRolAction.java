@@ -21,11 +21,9 @@ public class TratarRolAction extends ActionSupport {
 	private static final long serialVersionUID = -1843765847169709920L;
 	
 	private static final Logger logger = Logger.getLogger(TratarRolAction.class);
-
 	
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
-	public static final String SUCCESSEDITAR = "successEditar";
 	
 
 	@Autowired
@@ -45,31 +43,27 @@ public class TratarRolAction extends ActionSupport {
 	 	
     	boolean es=false;
     	
-    	
-
 		try{
 			//Rescatamos las páginas que determinan los permisos existentes
 			resultTratar=recursoManager.obtenerPaginas();
-			
-			 logger.info("Obtener paginas");
+			logger.info("Obtener paginas");
 
 			//Definimos si se ha elegido alta o modificacion
-			
 			if(idRol> 0){
 				//ObtenerRol
 				Rol rol=rolManager.ObtenerRolByidRol(idRol);
 				 logger.info("Obtener rol");
 				 
 				//obtenemos los permisos
-				Collection permisos=permisoManager.ObtenerPermisosRol(rol);
+				Collection<Permiso> permisos=permisoManager.ObtenerPermisosRol(rol);
 				 logger.info("Obtener los permisos");
 
 				//Marcamos las paginas activas
-				Iterator it=permisos.iterator();
+				Iterator<Permiso> it=permisos.iterator();
 	    		while(it.hasNext()){
 	    			es=false;
 	    			Permiso permiso= (Permiso)it.next();
-	    			Iterator itt=resultTratar.iterator();
+	    			Iterator<Recurso> itt=resultTratar.iterator();
 		    			while(itt.hasNext() && !es){
 		    				Recurso pag=(Recurso) itt.next();
 		    				if(pag.getIdpagina()==permiso.getRecurso().getIdpagina()){
@@ -84,13 +78,10 @@ public class TratarRolAction extends ActionSupport {
 	    		this.setPermisoTratar(permisos);
 	    		this.setRolTratar(rol);
 	    		logger.info("devolvemos los permisos y rol");
-	    	
-	    		return SUCCESSEDITAR;
 			}
 			this.setResultTratar(resultTratar);
 			 logger.info("Resultados los permisos");
 
-			
 		} catch (Exception e) {
 			addActionError("Fallo al eliminar el Rol");
 			return ERROR;
@@ -104,13 +95,9 @@ public class TratarRolAction extends ActionSupport {
 		return resultTratar;
 	}
 
-
-
 	public void setResultTratar(Collection<Recurso> resultTratar) {
 		this.resultTratar = resultTratar;
 	}
-
-
 
 	public RolManager getRolManager() {
 		return rolManager;
@@ -136,44 +123,28 @@ public class TratarRolAction extends ActionSupport {
 		this.permisoManager = permisoManager;
 	}
 
-
-
 	public Integer getIdRol() {
 		return idRol;
 	}
-
-
 
 	public void setIdRol(Integer idRol) {
 		this.idRol = idRol;
 	}
 
-
-
 	public Rol getRolTratar() {
 		return rolTratar;
 	}
-
-
 
 	public void setRolTratar(Rol rolTratar) {
 		this.rolTratar = rolTratar;
 	}
 
-
-
 	public Collection<Permiso> getPermisoTratar() {
 		return permisoTratar;
 	}
-
-
 
 	public void setPermisoTratar(Collection<Permiso> permisoTratar) {
 		this.permisoTratar = permisoTratar;
 	}
 
-	
-	
-	
-	
 }
