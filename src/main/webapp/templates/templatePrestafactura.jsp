@@ -6,12 +6,17 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src= "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="<s:url value='/pages/js/menu_jquery.js'/>"></script>
+	<link rel="stylesheet" type="text/css" href="<s:url value='/pages/css/menu_comun.css'/>"/>
 	<title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
 <body>
 
     <s:div><tiles:insertAttribute name="header"/></s:div>
+    <br/>
 	<hr/>
+	<s:div>
 	<table width="80%" border="0" cellspacing="0" cellpadding="0" class="tabla">
 		<tr>
 			<td class="td_template_menu">
@@ -24,7 +29,7 @@
 			<td class="td_template_body"><tiles:insertAttribute name="body"/></td>
 		</tr>
 	</table>
-	
+	</s:div>
 	<s:div><tiles:insertAttribute name="footer"/></s:div>
 </body>
 </html>
