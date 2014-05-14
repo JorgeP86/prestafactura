@@ -8,15 +8,16 @@
 <title>Login</title>
 </head>
 <body>
-	<h1 align="left">Login</h1>
+	<fieldset>
+	<legend align="left">Login</legend>
 	<s:div>
-		<s:fielderror name="invalid">
-		</s:fielderror>
+		<s:fielderror name="invalid"></s:fielderror>
 		<s:form action="LoginAction" namespace="/" method="post">
 			<s:textfield name="username" requiered="true" label="User" />
 			<s:password name="password" requiered="true" label="Password" />
 			<s:submit />
 		</s:form>
 	</s:div>
+	</fieldset>
 </body>
 </html>
