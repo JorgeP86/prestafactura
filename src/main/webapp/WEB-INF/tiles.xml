@@ -13,8 +13,26 @@
 		<put-attribute name="footer" value="/pages/footer.jsp"/>
 	</definition>
 	
-	<definition name="crearFactura" extends="defaultTemplate">
+	<definition name="prestaFacturaHome" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/body.jsp"/>
 	</definition>
 	
+	<definition name="listadoRoles" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionRoles/listadoRoles.jsp"/>
+	</definition>
+	<definition name="altaRol" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionRoles/altaRol.jsp"/>
+	</definition>
+	<definition name="altaRolForm" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionRoles/altaRol.jsp"/>
+	</definition>
+	<definition name="editarRol" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionRoles/editarRol.jsp"/>
+	</definition>
+	<definition name="altaUsuario" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionUsuarios/altaUsuario.jsp"/>
+	</definition>
+	<definition name="editarUsuario" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionUsuarios/editarUsuario.jsp"/>
+	</definition>
 </tiles-definitions>
