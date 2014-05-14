@@ -17,14 +17,30 @@
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" ></result-type>
 		</result-types>
-
+		
+<!-- Redirecciones -->
+		<action name="home">
+			<result type="tiles">prestaFacturaHome</result>
+		</action>
+		<action name="altaRolForm">
+			<result type="tiles">altaRol</result>
+		</action>
+		<action name="editarRolForm">
+			<result type="tiles">editarRol</result>
+		</action>
+		<action name="altaUsuarioForm">
+			<result type="tiles">altaUsuario</result>
+		</action>
+		<action name="editarUsuarioForm">
+			<result type="tiles">editarUsuario</result>
+		</action>
+		
 <!-- Login -->	
 		<action name="LoginAction"
 			class="com.prestafacturaService.vista.action.login.LoginAction" method="execute">
-			<result name="successA" type="tiles">crearFactura</result>
-			<result name="successU" type="tiles">crearFactura</result>
-			<result name="error">error.jsp</result>
-			<result name="input" type="tiles">crearFactura</result>
+			<result name="successA" type="tiles">prestaFacturaHome</result>
+			<result name="error" type="tiles">errorLogin</result>
+			<result name="input">/inicio.jsp</result>
 		</action>
 		<action name="LogoutAction"
 			class="com.prestafacturaService.vista.action.login.LogoutAction" method="execute">
@@ -34,144 +50,126 @@
 <!-- Rol -->		
 		<action name="AccesoRolAction"
 			class="com.prestafacturaService.vista.action.rol.AccesoRolAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoRoles</result>
+			<result name="error" type="tiles">errorListandoRoles</result>
 		</action>
 		<action name="AltaRolAction"
 			class="com.prestafacturaService.vista.action.rol.AltaRolAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoRoles</result>
+			<result name="error" type="tiles">errorAltaRol</result>
+		</action>
+		<action name="AltaRolFormAction" class="com.prestafacturaService.vista.action.rol.AltaRolFormAction">
+			<result name="success" type="tiles">altaRolForm</result>
+			<result name="error" type="tiles">errorAltaRolForm</result>
 		</action>
 		<action name="BusquedaRolAction"
 			class="com.prestafacturaService.vista.action.rol.BusquedaRolAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">busquedaRoles</result>
+			<result name="error" type="tiles">errorBusquedaRoles</result>
 		</action>
 		<action name="ModificacionRolAction"
 			class="com.prestafacturaService.vista.action.rol.ModificacionRolAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoRoles</result>
+			<result name="error" type="tiles">errorEliminarRol</result>
 		</action>
 		<action name="TratarRolAction"
 			class="com.prestafacturaService.vista.action.rol.TratarRolAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoRoles</result>
+			<result name="error" type="tiles">errorModificarRol</result>
 		</action>
 		
 <!-- Usuario -->		
 		<action name="AccesoUsuarioAction"
 			class="com.prestafacturaService.vista.action.usuario.AccesoUsuarioAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoUsuarios</result>
+			<result name="error" type="tiles">errorListarUsuarios</result>
 		</action>
 		<action name="AltaUsuarioAction"
 			class="com.prestafacturaService.vista.action.usuario.AltaUsuarioAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoUsuarios</result>
+			<result name="error" type="tiles">errorAltaUsuario</result>
 		</action>
 		<action name="BusquedaUsuarioAction"
 			class="com.prestafacturaService.vista.action.usuario.BusquedaUsuarioAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">busquedaUsuarios</result>
+			<result name="error" type="tiles">errorBusquedaUsuarios</result>
 		</action>
 		<action name="ModificacionUsuariosAction"
 			class="com.prestafacturaService.vista.action.usuario.ModificacionUsuariosAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoUsuarios</result>
+			<result name="error" type="tiles">errorEliminarUsuario</result>
 		</action>
 		<action name="TratarUsuariosAction"
 			class="com.prestafacturaService.vista.action.usuario.TratarUsuariosAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoUsuarios</result>
+			<result name="error" type="tiles">errorModificarUsuario</result>
 		</action>
 		
 
 <!-- Cliente -->		
 		<action name="AccesoClientesAction"
 			class="com.prestafacturaService.vista.action.cliente.AccesoClientesAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoClientes</result>
+			<result name="error" type="tiles">errorListarClientes</result>
 		</action>
 		<action name="AltaClienteAction"
 			class="com.prestafacturaService.vista.action.cliente.AltaClienteAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoClientes</result>
+			<result name="error" type="tiles">errorAltaCliente</result>
 		</action>
 		<action name="ModificacionClienteAction"
 			class="com.prestafacturaService.vista.action.cliente.ModificacionClienteAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoClientes</result>
+			<result name="error" type="tiles">errorEliminarCliente</result>
 		</action>
 		<action name="TratarClientesAction"
 			class="com.prestafacturaService.vista.action.cliente.TratarClientesAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoClientes</result>
+			<result name="error" type="tiles">errorModificarCliente</result>
 		</action>
 		<action name="BusquedaClienteAction"
 			class="com.prestafacturaService.vista.action.cliente.BusquedaClienteAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">busquedaClientes</result>
+			<result name="error" type="tiles">errorBusquedaClientes</result>
 		</action>
 	
 <!-- Proveedor -->		
 		<action name="AccesoProveedorAction"
 			class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoProveedores</result>
+			<result name="error" type="tiles">errorListarProveedores</result>
 		</action>
 		<action name="AltaProveedorAction"
 			class="com.prestafacturaService.vista.action.proveedor.AltaProveedorAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoProveedores</result>
+			<result name="error" type="tiles">errorAltaProveedor</result>
 		</action>
 		<action name="ModificacionProveedorAction"
 			class="com.prestafacturaService.vista.action.proveedor.ModificacionProveedorAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoProveedores</result>
+			<result name="error" type="tiles">errorEliminarProveedor</result>
 		</action>
 		<action name="TratarProveedoresAction"
 			class="com.prestafacturaService.vista.action.proveedor.TratarProveedoresAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">listadoProveedores</result>
+			<result name="error" type="tiles">errorModificarProveedor</result>
 		</action>
 			<action name="BusquedaProveedorAction"
 			class="com.prestafacturaService.vista.action.proveedor.BusquedaProveedorAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">busquedaProveedores</result>
+			<result name="error" type="tiles">errorBusquedaProveedor</result>
 		</action>
 	
 	<!-- Datos Propios -->		
 		<action name="AccesoDatosPropiosAction"
 			class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">datosPropios</result>
+			<result name="error" type="tiles">errorMostrarDatosPropios</result>
 		</action>
 		<action name="AltaDatosPropiosAction"
 			class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction" method="execute">
-			<result name="success" type="tiles">/WEB-INF/template/default/templatePrestafactura.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
+			<result name="success" type="tiles">datosPropios</result>
+			<result name="error" type="tiles">errorAltaDatosPropios</result>
 		</action>
 	
 	
@@ -187,31 +185,7 @@
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
-
-		<action name="LoginActionSpring"
-			class="LoginActionSpring">
-			
-			<result name="successA">bienvenido.jsp</result>
-			<result name="successU">bienvenido.jsp</result>
-			<result name="error">error.jsp</result>
-			<result name="input">inicio.jsp</result>
-		</action>
 -->
-<!-- 
-	<package name="logout" namespace="/" 
-		<action name="logout"
-			class="com.prestafacturaService.vista.action.login.LogoutAction">
-			<result name="SUCCESS" type="redirectAction">
-				<param name="actionName">loginAction</param>
-			</result>
-		</action>
-
-		<action name="bienvenido">
-			<interceptor-ref name="secureStack"></interceptor-ref>
-			<result>/bienvenido.jsp</result>
-			<result name="login">/inicio.jsp</result>
-		</action>
- -->
 	</package>
 
 </struts>
