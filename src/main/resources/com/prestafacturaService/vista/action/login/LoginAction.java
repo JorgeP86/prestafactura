@@ -240,16 +240,16 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 			addFieldError("invalid","Usuario o Password incorrecto");
 		}
 		return INPUT;
-		}
+	}
 	
 	
 	
 	 public void validate() {
 		 if(username==null || username.trim().equals("")){
-			 addFieldError("nombre",getText("username.Invalid"));
+			 addFieldError("userNameVacio",getText("username.Invalid"));
 		 }
 		 if(password==null || password.trim().equals("")){
-			 addFieldError("nombre",getText("password.Invalid"));
+			 addFieldError("passwordVacio",getText("password.Invalid"));
 		 }
 		 
 	 }
