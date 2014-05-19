@@ -10,26 +10,42 @@ public class Documento extends BaseEntity{
 	 * 
 	 */
 	private static final long serialVersionUID = 1045016323003110171L;
-	private Double porcentaje;
-	private Double importe;
-	private String concepto;
 	
-	public Double getPorcentaje() {
-		return porcentaje;
+	private String compresion;
+	private String format;
+	private String encoding;
+	private String descripcion;
+	private String attachmentData;
+	public String getCompresion() {
+		return compresion;
 	}
-	public void setPorcentaje(Double porcentaje) {
-		this.porcentaje = porcentaje;
+	public void setCompresion(String compresion) {
+		this.compresion = compresion;
 	}
-	public Double getImporte() {
-		return importe;
+	public String getFormat() {
+		return format;
 	}
-	public void setImporte(Double importe) {
-		this.importe = importe;
+	public void setFormat(String format) {
+		this.format = format;
 	}
-	public String getConcepto() {
-		return concepto;
+	public String getEncoding() {
+		return encoding;
 	}
-	public void setConcepto(String concepto) {
-		this.concepto = concepto;
+	public void setEncoding(String encoding) {
+		this.encoding = encoding;
 	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getAttachmentData() {
+		return attachmentData;
+	}
+	public void setAttachmentData(String attachmentData) {
+		this.attachmentData = attachmentData;
+	}
+	
+	
 }

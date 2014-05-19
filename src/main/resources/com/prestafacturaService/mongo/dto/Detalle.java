@@ -17,6 +17,7 @@ public class Detalle extends BaseEntity{
 	private static final long serialVersionUID = 5119740592877359427L;
 	//-----------A partir de aqu� la aplicaci�n de facturaci�n entiende como Cabecera Detalles o General detalles-------------------//
 	//LineID (3.1.6.1) Nuevo campo facturae 4.0
+	
 	private Integer lineaID;
 	//IssuerContractReference (3.1.6.1.1)
 	private String refContratoEmisor;

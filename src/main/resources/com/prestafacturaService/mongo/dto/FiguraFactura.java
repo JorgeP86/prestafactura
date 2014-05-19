@@ -36,7 +36,7 @@ public class FiguraFactura extends BaseEntity{
 	private Direccion direccion;
 	
 	private Cliente cliente;
-	private Proveedor proveedor;
+	private DatosPropios datospropios;
 	
 	public IdentificacionFiscal getIdentificacionFiscal() {
 		return identificacionFiscal;
@@ -99,11 +99,12 @@ public class FiguraFactura extends BaseEntity{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public Proveedor getProveedor() {
-		return proveedor;
+	public DatosPropios getDatospropios() {
+		return datospropios;
 	}
-	public void setProveedor(Proveedor proveedor) {
-		this.proveedor = proveedor;
+	public void setDatospropios(DatosPropios datospropios) {
+		this.datospropios = datospropios;
 	}
+	
 
 }
