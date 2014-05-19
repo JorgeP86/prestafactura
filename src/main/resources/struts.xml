@@ -34,6 +34,9 @@
 		<action name="editarUsuarioForm">
 			<result type="tiles">editarUsuario</result>
 		</action>
+		<action name="altaClienteForm">
+			<result type="tiles">altaCliente</result>
+		</action>
 		
 <!-- Login -->	
 		<action name="LoginAction"
@@ -55,8 +58,9 @@
 		</action>
 		<action name="AltaRolAction"
 			class="com.prestafacturaService.vista.action.rol.AltaRolAction" method="execute">
-			<result name="success" type="tiles">listadoRoles</result>
+			<result  name="success" type="redirect">AccesoRolAction</result>
 			<result name="error" type="tiles">errorAltaRol</result>
+			<result name="input" type="tiles">errorAltaRol</result>
 		</action>
 		<action name="AltaRolFormAction" class="com.prestafacturaService.vista.action.rol.AltaRolFormAction">
 			<result name="success" type="tiles">altaRolForm</result>
@@ -117,6 +121,10 @@
 			<result name="success" type="tiles">listadoClientes</result>
 			<result name="error" type="tiles">errorAltaCliente</result>
 		</action>
+		<action name="AltaClienteFormAction" class="com.prestafacturaService.vista.action.cliente.AltaClienteFormAction">
+			<result name="success" type="tiles">altaClienteForm</result>
+			<result name="error" type="tiles">errorAltaClienteForm</result>
+		</action>
 		<action name="ModificacionClienteAction"
 			class="com.prestafacturaService.vista.action.cliente.ModificacionClienteAction" method="execute">
 			<result name="success" type="tiles">listadoClientes</result>
@@ -172,10 +180,6 @@
 			<result name="error" type="tiles">errorAltaDatosPropios</result>
 		</action>
 	
-	
-	
-	
-		
 <!-- 
 		<interceptors>
 			<interceptor name="authenticationInterceptor"
