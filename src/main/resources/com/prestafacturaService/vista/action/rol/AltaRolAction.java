@@ -90,9 +90,13 @@ public class AltaRolAction extends ActionSupport {
 	public String execute(){
 			clearFieldErrors();
 		try{
+			
+
 			if(idRol==0){
+				logger.info("Comprobacion si idRol==0");
 				List<Permiso> listaPermisosCreada=new ArrayList<Permiso>();
-				 //Altas
+				logger.info("Inicializamos la lista de permisos");
+				//Altas
 				if(altaCliente!=0){
 					Permiso altaC= this.crearPermiso(altaCliente);
 					if(altaC!=null){
@@ -259,21 +263,35 @@ public class AltaRolAction extends ActionSupport {
 						listaPermisosCreada.add(listarU);
 					}
 				}//fin if
+				
+				logger.info("Terminamos de crear los permisos y añadirlos a la lista");
+
 			
 				Rol rolNuevo= new Rol();
+				logger.info("Inicializamos el rol");
+
 				if(nombreRol!=null && nombreRol.trim().length()>0){
 					rolNuevo.setNombre(nombreRol);
+					logger.info("Le añades el nombre");
+
 				}if(descripcionRol!=null && descripcionRol.trim().length()>0){
 					rolNuevo.setDescripcion(descripcionRol);
+					logger.info("Le añades el descripcion");
+
 				}if(listaPermisosCreada.size()!=0){
 					rolNuevo.setPermisos(listaPermisosCreada);
+					logger.info("Le añades la lista de permisos");
 				}
+				logger.info("El objeto Rol creado");
+
 				Rol rolcreado=rolManager.saveRol(rolNuevo);
-				
+				logger.info("Guardamos el Rol");
+
 				
 			}
 		}catch(Exception e){
-			
+			addFieldError("invalidRolAlta",getText("rol.error"));
+			return ERROR;
 		}
 		return SUCCESS;
 	}		
