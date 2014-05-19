@@ -25,7 +25,11 @@
 			<li class="has-sub"><a href="#"><span>Gesti&oacute;n
 						Clientes</span></a>
 				<ul>
-					<li><a href="<s:url action='AltaClienteAction'/>"><span>Alta cliente</span></a></li>
+				
+				<s:url action="AltaClienteFormAction" var="altaCliente">
+						<s:param name="idCliente" value="0"></s:param>
+					</s:url>
+					<li><a href="<s:property value='#altaCliente'/>"><span>Alta Cliente</span></a></li>
 					<li class="last"><a href="<s:url action='AccesoClientesAction'/>"><span>Cartera de
 								clientes</span></a></li>
 				</ul></li>
