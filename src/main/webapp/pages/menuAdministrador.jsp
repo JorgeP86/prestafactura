@@ -25,6 +25,7 @@
 						<s:param name="idRol" value="0"></s:param>
 					</s:url>
 					<li><a href="<s:property value='#altaRol'/>"><span>Alta rol</span></a></li>
+					
 					<li class="last"><a href="<s:url action='AccesoRolAction'/>"><span>Roles</span></a></li>
 				</ul></li>
 		</ul>
