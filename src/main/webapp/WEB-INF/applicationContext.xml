@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -38,6 +37,7 @@
 	<bean id="clienteRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ClienteRepositoryImpl"></bean>
 	<bean id="datosPropiosRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.DatosPropiosRepositoryImpl"></bean>
 	<bean id="proveedorRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProveedorRepositoryImpl"></bean>
+	<bean id="secuenceIdRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.SecuenceIdRepositoryImpl"></bean>
 	
 	
  	<!-- Service -->
@@ -49,6 +49,9 @@
  	<bean id="proveedorManager" class="com.prestafacturaService.mongo.manager.ProveedorManager"></bean>
  	<bean id="clienteManager" class="com.prestafacturaService.mongo.manager.ClienteManager"></bean>
  	<bean id="datosPropiosManager" class="com.prestafacturaService.mongo.manager.DatosPropiosManager"></bean>
+ 	<bean id="secuenceManager" class="com.prestafacturaService.mongo.manager.SecuenceManager"></bean>
+ 	
+ 	
  	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
  	
@@ -62,6 +65,8 @@
  	<bean id="BusquedaRolAction" class="com.prestafacturaService.vista.action.rol.BusquedaRolAction"></bean>
  	<bean id="ModificacionRolAction" class="com.prestafacturaService.vista.action.rol.ModificacionRolAction"></bean>
  	<bean id="TratarRolAction" class="com.prestafacturaService.vista.action.rol.TratarRolAction"></bean>
+ 	<bean id="AltaRolFormAction" class="com.prestafacturaService.vista.action.rol.AltaRolFormAction"></bean>
+ 	
  		<!-- usuario-->
 	<bean id="AccesoUsuarioAction" class="com.prestafacturaService.vista.action.usuario.AccesoUsuarioAction"></bean>
  	<bean id="AltaUsuarioAction" class="com.prestafacturaService.vista.action.usuario.AltaUsuarioAction"></bean>
@@ -74,6 +79,8 @@
  	<bean id="BusquedaClienteAction" class="com.prestafacturaService.vista.action.cliente.BusquedaClienteAction"></bean>
  	<bean id="ModificacionClienteAction" class="com.prestafacturaService.vista.action.cliente.ModificacionClienteAction"></bean>
  	<bean id="TratarClientesAction" class="com.prestafacturaService.vista.action.cliente.TratarClientesAction"></bean>	
+ 	<bean id="AltaClienteFormAction" class="com.prestafacturaService.vista.action.cliente.AltaClienteFormAction"></bean>	
+ 		
  		<!-- Proveedor-->
  	<bean id="AccesoProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AccesoProveedorAction"></bean>
  	<bean id="AltaProveedorAction" class="com.prestafacturaService.vista.action.proveedor.AltaProveedorAction"></bean>
@@ -102,4 +109,5 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 	</bean>
+	
 </beans>
