@@ -1,5 +1,6 @@
 package com.prestafacturaService.vista.action.rol;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import com.prestafacturaService.mongo.dto.Rol;
 import com.prestafacturaService.mongo.manager.PermisoManager;
 import com.prestafacturaService.mongo.manager.RecursoManager;
 import com.prestafacturaService.mongo.manager.RolManager;
+import com.prestafacturaService.mongo.manager.SecuenceManager;
 
 public class AltaRolAction extends ActionSupport {
 
@@ -29,18 +31,23 @@ public class AltaRolAction extends ActionSupport {
 	public static final String SUCCESS = "success";
 	public static final String SUCCESSEDITAR = "successEditar";
 	public static final String ERROR = "error";
-
+	
+	private static final String ROL_SEQ_KEY = "idRol";
+	
+	
 	@Autowired
 	private RolManager rolManager;
 	@Autowired
 	private PermisoManager permisoManager;
 	@Autowired
 	private RecursoManager recursoManager;
-
+	@Autowired
+	private SecuenceManager secuenceManager;
+	
 	private String nombreRol;
 	private String descripcionRol;
 
-	private Collection<Recurso> paginas;
+	private Collection paginas;
 
 	// Permisos
 	private int altaCliente;
@@ -90,307 +97,221 @@ public class AltaRolAction extends ActionSupport {
 			
 			if(idRol==0){
 			//Comprobamos que no existe un rol con ese nombre
-			Boolean existsNombreRol= rolManager.existsNombreRol(nombreRol);
-			 logger.info("Comprobacion si existe el rol");
+			Boolean existsNombreRol= false; // rolManager.existsNombreRol(nombreRol);
+			logger.info("Comprobacion si existe el rol");
 
 			if(existsNombreRol){
 				addFieldError("invalidNombreRolAlta","El nombre del Rol ya existe");
 			}else{
-				logger.info("nombre del rol no existe");
 				Rol rol= new Rol();
-				//rol.setIdrol(new Integer(UUID.randomUUID().toString()));
-				
+				//secuenceManager.CreateSecuence();
+				//Integer secuence=secuenceManager.NextSequenceId(ROL_SEQ_KEY);
+				//System.out.print(secuence.toString());
+				// rol.setIdrol(secuence);
 				if(nombreRol!=null && nombreRol.trim().length()>0){
 					rol.setNombre(nombreRol);
 				}if(descripcionRol!=null && descripcionRol.trim().length()>0){
 					rol.setDescripcion(descripcionRol);
 				}
-				logger.info("Creacion del rol");
-
-					//Altas
-				if(altaCliente!=0){
-					this.crearPermiso(altaCliente,rol);
-				}if(altaDatos!=0){
-					this.crearPermiso(altaDatos,rol);
-				}if(altaProveedor!=0){
-					this.crearPermiso(altaProveedor,rol);
-				}if(altaRol!=0){
-					this.crearPermiso(altaRol,rol);
-				}if(altaUsuario!=0){
-					this.crearPermiso(altaUsuario,rol);
-				}
-					//Bajas
-				if(bajaCliente!=0){
-					this.crearPermiso(bajaCliente,rol);
-				}if(bajaProveedor!=0){
-					this.crearPermiso(bajaProveedor,rol);
-				}if(bajaRol!=0){
-					this.crearPermiso(bajaRol,rol);
-				}if(bajaUsuario!=0){
-					this.crearPermiso(bajaUsuario,rol);
-				}
-					//consultas
-				if(consultarCliente!=0){
-					this.crearPermiso(consultarCliente,rol);
-				}if(consultarDatos!=0){
-					this.crearPermiso(consultarDatos,rol);
-				}if(consultarFactura!=0){
-					this.crearPermiso(consultarFactura,rol);
-				}if(consultarFirmaElectronica!=0){
-					this.crearPermiso(consultarFirmaElectronica,rol);
-				}if(consultarInformacion!=0){
-					this.crearPermiso(consultarInformacion,rol);
-				}if(consultarRol!=0){
-					this.crearPermiso(consultarRol,rol);
-				}if(consultarProveedor!=0){
-					this.crearPermiso(consultarProveedor,rol);
-				}if(consultarUsuario!=0){
-					this.crearPermiso(consultarUsuario,rol);
-				}
-					//Otros
-				if(crearFactura!=0){
-					this.crearPermiso(crearFactura,rol);
-				}if(descargarFactura!=0){
-					this.crearPermiso(descargarFactura,rol);
-				}
-					//Editar
-				if(editarCliente!=0){
-					this.crearPermiso(editarCliente,rol);
-				}if(editarProveedor!=0){
-					this.crearPermiso(editarProveedor,rol);
-				}if(editarRol!=0){
-					this.crearPermiso(editarRol,rol);
-				}if(editarUsuario!=0){
-					this.crearPermiso(editarUsuario,rol);
-				}
-					//Otros2
-				if(eliminarInformacion!=0){
-					this.crearPermiso(eliminarInformacion,rol);
-				}if(generarFirmaElectronica!=0){
-					this.crearPermiso(generarFirmaElectronica,rol);
-				}if( publicarInformacion!=0){
-					this.crearPermiso(publicarInformacion,rol);
-				}
-					//listar
-				if(listarClientes!=0){
-					this.crearPermiso(listarClientes,rol);
-				}if(listarProveedores!=0){
-					this.crearPermiso(listarProveedores,rol);
-				}if( listarRoles!=0){
-					this.crearPermiso(listarRoles,rol);
-				}if( listarUsuario!=0){
-					this.crearPermiso(listarUsuario,rol);
-				}
-				addFieldError("AltaPermisoOK", "AltaPermisoOK");
+				List<Permiso> listaPermisosCreada=new ArrayList<Permiso>();
 				
-			}
-		}else if(idRol>0){ //Modificación
-			Rol rol= rolManager.ObtenerRolByidRol(idRol);
-			 logger.info("Obtener el  rol");
+				
+				Rol rolcreado=rolManager.saveRol(rol);
+				logger.info("Creacion del Rol, guardado en BD");
 
-			if(nombreRol!=null && nombreRol.trim().length()>0){
-				rol.setNombre(nombreRol);
-			}if(descripcionRol!=null && descripcionRol.trim().length()>0){
-				rol.setDescripcion(descripcionRol);
-			}
+				//Obtenemos el identificador del Rol
 			
-			Rol rolmodificado=rolManager.UpdateRol(rol);
-			 logger.info("Rol modificado");
+				
+				 //Altas
+					if(altaCliente!=0){
+						Permiso altaC= this.crearPermiso(altaCliente,rolcreado);
+						if(altaC!=null){
+							listaPermisosCreada.add(altaC);
+						}
+					}if(altaDatos!=0){
+						Permiso altaD=this.crearPermiso(altaDatos,rolcreado);
+						if(altaD!=null){
+							listaPermisosCreada.add(altaD);
+						}
+					}if(altaProveedor!=0){
+						Permiso altaP=this.crearPermiso(altaProveedor,rolcreado);
+						if(altaP!=null){
+							listaPermisosCreada.add(altaP);
+						}
+					}if(altaRol!=0){
+						Permiso altaR=this.crearPermiso(altaRol,rolcreado);
+						if(altaR!=null){
+							listaPermisosCreada.add(altaR);
+						}
+					}if(altaUsuario!=0){
+						Permiso altaU=this.crearPermiso(altaUsuario,rolcreado);
+						if(altaU!=null){
+							listaPermisosCreada.add(altaU);
+						}
 
-			
-			//Eliminación o creación de permisos
-			//Altas
-			if(this.altaCliente!=0){
-				this.crearPermiso(altaCliente, rolmodificado);	
-			}if(this.altaCliente==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina,rolmodificado);
-			}if(this.altaDatos!=0){
-				this.crearPermiso(altaDatos, rolmodificado);
-			}if(this.altaDatos==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}if(this.altaProveedor!=0){
-				this.crearPermiso(altaProveedor, rolmodificado);
-			}if(this.altaProveedor==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}if(this.altaRol!=0){
-				this.crearPermiso(altaRol, rolmodificado);
-			}if(this.altaRol==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}if(this.altaUsuario!=0){
-				this.crearPermiso(altaUsuario, rolmodificado);
-			}if(this.altaUsuario==0){
-				idpagina=0;
-				this.crearPermiso(idpagina, rolmodificado);
-			}
-			
-			//bajas
-			
-			if(this.bajaCliente!=0){
-				this.crearPermiso(bajaCliente, rolmodificado);
-			}if(this.bajaCliente==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}if(this.bajaProveedor!=0){
-				this.crearPermiso(bajaProveedor, rolmodificado);
-			}if(this.bajaProveedor==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}if(this.bajaRol!=0){
-				this.crearPermiso(bajaRol, rolmodificado);
-			}if(this.bajaRol==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}if(this.bajaUsuario!=0){
-				this.crearPermiso(bajaUsuario, rolmodificado);
-			}if(this.bajaUsuario==0){
-				idpagina=0;
-				this.eliminarPermiso(idpagina, rolmodificado);
-			}
-			
-			//consulta
-			
-		if(this.consultarCliente!=0){
-			this.crearPermiso(consultarCliente, rolmodificado);
-		}if(this.consultarCliente==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarDatos!=0){
-			this.crearPermiso(consultarDatos, rolmodificado);
-		}if(this.consultarDatos==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarFactura!=0){
-			this.crearPermiso(consultarFactura, rolmodificado);
-		}if(this.consultarFactura==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarFirmaElectronica!=0){
-			this.crearPermiso(consultarFirmaElectronica, rolmodificado);
-		}if(this.consultarFirmaElectronica==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarInformacion!=0){
-			this.crearPermiso(consultarInformacion, rolmodificado);
-		}if(this.consultarInformacion==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarProveedor!=0){
-			this.crearPermiso(consultarProveedor, rolmodificado);
-		}if(this.consultarProveedor==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarRol!=0){
-			this.crearPermiso(consultarRol, rolmodificado);
-		}if(this.consultarRol==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.consultarUsuario!=0){
-			this.crearPermiso(consultarUsuario, rolmodificado);
-		}if(this.consultarUsuario==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
+					}
+						//Bajas
+					if(bajaCliente!=0){
+						Permiso bajaC=this.crearPermiso(bajaCliente,rolcreado);
+						if(bajaC!=null){
+							listaPermisosCreada.add(bajaC);
+						}
+					}if(bajaProveedor!=0){
+						Permiso bajaP=this.crearPermiso(bajaProveedor,rolcreado);
+						if(bajaP!=null){
+							listaPermisosCreada.add(bajaP);
+						}
+
+					}if(bajaRol!=0){
+						Permiso bajaR=this.crearPermiso(bajaRol,rolcreado);
+						if(bajaR!=null){
+							listaPermisosCreada.add(bajaR);
+						}
+
+					}if(bajaUsuario!=0){
+						Permiso bajaU=this.crearPermiso(bajaUsuario,rolcreado);
+						if(bajaU!=null){
+							listaPermisosCreada.add(bajaU);
+						}
+					}
+						//consultas
+					if(consultarCliente!=0){
+						Permiso consultarC=this.crearPermiso(consultarCliente,rolcreado);
+						if(consultarC!=null){
+							listaPermisosCreada.add(consultarC);
+						}
+					}if(consultarDatos!=0){
+						Permiso consultarD=this.crearPermiso(consultarDatos,rolcreado);
+						if(consultarD!=null){
+							listaPermisosCreada.add(consultarD);
+						}
+					}if(consultarFactura!=0){
+						Permiso consultarF=this.crearPermiso(consultarFactura,rolcreado);
+						if(consultarF!=null){
+							listaPermisosCreada.add(consultarF);
+						}
+					}if(consultarFirmaElectronica!=0){
+						Permiso consultarFE=this.crearPermiso(consultarFirmaElectronica,rolcreado);
+						if(consultarFE!=null){
+							listaPermisosCreada.add(consultarFE);
+						}
+					}if(consultarInformacion!=0){
+						Permiso consultarI=this.crearPermiso(consultarInformacion,rolcreado);
+						if(consultarI!=null){
+							listaPermisosCreada.add(consultarI);
+						}
+					}if(consultarRol!=0){
+						Permiso consultarR=this.crearPermiso(consultarRol,rolcreado);
+						if(consultarR!=null){
+							listaPermisosCreada.add(consultarR);
+						}
+					}if(consultarProveedor!=0){
+						Permiso consultarP=this.crearPermiso(consultarProveedor,rolcreado);
+						if(consultarP!=null){
+							listaPermisosCreada.add(consultarP);
+						}
+					}if(consultarUsuario!=0){
+						Permiso consultarUs=this.crearPermiso(consultarUsuario,rolcreado);
+						if(consultarUs!=null){
+							listaPermisosCreada.add(consultarUs);
+						}
+					}
+						//Otros
+					if(crearFactura!=0){
+						Permiso crearF=this.crearPermiso(crearFactura,rolcreado);
+						if(crearF!=null){
+							listaPermisosCreada.add(crearF);
+						}
+					}if(descargarFactura!=0){
+						Permiso descargarF=this.crearPermiso(descargarFactura,rolcreado);
+						if(descargarF!=null){
+							listaPermisosCreada.add(descargarF);
+						}
+					}
+						//Editar
+					if(editarCliente!=0){
+						Permiso editarC=this.crearPermiso(editarCliente,rolcreado);
+						if(editarC!=null){
+							listaPermisosCreada.add(editarC);
+						}
+					}if(editarProveedor!=0){
+						Permiso editarP=this.crearPermiso(editarProveedor,rolcreado);
+						if(editarP!=null){
+							listaPermisosCreada.add(editarP);
+						}
+					}if(editarRol!=0){
+						Permiso editarR=this.crearPermiso(editarRol,rolcreado);
+						if(editarR!=null){
+							listaPermisosCreada.add(editarR);
+						}
+					}if(editarUsuario!=0){
+						Permiso editarU=this.crearPermiso(editarUsuario,rolcreado);
+						if(editarU!=null){
+							listaPermisosCreada.add(editarU);
+						}
+					}
+						//Otros2
+					if(eliminarInformacion!=0){
+						Permiso eliminarI=this.crearPermiso(eliminarInformacion,rolcreado);
+						if(eliminarI!=null){
+							listaPermisosCreada.add(eliminarI);
+						}
+					}if(generarFirmaElectronica!=0){
+						Permiso generarFe=this.crearPermiso(generarFirmaElectronica,rolcreado);
+						if(generarFe!=null){
+							listaPermisosCreada.add(generarFe);
+						}
+					}if( publicarInformacion!=0){
+						Permiso publicarI=this.crearPermiso(publicarInformacion,rolcreado);
+						if(publicarI!=null){
+							listaPermisosCreada.add(publicarI);
+						}
+					}
+						//listar
+					if(listarClientes!=0){
+						Permiso listarC=this.crearPermiso(listarClientes,rolcreado);
+						if(listarC!=null){
+							listaPermisosCreada.add(listarC);
+						}
+					}if(listarProveedores!=0){
+						Permiso listarP=this.crearPermiso(listarProveedores,rolcreado);
+						if(listarP!=null){
+							listaPermisosCreada.add(listarP);
+						}
+					}if( listarRoles!=0){
+						Permiso listarR=this.crearPermiso(listarRoles,rolcreado);
+						if(listarR!=null){
+							listaPermisosCreada.add(listarR);
+						}
+					}if( listarUsuario!=0){
+						Permiso listarU=this.crearPermiso(listarUsuario,rolcreado);
+						if(listarU!=null){
+							listaPermisosCreada.add(listarU);
+						}
 		}
 		
-		//Otros
-		if(this.crearFactura!=0){
-			this.crearPermiso(crearFactura, rolmodificado);
-		}if(this.crearFactura==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.descargarFactura!=0){
-			this.crearPermiso(descargarFactura, rolmodificado);
-		}if(this.descargarFactura==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}
-		
-		//editar
-		if(this.editarCliente!=0){
-			this.crearPermiso(editarCliente, rolmodificado);
-		}if(this.editarCliente==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.editarProveedor!=0){
-			this.crearPermiso(editarProveedor, rolmodificado);
-		}if(this.editarProveedor==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.editarRol!=0){
-			this.crearPermiso(editarRol, rolmodificado);
-		}if(this.editarRol==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.editarUsuario!=0){
-			this.crearPermiso(editarUsuario, rolmodificado);
-		}if(this.editarUsuario==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}
-		//varios
-		if(this.eliminarInformacion!=0){
-			this.crearPermiso(eliminarInformacion, rolmodificado);
-		}if(this.eliminarInformacion==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.generarFirmaElectronica!=0){
-			this.crearPermiso(generarFirmaElectronica, rolmodificado);
-		}if(this.generarFirmaElectronica==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}	
-		
-		//listar
-		if(this.listarClientes!=0){
-			this.crearPermiso(listarClientes, rolmodificado);
-		}if(this.listarClientes==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.listarProveedores!=0){
-			this.crearPermiso(listarProveedores, rolmodificado);
-		}if(this.listarProveedores==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.listarRoles!=0){
-			this.crearPermiso(listarRoles, rolmodificado);
-		}if(this.listarRoles==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}if(this.listarUsuario!=0){
-			this.crearPermiso(listarUsuario, rolmodificado);
-		}if(this.listarUsuario==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}
-		
-		//pulicar
-		if(this.publicarInformacion!=0){
-			this.crearPermiso(publicarInformacion, rolmodificado);
-		}if(this.publicarInformacion==0){
-			idpagina=0;
-			this.eliminarPermiso(idpagina, rolmodificado);
-		}
-		
-		
-		addFieldError("EditarPermisoOK", "EditarPermisoOK");
-		return SUCCESSEDITAR;	
-			
+	
+					 logger.info("Obtenermos el rol creado");
+						Rol rolupdate= rolManager.ObtenerRolByName(nombreRol);
+						logger.info("Le añadimos la lista de permisos creada");
+						rolupdate.setPermisos(listaPermisosCreada);
+						logger.info("Lo modificamos para guardar los permisos");
+						Rol rolconPermisos=rolManager.UpdateRol(rolupdate);
+						
+						return SUCCESS;
+
 		}		
-		//Obtenemos las paginas para mostrarlas	
-		paginas=recursoManager.obtenerPaginas();
-		logger.info("Obtener las paginas para editarlas");
-
+			
+			//Obtenemos las paginas para mostrarlas	
+			paginas=recursoManager.obtenerPaginas();
+			logger.info("Obtener las paginas para editarlas");
+		}			
 	} catch (Exception e){
-		addFieldError("invalidRolAlta",getText("rol.error"));
-		return ERROR;
+			addFieldError("invalidRolAlta",getText("rol.error"));
+			return ERROR;
 	}
-		
-	this.setPaginas(paginas);
-	addActionMessage("Se ha creado el Rol correctamente");	
-	return SUCCESS;
+
+		return ERROR;
 }
 
 	private void eliminarPermiso(int idpag, Rol rol) {
@@ -398,8 +319,8 @@ public class AltaRolAction extends ActionSupport {
 
 		Permiso permiso = null;
 		Recurso pagina = null;
-		List<Permiso> lista = null;
-		try {
+		List lista = null;
+		
 			pagina = recursoManager.obtenerPaginaById(idpag);
 			// comprobamos si hay un permiso con esa pág para este rol
 			 logger.info("Obtener la pagina por id");
@@ -415,18 +336,16 @@ public class AltaRolAction extends ActionSupport {
 				 logger.info("eliminamos el permiso");
 
 			}
-		} catch (Exception e) {
-			addFieldError("eliminarPermiso", getText("permiso.eliminar"));
-		}
+		
 	}
 
 	// Método que permite crear el permiso
-	public void crearPermiso(int seleccion, Rol rol) {
+	public Permiso crearPermiso(int seleccion, Rol rol) {
 		 logger.info("Comienza la operacion crear permiso");
 
 		Permiso permiso = new Permiso();
-		List<Permiso> permisos = null;
-		try {
+		List permisos = null;
+		
 			// obtenemos la pág seleccionada en el combox
 			Recurso pagina = recursoManager.obtenerPaginaById(new Integer(
 					seleccion));
@@ -448,10 +367,7 @@ public class AltaRolAction extends ActionSupport {
 				 logger.info("Damos de alta el permiso");
 
 			}
-		} catch (Exception e) {
-			addFieldError("InvalidPermiso", getText("permiso.Invalid"));
-
-		}
+			return permiso;
 	}
 
 	public String getNombreRol() {
@@ -478,11 +394,11 @@ public class AltaRolAction extends ActionSupport {
 		this.idRol = idRol;
 	}
 
-	public Collection<Recurso> getPaginas() {
+	public Collection getPaginas() {
 		return paginas;
 	}
 
-	public void setPaginas(Collection<Recurso> paginas) {
+	public void setPaginas(Collection paginas) {
 		this.paginas = paginas;
 	}
 
