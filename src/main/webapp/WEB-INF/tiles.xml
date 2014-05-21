@@ -18,16 +18,16 @@
 	</definition>
 	
 	<definition name="listadoRoles" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionRoles/listadoRoles.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
 	</definition>
 	<definition name="altaRol" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionRoles/altaRol.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
 	<definition name="altaRolForm" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionRoles/altaRol.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
 	<definition name="editarRol" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionRoles/editarRol.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/editarRol.jsp"/>
 	</definition>
 	<definition name="altaUsuario" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/admin/gestionUsuarios/altaUsuario.jsp"/>
