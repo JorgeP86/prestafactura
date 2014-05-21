@@ -33,6 +33,11 @@ public class ProvinciaRepositoryTest {
 	@Before
 	public void setUp(){
 		
+		mongoTemplate.dropCollection("provincia");
+		mongoTemplate.createCollection("provincia");
+		mongoTemplate.dropCollection("localidad");
+		mongoTemplate.createCollection("localidad");
+		
 		String[] nombresProvincias={"Alava","Albacete","Alicante","Almería","Asturias","Avila","Badajoz","Barcelona","Burgos","Cáceres",
 				"Cádiz","Cantabria","Castellón","Ciudad Real","Córdoba","La Coruña","Cuenca","Gerona","Granada","Guadalajara",
 				"Guipúzcoa","Huelva","Huesca","Islas Baleares","Jaén","León","Lérida","Lugo","Madrid","Málaga","Murcia","Navarra",
@@ -40,7 +45,7 @@ public class ProvinciaRepositoryTest {
 				"Santa Cruz de Tenerife","Teruel","Toledo","Valencia","Valladolid","Vizcaya","Zamora","Zaragoza"};
 		
 		Set<Localidad> sevilla= new HashSet<Localidad>();
-		String[] sLocalidadesSevilla={"Alanís","Cazalla de la Sierra","Cantillana","Coria del rio","Constantina","Guadalcanal","Pedroso","Osuna", "Lora del Rio", "VillaVerde","Camas","Lora del Rio","Fuentes de Andalucia"};
+		String[] sLocalidadesSevilla={"Alanís","Cazalla de la Sierra","Cantillana","Coria del rio","Constantina","Guadalcanal","Pedroso","Osuna", "Lora del Rio", "Villaverde","Camas","Fuentes de Andalucia"};
 		for(String l:sLocalidadesSevilla){
 			Localidad loSe=new Localidad();
 			loSe.setLocalidad(l);
@@ -68,7 +73,7 @@ public class ProvinciaRepositoryTest {
 		provincias=provinciaRepository.findAll();
 		for(Provincia pr:provincias){
 			System.out.println(pr.getProvincia());
-			if(pr.equals("Sevilla")){
+			if(pr.getProvincia().equals("Sevilla")){
 				for(Localidad l:pr.getLocalidades()){
 					System.out.println(l.getLocalidad());
 				}
