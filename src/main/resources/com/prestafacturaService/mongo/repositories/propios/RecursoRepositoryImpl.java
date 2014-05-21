@@ -13,10 +13,10 @@ public class RecursoRepositoryImpl implements RecursoRepositoryCustom {
 	@Autowired
 	MongoTemplate mongoTemplate;
 	
-	public Recurso obtenerPaginaByid(Integer idPagina) {
+	public Recurso obtenerPaginaBypath(String path) {
 		// TODO Auto-generated method stub
 		Query query=new Query();
-		query.addCriteria(Criteria.where("idpagina").is(idPagina));
+		query.addCriteria(Criteria.where("path").is(path));
 		
 		return mongoTemplate.findOne(query, Recurso.class);
 	
