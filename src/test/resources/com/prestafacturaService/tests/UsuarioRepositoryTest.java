@@ -28,6 +28,7 @@ import com.prestafacturaService.mongo.manager.UsuarioManager;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"applicationContext.xml","Test-applicationContext.xml"})
 public class UsuarioRepositoryTest {
+	
 	@Autowired
 	private UsuarioManager usuarioManager;
 	@Autowired
@@ -51,7 +52,7 @@ public class UsuarioRepositoryTest {
 		
 		Recurso recurso = new Recurso();
 		
-		recurso = recursoManager.obtenerPaginaById(1);
+		recurso = recursoManager.obtenerPaginaBypath("altaUsuario");
 		
 		/*
 		recurso.setAmbito("ambito");
