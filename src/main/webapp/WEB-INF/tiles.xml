@@ -42,4 +42,8 @@
 	<definition name="altaClienteForm" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/usuario/gestionClientes/altaCliente.jsp"/>
 	</definition>
+	
+	<definition name="errorAltaRol" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/admin/gestionRoles/errorAltaRol.jsp"/>
+	</definition>
 </tiles-definitions>
