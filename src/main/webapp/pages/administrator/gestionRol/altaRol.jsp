@@ -29,10 +29,6 @@
 			<td>Gesti&oacute;n de Roles</td>
 		</tr>
 	</table>
-<%-- 
-	<s:url action="AltaRolAction" var="alta">
-		<s:param name="idRol" value="0"></s:param>
-	</s:url>--%>
 
 <s:form action="AltaRolAction" name="frm" namespace="/" method="post" id="altaRol">
 
@@ -48,7 +44,6 @@
 				<s:textfield name="descripcionRol" label="Descripción rol*" value="" size="30" id="descripcionRol"/>
 			</td>
 		</tr>
-
 	</table>
 	<s:div>
 		<s:fielderror name="invalidRolAlta">
@@ -67,11 +62,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<%--
 						<s:if test="%{#recurso.path == 'gestionUsuarios'}">
 							<s:hidden key="gestionUsuarios" value="%{recurso.idpagina}"/>  
 						</s:if>
-						 --%>	
 						<s:if test="%{#recurso.ambito=='gestionUsuarios' && #recurso.path!='gestionUsuarios'}">
 							<tr>
 								<td><s:property value="%{#recurso.idpagina}"/></td>
@@ -86,11 +79,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionRoles'}">
 							<s:hidden key="gestionRoles" value="%{#recurso.idpagina}"/>
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionRoles' && #recurso.path!='gestionRoles'}">
 							<tr>
 								<td><s:property value="%{#recurso.idpagina}"/></td>
@@ -105,11 +96,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionProveedores'}">
 							<s:hidden key="gestionProveedores" value="%{#recurso.idpagina}"/>
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionProveedores' && #recurso.path!='gestionProveedores'}">
 							<tr>
 								<td><s:property value="%{#recurso.idpagina}"/></td>
@@ -124,11 +113,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionClientes'}">
 							<s:hidden key="gestionClientes" value="%{#recurso.idpagina}"/>
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionClientes' && #recurso.path!='gestionClientes'}">
 							<tr>
 								<td><s:property value="%{#recurso.idpagina}"/></td>
@@ -151,11 +138,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionDatosInternos'}">
 							<s:hidden key="gestionDatosInternos" value="%{#recurso.idpagina}"/>  
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionDatosInternos' && #recurso.path!='gestionDatosInternos'}">
 							<tr>
 								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
@@ -169,11 +154,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionFacturasAlmacenadas'}">
 							<s:hidden key="gestionFacturasAlmacenadas" value="%{#recurso.idpagina}"/>
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionFacturasAlmacenadas' && #recurso.path!='gestionFacturasAlmacenadas'}">
 							<tr>
 								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
@@ -187,11 +170,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionInformacion'}">
 							<s:hidden key="gestionInformacion" value="%{#recurso.idpagina}"/>  
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionInformacion' && #recurso.path!='gestionInformacion'}">
 							<tr>
 								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
@@ -205,11 +186,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#recurso.path == 'gestionFirmaElectronica'}">
 							<s:hidden key="gestionFirmaElectronica" value="%{#recurso.idpagina}"/>  
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionFirmaElectronica' && #recurso.path!='gestionFirmaElectronica'}">
 							<tr>
 								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
@@ -228,11 +207,9 @@
 			<td>
 				<table  border=0 width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-					<%--
 						<s:if test="%{#pagina.path == 'gestionFactura'}">
 							<s:hidden key="gestionFactura" value="%{#recurso.idpagina}"/>  
 						</s:if>
-					--%>	
 						<s:if test="%{#recurso.ambito=='gestionFactura' && #recurso.path!='gestionFactura'}">
 							<tr>
 								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
@@ -247,7 +224,7 @@
 	<table>
 		<tr>
 			<td>
-				<%--<s:hidden name="idRol" value="0"></s:hidden>	--%>	
+				<s:hidden name="idRol" value="0"></s:hidden>	
 				<s:submit type="button" value="altaRol"/>
 			</td>
 			  
@@ -256,14 +233,14 @@
 			 </td>
 		</tr>
 	</table>
-	<%--
+
 	<s:if test="idRol == 0">
 		<s:hidden name="idRol" value="0"/>
 	</s:if>
 	<s:if test="idRol > 0">
 		<s:hidden name="idRol" value="#Rol.idRol"/>
 	</s:if>
-	 --%>
+
 	
 	</s:form>
 
