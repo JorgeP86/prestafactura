@@ -8,11 +8,10 @@
 		a Struts que nos encontramos en la etapa de desarrollo, con esto generará 
 		más mensajes de salida para que sepamos si estamos haciendo algo mal, y nos 
 		mostrará los errores de una forma más clara. -->
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	<!-- enable 'method' attribute -->
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	
-
 	<package name="default" namespace="/" extends="struts-default">
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" ></result-type>
@@ -22,9 +21,11 @@
 		<action name="home">
 			<result type="tiles">prestaFacturaHome</result>
 		</action>
+		<!-- 
 		<action name="altaRolForm">
 			<result type="tiles">altaRol</result>
 		</action>
+		 -->
 		<action name="editarRolForm">
 			<result type="tiles">editarRol</result>
 		</action>
@@ -50,17 +51,20 @@
 			<result name="success">/inicio.jsp</result>
 		</action>
 		
-<!-- Rol -->		
+<!-- Rol -->
+		 
 		<action name="AccesoRolAction"
 			class="com.prestafacturaService.vista.action.rol.AccesoRolAction" method="execute">
 			<result name="success" type="tiles">listadoRoles</result>
 			<result name="error" type="tiles">errorListandoRoles</result>
 		</action>
+		
 		<action name="AltaRolAction"
-			class="com.prestafacturaService.vista.action.rol.AltaRolAction" method="execute">
-			<result  name="success" type="redirect">AccesoRolAction</result>
+			class="com.prestafacturaService.vista.action.rol.AltaRolAction">
+			<result type="redirectAction">
+				<param name="actionName">AccesoRolAction</param>
+			</result>
 			<result name="error" type="tiles">errorAltaRol</result>
-			<result name="input" type="tiles">errorAltaRol</result>
 		</action>
 		<action name="AltaRolFormAction" class="com.prestafacturaService.vista.action.rol.AltaRolFormAction">
 			<result name="success" type="tiles">altaRolForm</result>
