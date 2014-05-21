@@ -21,10 +21,10 @@
 		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
 	</definition>
 	<definition name="altaRol" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol2.jsp"/>
 	</definition>
 	<definition name="altaRolForm" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol2.jsp"/>
 	</definition>
 	<definition name="editarRol" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/editarRol.jsp"/>
