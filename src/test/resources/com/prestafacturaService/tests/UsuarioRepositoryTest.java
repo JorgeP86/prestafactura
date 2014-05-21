@@ -21,6 +21,7 @@ import com.prestafacturaService.mongo.dto.Recurso;
 import com.prestafacturaService.mongo.dto.Rol;
 import com.prestafacturaService.mongo.dto.Usuario;
 import com.prestafacturaService.mongo.manager.PermisoManager;
+import com.prestafacturaService.mongo.manager.RecursoManager;
 import com.prestafacturaService.mongo.manager.RolManager;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
@@ -34,12 +35,13 @@ public class UsuarioRepositoryTest {
 	@Autowired
 	private PermisoManager permisoManager;
 	@Autowired
+	private RecursoManager recursoManager;
+	@Autowired
 	private MongoTemplate template;
 	
 	@Before
 	public void setUp(){
-		template.dropCollection("recurso");
-		template.createCollection("recurso");
+		
 		template.dropCollection("permiso");
 		template.createCollection("permiso");
 		template.dropCollection("rol");
@@ -48,10 +50,16 @@ public class UsuarioRepositoryTest {
 		template.createCollection("usuario"); 
 		
 		Recurso recurso = new Recurso();
+		
+		recurso = recursoManager.obtenerPaginaById(1);
+		
+		/*
 		recurso.setAmbito("ambito");
 		recurso.setDescripcion("descripcion");
 		recurso.setEnc(true);
 		recurso.setPath("www.marca.com");
+		*/
+		
 		
 		Permiso permiso = new Permiso();
 		permiso.setRecurso(recurso);

@@ -18,6 +18,7 @@
  	<bean id="usuarioManager" class="com.prestafacturaService.mongo.manager.UsuarioManager"></bean>
  	<bean id="rolManager" class="com.prestafacturaService.mongo.manager.RolManager"></bean>
 	<bean id="permisoManager" class="com.prestafacturaService.mongo.manager.PermisoManager"></bean>
+	<bean id="recursoManager" class="com.prestafacturaService.mongo.manager.RecursoManager"></bean>
 	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
 </beans>
