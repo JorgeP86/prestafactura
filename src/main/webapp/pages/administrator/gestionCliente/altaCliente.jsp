@@ -24,121 +24,129 @@
 	<table width="90%">
 		<tr>
 			<td colspan="1">
-				<s:textfield name="nombreCliente" label="Nombre Cliente:"  size="30" id="nombreCliente"/>
+				<s:textfield name="nombreCliente" label="Nombre Cliente"  size="30" id="nombreCliente"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="apellidoPCliente" label="Primer Apellido:"  size="30" id="apellidoPCliente"/>
+				<s:textfield name="apellidoPCliente" label="Primer Apellido"  size="30" id="apellidoPCliente"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="apellidoSCliente" label="Segundo Apellido:"  size="30" id="apellidoSCliente"/>
+				<s:textfield name="apellidoSCliente" label="Segundo Apellido"  size="30" id="apellidoSCliente"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="identificacionFiscal" label="Identificación Fiscal:"  size="30" id="identificacionFiscal"/>
+				<s:textfield name="identificacionFiscal" label="Identificación Fiscal"  size="30" id="identificacionFiscal"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Direccion:</td>
+		</tr>
+		<tr>
 			<td colspan="1">
-				<s:textfield name="calle" label="Domicilio:"  size="30" id="calle"/>
+				<s:textfield name="calle" label="Domicilio"  size="30" id="calle"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="numeroEdificio" label="Numero Edificio:"  size="30" id="numeroEdificio"/>
+				<s:textfield name="numeroEdificio" label="Numero Edificio"  size="30" id="numeroEdificio"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="departamento" label="Departamento:"  size="30" id="departamento"/>
+				<s:textfield name="departamento" label="Departamento"  size="30" id="departamento"/>
 			</td>
 		</tr>
 			<tr>
 			<td colspan="1">
-				<s:textfield name="Provincia:" label="Provincia:"  id="provincia"/>
+				<s:textfield name="Provincia" label="Provincia"  id="provincia"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="Localidad" label="Localidad:"   id="localidad"/>
+				<s:textfield name="Localidad" label="Localidad"   id="localidad"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="codigoPostal" label="Codigo Postal:"  size="30"  id="codigoPostal"/>
+				<s:textfield name="codigoPostal" label="Codigo Postal"  size="30"  id="codigoPostal"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="codigoPais" label="Pais:"   id="codigoPais"/>
+				<s:textfield name="codigoPais" label="Pais"   id="codigoPais"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="posbox" label="Posbox:"  size="30"  id="posbox"/>
+				<s:textfield name="posbox" label="Posbox"  size="30"  id="posbox"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="calleAdicional" label="Calle Adicional:"  size="30"  id="calleAdicional"/>
+				<s:textfield name="calleAdicional" label="Calle Adicional"  size="30"  id="calleAdicional"/>
 			</td>
 		</tr>
 		
 		
 			<tr>
 			<td>Direccion de Entrega:</td>
+			</tr>
+			<tr>
 			<td colspan="1">
-				<s:textfield name="calleEntrega" label="Domicilio:"  size="30" id="calleEntrega"/>
+				<s:textfield name="calleEntrega" label="Domicilio"  size="30" id="calleEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="numeroEdificioEntrega" label="Numero Edificio:"  size="30" id="numeroEdificioEntrega"/>
+				<s:textfield name="numeroEdificioEntrega" label="Numero Edificio"  size="30" id="numeroEdificioEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="departamentoEntrega" label="Departamento:"  size="30" id="departamentoEntrega"/>
+				<s:textfield name="departamentoEntrega" label="Departamento"  size="30" id="departamentoEntrega"/>
 			</td>
 			</tr>
 			<tr>
 			<td colspan="1">
-				<s:textfield name="provinciaEntrega" label="Provincia:"  id="provinciaEntrega"/>
+				<s:textfield name="provinciaEntrega" label="Provincia"  id="provinciaEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="localidadEntrega" label="Localidad:"   id="localidadEntrega"/>
+				<s:textfield name="localidadEntrega" label="Localidad"   id="localidadEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield label="Codigo Postal:"  size="30"  id="codigoPostalEntrega"/>
+				<s:textfield label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="codigoPaisEntrega" label="Pais:"   id="codigoPaisEntrega"/>
+				<s:textfield name="codigoPaisEntrega" label="Pais"   id="codigoPaisEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="posboxEntrega" label="Posbox:"  size="30"  id="posboxEntrega"/>
+				<s:textfield name="posboxEntrega" label="Posbox"  size="30"  id="posboxEntrega"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="calleAdicionalEntrega" label="Calle Adiciona:"  size="30"  id="calleAdicionalEntrega"/>
+				<s:textfield name="calleAdicionalEntrega" label="Calle Adicional"  size="30"  id="calleAdicionalEntrega"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Detalles de Contacto del Cliente:</td>
+		</tr>	
+		<tr>
 			<td colspan="1">
-				<s:textfield name="personaContacto" label="Persona de Contacto:"  size="30"  id="personaContacto"/>
+				<s:textfield name="personaContacto" label="Persona de Contacto"  size="30"  id="personaContacto"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="telefono" label="Teléfono:"  size="30"  id="telefono"/>
+				<s:textfield name="telefono" label="Teléfono"  size="30"  id="telefono"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="mail" label="E-mail:"  size="30"  id="mail"/>
+				<s:textfield name="mail" label="E-mail"  size="30"  id="mail"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="fax" label="fax:"  size="30"  id="fax"/>
+				<s:textfield name="fax" label="fax"  size="30"  id="fax"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="direccionWeb" label="Dirección Web:"  size="30"  id="direccionWeb"/>
+				<s:textfield name="direccionWeb" label="Dirección Web"  size="30"  id="direccionWeb"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Entidad Legal</td>
+		</tr>
+		<tr>
 			<td colspan="1">
-				<s:textfield name="razonSocial" label="Raón Social:"  size="30"  id="razonSocial"/>
+				<s:textfield name="razonSocial" label="Razón Social"  size="30"  id="razonSocial"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="nombreComercial" label="Nombre Comercial:"  size="30"  id="nombreComercial"/>
+				<s:textfield name="nombreComercial" label="Nombre Comercial"  size="30"  id="nombreComercial"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="datosRegistrales" label="Datos Registrales:"  size="30"  id="datosRegistrales"/>
+				<s:textfield name="datosRegistrales" label="Datos Registrales"  size="30"  id="datosRegistrales"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Direccion de la Empresa</td>
 			<td colspan="1">
-				<s:textfield name="calleEmpresa" label="Domicilio:"  size="30" id="calleEmpresa"/>
+				<s:textfield name="calleEmpresa" label="Domicilio"  size="30" id="calleEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="numeroEdificioEmpresa" label="Numero Edificio:"  size="30" id="numeroEdificioEmpresa"/>
+				<s:textfield name="numeroEdificioEmpresa" label="Numero Edificio"  size="30" id="numeroEdificioEmpresa"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="departamentoEmpresa" label="Departamento:"  size="30" id="departamentoEmpresa"/>
@@ -146,40 +154,42 @@
 		</tr>
 			<tr>
 			<td colspan="1">
-				<s:textfield name="provinciaEmpresa" label="Provincia:"  id="provinciaEmpresa"/>
+				<s:textfield name="provinciaEmpresa" label="Provincia"  id="provinciaEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="localidadEmpresa" label="Localidad:"   id="localidadEmpresa"/>
+				<s:textfield name="localidadEmpresa" label="Localidad"   id="localidadEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="codigoPostalEmpresa" label="Codigo Postal:"  size="30"  id="codigoPostalEmpresa"/>
+				<s:textfield name="codigoPostalEmpresa" label="Codigo Postal"  size="30"  id="codigoPostalEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="codigoPaisEmpresa" label="Pais:"   id="codigoPaisEmpresa"/>
+				<s:textfield name="codigoPaisEmpresa" label="Pais"   id="codigoPaisEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="posboxEmpresa" label="Posbox:"  size="30"  id="posboxEmpresa"/>
+				<s:textfield name="posboxEmpresa" label="Posbox"  size="30"  id="posboxEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="calleAdicionalEmpresa" label="Calle Adiciona:"  size="30"  id="calleAdicionalEmpresa"/>
+				<s:textfield name="calleAdicionalEmpresa" label="Calle Adicional"  size="30"  id="calleAdicionalEmpresa"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Detalles de Contacto de la Empresa:</td>
+		</tr>
+			<tr>
 			<td colspan="1">
 				<s:textfield name="personaContactoEmpresa" label="Persona de Contacto:"  size="30"  id="personaContactoEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="telefonoEmpresa" label="Teléfono:"  size="30"  id="telefonoEmpresa"/>
+				<s:textfield name="telefonoEmpresa" label="Teléfono"  size="30"  id="telefonoEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="mailEmpresa" label="E-mail:"  size="30"  id="mailEmpresa"/>
+				<s:textfield name="mailEmpresa" label="E-mail"  size="30"  id="mailEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="faxEmpresa" label="fax:"  size="30"  id="faxEmpresa"/>
+				<s:textfield name="faxEmpresa" label="fax"  size="30"  id="faxEmpresa"/>
 			</td>
 			<td colspan="1">
-				<s:textfield name="direccionWebEmpresa" label="Dirección Web:"  size="30"  id="direccionWebEmpresa"/>
+				<s:textfield name="direccionWebEmpresa" label="Dirección Web"  size="30"  id="direccionWebEmpresa"/>
 			</td>	
 			</tr>
 	</table>
