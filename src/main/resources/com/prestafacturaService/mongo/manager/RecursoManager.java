@@ -17,9 +17,9 @@ public class RecursoManager {
 		return recursoRepository.findAll();
 	}
 
-	public Recurso obtenerPaginaById(Integer idPagina) {
+	public Recurso obtenerPaginaBypath(String path) {
 		// TODO Auto-generated method stub
-		return recursoRepository.obtenerPaginaByid(idPagina);
+		return recursoRepository.obtenerPaginaBypath(path);
 	}
 
 }
