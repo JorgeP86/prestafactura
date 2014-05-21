@@ -61,9 +61,7 @@
 		
 		<action name="AltaRolAction"
 			class="com.prestafacturaService.vista.action.rol.AltaRolAction">
-			<result type="redirectAction">
-				<param name="actionName">AccesoRolAction</param>
-			</result>
+			<result name="success" type="tiles">prestaFacturaHome</result>
 			<result name="error" type="tiles">errorAltaRol</result>
 		</action>
 		<action name="AltaRolFormAction" class="com.prestafacturaService.vista.action.rol.AltaRolFormAction">
