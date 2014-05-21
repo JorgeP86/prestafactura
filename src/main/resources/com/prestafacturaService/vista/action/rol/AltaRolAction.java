@@ -25,12 +25,8 @@ public class AltaRolAction extends ActionSupport {
 
 	private static final Logger logger = Logger.getLogger(AltaRolAction.class);
 
-	public static final String INPUT = "input";
 	public static final String SUCCESS = "success";
-	public static final String SUCCESSEDITAR = "successEditar";
 	public static final String ERROR = "error";
-	
-	private static final String ROL_SEQ_KEY = "idRol";
 	
 	
 	@Autowired
@@ -43,7 +39,7 @@ public class AltaRolAction extends ActionSupport {
 	private String nombreRol;
 	private String descripcionRol;
 
-	private Collection paginas;
+	private Collection<Recurso> paginas;
 
 	// Permisos
 	private int altaCliente;
@@ -51,13 +47,13 @@ public class AltaRolAction extends ActionSupport {
 	private int altaProveedor;
 	private int altaRol;
 	private int altaUsuario;
-
-	private int bajaCliente;
+	
+	private int bajaClientes;
 	private int bajaProveedor;
 	private int bajaRol;
 	private int bajaUsuario;
 
-	private int consultarCliente;
+	private int consultarClientes;
 	private int consultarDatos;
 	private int consultarFactura;
 	private int consultarFirmaElectronica;
@@ -69,10 +65,12 @@ public class AltaRolAction extends ActionSupport {
 	private int crearFactura;
 	private int descargarFactura;
 
-	private int editarCliente;
+	private int editarClientes;
 	private int editarProveedor;
 	private int editarRol;
 	private int editarUsuario;
+	private int editarDatos;
+	
 
 	private int eliminarInformacion;
 	private int generarFirmaElectronica;
@@ -80,22 +78,39 @@ public class AltaRolAction extends ActionSupport {
 	private int listarClientes;
 	private int listarProveedores;
 	private int listarRoles;
-	private int listarUsuario;
-
+	private int listarUsuarios;
+	
 	private int publicarInformacion;
-
+	
+	private int gestionInformacion;
+	private int gestionFirmaElectronica;
+	private int gestionFacturasAlmacenadas;
+	private int gestionFactura;
+	private int gestionDatosInternos;
+	private int gestionClientes;
+	private int gestionProveedores;
+	private int gestionRoles;
+	private int gestionUsuarios;
+	
 	private int idRol;
 	private int idpagina;
 
 	public String execute(){
 			clearFieldErrors();
 		try{
-			
-
+			System.out.println("El valor a mostrar es:" + altaCliente);
+			System.out.println("El valor a mostrar es:" + altaDatos);
+			System.out.println("El valor a mostrar es:" + altaProveedor);
+			System.out.println("El valor a mostrar es:" + altaRol);
+			System.out.println("El valor a mostrar es:" + altaUsuario);
+			System.out.println("El valor a mostrar es:" + consultarClientes);
+			System.out.println("El valor a mostrar es:" + descargarFactura);
+			System.out.println("El valor a mostrar es:" + nombreRol);
+			System.out.println("El valor a mostrar es:" + descripcionRol);
 			if(idRol==0){
 				logger.info("Comprobacion si idRol==0");
 				List<Permiso> listaPermisosCreada=new ArrayList<Permiso>();
-				logger.info("Inicializamos la lista de permisos");
+				logger.info("Inicializamos la lista de permisos vacía");
 				//Altas
 				if(altaCliente!=0){
 					Permiso altaC= this.crearPermiso(altaCliente);
@@ -125,8 +140,8 @@ public class AltaRolAction extends ActionSupport {
 
 				}
 					//Bajas
-				if(bajaCliente!=0){
-					Permiso bajaC=this.crearPermiso(bajaCliente);
+				if(bajaClientes!=0){
+					Permiso bajaC=this.crearPermiso(bajaClientes);
 					if(bajaC!=null){
 						listaPermisosCreada.add(bajaC);
 					}
@@ -149,8 +164,8 @@ public class AltaRolAction extends ActionSupport {
 					}
 				}
 					//consultas
-				if(consultarCliente!=0){
-					Permiso consultarC=this.crearPermiso(consultarCliente);
+				if(consultarClientes!=0){
+					Permiso consultarC=this.crearPermiso(consultarClientes);
 					if(consultarC!=null){
 						listaPermisosCreada.add(consultarC);
 					}
@@ -203,8 +218,8 @@ public class AltaRolAction extends ActionSupport {
 					}
 				}
 					//Editar
-				if(editarCliente!=0){
-					Permiso editarC=this.crearPermiso(editarCliente);
+				if(editarClientes!=0){
+					Permiso editarC=this.crearPermiso(editarClientes);
 					if(editarC!=null){
 						listaPermisosCreada.add(editarC);
 					}
@@ -222,6 +237,11 @@ public class AltaRolAction extends ActionSupport {
 					Permiso editarU=this.crearPermiso(editarUsuario);
 					if(editarU!=null){
 						listaPermisosCreada.add(editarU);
+					}
+				}if(editarDatos!=0){
+					Permiso editarDa=this.crearPermiso(editarDatos);
+					if(editarDa!=null){
+						listaPermisosCreada.add(editarDa);
 					}
 				}
 					//Otros2
@@ -257,8 +277,8 @@ public class AltaRolAction extends ActionSupport {
 					if(listarR!=null){
 						listaPermisosCreada.add(listarR);
 					}
-				}if( listarUsuario!=0){
-					Permiso listarU=this.crearPermiso(listarUsuario);
+				}if( listarUsuarios!=0){
+					Permiso listarU=this.crearPermiso(listarUsuarios);
 					if(listarU!=null){
 						listaPermisosCreada.add(listarU);
 					}
@@ -266,7 +286,6 @@ public class AltaRolAction extends ActionSupport {
 				
 				logger.info("Terminamos de crear los permisos y añadirlos a la lista");
 
-			
 				Rol rolNuevo= new Rol();
 				logger.info("Inicializamos el rol");
 
@@ -284,8 +303,9 @@ public class AltaRolAction extends ActionSupport {
 				}
 				logger.info("El objeto Rol creado");
 
-				Rol rolcreado=rolManager.saveRol(rolNuevo);
+				Rol rolcreado = rolManager.saveRol(rolNuevo);
 				logger.info("Guardamos el Rol");
+				System.out.println("El rol a mostrar es:" + rolcreado.getDescripcion());
 
 				
 			}
@@ -295,85 +315,409 @@ public class AltaRolAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}		
-			
-	
-		
-		
+
 		// Método que permite crear el permiso
-		public Permiso crearPermiso(int seleccion) {
-			 logger.info("Comienza la operacion crear permiso");
+		private Permiso crearPermiso(int seleccion) {
+			logger.info("Comienza la operacion crear permiso");
 
 			Permiso permiso = new Permiso();
 			
 				// obtenemos la pág seleccionada en el combox
 				Recurso pagina = recursoManager.obtenerPaginaById(new Integer(
 						seleccion));
-				 logger.info("obtenemos la pág seleccionada en el combox");
+				logger.info("obtenemos la pág seleccionada en el combox");
 
 				// creamos un permiso con esa pag 
 		
-					permiso.setRecurso(pagina);
-					permisoManager.altaPermiso(permiso);
+				permiso.setRecurso(pagina);
+				permisoManager.altaPermiso(permiso);
 					logger.info("Damos de alta el permiso");
 					return permiso;
 		}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-	public String getNombreRol() {
-		return nombreRol;
-	}
 
-	public void setNombreRol(String nombreRol) {
-		this.nombreRol = nombreRol;
-	}
+		public RolManager getRolManager() {
+			return rolManager;
+		}
 
-	public String getDescripcionRol() {
-		return descripcionRol;
-	}
+		public void setRolManager(RolManager rolManager) {
+			this.rolManager = rolManager;
+		}
 
-	public void setDescripcionRol(String descripcionRol) {
-		this.descripcionRol = descripcionRol;
-	}
+		public PermisoManager getPermisoManager() {
+			return permisoManager;
+		}
 
-	public int getIdRol() {
-		return idRol;
-	}
+		public void setPermisoManager(PermisoManager permisoManager) {
+			this.permisoManager = permisoManager;
+		}
 
-	public void setIdRol(int idRol) {
-		this.idRol = idRol;
-	}
+		public RecursoManager getRecursoManager() {
+			return recursoManager;
+		}
 
-	public Collection getPaginas() {
-		return paginas;
-	}
+		public void setRecursoManager(RecursoManager recursoManager) {
+			this.recursoManager = recursoManager;
+		}
 
-	public void setPaginas(Collection paginas) {
-		this.paginas = paginas;
-	}
+		public String getNombreRol() {
+			return nombreRol;
+		}
+
+		public void setNombreRol(String nombreRol) {
+			this.nombreRol = nombreRol;
+		}
+
+		public String getDescripcionRol() {
+			return descripcionRol;
+		}
+
+		public void setDescripcionRol(String descripcionRol) {
+			this.descripcionRol = descripcionRol;
+		}
+
+		public Collection<Recurso> getPaginas() {
+			return paginas;
+		}
+
+		public void setPaginas(Collection<Recurso> paginas) {
+			this.paginas = paginas;
+		}
+
+		public int getAltaCliente() {
+			return altaCliente;
+		}
+
+		public void setAltaCliente(int altaCliente) {
+			this.altaCliente = altaCliente;
+		}
+
+		public int getAltaDatos() {
+			return altaDatos;
+		}
+
+		public void setAltaDatos(int altaDatos) {
+			this.altaDatos = altaDatos;
+		}
+
+		public int getAltaProveedor() {
+			return altaProveedor;
+		}
+
+		public void setAltaProveedor(int altaProveedor) {
+			this.altaProveedor = altaProveedor;
+		}
+
+		public int getAltaRol() {
+			return altaRol;
+		}
+
+		public void setAltaRol(int altaRol) {
+			this.altaRol = altaRol;
+		}
+
+		public int getAltaUsuario() {
+			return altaUsuario;
+		}
+
+		public void setAltaUsuario(int altaUsuario) {
+			this.altaUsuario = altaUsuario;
+		}
+
+		public int getBajaClientes() {
+			return bajaClientes;
+		}
+
+		public void setBajaClientes(int bajaClientes) {
+			this.bajaClientes = bajaClientes;
+		}
+
+		public int getBajaProveedor() {
+			return bajaProveedor;
+		}
+
+		public void setBajaProveedor(int bajaProveedor) {
+			this.bajaProveedor = bajaProveedor;
+		}
+
+		public int getBajaRol() {
+			return bajaRol;
+		}
+
+		public void setBajaRol(int bajaRol) {
+			this.bajaRol = bajaRol;
+		}
+
+		public int getBajaUsuario() {
+			return bajaUsuario;
+		}
+
+		public void setBajaUsuario(int bajaUsuario) {
+			this.bajaUsuario = bajaUsuario;
+		}
+
+		public int getConsultarClientes() {
+			return consultarClientes;
+		}
+
+		public void setConsultarClientes(int consultarClientes) {
+			this.consultarClientes = consultarClientes;
+		}
+
+		public int getConsultarDatos() {
+			return consultarDatos;
+		}
+
+		public void setConsultarDatos(int consultarDatos) {
+			this.consultarDatos = consultarDatos;
+		}
+
+		public int getConsultarFactura() {
+			return consultarFactura;
+		}
+
+		public void setConsultarFactura(int consultarFactura) {
+			this.consultarFactura = consultarFactura;
+		}
+
+		public int getConsultarFirmaElectronica() {
+			return consultarFirmaElectronica;
+		}
+
+		public void setConsultarFirmaElectronica(int consultarFirmaElectronica) {
+			this.consultarFirmaElectronica = consultarFirmaElectronica;
+		}
+
+		public int getConsultarInformacion() {
+			return consultarInformacion;
+		}
+
+		public void setConsultarInformacion(int consultarInformacion) {
+			this.consultarInformacion = consultarInformacion;
+		}
+
+		public int getConsultarRol() {
+			return consultarRol;
+		}
+
+		public void setConsultarRol(int consultarRol) {
+			this.consultarRol = consultarRol;
+		}
+
+		public int getConsultarProveedor() {
+			return consultarProveedor;
+		}
+
+		public void setConsultarProveedor(int consultarProveedor) {
+			this.consultarProveedor = consultarProveedor;
+		}
+
+		public int getConsultarUsuario() {
+			return consultarUsuario;
+		}
+
+		public void setConsultarUsuario(int consultarUsuario) {
+			this.consultarUsuario = consultarUsuario;
+		}
+
+		public int getCrearFactura() {
+			return crearFactura;
+		}
+
+		public void setCrearFactura(int crearFactura) {
+			this.crearFactura = crearFactura;
+		}
+
+		public int getDescargarFactura() {
+			return descargarFactura;
+		}
+
+		public void setDescargarFactura(int descargarFactura) {
+			this.descargarFactura = descargarFactura;
+		}
+
+		public int getEditarClientes() {
+			return editarClientes;
+		}
+
+		public void setEditarClientes(int editarClientes) {
+			this.editarClientes = editarClientes;
+		}
+
+		public int getEditarProveedor() {
+			return editarProveedor;
+		}
+
+		public void setEditarProveedor(int editarProveedor) {
+			this.editarProveedor = editarProveedor;
+		}
+
+		public int getEditarRol() {
+			return editarRol;
+		}
+
+		public void setEditarRol(int editarRol) {
+			this.editarRol = editarRol;
+		}
+
+		public int getEditarUsuario() {
+			return editarUsuario;
+		}
+
+		public void setEditarUsuario(int editarUsuario) {
+			this.editarUsuario = editarUsuario;
+		}
+
+		public int getEditarDatos() {
+			return editarDatos;
+		}
+
+		public void setEditarDatos(int editarDatos) {
+			this.editarDatos = editarDatos;
+		}
+
+		public int getEliminarInformacion() {
+			return eliminarInformacion;
+		}
+
+		public void setEliminarInformacion(int eliminarInformacion) {
+			this.eliminarInformacion = eliminarInformacion;
+		}
+
+		public int getGenerarFirmaElectronica() {
+			return generarFirmaElectronica;
+		}
+
+		public void setGenerarFirmaElectronica(int generarFirmaElectronica) {
+			this.generarFirmaElectronica = generarFirmaElectronica;
+		}
+
+		public int getListarClientes() {
+			return listarClientes;
+		}
+
+		public void setListarClientes(int listarClientes) {
+			this.listarClientes = listarClientes;
+		}
+
+		public int getListarProveedores() {
+			return listarProveedores;
+		}
+
+		public void setListarProveedores(int listarProveedores) {
+			this.listarProveedores = listarProveedores;
+		}
+
+		public int getListarRoles() {
+			return listarRoles;
+		}
+
+		public void setListarRoles(int listarRoles) {
+			this.listarRoles = listarRoles;
+		}
+
+		public int getListarUsuarios() {
+			return listarUsuarios;
+		}
+
+		public void setListarUsuarios(int listarUsuarios) {
+			this.listarUsuarios = listarUsuarios;
+		}
+
+		public int getPublicarInformacion() {
+			return publicarInformacion;
+		}
+
+		public void setPublicarInformacion(int publicarInformacion) {
+			this.publicarInformacion = publicarInformacion;
+		}
+
+		public int getGestionInformacion() {
+			return gestionInformacion;
+		}
+
+		public void setGestionInformacion(int gestionInformacion) {
+			this.gestionInformacion = gestionInformacion;
+		}
+
+		public int getGestionFirmaElectronica() {
+			return gestionFirmaElectronica;
+		}
+
+		public void setGestionFirmaElectronica(int gestionFirmaElectronica) {
+			this.gestionFirmaElectronica = gestionFirmaElectronica;
+		}
+
+		public int getGestionFacturasAlmacenadas() {
+			return gestionFacturasAlmacenadas;
+		}
+
+		public void setGestionFacturasAlmacenadas(int gestionFacturasAlmacenadas) {
+			this.gestionFacturasAlmacenadas = gestionFacturasAlmacenadas;
+		}
+
+		public int getGestionFactura() {
+			return gestionFactura;
+		}
+
+		public void setGestionFactura(int gestionFactura) {
+			this.gestionFactura = gestionFactura;
+		}
+
+		public int getGestionDatosInternos() {
+			return gestionDatosInternos;
+		}
+
+		public void setGestionDatosInternos(int gestionDatosInternos) {
+			this.gestionDatosInternos = gestionDatosInternos;
+		}
+
+		public int getGestionClientes() {
+			return gestionClientes;
+		}
+
+		public void setGestionClientes(int gestionClientes) {
+			this.gestionClientes = gestionClientes;
+		}
+
+		public int getGestionProveedores() {
+			return gestionProveedores;
+		}
+
+		public void setGestionProveedores(int gestionProveedores) {
+			this.gestionProveedores = gestionProveedores;
+		}
+
+		public int getGestionRoles() {
+			return gestionRoles;
+		}
+
+		public void setGestionRoles(int gestionRoles) {
+			this.gestionRoles = gestionRoles;
+		}
+
+		public int getGestionUsuarios() {
+			return gestionUsuarios;
+		}
+
+		public void setGestionUsuarios(int gestionUsuarios) {
+			this.gestionUsuarios = gestionUsuarios;
+		}
+
+		public int getIdRol() {
+			return idRol;
+		}
+
+		public void setIdRol(int idRol) {
+			this.idRol = idRol;
+		}
+
+		public int getIdpagina() {
+			return idpagina;
+		}
+
+		public void setIdpagina(int idpagina) {
+			this.idpagina = idpagina;
+		}
+	
 
 }
