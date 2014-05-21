@@ -18,14 +18,14 @@ public class Rol extends BaseEntity{
 	private List<Permiso> permisos;
 	
 	@Indexed(unique = true)
-	private int idrol;
+	private int idRol;
 	
 
 	public int getIdrol() {
-		return idrol;
+		return idRol;
 	}
 	public void setIdrol(int idrol) {
-		this.idrol = idrol;
+		this.idRol = idrol;
 	}
 	public String getDescripcion() {
 		return descripcion;

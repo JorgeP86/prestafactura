@@ -13,7 +13,7 @@ public class Recurso extends BaseEntity{
 	private static final long serialVersionUID = -2887083669831054266L;
 	private boolean enc=false;
 	@Indexed(unique = true)
-	private String idpagina;
+	private Integer idpagina;
 	private String path;
 	private String descripcion;
 	private String ambito;
@@ -42,10 +42,10 @@ public class Recurso extends BaseEntity{
 	public void setEnc(boolean enc) {
 		this.enc = enc;
 	}
-	public String getIdpagina() {
+	public Integer getIdpagina() {
 		return idpagina;
 	}
-	public void setIdpagina(String idpagina) {
+	public void setIdpagina(Integer idpagina) {
 		this.idpagina = idpagina;
 	}
 	

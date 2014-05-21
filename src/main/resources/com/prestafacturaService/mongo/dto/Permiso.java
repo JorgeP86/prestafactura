@@ -6,8 +6,6 @@ import java.util.Map;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.prestafacturaService.mongo.util.CascadeSave;
-
 
 @Document(collection="permiso")
 public class Permiso extends BaseEntity{
@@ -17,7 +15,6 @@ public class Permiso extends BaseEntity{
 	 */
 	private static final long serialVersionUID = -2289659181758762216L;
 	@DBRef
-	@CascadeSave
 	private Recurso recurso;
 	private Rol rol;
 	Map<Recurso, Rol> permisosPR=new HashMap<Recurso, Rol>();
