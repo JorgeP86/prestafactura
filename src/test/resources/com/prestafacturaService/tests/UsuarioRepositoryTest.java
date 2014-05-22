@@ -3,7 +3,6 @@ package com.prestafacturaService.tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,19 +59,18 @@ public class UsuarioRepositoryTest {
 		recurso.setEnc(true);
 		recurso.setPath("www.marca.com");
 		*/
-		
-		
-		Permiso permiso = new Permiso();
-		permiso.setRecurso(recurso);
 
-		permisoManager.savePermiso(permiso);
-		
-		List<Permiso> permisos = new ArrayList<Permiso>();
-		permisos.add(permiso);
+		//List<Permiso> permisos = new ArrayList<Permiso>();
 		Rol rol = new Rol();
 		rol.setNombre("Administrador");
 		rol.setDescripcion("descripcion");
-		rol.setPermisos(permisos);
+		//rol.setPermisos(permisos);
+		rolManager.saveRol(rol);
+		
+		Permiso permiso = new Permiso();
+		permiso.setRecurso(recurso);
+		permiso.setRol(rol);
+		permisoManager.savePermiso(permiso);
 		
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Jorge");
