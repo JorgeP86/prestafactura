@@ -19,6 +19,7 @@
 		</tr>
 	</table>
 <s:form action="AltaRolAction" namespace="/" method="post" styleId="formulario">
+	
 	<fieldset>
 	<legend>Alta Nuevo Cliente</legend>
 	<table width="90%">
@@ -236,31 +237,29 @@
 				<s:textfield name="direccionWebEmpresa" label="Dirección Web"  size="30"  id="direccionWebEmpresa"/>
 			</td>	
 			</tr>
-	</table>
-	</fieldset>
-	<s:div>
+			<s:div>
 		<s:fielderror name="invalidClienteAlta">
 		</s:fielderror>
 	</s:div>
-	</fieldset>	
+		</table>
+	</fieldset>
 	
+
+
+
 	<table>
 		<tr>
 			<td>
-				<s:url action="AltaClienteAction" var="altaCliente">
-					<s:param name="idCliente" value="0"></s:param>
-				</s:url>
-				<s:submit action="%{#altaCliente}" type="image" src="/images/alta_b.gif">
-				
-				</s:submit>
-				<a href="<s:property value='#altaCliente'/>">			
-				<img alt="alta" src="<s:url value='/images/alta_b.gif'/>" width="93" height="32" border="0" longdesc="Alta"/></a>
+			
+				<s:hidden name="idCliente" value="0"></s:hidden>	
+				<s:submit type="button" value="altaCliente" src='/mages/alta_b.gif'/>			
 			 </td>
 			 <td>
 			 	<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
 			 </td>
 		</tr>
 	</table>
+	
 
 
 
