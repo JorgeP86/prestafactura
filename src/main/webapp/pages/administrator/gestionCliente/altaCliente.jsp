@@ -35,8 +35,15 @@
 			<td colspan="1">
 				<s:textfield name="identificacionFiscal" label="Identificación Fiscal"  size="30" id="identificacionFiscal"/>
 			</td>
+			
 		</tr>
-		<tr></tr>
+		<tr></tr>	
+	</table>
+	</fieldset>
+	
+	
+	<fieldset>
+		<table width="90%">
 		<tr>
 			<td>Direccion:</td>
 		</tr>
@@ -74,7 +81,11 @@
 				<s:textfield name="calleAdicional" label="Calle Adicional"  size="30"  id="calleAdicional"/>
 			</td>
 		</tr>
-		
+	</table>
+	</fieldset>	
+	
+	<fieldset>	
+	<table>
 			<tr></tr>
 			<tr>
 			<td>Direccion de Entrega:</td>
@@ -114,6 +125,11 @@
 			</td>
 		</tr>
 		<tr></tr>
+		</table>
+		</fieldset>
+		
+		<fieldset>
+		<table>
 		<tr>
 			<td>Detalles de Contacto del Cliente:</td>
 		</tr>	
@@ -135,6 +151,11 @@
 			</td>
 		</tr>
 		<tr></tr>
+		</table>
+		</fieldset>
+		
+		<fieldset>
+		<table>
 		<tr>
 			<td>Entidad Legal</td>
 		</tr>
@@ -150,6 +171,11 @@
 			</td>
 		</tr>
 		<tr></tr>
+		</table>
+		</fieldset>
+		
+		<fieldset>
+		<table>
 		<tr>
 			<td>Direccion de la Empresa</td>
 			<td colspan="1">
@@ -185,6 +211,11 @@
 			</td>
 		</tr>
 		<tr></tr>
+		</table>
+		</fieldset>
+		
+		<fieldset>
+		<table>
 		<tr>
 			<td>Detalles de Contacto de la Empresa:</td>
 		</tr>
@@ -206,6 +237,7 @@
 			</td>	
 			</tr>
 	</table>
+	</fieldset>
 	<s:div>
 		<s:fielderror name="invalidClienteAlta">
 		</s:fielderror>
