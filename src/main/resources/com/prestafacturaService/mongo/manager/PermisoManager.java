@@ -38,4 +38,9 @@ public class PermisoManager {
 	public void bajaPermiso(Permiso permiso) {
 		permisoRepository.delete(permiso); 	
 	}
+
+	public List<Permiso> ObtenerPermisosByRol(Rol rol) {
+		// TODO Auto-generated method stub
+		return permisoRepository.obtenerPermisoByRol(rol);
+	}
 }

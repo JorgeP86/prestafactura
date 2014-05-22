@@ -75,7 +75,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 			logger.info("Guardado el usuario en session");
 
 			rol = u.getRol();
-			perm = rol.getPermisos();
+			perm=permisoManager.ObtenerPermisosByRol(rol);
 			logger.info("Obtener los permisos del rol");
 
 			Iterator<Permiso> it = perm.iterator();

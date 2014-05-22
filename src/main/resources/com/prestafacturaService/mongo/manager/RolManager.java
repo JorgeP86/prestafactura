@@ -14,8 +14,6 @@ public class RolManager {
 	
 	@Autowired
 	private RolRepository rolRepository;
-	//private static ApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
-	
 	
 	
 	public Rol saveRol(Rol rol){

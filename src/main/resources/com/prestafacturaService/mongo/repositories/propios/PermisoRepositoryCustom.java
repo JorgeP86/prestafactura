@@ -8,4 +8,5 @@ import com.prestafacturaService.mongo.dto.Rol;
 
 public interface PermisoRepositoryCustom {
 	public List<Permiso> buscarPermisoConPagRol(Recurso pagina, Rol rol);
+	public List<Permiso> obtenerPermisoByRol(Rol rol);
 }

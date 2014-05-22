@@ -22,4 +22,12 @@ public class PermisoRepositoryImpl implements PermisoRepositoryCustom {
 		return mongoTemplate.find(query,Permiso.class);
 	}
 
+
+	public List<Permiso> obtenerPermisoByRol(Rol rol) {
+		// TODO Auto-generated method stub
+		Query query = new Query();
+		query.addCriteria(Criteria.where("rol").is(rol));
+		return mongoTemplate.find(query,Permiso.class);
+	}
+
 }

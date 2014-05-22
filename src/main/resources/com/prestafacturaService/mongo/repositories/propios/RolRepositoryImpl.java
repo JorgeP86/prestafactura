@@ -1,5 +1,6 @@
 package com.prestafacturaService.mongo.repositories.propios;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -39,8 +40,8 @@ public class RolRepositoryImpl implements RolRepositoryCustom{
 
 	public Rol UpdateRol(Rol rol) {
 		Query query=new Query();
-		Integer idrol=rol.getIdrol();
-		query.addCriteria(Criteria.where("idrol").is(idrol));
+		ObjectId id=rol.getID();
+		query.addCriteria(Criteria.where("_id").is(id));
 		Update update= new Update();
 		update.push("nombre",rol.getNombre());
 		update.push("descripcion", rol.getDescripcion());
