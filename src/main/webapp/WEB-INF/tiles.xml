@@ -37,11 +37,9 @@
 	</definition>
 	
 	<definition name="altaCliente" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/usuario/gestionClientes/altaCliente.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
-	<definition name="altaClienteForm" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/usuario/gestionClientes/altaCliente.jsp"/>
-	</definition>
+	
 	
 	<definition name="errorAltaRol" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/admin/gestionRoles/errorAltaRol.jsp"/>
