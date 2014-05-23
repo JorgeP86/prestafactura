@@ -1,5 +1,47 @@
 @CHARSET "ISO-8859-1";
 
+html,body{
+	height:100%;
+	width:100%;
+}
+
 body{
+	background-color: #E5E4E2;
+	min-height:468px;/* for good browsers*/
+	min-width:552px;/* for good browsers*/	
+}
+
+div#header{
+	margin-left:250px;
+}
+
+div#welcome{
+	background-color:#E5E4E2;
+}
+
+table#table_welcome{
+	position:relative;
+}
+
+div#content{
+	position:relative;
+	left:200px;
+	vertical-align:middle;
+}
+
+#td_template_menu{
+	width:23%;
+}
+
+#body{
+	position:relative;
+	left:100px;
+}
+
+div#footer{
+	position:relative;
+	top:10px;
 	
+	
+	text-align:center;
 }
