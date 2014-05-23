@@ -56,7 +56,6 @@
 			<result name="success" type="tiles">listadoRoles</result>
 			<result name="error" type="tiles">errorListandoRoles</result>
 		</action>
-		
 		<action name="AltaRolAction"
 			class="com.prestafacturaService.vista.action.rol.AltaRolAction">
 			<result name="success" type="redirectAction">AccesoRolAction</result>
