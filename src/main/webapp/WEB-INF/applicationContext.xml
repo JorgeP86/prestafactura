@@ -27,8 +27,8 @@
 	
 	<mongo:repositories base-package="com.prestafacturaService.mongo.repositories" factory-class="com.prestafacturaService.mongo.repositories.MongoRepoFactory">
  	</mongo:repositories>
-	
-	<!-- Repositorio de metodos propios -->
+ 	
+ 	<!-- Repositorio de metodos propios -->
 	<bean id="usurioRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.UsuarioRepositoryImpl"></bean>
 	<bean id="rolRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RolRepositoryImpl"></bean>
 	<bean id="permisoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.PermisoRepositoryImpl"></bean>
@@ -39,8 +39,8 @@
 	<bean id="proveedorRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProveedorRepositoryImpl"></bean>
 	<bean id="secuenceIdRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.SecuenceIdRepositoryImpl"></bean>
 	
-	
- 	<!-- Service -->
+	<!-- Service -->
+ 	<bean id="datosPropiosManager" class="com.prestafacturaService.mongo.manager.DatosPropiosManager"></bean>
  	<bean id="usuarioManager" class="com.prestafacturaService.mongo.manager.UsuarioManager"></bean>
 	<bean id="rolManager" class="com.prestafacturaService.mongo.manager.RolManager"></bean>
 	<bean id="permisoManager" class="com.prestafacturaService.mongo.manager.PermisoManager"></bean>
@@ -48,12 +48,12 @@
  	<bean id="provinciaManager" class="com.prestafacturaService.mongo.manager.ProvinciaManager"></bean>
  	<bean id="proveedorManager" class="com.prestafacturaService.mongo.manager.ProveedorManager"></bean>
  	<bean id="clienteManager" class="com.prestafacturaService.mongo.manager.ClienteManager"></bean>
- 	<bean id="datosPropiosManager" class="com.prestafacturaService.mongo.manager.DatosPropiosManager"></bean>
  	<bean id="secuenceManager" class="com.prestafacturaService.mongo.manager.SecuenceManager"></bean>
+ 	<bean id="codigoPaisManager" class="com.prestafacturaService.mongo.manager.CodigoPaisManager"></bean>
+ 	<bean id="localidadManager" class="com.prestafacturaService.mongo.manager.LocalidadManager"></bean>
  	
  	
  	
- 	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
  	
  	<!-- Actions -->
  		<!-- login-->
@@ -90,6 +90,16 @@
  		<!-- Datos Propios-->
  	<bean id="AccesoDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction"></bean>
  	<bean id="AltaDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction"></bean>
+ 	
+ 	
+ 	
+ 	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"></bean>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	
  	
  	
