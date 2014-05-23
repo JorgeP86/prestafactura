@@ -59,7 +59,7 @@
 		
 		<action name="AltaRolAction"
 			class="com.prestafacturaService.vista.action.rol.AltaRolAction">
-			<result name="success" type="tiles">prestaFacturaHome</result>
+			<result name="success" type="redirectAction">AccesoRolAction</result>
 			<result name="error" type="tiles">errorAltaRol</result>
 		</action>
 		<action name="AltaRolFormAction" class="com.prestafacturaService.vista.action.rol.AltaRolFormAction">
@@ -118,7 +118,7 @@
 		</action>
 		<action name="AltaClienteAction"
 			class="com.prestafacturaService.vista.action.cliente.AltaClienteAction" method="execute">
-			<result name="success" type="tiles">listadoClientes</result>
+			<result name="success" type="redirectAction">AccesoClientesAction</result>
 			<result name="error" type="tiles">errorAltaCliente</result>
 		</action>
 		<action name="AltaClienteFormAction" class="com.prestafacturaService.vista.action.cliente.AltaClienteFormAction">
