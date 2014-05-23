@@ -65,7 +65,7 @@
 						<s:if test="%{ambito=='gestionUsuarios'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>				
 							</tr>
 						</s:if>
@@ -78,7 +78,7 @@
 						<s:if test="%{ambito=='gestionRoles'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -92,7 +92,7 @@
 						<s:if test="%{ambito=='gestionProveedores'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -105,7 +105,7 @@
 						<s:if test="%{ambito=='gestionClientes'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -126,7 +126,7 @@
 						<s:if test="%{ambito=='gestionDatosInternos'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -139,7 +139,7 @@
 						<s:if test="%{ambito=='gestionFacturasAlmacenadas'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -152,7 +152,7 @@
 						<s:if test="%{ambito=='gestionInformacion'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -165,7 +165,7 @@
 						<s:if test="%{ambito=='gestionFirmaElectronica'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
@@ -183,7 +183,7 @@
 						<s:if test="%{ambito=='gestionFactura'}">
 							<tr>
 								<td><s:property value="%{idpagina}"/></td>
-								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:checkbox name="pathList" fieldValue="%{path}"/></td>
 								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
