@@ -9,27 +9,28 @@
 	<script src= "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script type="text/javascript" src="<s:url value='/pages/js/menu_jquery.js'/>"></script>
 	<link rel="stylesheet" type="text/css" href="<s:url value='/pages/css/menu_comun.css'/>"/>
+	<link rel="stylesheet" type="text/css" href="<s:url value='/pages/css/templatePrestafactura.css'/>"/>
 	<title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
 <body>
 
-    <s:div><tiles:insertAttribute name="header"/></s:div>
-    <br/>
+    <s:div id="header"><tiles:insertAttribute name="header"/></s:div>
+	<s:div id="welcome"><tiles:insertAttribute name="welcome"/></s:div>
 	<hr/>
-	<s:div>
-	<table width="80%" border="0" cellspacing="0" cellpadding="0" class="tabla">
+	<s:div id="content">
+	<table width="80%" border="0" cellspacing="0" cellpadding="0" id="tabla_menus">
 		<tr>
-			<td class="td_template_menu">
+			<td id="td_template_menu">
 				<s:div><tiles:insertAttribute name="menuComun"/></s:div>
 				
 				<s:if test="%{#session.usuario.getRol().getNombre() == 'Administrador'}">
 					<s:div><tiles:insertAttribute name="menuAdministrador"/></s:div>
 				</s:if>
 			</td>
-			<td class="td_template_body"><tiles:insertAttribute name="body"/></td>
+			<td id="body"><tiles:insertAttribute name="body"/></td>
 		</tr>
 	</table>
 	</s:div>
-	<s:div><tiles:insertAttribute name="footer"/></s:div>
+	<s:div id="footer"><tiles:insertAttribute name="footer"/></s:div>
 </body>
 </html>

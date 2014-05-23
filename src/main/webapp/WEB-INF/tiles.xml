@@ -7,6 +7,7 @@
 	<definition name="defaultTemplate" template="/templates/templatePrestafactura.jsp">
 		<put-attribute name="title" type="string" value="Prestafactura"/>
 		<put-attribute name="header" value="/pages/header.jsp"/>
+		<put-attribute name="welcome" value="/pages/welcome.jsp"/>
 		<put-attribute name="menuComun" value="/pages/menuComun.jsp"/>
 		<put-attribute name="menuAdministrador" value="/pages/menuAdministrador.jsp"/>
 		<put-attribute name="body" value="/pages/body.jsp"/>
@@ -21,27 +22,29 @@
 		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
 	</definition>
 	<definition name="altaRol" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol2.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
 	<definition name="altaRolForm" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol2.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
 	<definition name="editarRol" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/editarRol.jsp"/>
 	</definition>
 	<definition name="altaUsuario" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionUsuarios/altaUsuario.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionUsuarios/altaUsuario.jsp"/>
 	</definition>
 	<definition name="editarUsuario" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionUsuarios/editarUsuario.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
 	</definition>
 	
 	<definition name="altaCliente" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
-	
+	<definition name="altaClienteForm" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
+	</definition>
 	
 	<definition name="errorAltaRol" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/admin/gestionRoles/errorAltaRol.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionRol/errorAltaRol.jsp"/>
 	</definition>
 </tiles-definitions>
