@@ -10,6 +10,18 @@
 <SCRIPT language="JavaScript" src="<s:url value='/pages/js/valida.js'/>"></SCRIPT>
 <title>Gesti&oacute;n Roles</title>
 </head>
+<script language='javascript'>
+	
+	function aceptar(){
+			
+			if(trim(document.getElementById('formulario').nombre.value)=="")
+				
+					alert('Debe rellenar el nombre del Rol.');
+			else
+					document.forms['frc'].submit();			
+	}
+
+</script>
 <body>
 
 <s:if test="%{#session.usuario!= null}">
@@ -18,7 +30,7 @@
 			<td>Gesti&oacute;n de Roles</td>
 		</tr>
 	</table>
-<s:form action="AltaRolAction" namespace="/" method="post" styleId="formulario">
+<s:form action="AltaClienteAction" name="frc" namespace="/" method="post" styleId="formulario">
 	
 	<fieldset>
 	<legend>Alta Nuevo Cliente</legend>
@@ -109,7 +121,7 @@
 				listValue="localidad" name="localidadEntrega" />
 			</td>
 			<td colspan="1">
-				<s:textfield label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
+				<s:textfield name="codigoPostal" label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
 			</td>
 		</tr>
 		<tr>
