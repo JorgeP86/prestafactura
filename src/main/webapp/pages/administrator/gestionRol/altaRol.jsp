@@ -60,16 +60,26 @@
 		</tr>
 		<tr>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="25%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionUsuarios'}">
-							<s:hidden key="gestionUsuarios" value="%{recurso.idpagina}"/>  
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionUsuarios' && #recurso.path!='gestionUsuarios'}">
+						<s:if test="%{ambito=='gestionUsuarios'}">
 							<tr>
-								<td><s:property value="%{#recurso.idpagina}"/></td>
-								<td><s:checkbox name="%{#recurso.path}" value="#recurso.idpagina"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>				
+							</tr>
+						</s:if>
+					</s:iterator>
+				</table>
+			</td>
+			<td>
+				<table  border="1" width="90%" class="recuadro">
+					<s:iterator value="recursos" status="paginasStatus" var="recurso">
+						<s:if test="%{ambito=='gestionRoles'}">
+							<tr>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
 						
@@ -77,53 +87,28 @@
 				</table>
 			</td>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionRoles'}">
-							<s:hidden key="gestionRoles" value="%{#recurso.idpagina}"/>
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionRoles' && #recurso.path!='gestionRoles'}">
+						<s:if test="%{ambito=='gestionProveedores'}">
 							<tr>
-								<td><s:property value="%{#recurso.idpagina}"/></td>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
-						
 					</s:iterator>
 				</table>
 			</td>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionProveedores'}">
-							<s:hidden key="gestionProveedores" value="%{#recurso.idpagina}"/>
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionProveedores' && #recurso.path!='gestionProveedores'}">
+						<s:if test="%{ambito=='gestionClientes'}">
 							<tr>
-								<td><s:property value="%{#recurso.idpagina}"/></td>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
-						
-					</s:iterator>
-				</table>
-			</td>
-			<td>
-				<table  border=0 width="90%" class="recuadro">
-					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionClientes'}">
-							<s:hidden key="gestionClientes" value="%{#recurso.idpagina}"/>
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionClientes' && #recurso.path!='gestionClientes'}">
-							<tr>
-								<td><s:property value="%{#recurso.idpagina}"/></td>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
-							</tr>
-						</s:if>
-						
 					</s:iterator>
 				</table>
 			</td>
@@ -136,66 +121,54 @@
 		</tr>
 		<tr>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionDatosInternos'}">
-							<s:hidden key="gestionDatosInternos" value="%{#recurso.idpagina}"/>  
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionDatosInternos' && #recurso.path!='gestionDatosInternos'}">
+						<s:if test="%{ambito=='gestionDatosInternos'}">
 							<tr>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
-						
 					</s:iterator>
 				</table>
 			</td>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionFacturasAlmacenadas'}">
-							<s:hidden key="gestionFacturasAlmacenadas" value="%{#recurso.idpagina}"/>
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionFacturasAlmacenadas' && #recurso.path!='gestionFacturasAlmacenadas'}">
+						<s:if test="%{ambito=='gestionFacturasAlmacenadas'}">
 							<tr>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
-						
 					</s:iterator>
 				</table>
 			</td>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionInformacion'}">
-							<s:hidden key="gestionInformacion" value="%{#recurso.idpagina}"/>  
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionInformacion' && #recurso.path!='gestionInformacion'}">
+						<s:if test="%{ambito=='gestionInformacion'}">
 							<tr>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
-						
 					</s:iterator>
 				</table>
 			</td>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#recurso.path == 'gestionFirmaElectronica'}">
-							<s:hidden key="gestionFirmaElectronica" value="%{#recurso.idpagina}"/>  
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionFirmaElectronica' && #recurso.path!='gestionFirmaElectronica'}">
+						<s:if test="%{ambito=='gestionFirmaElectronica'}">
 							<tr>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
-						
 					</s:iterator>
 				</table>
 			</td>
@@ -205,15 +178,13 @@
 		</tr>
 		<tr>
 			<td>
-				<table  border=0 width="90%" class="recuadro">
+				<table  border="1" width="90%" class="recuadro">
 					<s:iterator value="recursos" status="paginasStatus" var="recurso">
-						<s:if test="%{#pagina.path == 'gestionFactura'}">
-							<s:hidden key="gestionFactura" value="%{#recurso.idpagina}"/>  
-						</s:if>
-						<s:if test="%{#recurso.ambito=='gestionFactura' && #recurso.path!='gestionFactura'}">
+						<s:if test="%{ambito=='gestionFactura'}">
 							<tr>
-								<td><s:checkbox name="%{#recurso.path}" value="%{#recurso.idpagina}"/></td>
-								<td><s:property value="%{#recurso.descripcion}"/></td>
+								<td><s:property value="%{idpagina}"/></td>
+								<td><s:checkbox name="%{pathList}" value="%{path}"/></td>
+								<td><s:property value="%{path}"/></td>
 							</tr>
 						</s:if>
 					</s:iterator>
@@ -224,25 +195,17 @@
 	<table>
 		<tr>
 			<td>
-				<s:hidden name="idRol" value="0"></s:hidden>	
-				<s:submit type="button" value="altaRol"/>
+				<s:hidden name="idRol" value="0"></s:hidden>
+				<s:submit type="image" src="images/alta_b.gif"/>
 			</td>
 			  
-			 <td>
-			 	<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
-			 </td>
+			<td>
+				<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
+			</td>
 		</tr>
 	</table>
-
-	<s:if test="idRol == 0">
-		<s:hidden name="idRol" value="0"/>
-	</s:if>
-	<s:if test="idRol > 0">
-		<s:hidden name="idRol" value="#Rol.idRol"/>
-	</s:if>
-
 	
-	</s:form>
+</s:form>
 
 </s:if>
 </body>
