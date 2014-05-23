@@ -18,18 +18,21 @@
 		<put-attribute name="body" value="/pages/body.jsp"/>
 	</definition>
 	
-	<definition name="listadoRoles" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
+	<!-- ROL -->
+	<definition name="altaRolForm" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
 	<definition name="altaRol" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
-	<definition name="altaRolForm" extends="defaultTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
+	<definition name="listadoRoles" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
 	</definition>
 	<definition name="editarRol" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/editarRol.jsp"/>
 	</definition>
+	
+	<!-- USUARIO -->
 	<definition name="altaUsuario" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionUsuarios/altaUsuario.jsp"/>
 	</definition>
@@ -37,6 +40,7 @@
 		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
 	</definition>
 	
+	<!-- CLIENTE -->
 	<definition name="altaCliente" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
@@ -44,7 +48,11 @@
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
 	
+	<!-- ERRORES -->
 	<definition name="errorAltaRol" extends="defaultTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/errorAltaRol.jsp"/>
+	</definition>
+	<definition name="errorAltaCliente" extends="defaultTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
 	</definition>
 </tiles-definitions>
