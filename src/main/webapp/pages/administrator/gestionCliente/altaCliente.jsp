@@ -22,19 +22,19 @@
 	
 	<fieldset>
 	<legend>Alta Nuevo Cliente</legend>
-	<table width="90%">
+	<table border="1" width="90%">
 		<tr>
-			<td colspan="1">
-				<s:textfield name="nombreCliente" label="Nombre Cliente"  size="30" id="nombreCliente"/>
+			<td width="200px">
+				<s:textfield name="nombreCliente" label="Nombre Cliente"  size="20" id="nombreCliente"/>
 			</td>
-			<td colspan="1">
-				<s:textfield name="apellidoPCliente" label="Primer Apellido"  size="30" id="apellidoPCliente"/>
+			<td width="100px">
+				<s:textfield name="apellidoPCliente" label="Primer Apellido"  size="20" id="apellidoPCliente"/>
 			</td>
-			<td colspan="1">
-				<s:textfield name="apellidoSCliente" label="Segundo Apellido"  size="30" id="apellidoSCliente"/>
+			<td width="100px">
+				<s:textfield name="apellidoSCliente" label="Segundo Apellido"  size="20" id="apellidoSCliente"/>
 			</td>
-			<td colspan="1">
-				<s:textfield name="identificacionFiscal" label="Identificación Fiscal"  size="30" id="identificacionFiscal"/>
+			<td width="100px">
+				<s:textfield name="identificacionFiscal" label="Identificación Fiscal"  size="20" id="identificacionFiscal"/>
 			</td>
 			
 		</tr>
@@ -44,10 +44,8 @@
 	
 	
 	<fieldset>
+	<legend>Direccion</legend>
 		<table width="90%">
-		<tr>
-			<td>Direccion:</td>
-		</tr>
 		<tr>
 			<td colspan="1">
 				<s:textfield name="calle" label="Domicilio"  size="30" id="calle"/>
@@ -62,18 +60,20 @@
 			<tr>
 			<td colspan="1">
 				<s:select label="Selecciona Provincia"  headerKey="1"
-  				headerValue="-- Please Select --" name="provincia" list="listProvincias" listKey="provincia"/>
+  				headerValue="-- Please Select --" name="provincia" list="listProvincias" listValue="%{provincia}"/>
 			</td>
 			<td colspan="1">
 				<s:select label="Selecciona Localidad" headerKey="1" headerValue="-- Please Select --"  list="listLocalidades" 
-				listKey="localidad" name="localidad" />
+				listValue="%{localidad}" name="localidad" />
 			</td>
 			<td colspan="1">
 				<s:textfield name="codigoPostal" label="Codigo Postal"  size="30"  id="codigoPostal"/>
 			</td>
+		</tr>
+		<tr>
 			<td colspan="1">
 				<s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
-				listKey="codigoPais" name="codigoPais"/>
+				listValue="%{codigoPais}" name="codigoPais"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="posbox" label="Posbox"  size="30"  id="posbox"/>
@@ -85,12 +85,9 @@
 	</table>
 	</fieldset>	
 	
-	<fieldset>	
+	<fieldset>
+	<legend>Direccion de Entrega</legend>	
 	<table>
-			<tr></tr>
-			<tr>
-			<td>Direccion de Entrega:</td>
-			</tr>
 			<tr>
 			<td colspan="1">
 				<s:textfield name="calleEntrega" label="Domicilio"  size="30" id="calleEntrega"/>
@@ -105,21 +102,23 @@
 			<tr>
 			<td colspan="1">
 				<s:select label="Selecciona Provincia"  headerKey="1"
-  				headerValue="-- Please Select --" name="provinciaEntrega" list="listProvincias" listKey="provincia"/>			
+  				headerValue="-- Please Select --" name="provinciaEntrega" list="listProvincias" listValue="provincia"/>			
   			</td>
 			<td colspan="1">
 				<s:select label="Selecciona Localidad" headerKey="1" headerValue="-- Please Select --"  list="listLocalidades" 
-				listKey="localidad" name="localidadEntrega" />
+				listValue="localidad" name="localidadEntrega" />
 			</td>
 			<td colspan="1">
 				<s:textfield label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
 			</td>
+		</tr>
+		<tr>
 			<td colspan="1">
 				<s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
-				listKey="codigoPais" name="codigoPaisEntrega"/>			
+				listValue="codigoPais" name="codigoPaisEntrega"/>			
 			</td>
 			<td colspan="1">
-				<s:textfield name="posboxEntrega" label="Posbox"  size="30"  id="posboxEntrega"/>
+				<s:textfield name="posboxEntrega" label="Posbox"  size="10"  id="posboxEntrega"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="calleAdicionalEntrega" label="Calle Adicional"  size="30"  id="calleAdicionalEntrega"/>
@@ -130,10 +129,8 @@
 		</fieldset>
 		
 		<fieldset>
-		<table>
-		<tr>
-			<td>Detalles de Contacto del Cliente:</td>
-		</tr>	
+		<legend>Detalles de Contacto del Cliente</legend>
+		<table>	
 		<tr>
 			<td colspan="1">
 				<s:textfield name="personaContacto" label="Persona de Contacto"  size="30"  id="personaContacto"/>
@@ -156,10 +153,8 @@
 		</fieldset>
 		
 		<fieldset>
+		<legend>Entidad Legal</legend>
 		<table>
-		<tr>
-			<td>Entidad Legal</td>
-		</tr>
 		<tr>
 			<td colspan="1">
 				<s:textfield name="razonSocial" label="Razón Social"  size="30"  id="razonSocial"/>
@@ -176,9 +171,9 @@
 		</fieldset>
 		
 		<fieldset>
+		<legend>Direccion de la Empresa</legend>
 		<table>
 		<tr>
-			<td>Direccion de la Empresa</td>
 			<td colspan="1">
 				<s:textfield name="calleEmpresa" label="Domicilio"  size="30" id="calleEmpresa"/>
 			</td>
@@ -192,17 +187,20 @@
 			<tr>
 			<td colspan="1">
 				<s:select label="Selecciona Provincia"  headerKey="1"
-  				headerValue="-- Please Select --" name="provinciaEmpresa" list="listProvincias" listKey="provincia"/>			
+  				headerValue="-- Please Select --" name="provinciaEmpresa" list="listProvincias" listValue="provincia"/>			
   			</td>
 			<td colspan="1">
 				<s:select label="Selecciona Localidad" headerKey="1" headerValue="-- Please Select --"  list="listLocalidades" 
-				listKey="localidad" name="localidadEmpresa" />
+				listValue="localidad" name="localidadEmpresa" />
 			</td>
 			<td colspan="1">
 				<s:textfield name="codigoPostalEmpresa" label="Codigo Postal"  size="30"  id="codigoPostalEmpresa"/>
 			</td>
-			<td colspan="1"><s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
-				listKey="codigoPais" name="codigoPaisEmpresa"/><s:textfield name="codigoPaisEmpresa" label="Pais"   id="codigoPaisEmpresa"/>
+		</tr>
+		<tr>
+			<td colspan="1">
+				<s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
+				listValue="codigoPais" name="codigoPaisEmpresa"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="posboxEmpresa" label="Posbox"  size="30"  id="posboxEmpresa"/>
@@ -211,15 +209,12 @@
 				<s:textfield name="calleAdicionalEmpresa" label="Calle Adicional"  size="30"  id="calleAdicionalEmpresa"/>
 			</td>
 		</tr>
-		<tr></tr>
 		</table>
 		</fieldset>
 		
 		<fieldset>
+		<legend>Detalles de Contacto de la Empresa</legend>
 		<table>
-		<tr>
-			<td>Detalles de Contacto de la Empresa:</td>
-		</tr>
 			<tr>
 			<td colspan="1">
 				<s:textfield name="personaContactoEmpresa" label="Persona de Contacto:"  size="30"  id="personaContactoEmpresa"/>
@@ -243,9 +238,6 @@
 	</s:div>
 		</table>
 	</fieldset>
-	
-
-
 
 	<table>
 		<tr>
