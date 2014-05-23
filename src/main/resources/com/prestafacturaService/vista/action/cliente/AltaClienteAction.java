@@ -98,8 +98,18 @@ public class AltaClienteAction extends ActionSupport{
 			
 			if(idCliente==0){ //Alta
 				logger.info("Comienza operacion alta cliente");
-
-				if(clienteManager.existCliente(identificacionFiscal)){
+				System.out.print(nombreCliente);
+				System.out.print(apellidoPCliente);
+				System.out.print(apellidoSCliente);
+				System.out.print(identificacionFiscal);
+				System.out.print(calleAdicional);
+				System.out.print(numeroEdificio);
+				System.out.print(localidadEntrega);
+				System.out.print(provinciaEntrega);
+				System.out.print(codigoPaisEntrega);
+				
+				
+				if(!clienteManager.existCliente(identificacionFiscal)){
 					logger.info("Comprobacion usuario no repetido");
 
 				//Creacion Identificacion Fiscal
@@ -544,7 +554,7 @@ public class AltaClienteAction extends ActionSupport{
 		return res;
 	}
 
-
+	
 	public ClienteManager getClienteManager() {
 		return clienteManager;
 	}
