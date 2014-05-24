@@ -18,6 +18,10 @@ import com.prestafacturaService.mongo.dto.IdentificacionFiscal;
 import com.prestafacturaService.mongo.dto.Localidad;
 import com.prestafacturaService.mongo.dto.Provincia;
 import com.prestafacturaService.mongo.repositories.ClienteRepository;
+import com.prestafacturaService.mongo.repositories.DetallesContactoRepository;
+import com.prestafacturaService.mongo.repositories.DireccionRepository;
+import com.prestafacturaService.mongo.repositories.EntidadLegalRepository;
+import com.prestafacturaService.mongo.repositories.IdentificacionFiscalRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"applicationContext.xml","Test-applicationContext.xml"})
@@ -28,6 +32,14 @@ public class ClienteRepositoryTest {
 	private MongoTemplate mongoTemplate;
 	@Autowired
 	private ClienteRepository clienteRepository;
+	@Autowired
+	private DireccionRepository direccionRepository;
+	@Autowired
+	private DetallesContactoRepository detallesContactoRepository;
+	@Autowired
+	private EntidadLegalRepository entidadLegalRepository;
+	@Autowired
+	private IdentificacionFiscalRepository identificacionFiscalRepository;
 	
 	@Before
 	public void setUp(){
@@ -36,6 +48,8 @@ public class ClienteRepositoryTest {
 		
 		IdentificacionFiscal idFiscal= new IdentificacionFiscal();
 		idFiscal.setIdentificacionFiscal("123456789");
+		identificacionFiscalRepository.save(idFiscal);
+		
 		
 		Provincia provinciaCliente=new Provincia();
 		provinciaCliente.setProvincia("Sevilla");
@@ -58,6 +72,10 @@ public class ClienteRepositoryTest {
 		diCliente.setPostBox("1001");
 		diCliente.setCodigoPais(codigoPaisCliente);
 		
+		direccionRepository.save(diCliente);
+		
+		
+		
 		//
 		DetallesContacto dcCliente=new DetallesContacto();
 		dcCliente.setDireccionWeb("www.maria.com");
@@ -65,6 +83,8 @@ public class ClienteRepositoryTest {
 		dcCliente.setMail("maria@gmail.com");
 		dcCliente.setPersonaContacto("maria");
 		dcCliente.setTelefono("954886359");
+		
+		detallesContactoRepository.save(dcCliente);
 		
 		///
 		Provincia pEntrega=new Provincia();
@@ -88,6 +108,8 @@ public class ClienteRepositoryTest {
 		diEntrega.setPostBox("1002");
 		diEntrega.setCodigoPais(cpaisEntrega);
 		
+		direccionRepository.save(diEntrega);
+		
 		///
 		
 		Provincia pEmpresa=new Provincia();
@@ -109,6 +131,9 @@ public class ClienteRepositoryTest {
 		direcccionELegal.setLocalidad(lEmpresa);
 		direcccionELegal.setPostBox("1003");
 		direcccionELegal.setCodigoPais(cpaisEmpresa);
+		
+		direccionRepository.save(direcccionELegal);
+		
 		//
 		DetallesContacto dContactoEmpresa=new DetallesContacto();
 		dContactoEmpresa.setDireccionWeb("direccionWebEmpresa");
@@ -116,12 +141,16 @@ public class ClienteRepositoryTest {
 		dContactoEmpresa.setMail("mailEmpresa");
 		dContactoEmpresa.setPersonaContacto("personaContactoEmpresa");
 		dContactoEmpresa.setTelefono("telefonoEmpresa");
+		detallesContactoRepository.save(dContactoEmpresa);
+		
 		//
 		EntidadLegal eLCliente=new EntidadLegal();
 		eLCliente.setDatosRegistrales("datosRegistrales");
 		eLCliente.setNombreComercial("nombreComercial");
 		eLCliente.setRazonSocial("razonSocial");
 		eLCliente.setDireccion(direcccionELegal);
+		entidadLegalRepository.save(eLCliente);
+		
 		
 		Cliente clienteNuevo= new Cliente();
 			clienteNuevo.setNombre("nombreCliente");
@@ -132,10 +161,10 @@ public class ClienteRepositoryTest {
 			clienteNuevo.setDirEntrega(diEntrega);
 			clienteNuevo.setDetallesContacto(dcCliente);
 			clienteNuevo.setEntidadLegal(eLCliente);
-			clienteNuevo.setDirEntrega(diEntrega);
+			
 			
 		
-		Cliente alta=clienteRepository.save(clienteNuevo);
+		clienteRepository.save(clienteNuevo);
 		
 		
 		
