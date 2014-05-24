@@ -1,7 +1,5 @@
 package com.prestafacturaService.vista.action.cliente;
 
-import java.util.UUID;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +14,7 @@ import com.prestafacturaService.mongo.dto.IdentificacionFiscal;
 import com.prestafacturaService.mongo.dto.Localidad;
 import com.prestafacturaService.mongo.dto.Provincia;
 import com.prestafacturaService.mongo.manager.ClienteManager;
+import com.prestafacturaService.mongo.manager.LocalidadManager;
 import com.prestafacturaService.mongo.manager.ProvinciaManager;
 
 public class AltaClienteAction extends ActionSupport{
@@ -32,6 +31,8 @@ public class AltaClienteAction extends ActionSupport{
 	private ClienteManager clienteManager;
 	@Autowired
 	private ProvinciaManager provinciaManager;
+	@Autowired
+	private LocalidadManager localidadManager;
 	
 	private static final String ERROR = "error";
 	private static final String SUCCESS = "success";
@@ -98,6 +99,7 @@ public class AltaClienteAction extends ActionSupport{
 			
 			if(idCliente==0){ //Alta
 				logger.info("Comienza operacion alta cliente");
+				System.out.print(razonSocial);
 				System.out.print(nombreCliente);
 				System.out.print(apellidoPCliente);
 				System.out.print(apellidoSCliente);
@@ -116,15 +118,10 @@ public class AltaClienteAction extends ActionSupport{
 					IdentificacionFiscal idFiscal= new IdentificacionFiscal();
 					idFiscal.setIdentificacionFiscal(identificacionFiscal);
 					logger.info("Creacion identificacion fiscal cliente");
-
+			
 					//Obtener la Provincia y la localidad Cliente
 					Provincia provinciaCliente=provinciaManager.obtenerProvinciaByName(provincia);
-					Localidad localidadCliente=new Localidad();
-					for(Localidad l:provinciaCliente.getLocalidades()){
-						if(l.getLocalidad().equals(localidad)){
-							localidadCliente=l;
-						}
-					}
+					Localidad localidadCliente=localidadManager.obtenerLocalidadByName(localidad);
 					logger.info("Provincia y localidad cliente obtenida");
 
 					//Obtener el codigo del pais
@@ -164,12 +161,8 @@ public class AltaClienteAction extends ActionSupport{
 					
 		
 					Provincia pEntrega=provinciaManager.obtenerProvinciaByName(provinciaEntrega);
-					Localidad lEntrega=new Localidad();
-					for(Localidad l:pEntrega.getLocalidades()){
-						if(l.getLocalidad().equals(localidadEntrega)){
-							lEntrega=l;
-						}
-					}
+					Localidad lEntrega=localidadManager.obtenerLocalidadByName(localidadEntrega);
+					
 					
 					logger.info("Creacion provincia y localidad de direccion de entrega");
 
@@ -199,14 +192,9 @@ public class AltaClienteAction extends ActionSupport{
 				//Creacion Entidad Legal
 					
 			
-					
+				
 					Provincia pEmpresa=provinciaManager.obtenerProvinciaByName(provinciaEmpresa);
-					Localidad lEmpresa=new Localidad();
-					for(Localidad l:pEmpresa.getLocalidades()){
-						if(l.getLocalidad().equals(localidadEmpresa)){
-							lEmpresa=l;
-						}
-					}
+					Localidad lEmpresa=localidadManager.obtenerLocalidadByName(localidadEntrega);
 					
 					logger.info("Creacion provincia y localidad de entidad legal");
 
@@ -260,12 +248,15 @@ public class AltaClienteAction extends ActionSupport{
 
 					
 				//Creación del Cliente
-					Cliente clienteNuevo=new Cliente();
-					
+					Cliente clienteNuevo= new Cliente();
+					logger.info("Creacion del Objeto Cliente");
+
 					
 					//Si el cliente es una persona se crea el objeto sólo con sus datos
 					if(nombreCliente!=null || !nombreCliente.trim().equals("")){
-						clienteNuevo.setIdCliente((new Integer(UUID.randomUUID().toString())));
+						logger.info("Comprobando si el nombreCliente esta relleno");
+
+						//clienteNuevo.setIdCliente((new Integer(UUID.randomUUID().toString())));
 						clienteNuevo.setNombre(nombreCliente);
 						clienteNuevo.setApellido1(apellidoPCliente);
 						clienteNuevo.setApellido2(apellidoSCliente);
@@ -278,24 +269,26 @@ public class AltaClienteAction extends ActionSupport{
 							this.direccionWeb!=null || !direccionWeb.trim().equals("") &&
 							this.mail!=null || !mail.trim().equals("") &&
 							this.personaContacto!=null || !personaContacto.trim().equals("")){
+							logger.info("Comprobando si se ha rellenado detallescontacto");
 							clienteNuevo.setDetallesContacto(dcCliente);
 						}
 						
 						
 						//Si es una empresa se cre la entidadLegal en el cliente
 					}if(nombreComercial!=null && !nombreComercial.trim().equals("")){
-						clienteNuevo.setIdCliente((new Integer(UUID.randomUUID().toString())));
+						//clienteNuevo.setIdCliente((new Integer(UUID.randomUUID().toString())));
+						logger.info("Comprobando si se ha rellenado nombreComercial");
 						clienteNuevo.setEntidadLegal(eLCliente);
 						clienteNuevo.setIdentificacionFiscal(idFiscal);
 						clienteNuevo.setDirEntrega(diEntrega);
 					}
 					
 					//GuardarCliente
-					
-					clienteManager.guardarCliente(clienteNuevo);
+					logger.info("Se va a proceder a guardar el cliente");
+					Cliente clienteAlta=clienteManager.guardarCliente(clienteNuevo);
 					addActionMessage("El Cliente se ha creado correctamente");
 					logger.info("Creacion CLIENTE");
-					
+				
 	////////////////////////////////////////////////////////////////////////////////////////////////
 					
 					
@@ -485,7 +478,9 @@ public class AltaClienteAction extends ActionSupport{
 					logger.info("Modificacion CLIENTE");
 					
 				}
+					
 			}
+		
 				
 		}catch(Exception e){
 			addActionError("El usuario ya existe");
@@ -765,6 +760,7 @@ public class AltaClienteAction extends ActionSupport{
 	}
 
 
+	
 	public String getProvinciaEntrega() {
 		return provinciaEntrega;
 	}
@@ -775,9 +771,13 @@ public class AltaClienteAction extends ActionSupport{
 	}
 
 
+	
+	
 	public String getCodigoPaisEntrega() {
 		return codigoPaisEntrega;
 	}
+
+
 
 
 	public void setCodigoPaisEntrega(String codigoPaisEntrega) {
