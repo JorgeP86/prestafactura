@@ -29,9 +29,8 @@ public class ClienteManager {
 		return clienteRepository.findAll();
 	}
 
-	public void guardarCliente(Cliente clienteNuevo) {
-		// TODO Auto-generated method stub
-		clienteRepository.save(clienteNuevo);
+	public Cliente guardarCliente(Cliente clienteNuevo) {
+		return clienteRepository.save(clienteNuevo);
 	}
 
 	public Cliente obtenerClienteById(Integer idCliente) {

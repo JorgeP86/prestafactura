@@ -17,4 +17,8 @@ public class LocalidadManager {
 	public List<Localidad> obtenerLocalidades(){
 		return localidadRepository.findAll();
 	}
+
+	public Localidad obtenerLocalidadByName(String localidad) {
+		return localidadRepository.obtenerLocalByName(localidad);
+	}
 }
