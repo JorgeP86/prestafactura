@@ -100,7 +100,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	   	        	 gUsuarios=true;
 	   	         }
 	   	         if(permiso.getRecurso().getPath().equals("listarUsuario")){
-	   	        	 p.put("listarUsuario", "listarUsuario");
+	   	        	 p.put("listarUsuario", "listarUsuarios");
 	   	        	 gUsuarios=true;
 	   	         }
 	   	         
@@ -117,7 +117,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	   	         } if(permiso.getRecurso().getPath().equals("editarRol")){
 	   	        	 p.put("editarRol","editarRol");
 	   	        	 gRoles=true;
-	   	         } if(permiso.getRecurso().getPath().equals("listarRol")){
+	   	         } if(permiso.getRecurso().getPath().equals("listarRoles")){
 	   	        	 p.put("listarRol","listarRol");
 	   	        	 gRoles=true;
 	   	         }
@@ -127,41 +127,41 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 	   	        	 p.put("altaCliente", "altaCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getRecurso().getPath().equals("bajaCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("bajaClientes")){
 	   	        	 p.put("bajaCliente", "bajaCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getRecurso().getPath().equals("consultarCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarClientes")){
 	   	        	 p.put("consultarCliente", "consultarCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getRecurso().getPath().equals("editarCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("editarClientes")){
 	   	        	 p.put("editarCliente", "editarCliente");
 	   	        	 gClientes=true;
 	   	         }
-	   	         if(permiso.getRecurso().getPath().equals("listarCliente")){
+	   	         if(permiso.getRecurso().getPath().equals("listarClientes")){
 	   	        	 p.put("listarCliente", "listarCliente");
 	   	        	 gClientes=true;
 	   	         }
 	   	         
 	   	         //M�dulo Proveedores
-	   	         if(permiso.getRecurso().getPath().equals("altaProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("altaProveedor")){
 	   	        	 p.put("altaProveedores", "altaProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getRecurso().getPath().equals("bajaProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("bajaProveedor")){
 	   	        	 p.put("bajaProveedores", "bajaProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getRecurso().getPath().equals("editarProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("editarProveedor")){
 	   	        	 p.put("editaProveedores", "editarProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getRecurso().getPath().equals("consultarProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("consultarProveedor")){
 	   	        	 p.put("consultarProveedores", "consultarProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
-	   	         if(permiso.getRecurso().getPath().equals("altaProveedores")){
+	   	         if(permiso.getRecurso().getPath().equals("listarProveedores")){
 	   	        	 p.put("listarProveedores", "listarProveedores");
 	   	        	 gProveedores=true;
 	   	      	   }
@@ -232,10 +232,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 				return SuccessU;
 	       	}if(gUsuarios || gRoles){
 				return SuccessA;
-			}else{
-				return SuccessA;
-			}
-			
+	       	}
 		}else{
 			addFieldError("invalid","Usuario o Password incorrecto");
 		}
