@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,16 +21,15 @@
 	<table width="80%" border="0" cellspacing="0" cellpadding="0" id="tabla_menus">
 		<tr>
 			<td id="td_template_menu">
-				<s:div><tiles:insertAttribute name="menuComun"/></s:div>
-				
-				<s:if test="%{#session.usuario.getRol().getNombre() == 'Administrador'}">
-					<s:div><tiles:insertAttribute name="menuAdministrador"/></s:div>
-				</s:if>
+				<tiles:insertAttribute name="menuComun"/>
 			</td>
-			<td id="body"><tiles:insertAttribute name="body"/></td>
+			<td id="body">
+				<tiles:insertAttribute name="body"/>
+			</td>
 		</tr>
 	</table>
 	</s:div>
 	<s:div id="footer"><tiles:insertAttribute name="footer"/></s:div>
+</body>
 </body>
 </html>
