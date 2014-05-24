@@ -18,10 +18,13 @@ import com.prestafacturaService.mongo.dto.IdentificacionFiscal;
 import com.prestafacturaService.mongo.dto.Localidad;
 import com.prestafacturaService.mongo.dto.Provincia;
 import com.prestafacturaService.mongo.repositories.ClienteRepository;
+import com.prestafacturaService.mongo.repositories.CodigoPaisRepository;
 import com.prestafacturaService.mongo.repositories.DetallesContactoRepository;
 import com.prestafacturaService.mongo.repositories.DireccionRepository;
 import com.prestafacturaService.mongo.repositories.EntidadLegalRepository;
 import com.prestafacturaService.mongo.repositories.IdentificacionFiscalRepository;
+import com.prestafacturaService.mongo.repositories.LocalidadRepository;
+import com.prestafacturaService.mongo.repositories.ProvinciaRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"applicationContext.xml","Test-applicationContext.xml"})
@@ -40,6 +43,14 @@ public class ClienteRepositoryTest {
 	private EntidadLegalRepository entidadLegalRepository;
 	@Autowired
 	private IdentificacionFiscalRepository identificacionFiscalRepository;
+	@Autowired
+	private ProvinciaRepository provinciaRepository;
+	@Autowired
+	private LocalidadRepository localidadRepository;
+	@Autowired
+	private CodigoPaisRepository codigoPaisRepository;
+	
+	
 	
 	@Before
 	public void setUp(){
@@ -50,15 +61,14 @@ public class ClienteRepositoryTest {
 		idFiscal.setIdentificacionFiscal("123456789");
 		identificacionFiscalRepository.save(idFiscal);
 		
-		
 		Provincia provinciaCliente=new Provincia();
-		provinciaCliente.setProvincia("Sevilla");
+		provinciaCliente=provinciaRepository.obtenerProvinciaByName("Sevilla");
 		
-		Localidad localidadCliente=new Localidad();
-		localidadCliente.setLocalidad("Cantillana");
+		Localidad localidadCliente= new Localidad();
+		localidadCliente = localidadRepository.obtenerLocalByName("Cantillana");
 		
 		CodigoPais codigoPaisCliente=new CodigoPais();
-		codigoPaisCliente.setCodigoPais("España");
+		codigoPaisCliente=codigoPaisRepository.ObtenerCodigoPaisByForm("España");
 		
 		Direccion diCliente=new Direccion();
 		diCliente.setTipodireccion("Dirección Cliente");
@@ -72,7 +82,7 @@ public class ClienteRepositoryTest {
 		diCliente.setPostBox("1001");
 		diCliente.setCodigoPais(codigoPaisCliente);
 		
-		direccionRepository.save(diCliente);
+		//direccionRepository.save(diCliente);
 		
 		
 		
@@ -84,17 +94,18 @@ public class ClienteRepositoryTest {
 		dcCliente.setPersonaContacto("maria");
 		dcCliente.setTelefono("954886359");
 		
-		detallesContactoRepository.save(dcCliente);
+		//detallesContactoRepository.save(dcCliente);
 		
 		///
 		Provincia pEntrega=new Provincia();
-		pEntrega.setProvincia("Sevilla");
-		Localidad lEntrega=new Localidad();
-		lEntrega.setLocalidad("Cantillana");
+		pEntrega=provinciaRepository.obtenerProvinciaByName("Sevilla");
 		
+		Localidad lEntrega= new Localidad();
+		lEntrega = localidadRepository.obtenerLocalByName("Cantillana");
 		
-		CodigoPais cpaisEntrega= new CodigoPais();
-		cpaisEntrega.setCodigoPais("España");
+		CodigoPais cpaisEntrega=new CodigoPais();
+		cpaisEntrega=codigoPaisRepository.ObtenerCodigoPaisByForm("España");
+		
 		
 		Direccion diEntrega=new DireccionEntrega();
 		diEntrega.setTipodireccion("Dirección Entrega");
@@ -108,17 +119,19 @@ public class ClienteRepositoryTest {
 		diEntrega.setPostBox("1002");
 		diEntrega.setCodigoPais(cpaisEntrega);
 		
-		direccionRepository.save(diEntrega);
+		//direccionRepository.save(diEntrega);
 		
 		///
-		
 		Provincia pEmpresa=new Provincia();
-		pEmpresa.setProvincia("Sevilla");
-		Localidad lEmpresa=new Localidad();
-		lEmpresa.setLocalidad("Cantillana");
+		pEmpresa=provinciaRepository.obtenerProvinciaByName("Sevilla");
 		
-		CodigoPais cpaisEmpresa= new CodigoPais();
-		cpaisEmpresa.setCodigoPais("España");
+		Localidad lEmpresa= new Localidad();
+		lEmpresa = localidadRepository.obtenerLocalByName("Cantillana");
+		
+		CodigoPais cpaisEmpresa=new CodigoPais();
+		cpaisEmpresa=codigoPaisRepository.ObtenerCodigoPaisByForm("España");
+		
+		
 		
 		Direccion direcccionELegal=new Direccion();
 		direcccionELegal.setTipodireccion("Dirección Empresa");
@@ -132,7 +145,7 @@ public class ClienteRepositoryTest {
 		direcccionELegal.setPostBox("1003");
 		direcccionELegal.setCodigoPais(cpaisEmpresa);
 		
-		direccionRepository.save(direcccionELegal);
+		//direccionRepository.save(direcccionELegal);
 		
 		//
 		DetallesContacto dContactoEmpresa=new DetallesContacto();
@@ -141,7 +154,7 @@ public class ClienteRepositoryTest {
 		dContactoEmpresa.setMail("mailEmpresa");
 		dContactoEmpresa.setPersonaContacto("personaContactoEmpresa");
 		dContactoEmpresa.setTelefono("telefonoEmpresa");
-		detallesContactoRepository.save(dContactoEmpresa);
+		//detallesContactoRepository.save(dContactoEmpresa);
 		
 		//
 		EntidadLegal eLCliente=new EntidadLegal();
@@ -149,7 +162,7 @@ public class ClienteRepositoryTest {
 		eLCliente.setNombreComercial("nombreComercial");
 		eLCliente.setRazonSocial("razonSocial");
 		eLCliente.setDireccion(direcccionELegal);
-		entidadLegalRepository.save(eLCliente);
+		//entidadLegalRepository.save(eLCliente);
 		
 		
 		Cliente clienteNuevo= new Cliente();
