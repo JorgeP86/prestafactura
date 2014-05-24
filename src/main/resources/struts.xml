@@ -40,7 +40,8 @@
 <!-- Login -->	
 		<action name="LoginAction"
 			class="com.prestafacturaService.vista.action.login.LoginAction" method="execute">
-			<result name="successA" type="tiles">prestaFacturaHome</result>
+			<result name="successA" type="tiles">prestaFacturaHomeAdmin</result>
+			<result name="successU" type="tiles">prestaFacturaHomeUser</result>
 			<result name="error" type="tiles">errorLogin</result>
 			<result name="input">/inicio.jsp</result>
 		</action>
@@ -72,7 +73,7 @@
 		</action>
 		<action name="ModificacionRolAction"
 			class="com.prestafacturaService.vista.action.rol.ModificacionRolAction" method="execute">
-			<result name="success" type="tiles">listadoRoles</result>
+			<result name="success" type="redirect">AccesoRolAction</result>
 			<result name="error" type="tiles">errorEliminarRol</result>
 		</action>
 		<action name="TratarRolAction"
