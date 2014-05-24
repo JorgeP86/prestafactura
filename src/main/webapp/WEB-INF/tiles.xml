@@ -4,8 +4,8 @@
 
 <tiles-definitions>
 
-	<definition name="defaultTemplate" template="/templates/templatePrestafactura.jsp">
-		<put-attribute name="title" type="string" value="Prestafactura"/>
+	<definition name="administradorTemplate" template="/templates/templateAdminPrestafactura.jsp">
+		<put-attribute name="title" type="string" value="Administrador Prestafactura"/>
 		<put-attribute name="header" value="/pages/header.jsp"/>
 		<put-attribute name="welcome" value="/pages/welcome.jsp"/>
 		<put-attribute name="menuComun" value="/pages/menuComun.jsp"/>
@@ -13,46 +13,63 @@
 		<put-attribute name="body" value="/pages/body.jsp"/>
 		<put-attribute name="footer" value="/pages/footer.jsp"/>
 	</definition>
+	<definition name="usuarioTemplate" template="/templates/templateUserPrestafactura.jsp">
+		<put-attribute name="title" type="string" value="Usuario Prestafactura"/>
+		<put-attribute name="header" value="/pages/header.jsp"/>
+		<put-attribute name="welcome" value="/pages/welcome.jsp"/>
+		<put-attribute name="menuComun" value="/pages/menuComun.jsp"/>
+		<put-attribute name="body" value="/pages/body.jsp"/>
+		<put-attribute name="footer" value="/pages/footer.jsp"/>
+	</definition>
 	
-	<definition name="prestaFacturaHome" extends="defaultTemplate">
+	<definition name="prestaFacturaHomeAdmin" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/body.jsp"/>
 	</definition>
 	
+	<!-- /////////////     ADMINISTRADOR    ///////////// -->
 	<!-- ROL -->
-	<definition name="altaRolForm" extends="defaultTemplate">
+	<definition name="altaRolForm" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
-	<definition name="altaRol" extends="defaultTemplate">
+	<definition name="altaRol" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
 	</definition>
-	<definition name="listadoRoles" extends="defaultTemplate">
+	<definition name="listadoRoles" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
 	</definition>
-	<definition name="editarRol" extends="defaultTemplate">
+	<definition name="editarRol" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/editarRol.jsp"/>
 	</definition>
+	<definition name="errorEliminarRol" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/errorEliminarRol.jsp"/>
+	</definition>	
 	
 	<!-- USUARIO -->
-	<definition name="altaUsuario" extends="defaultTemplate">
+	<definition name="altaUsuario" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionUsuarios/altaUsuario.jsp"/>
 	</definition>
-	<definition name="editarUsuario" extends="defaultTemplate">
+	<definition name="editarUsuario" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
 	</definition>
 	
 	<!-- CLIENTE -->
-	<definition name="altaCliente" extends="defaultTemplate">
+	<definition name="altaCliente" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
-	<definition name="altaClienteForm" extends="defaultTemplate">
+	<definition name="altaClienteForm" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
 	
 	<!-- ERRORES -->
-	<definition name="errorAltaRol" extends="defaultTemplate">
+	<definition name="errorAltaRol" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/errorAltaRol.jsp"/>
 	</definition>
-	<definition name="errorAltaCliente" extends="defaultTemplate">
+	<definition name="errorAltaCliente" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
+	</definition>
+	
+		<!-- /////////////    USUARIO   ///////////// -->
+	<definition name="prestaFacturaHomeUser" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/body.jsp"/>
 	</definition>
 </tiles-definitions>
