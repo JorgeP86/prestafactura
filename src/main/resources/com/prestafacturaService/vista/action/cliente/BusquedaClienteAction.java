@@ -27,15 +27,15 @@ public class BusquedaClienteAction extends ActionSupport{
 	@Autowired
 	private ClienteManager clienteManager;
 	
-	private Cliente cliente;
+	private Cliente clienteBusqueda;
 	private IdentificacionFiscal idFiscal;
 	
 		public String execute(){
 		
 			try{
-			cliente=clienteManager.buscarClienteByCIF(idFiscal);
+			clienteBusqueda=clienteManager.buscarClienteByCIF(idFiscal);
 			logger.info("Busqueda de cliente por parámetros");
-			if(cliente==null){
+			if(clienteBusqueda==null){
 				addActionMessage("No hay clientes con esos valores");
 				return INPUT;
 			}
@@ -63,6 +63,15 @@ public class BusquedaClienteAction extends ActionSupport{
 		public void setIdFiscal(IdentificacionFiscal idFiscal) {
 			this.idFiscal = idFiscal;
 		}
+
+		public Cliente getClienteBusqueda() {
+			return clienteBusqueda;
+		}
+
+		public void setClienteBusqueda(Cliente clienteBusqueda) {
+			this.clienteBusqueda = clienteBusqueda;
+		}
+		
 		
 		
 }
