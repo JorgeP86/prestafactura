@@ -12,6 +12,9 @@
 	<!-- enable 'method' attribute -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	
+	<constant name="struts.ui.theme" value="cssThemeTemplate" />
+	<constant name="struts.ui.templateDir" value="template" />
+	
 	<package name="default" namespace="/" extends="struts-default">
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" ></result-type>
