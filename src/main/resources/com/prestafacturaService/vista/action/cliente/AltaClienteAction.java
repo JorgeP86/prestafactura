@@ -14,6 +14,7 @@ import com.prestafacturaService.mongo.dto.IdentificacionFiscal;
 import com.prestafacturaService.mongo.dto.Localidad;
 import com.prestafacturaService.mongo.dto.Provincia;
 import com.prestafacturaService.mongo.manager.ClienteManager;
+import com.prestafacturaService.mongo.manager.CodigoPaisManager;
 import com.prestafacturaService.mongo.manager.LocalidadManager;
 import com.prestafacturaService.mongo.manager.ProvinciaManager;
 
@@ -33,6 +34,8 @@ public class AltaClienteAction extends ActionSupport{
 	private ProvinciaManager provinciaManager;
 	@Autowired
 	private LocalidadManager localidadManager;
+	@Autowired
+	private CodigoPaisManager codigoPaisManager;
 	
 	private static final String ERROR = "error";
 	private static final String SUCCESS = "success";
@@ -125,17 +128,16 @@ public class AltaClienteAction extends ActionSupport{
 					logger.info("Provincia y localidad cliente obtenida");
 
 					//Obtener el codigo del pais
-					CodigoPais codigoPaisCliente=new CodigoPais();
-					codigoPaisCliente.setCodigoPais(codigoPais);
+					CodigoPais codigoPaisCliente=codigoPaisManager.ObtenerCodigoPais(codigoPais);
 					logger.info("Codigo pais cliente creado");
 
 				//Crear la Direccion del Cliente
 					Direccion diCliente=new Direccion();
 					diCliente.setTipodireccion("Dirección Cliente");
 					diCliente.setCalle(calle);
-					if(this.calleAdicional!=null || ! this.calleAdicional.trim().equals("")){
-						diCliente.setCalleAdicional(calleAdicional);
-					}
+						if(this.calleAdicional!=null || ! this.calleAdicional.trim().equals("")){
+					diCliente.setCalleAdicional(calleAdicional);
+						}
 					diCliente.setCodigoPostal(codigoPostal);
 					diCliente.setDepartamento(departamento);
 					diCliente.setNumeroEdificio(numeroEdificio);
@@ -167,8 +169,7 @@ public class AltaClienteAction extends ActionSupport{
 					logger.info("Creacion provincia y localidad de direccion de entrega");
 
 								//Creacion del codigoPais
-					CodigoPais cpaisEntrega= new CodigoPais();
-					cpaisEntrega.setCodigoPais(codigoPaisEntrega);
+					CodigoPais cpaisEntrega= codigoPaisManager.ObtenerCodigoPais(codigoPaisEntrega);
 					logger.info("Creacion código pais direccion de entrega");
 
 					
@@ -176,7 +177,7 @@ public class AltaClienteAction extends ActionSupport{
 					diEntrega.setTipodireccion("Dirección Entrega");
 					diEntrega.setCalle(calleEntrega);
 						if(this.calleAdicionalEntrega!=null || ! this.calleAdicionalEntrega.trim().equals("")){
-						diEntrega.setCalleAdicional(calleAdicionalEntrega);
+					diEntrega.setCalleAdicional(calleAdicionalEntrega);
 						}
 					diEntrega.setCodigoPostal(codigoPostalEntrega );
 					diEntrega.setDepartamento(departamentoEntrega);
@@ -199,16 +200,14 @@ public class AltaClienteAction extends ActionSupport{
 					logger.info("Creacion provincia y localidad de entidad legal");
 
 					//Creacion del codigoPais
-					CodigoPais cpaisEmpresa= new CodigoPais();
-					cpaisEmpresa.setCodigoPais(codigoPaisEntrega);
-					logger.info("Creacion codigo pais de entidad legal");
+					CodigoPais cpaisEmpresa=codigoPaisManager.ObtenerCodigoPais(codigoPaisEmpresa);
 
 					
 					Direccion direcccionELegal=new Direccion();
 					direcccionELegal.setTipodireccion("Dirección Empresa");
 					direcccionELegal.setCalle(calleEmpresa);
 						if(this.calleAdicionalEmpresa!=null || ! this.calleAdicionalEmpresa.trim().equals("")){
-							direcccionELegal.setCalleAdicional(calleAdicionalEmpresa);
+					direcccionELegal.setCalleAdicional(calleAdicionalEmpresa);
 						}
 					direcccionELegal.setCodigoPostal(codigoPostalEmpresa );
 					direcccionELegal.setDepartamento(departamentoEmpresa);
@@ -238,7 +237,7 @@ public class AltaClienteAction extends ActionSupport{
 							this.mailEmpresa!=null || ! this.mailEmpresa.trim().equals("")&&
 							this.personaContactoEmpresa!=null || !mailEmpresa.trim().equals("")&&
 							this.telefonoEmpresa!=null || ! this.telefonoEmpresa.trim().equals("")){
-								eLCliente.setDetallesContacto(dContactoEmpresa);
+					eLCliente.setDetallesContacto(dContactoEmpresa);
 							}
 					eLCliente.setNombreComercial(nombreComercial);
 					eLCliente.setRazonSocial(razonSocial);
@@ -285,7 +284,8 @@ public class AltaClienteAction extends ActionSupport{
 					
 					//GuardarCliente
 					logger.info("Se va a proceder a guardar el cliente");
-					Cliente clienteAlta=clienteManager.guardarCliente(clienteNuevo);
+					Cliente clienteAlta=new Cliente();
+					clienteAlta=clienteManager.guardarCliente(clienteNuevo);
 					addActionMessage("El Cliente se ha creado correctamente");
 					logger.info("Creacion CLIENTE");
 				
