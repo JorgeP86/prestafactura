@@ -242,12 +242,10 @@ public class AltaRolAction extends ActionSupport {
 					}
 				}//fin if
 				
-				
-		
-				}
+			}
 	
 				
-			}
+		}
 				
 			
 		}catch(Exception e){
