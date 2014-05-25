@@ -30,13 +30,13 @@
 			<td width="60%" valign="middle">Gesti&oacute;n de Roles</td>
 		</tr>
 	</table>
-	<s:form action="busquedaRolAction" namespace="/" method="post">
+	<s:form action="BusquedaRolAction" namespace="/" method="post">
 		<fieldset>
 		<legend>B&uacute;squeda de Roles</legend>
 		<table align="center">
 			<tr>
 				<td width="60%">
-					<s:textfield name="nombreRol" label="Nombre Rol" size="20" id="nombreRolBusqueda"/>
+					<s:textfield name="nombreRol" label="Nombre Rol" size="20"/>
 				</td>
 				<td align="right">
 					<s:submit type="image" src="images/buscar.gif"/>
