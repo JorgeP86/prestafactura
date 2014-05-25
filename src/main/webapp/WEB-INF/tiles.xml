@@ -65,6 +65,9 @@
 	<definition name="listadoClientes" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/listadoClientes.jsp"></put-attribute>
 	</definition>
+	<definition name="busquedaClientes" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/busquedaCliente.jsp"></put-attribute>
+	</definition>
 	
 	<!-- ERRORES -->
 	<definition name="errorAltaRol" extends="administradorTemplate">
