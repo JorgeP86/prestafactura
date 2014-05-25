@@ -42,7 +42,10 @@
 	</definition>
 	<definition name="errorEliminarRol" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/errorEliminarRol.jsp"/>
-	</definition>	
+	</definition>
+	<definition name="busquedaRoles" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/busquedaRol.jsp"></put-attribute>
+	</definition>
 	
 	<!-- USUARIO -->
 	<definition name="altaUsuario" extends="administradorTemplate">
@@ -58,6 +61,9 @@
 	</definition>
 	<definition name="altaClienteForm" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
+	</definition>
+	<definition name="listadoClientes" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/listadoClientes.jsp"></put-attribute>
 	</definition>
 	
 	<!-- ERRORES -->
