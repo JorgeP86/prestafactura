@@ -19,7 +19,7 @@
 		
 <!-- Redirecciones -->
 		<action name="home">
-			<result type="tiles">prestaFacturaHome</result>
+			<result type="tiles">prestaFacturaHomeAdmin</result>
 		</action>
 		<!-- 
 		<action name="altaRolForm">
@@ -73,7 +73,7 @@
 		</action>
 		<action name="ModificacionRolAction"
 			class="com.prestafacturaService.vista.action.rol.ModificacionRolAction" method="execute">
-			<result name="success" type="redirect">AccesoRolAction</result>
+			<result name="success" type="redirectAction">AccesoRolAction</result>
 			<result name="error" type="tiles">errorEliminarRol</result>
 		</action>
 		<action name="TratarRolAction"
