@@ -121,7 +121,7 @@
 				listValue="localidad" name="localidadEntrega" />
 			</td>
 			<td colspan="1">
-				<s:textfield name="codigoPostal" label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
+				<s:textfield name="codigoPostalEntrega" label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
 			</td>
 		</tr>
 		<tr>
