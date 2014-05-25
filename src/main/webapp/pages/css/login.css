@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background:url(imagesCSS/zen.jpg) no-repeat fixed center;
+}
+
+div#login_div{
+	margin-top:30px;
+	margin-left:50px;
+	font-size: medium;
+	width:300px;
+}
+
+#legend{
+	font-size:xx-large;
+	color:#75A503;
+}
+
+.usernameClass{
+	padding: 4px;
+}
+
+.
