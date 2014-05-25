@@ -1,12 +1,13 @@
 package com.prestafacturaService.vista.action.rol;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.prestafacturaService.mongo.dto.Rol;
+import com.prestafacturaService.mongo.dto.Usuario;
 import com.prestafacturaService.mongo.manager.RolManager;
 import com.prestafacturaService.mongo.manager.UsuarioManager;
 
@@ -22,71 +23,65 @@ public class ModificacionRolAction extends ActionSupport{
 	
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
-	private Integer idRol;
-	private Collection<Rol> rolesTrasBorrar;
+	private String nombreRolSelect;
 	
 	@Autowired
-	 private RolManager rolManager;
+	private RolManager rolManager;
 	@Autowired
 	private UsuarioManager usuarioManager;
 	
 	public String execute(){
 		try{
-			Rol rol=rolManager.ObtenerRolByidRol(idRol);
-			 logger.info("Obtener rol por id");
+			Rol rol=rolManager.ObtenerRolByName(nombreRolSelect);
+			logger.info("Obtener rol por Nombre");
 
 			//Comprobamos que no existe al menos un usuario asignado a ese rol
     		//pues si existe no daremos posibilidad de eliminarlo ante de quitar
     		//la relación
-			if(usuarioManager.usuariosConRol(rol).size()!=0){
-				addActionError("No se puede eliminar ese Rol porque tiene un Usuario asociado.");
+			List<Usuario> usuarios = usuarioManager.usuariosConRol(rol);
+			logger.info("Obtener usuarios por rol");
+			System.out.println(usuarios.get(0).getNombre());
+			if(usuarios.size()!=0){
+				addActionError("No se puede eliminar ese Rol porque tiene al menos un Usuario asociado.");
+				return ERROR;
 			}else{
 				rolManager.bajaRol(rol);
-				 logger.info("Borrado el rol");
-				addActionError("Operación de borrar correcta");	
+				logger.info("Borrado el rol");
+				addActionError("Operación de borrar correcta");
 			}
-				Collection<Rol> roles=rolManager.ObtenerRoles();
-				this.setRolesTrasBorrar(roles);
-				 logger.info("Obtener roles tras borrar un rol");
 
-			
 		} catch (Exception e) {
-			
-		addActionError("Fallo al eliminar el Rol");
-		return ERROR;
-			
+			addActionError("Fallo al eliminar el Rol");
+			return ERROR;
 		}
 		
 		return SUCCESS;
-		
-		
-		
 	}
-	
-	
-	public Collection<Rol> getRolesTrasBorrar() {
-		return rolesTrasBorrar;
+
+	public String getNombreRolSelect() {
+		return nombreRolSelect;
 	}
 
 
-	public void setRolesTrasBorrar(Collection<Rol> rolesTrasBorrar) {
-		this.rolesTrasBorrar = rolesTrasBorrar;
+	public void setNombreRolSelect(String nombreRolSelect) {
+		this.nombreRolSelect = nombreRolSelect;
 	}
 
-
-	public Integer getIdRol() {
-		return idRol;
+	public RolManager getRolManager() {
+		return rolManager;
 	}
 
-	public void setIdRol(Integer idRol) {
-		this.idRol = idRol;
+	public void setRolManager(RolManager rolManager) {
+		this.rolManager = rolManager;
 	}
 
-	
-	
-	
-	
-	
-	
+	public UsuarioManager getUsuarioManager() {
+		return usuarioManager;
+	}
+
+	public void setUsuarioManager(UsuarioManager usuarioManager) {
+		this.usuarioManager = usuarioManager;
+	}
+
 	
 }

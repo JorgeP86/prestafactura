@@ -23,35 +23,30 @@ public class BusquedaRolAction extends ActionSupport{
 	@Autowired
 	private RolManager rolManager;
 	
-	 private String nombreRol;
-	 private String descripcionRol;
-	 
-	 private Rol rolBusqueda;
+	private String nombreRol;
+	
+	private Rol rolBusqueda;
 	
 	public String execute(){
 		try {
-			if(nombreRol!=null && nombreRol.trim().length()>0 &&
-					descripcionRol!=null && descripcionRol.trim().length()>0){
+			if(nombreRol!=null && nombreRol.trim().length()>0){
+				logger.info("Si el nombre del Rol es distinto de NULL y mayor que 0....");
 				Rol rol= rolManager.ObtenerRolByName(nombreRol);
+				System.out.println("El rol a buscar es:" + rol.getNombre());
 				this.setRolBusqueda(rol);
-				 logger.info("Obtener rol por nombre");
-
+				logger.info("Obtener rol por nombre");
 			}
-			
 		} catch (Exception e) {
 			addFieldError("FalloBusquedaRoles",getText("busquedaRoles.Invalid"));
-			 return ERROR;
-			
+			return ERROR;
 		}
 		return SUCCESS;
 		
 	}
 
-	
 	public Rol getRolBusqueda() {
 		return rolBusqueda;
 	}
-
 
 	public void setRolBusqueda(Rol rolBusqueda) {
 		this.rolBusqueda = rolBusqueda;
@@ -65,12 +60,14 @@ public class BusquedaRolAction extends ActionSupport{
 	public void setRolManager(RolManager rolManager) {
 		this.rolManager = rolManager;
 	}
-	
-	
-		
-	
 
-	
+	public String getNombreRol() {
+		return nombreRol;
+	}
+
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
+	}
 	
 	
 }
