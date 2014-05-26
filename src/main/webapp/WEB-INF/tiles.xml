@@ -49,10 +49,10 @@
 	
 	<!-- USUARIO -->
 	<definition name="listadoUsuarios" extends="administradorTemplate">
-		<put-attribute name="body" value="/pages/usuario/gestionUsuario/listadoUsuarios.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/listadoUsuarios.jsp"/>
 	</definition>
 	<definition name="altaUsuarioForm" extends="administradorTemplate">
-		<put-attribute name="body" value="/pages/usuario/gestionUsuario/altaUsuario.jsp"/>
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/altaUsuario.jsp"/>
 	</definition>
 	<definition name="editarUsuario" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
