@@ -57,7 +57,7 @@
 	<%----------- LISTAR ROLES ------------%>
 
 	<body>
-	<s:if test="%{listaClientes.size!=0}"/>
+	<s:if test="%{listaClientes!=0}"/>
 			<table  border=0 width="90%" class="recuadro">
 					<tr>
 						<td>Identificacion Fiscal Cliente:</td>
