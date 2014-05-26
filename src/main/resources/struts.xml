@@ -32,9 +32,10 @@
 		<action name="editarRolForm">
 			<result type="tiles">editarRol</result>
 		</action>
+		<!-- 
 		<action name="altaUsuarioForm">
 			<result type="tiles">altaUsuario</result>
-		</action>
+		</action>-->
 		<action name="editarUsuarioForm">
 			<result type="tiles">editarUsuario</result>
 		</action>
@@ -96,6 +97,10 @@
 			<result name="success" type="tiles">listadoUsuarios</result>
 			<result name="error" type="tiles">errorAltaUsuario</result>
 		</action>
+		<action name="AltaUsuarioFormAction" class="com.prestafacturaService.vista.action.rol.AltaUsuarioFormAction">
+			<result name="success" type="tiles">altaUsuarioForm</result>
+			<result name="error" type="tiles">errorAltaUsuarioForm</result>
+		</action>
 		<action name="BusquedaUsuarioAction"
 			class="com.prestafacturaService.vista.action.usuario.BusquedaUsuarioAction" method="execute">
 			<result name="success" type="tiles">busquedaUsuarios</result>
@@ -125,7 +130,7 @@
 			<result name="error" type="tiles">errorAltaCliente</result>
 		</action>
 		<action name="AltaClienteFormAction" class="com.prestafacturaService.vista.action.cliente.AltaClienteFormAction">
-			<result name="success" type="tiles">altaCliente</result>
+			<result name="success" type="tiles">altaClienteForm</result>
 			<result name="error" type="tiles">errorAltaClienteForm</result>
 		</action>
 		<action name="ModificacionClienteAction"
