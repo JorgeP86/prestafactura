@@ -48,17 +48,18 @@
 	</definition>
 	
 	<!-- USUARIO -->
-	<definition name="altaUsuario" extends="administradorTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionUsuarios/altaUsuario.jsp"/>
+	<definition name="listadoUsuarios" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/usuario/gestionUsuario/listadoUsuarios.jsp"/>
+	</definition>
+	<definition name="altaUsuarioForm" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/usuario/gestionUsuario/altaUsuario.jsp"/>
 	</definition>
 	<definition name="editarUsuario" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
 	</definition>
 	
 	<!-- CLIENTE -->
-	<definition name="altaCliente" extends="administradorTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
-	</definition>
+	
 	<definition name="altaClienteForm" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
