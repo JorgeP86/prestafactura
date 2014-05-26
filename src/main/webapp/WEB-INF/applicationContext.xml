@@ -72,6 +72,7 @@
  		<!-- usuario-->
 	<bean id="AccesoUsuarioAction" class="com.prestafacturaService.vista.action.usuario.AccesoUsuarioAction"></bean>
  	<bean id="AltaUsuarioAction" class="com.prestafacturaService.vista.action.usuario.AltaUsuarioAction"></bean>
+ 	<bean id="AltaUsuarioFormAction" class="com.prestafacturaService.vista.action.usuario.AltaUsuarioFormAction"></bean>
  	<bean id="BusquedaUsuarioAction" class="com.prestafacturaService.vista.action.usuario.BusquedaUsuarioAction"></bean>
  	<bean id="ModificacionUsuariosAction" class="com.prestafacturaService.vista.action.usuario.ModificacionUsuariosAction"></bean>
  	<bean id="TratarUsuariosAction" class="com.prestafacturaService.vista.action.usuario.TratarUsuariosAction"></bean>
