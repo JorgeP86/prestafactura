@@ -30,6 +30,7 @@ public class AltaUsuarioAction extends ActionSupport{
 	private String apellido2;
 	private String login;
 	private String password;
+	private String password2;
 	private String email;
 	private String departamento;
     private String nombreRol;
@@ -53,6 +54,7 @@ public class AltaUsuarioAction extends ActionSupport{
 			logger.info("Comenzando alta, comprueba si existe el usuario para crearlo");
 			if(usuarioManager.existeUsuario(login, password)
 					|| usuarioManager.existeNombreUsuario(login)){
+				if(password.equals(password2)){
 				Rol rolUsuario=rolManager.ObtenerRolByName(nombreRol);
 				Usuario usuarioNuevo=new Usuario();
 				usuarioNuevo.setIdUsuario(new Integer(UUID.randomUUID().toString()));
@@ -66,11 +68,12 @@ public class AltaUsuarioAction extends ActionSupport{
 				usuarioNuevo.setRol(rolUsuario);
 				usuarioNuevo.setFechaAlta(new Date());
 		
-				Usuario usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
+				usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
 				 logger.info("Creado el usuario Nuevo");
-				this.setUsuarioCreado(usuarioCreado);
 				return SUCCESS;
-		
+				}else{
+					addActionError("El password no es correcto");
+				}
 			}else{
 				addActionError("El usuario ya existe");
 				return INPUT;
@@ -132,6 +135,9 @@ public class AltaUsuarioAction extends ActionSupport{
 			 addFieldError("loginUsuarioAlta",getText("loginUsuarioAlta.Invalid"));
 		 }
 		 if(password==null || password.trim().equals("")){
+			 addFieldError("passwordUsuarioAlta",getText("passwordUsuarioAlta.Invalid"));
+		 } 
+		 if(password2==null || password2.trim().equals("")){
 			 addFieldError("passwordUsuarioAlta",getText("passwordUsuarioAlta.Invalid"));
 		 } 
 		 if(email==null || email.trim().equals("")){
