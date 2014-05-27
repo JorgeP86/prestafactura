@@ -2,7 +2,6 @@ package com.prestafacturaService.mongo.dto;
 
 import java.util.Set;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -14,7 +13,7 @@ public class Provincia extends BaseEntity implements Comparable<Object>{
 	 */
 	private static final long serialVersionUID = -4381836497330168644L;
 	private String provincia;
-	@DBRef
+	
 	private Set<Localidad> localidades;
 	
 

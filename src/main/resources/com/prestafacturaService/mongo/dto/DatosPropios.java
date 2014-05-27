@@ -1,20 +1,19 @@
 package com.prestafacturaService.mongo.dto;
 
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.prestafacturaService.mongo.util.CascadeSave;
 
 
-@Document(collection="DatosPropios")
+@Document(collection="datosPropios")
 public class DatosPropios extends BaseEntity{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Indexed(unique = true)
+	//@Indexed(unique = true)
 	private Integer idDatosPropios;
 	@DBRef
 	@CascadeSave
