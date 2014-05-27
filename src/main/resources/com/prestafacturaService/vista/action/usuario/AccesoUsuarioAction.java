@@ -36,7 +36,7 @@ public class AccesoUsuarioAction extends ActionSupport{
 		try {
 			Collection<Usuario> usuarios = usuarioManager.obtenerUsuarios();
 			Collection<Rol> roles = rolManager.ObtenerRoles();
-			 logger.info("Se obtiene los usuarios y roles de base de datos");
+			logger.info("Se obtiene los usuarios y roles de base de datos");
 			this.setRolesAcceso(roles);
 			this.setUsuariosAcceso(usuarios);
 
