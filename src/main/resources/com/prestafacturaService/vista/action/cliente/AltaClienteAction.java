@@ -101,194 +101,150 @@ public class AltaClienteAction extends ActionSupport{
 		try{
 			
 			if(idCliente==0){ //Alta
-				logger.info("Comienza operacion alta cliente");
-				System.out.print(razonSocial);
-				System.out.print(nombreCliente);
-				System.out.print(apellidoPCliente);
-				System.out.print(apellidoSCliente);
-				System.out.print(identificacionFiscal);
-				System.out.print(calleAdicional);
-				System.out.print(numeroEdificio);
+				
+				System.out.print(provincia);
+				System.out.print(codigoPais);
+				System.out.print(localidad);
 				System.out.print(localidadEntrega);
 				System.out.print(provinciaEntrega);
 				System.out.print(codigoPaisEntrega);
+				System.out.print(provinciaEmpresa);
+				System.out.print(localidadEmpresa);
+				System.out.print(codigoPaisEmpresa);
+				logger.info("Comienza operacion alta cliente");
+				IdentificacionFiscal idFiscal= new IdentificacionFiscal();
+				idFiscal.setIdentificacionFiscal(identificacionFiscal);
+				logger.info("Se crea el objeto identificación fical");
+
 				
+				Provincia provinciaCliente=new Provincia();
+				provinciaCliente=provinciaManager.obtenerProvinciaByName(provincia);
 				
-				if(!clienteManager.existCliente(identificacionFiscal)){
-					logger.info("Comprobacion usuario no repetido");
-
-				//Creacion Identificacion Fiscal
-					IdentificacionFiscal idFiscal= new IdentificacionFiscal();
-					idFiscal.setIdentificacionFiscal(identificacionFiscal);
-					logger.info("Creacion identificacion fiscal cliente");
-			
-					//Obtener la Provincia y la localidad Cliente
-					Provincia provinciaCliente=provinciaManager.obtenerProvinciaByName(provincia);
-					Localidad localidadCliente=localidadManager.obtenerLocalidadByName(localidad);
-					logger.info("Provincia y localidad cliente obtenida");
-
-					//Obtener el codigo del pais
-					CodigoPais codigoPaisCliente=codigoPaisManager.ObtenerCodigoPais(codigoPais);
-					logger.info("Codigo pais cliente creado");
-
-				//Crear la Direccion del Cliente
-					Direccion diCliente=new Direccion();
-					diCliente.setTipodireccion("Dirección Cliente");
-					diCliente.setCalle(calle);
-						if(this.calleAdicional!=null || ! this.calleAdicional.trim().equals("")){
-					diCliente.setCalleAdicional(calleAdicional);
-						}
-					diCliente.setCodigoPostal(codigoPostal);
-					diCliente.setDepartamento(departamento);
-					diCliente.setNumeroEdificio(numeroEdificio);
-					diCliente.setProvincia(provinciaCliente);
-					diCliente.setLocalidad(localidadCliente);
-					diCliente.setPostBox(posbox);
-					diCliente.setCodigoPais(codigoPaisCliente);
-					
-					logger.info("Creacion direccion cliente");
-
-					
-				//Crear los detalles de contacto
-					DetallesContacto dcCliente=new DetallesContacto();
-					dcCliente.setDireccionWeb(direccionWeb);
-					dcCliente.setFax(fax);
-					dcCliente.setMail(mail);
-					dcCliente.setPersonaContacto(personaContacto);
-					dcCliente.setTelefono(telefono);
-					logger.info("Creacion detalles contacto cliente");
-
-			
-				//Creación de la dirección de Entrega
-					
+				System.out.print(provinciaCliente.getProvincia());
 		
-					Provincia pEntrega=provinciaManager.obtenerProvinciaByName(provinciaEntrega);
-					Localidad lEntrega=localidadManager.obtenerLocalidadByName(localidadEntrega);
-					
-					
-					logger.info("Creacion provincia y localidad de direccion de entrega");
+				Localidad localidadCliente= new Localidad();
+				localidadCliente = localidadManager.obtenerLocalidadByName(localidad);
+				System.out.print(localidadCliente.getLocalidad());
+				
+				CodigoPais codigoPaisCliente=new CodigoPais();
+				codigoPaisCliente=codigoPaisManager.ObtenerCodigoPais(codigoPais);
+				
+				Direccion diCliente=new Direccion();
+				diCliente.setTipodireccion("Dirección Cliente");
+				diCliente.setCalle(calle);
+				diCliente.setCalleAdicional(calleAdicional);
+				diCliente.setCodigoPostal(codigoPostal);
+				diCliente.setDepartamento(departamento);
+				diCliente.setNumeroEdificio(numeroEdificio);
+				diCliente.setProvincia(provinciaCliente);
+				diCliente.setLocalidad(localidadCliente);
+				diCliente.setPostBox(posbox);
+				diCliente.setCodigoPais(codigoPaisCliente);
+				
+				logger.info("Se crea el objeto Direccion Cliente");
 
-								//Creacion del codigoPais
-					CodigoPais cpaisEntrega= codigoPaisManager.ObtenerCodigoPais(codigoPaisEntrega);
-					logger.info("Creacion código pais direccion de entrega");
+				
+				
+				
+				//
+				DetallesContacto dcCliente=new DetallesContacto();
+				dcCliente.setDireccionWeb(direccionWeb);
+				dcCliente.setFax(fax);
+				dcCliente.setMail(mail);
+				dcCliente.setPersonaContacto(personaContacto);
+				dcCliente.setTelefono(telefono);
+				logger.info("Se crea el objeto Detalles Contacto Cliente");
 
-					
-					Direccion diEntrega=new DireccionEntrega();
-					diEntrega.setTipodireccion("Dirección Entrega");
-					diEntrega.setCalle(calleEntrega);
-						if(this.calleAdicionalEntrega!=null || ! this.calleAdicionalEntrega.trim().equals("")){
-					diEntrega.setCalleAdicional(calleAdicionalEntrega);
-						}
-					diEntrega.setCodigoPostal(codigoPostalEntrega );
-					diEntrega.setDepartamento(departamentoEntrega);
-					diEntrega.setNumeroEdificio(numeroEdificioEntrega);
-					diEntrega.setProvincia(pEntrega);
-					diEntrega.setLocalidad(lEntrega);
-					diEntrega.setPostBox(posboxEntrega);
-					diEntrega.setCodigoPais(cpaisEntrega);
-					
-					logger.info("Creacion Direccion de Entrega");
+				
+				
+				///
+				Provincia pEntrega=new Provincia();
+				pEntrega=provinciaManager.obtenerProvinciaByName(provinciaEntrega);
+				
+				Localidad lEntrega= new Localidad();
+				lEntrega = localidadManager.obtenerLocalidadByName(localidadEntrega);
+				
+				CodigoPais cpaisEntrega=new CodigoPais();
+				cpaisEntrega=codigoPaisManager.ObtenerCodigoPais(codigoPaisEntrega);
+				
+				
+				
+				Direccion diEntrega=new DireccionEntrega();
+				diEntrega.setTipodireccion("Dirección Entrega");
+				diEntrega.setCalle(calleEntrega);
+				diEntrega.setCalleAdicional(calleAdicionalEntrega);
+				diEntrega.setCodigoPostal(codigoPostalEntrega);
+				diEntrega.setDepartamento(departamentoEntrega);
+				diEntrega.setNumeroEdificio(numeroEdificioEntrega);
+				diEntrega.setProvincia(pEntrega);
+				diEntrega.setLocalidad(lEntrega);
+				diEntrega.setPostBox(posboxEntrega);
+				diEntrega.setCodigoPais(cpaisEntrega);
+				logger.info("Se crea el objeto Direccion Entrega");
 
+				
+				///
+				Provincia pEmpresa=new Provincia();
+				pEmpresa=provinciaManager.obtenerProvinciaByName(provinciaEmpresa);
+				
+				Localidad lEmpresa= new Localidad();
+				lEmpresa = localidadManager.obtenerLocalidadByName(localidadEmpresa);
+				
+				CodigoPais cpaisEmpresa=new CodigoPais();
+				cpaisEmpresa=codigoPaisManager.ObtenerCodigoPais(codigoPaisEmpresa);
+				
+				
+	
+				Direccion direcccionELegal=new Direccion();
+				direcccionELegal.setTipodireccion("Dirección Empresa");
+				direcccionELegal.setCalle(calleEmpresa);
+				direcccionELegal.setCalleAdicional(calleAdicionalEmpresa);
+				direcccionELegal.setCodigoPostal(codigoPostalEmpresa);
+				direcccionELegal.setDepartamento(departamentoEmpresa);
+				direcccionELegal.setNumeroEdificio(numeroEdificioEmpresa);
+				direcccionELegal.setProvincia(pEmpresa);
+				direcccionELegal.setLocalidad(lEmpresa);
+				direcccionELegal.setPostBox(posboxEmpresa);
+				direcccionELegal.setCodigoPais(cpaisEmpresa);
+				logger.info("Se crea el objeto Direccion Empresa");
+
+				
+				
+				DetallesContacto dContactoEmpresa=new DetallesContacto();
+				dContactoEmpresa.setDireccionWeb(direccionWebEmpresa);
+				dContactoEmpresa.setFax(faxEmpresa);
+				dContactoEmpresa.setMail(mailEmpresa);
+				dContactoEmpresa.setPersonaContacto(personaContactoEmpresa);
+				dContactoEmpresa.setTelefono(telefonoEmpresa);
+				logger.info("Se crea el objeto Detalles Contacto Empresa");
+				
+				//
+				EntidadLegal eLCliente=new EntidadLegal();
+				eLCliente.setDatosRegistrales(datosRegistrales);
+				eLCliente.setNombreComercial(nombreComercial);
+				eLCliente.setRazonSocial(razonSocial);
+				eLCliente.setDireccion(direcccionELegal);
+				logger.info("Se crea el objeto EntidadLegal");
+				
+				
+				logger.info("Se procedera a crearse el objeto cliente");
+				Cliente clienteNuevo= new Cliente();
+					clienteNuevo.setNombre(nombreCliente);
+					clienteNuevo.setApellido1(apellidoPCliente);
+					clienteNuevo.setApellido2(apellidoSCliente);
+					clienteNuevo.setIdentificacionFiscal(idFiscal);
+					clienteNuevo.setDireccion(diCliente);
+					clienteNuevo.setDirEntrega(diEntrega);
+					clienteNuevo.setDetallesContacto(dcCliente);
+					clienteNuevo.setEntidadLegal(eLCliente);
 					
-				//Creacion Entidad Legal
 					
+				
+				clienteManager.guardarCliente(clienteNuevo);
+				logger.info("Se guarda el Cliente en BD");
+
+				
 			
-				
-					Provincia pEmpresa=provinciaManager.obtenerProvinciaByName(provinciaEmpresa);
-					Localidad lEmpresa=localidadManager.obtenerLocalidadByName(localidadEntrega);
-					
-					logger.info("Creacion provincia y localidad de entidad legal");
-
-					//Creacion del codigoPais
-					CodigoPais cpaisEmpresa=codigoPaisManager.ObtenerCodigoPais(codigoPaisEmpresa);
-
-					
-					Direccion direcccionELegal=new Direccion();
-					direcccionELegal.setTipodireccion("Dirección Empresa");
-					direcccionELegal.setCalle(calleEmpresa);
-						if(this.calleAdicionalEmpresa!=null || ! this.calleAdicionalEmpresa.trim().equals("")){
-					direcccionELegal.setCalleAdicional(calleAdicionalEmpresa);
-						}
-					direcccionELegal.setCodigoPostal(codigoPostalEmpresa );
-					direcccionELegal.setDepartamento(departamentoEmpresa);
-					direcccionELegal.setNumeroEdificio(numeroEdificioEmpresa);
-					direcccionELegal.setProvincia(pEmpresa);
-					direcccionELegal.setLocalidad(lEmpresa);
-					direcccionELegal.setPostBox(posboxEmpresa);
-					direcccionELegal.setCodigoPais(cpaisEmpresa);
-					logger.info("Creacion Direccion de Entidad Legal");
-
-					
-					
-					DetallesContacto dContactoEmpresa=new DetallesContacto();
-					dContactoEmpresa.setDireccionWeb(direccionWebEmpresa);
-					dContactoEmpresa.setFax(faxEmpresa);
-					dContactoEmpresa.setMail(mailEmpresa);
-					dContactoEmpresa.setPersonaContacto(personaContactoEmpresa);
-					dContactoEmpresa.setTelefono(telefonoEmpresa);
-					logger.info("Creacion detalles de contacto de empresa");
-
-					
-					
-					EntidadLegal eLCliente=new EntidadLegal();
-					eLCliente.setDatosRegistrales(datosRegistrales);
-							if(this.direccionWebEmpresa!=null || ! this.direccionWebEmpresa.trim().equals("") &&
-							this.faxEmpresa!=null || !this.faxEmpresa.trim().equals("") &&
-							this.mailEmpresa!=null || ! this.mailEmpresa.trim().equals("")&&
-							this.personaContactoEmpresa!=null || !mailEmpresa.trim().equals("")&&
-							this.telefonoEmpresa!=null || ! this.telefonoEmpresa.trim().equals("")){
-					eLCliente.setDetallesContacto(dContactoEmpresa);
-							}
-					eLCliente.setNombreComercial(nombreComercial);
-					eLCliente.setRazonSocial(razonSocial);
-					eLCliente.setDireccion(direcccionELegal);
-					
-					logger.info("Creacion de Entidad Legal");
-
-					
-				//Creación del Cliente
-					Cliente clienteNuevo= new Cliente();
-					logger.info("Creacion del Objeto Cliente");
-
-					
-					//Si el cliente es una persona se crea el objeto sólo con sus datos
-					if(nombreCliente!=null || !nombreCliente.trim().equals("")){
-						logger.info("Comprobando si el nombreCliente esta relleno");
-
-						//clienteNuevo.setIdCliente((new Integer(UUID.randomUUID().toString())));
-						clienteNuevo.setNombre(nombreCliente);
-						clienteNuevo.setApellido1(apellidoPCliente);
-						clienteNuevo.setApellido2(apellidoSCliente);
-						clienteNuevo.setIdentificacionFiscal(idFiscal);
-						clienteNuevo.setDireccion(diCliente);
-						clienteNuevo.setDirEntrega(diEntrega);
-						//Si detalles Contacto se ha rellenado
-						if(this.telefono!=null || !telefono.trim().equals("") &&
-							this.fax!=null || !fax.trim().equals("") &&
-							this.direccionWeb!=null || !direccionWeb.trim().equals("") &&
-							this.mail!=null || !mail.trim().equals("") &&
-							this.personaContacto!=null || !personaContacto.trim().equals("")){
-							logger.info("Comprobando si se ha rellenado detallescontacto");
-							clienteNuevo.setDetallesContacto(dcCliente);
-						}
-						
-						
-						//Si es una empresa se cre la entidadLegal en el cliente
-					}if(nombreComercial!=null && !nombreComercial.trim().equals("")){
-						//clienteNuevo.setIdCliente((new Integer(UUID.randomUUID().toString())));
-						logger.info("Comprobando si se ha rellenado nombreComercial");
-						clienteNuevo.setEntidadLegal(eLCliente);
-						clienteNuevo.setIdentificacionFiscal(idFiscal);
-						clienteNuevo.setDirEntrega(diEntrega);
-					}
-					
-					//GuardarCliente
-					logger.info("Se va a proceder a guardar el cliente");
-					Cliente clienteAlta=new Cliente();
-					clienteAlta=clienteManager.guardarCliente(clienteNuevo);
-					addActionMessage("El Cliente se ha creado correctamente");
-					logger.info("Creacion CLIENTE");
-				
 	////////////////////////////////////////////////////////////////////////////////////////////////
 					
 					
@@ -479,7 +435,7 @@ public class AltaClienteAction extends ActionSupport{
 					
 				}
 					
-			}
+			
 		
 				
 		}catch(Exception e){
@@ -493,6 +449,30 @@ public class AltaClienteAction extends ActionSupport{
 	
 
 	
+	public LocalidadManager getLocalidadManager() {
+		return localidadManager;
+	}
+
+
+
+	public void setLocalidadManager(LocalidadManager localidadManager) {
+		this.localidadManager = localidadManager;
+	}
+
+
+
+	public CodigoPaisManager getCodigoPaisManager() {
+		return codigoPaisManager;
+	}
+
+
+
+	public void setCodigoPaisManager(CodigoPaisManager codigoPaisManager) {
+		this.codigoPaisManager = codigoPaisManager;
+	}
+
+
+
 	public void validate(){
 		Boolean res=camposCompletos();
 		if(res==false){
