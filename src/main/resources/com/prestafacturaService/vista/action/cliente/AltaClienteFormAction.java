@@ -39,6 +39,18 @@ public class AltaClienteFormAction extends ActionSupport{
 	private List<Localidad> listLocalidades;
 	private List<CodigoPais> listPais;
 	
+	private String localidad;
+	private String provincia;
+	private String codigoPais;
+	
+	private String localidadEntrega;
+	private String provinciaEntrega;
+	private String codigoPaisEntrega;
+	
+	private String localidadEmpresa;
+	private String provinciaEmpresa;
+	private String codigoPaisEmpresa;
+	
 	public String execute() {
 		try{
 			listProvincias=provinciaManager.obtenerProvincias();
@@ -105,6 +117,96 @@ public class AltaClienteFormAction extends ActionSupport{
 
 	public void setListPais(List<CodigoPais> listPais) {
 		this.listPais = listPais;
+	}
+
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+
+	public String getCodigoPais() {
+		return codigoPais;
+	}
+
+
+	public void setCodigoPais(String codigoPais) {
+		this.codigoPais = codigoPais;
+	}
+
+
+	public String getLocalidadEntrega() {
+		return localidadEntrega;
+	}
+
+
+	public void setLocalidadEntrega(String localidadEntrega) {
+		this.localidadEntrega = localidadEntrega;
+	}
+
+
+	public String getProvinciaEntrega() {
+		return provinciaEntrega;
+	}
+
+
+	public void setProvinciaEntrega(String provinciaEntrega) {
+		this.provinciaEntrega = provinciaEntrega;
+	}
+
+
+	public String getCodigoPaisEntrega() {
+		return codigoPaisEntrega;
+	}
+
+
+	public void setCodigoPaisEntrega(String codigoPaisEntrega) {
+		this.codigoPaisEntrega = codigoPaisEntrega;
+	}
+
+
+	public String getLocalidadEmpresa() {
+		return localidadEmpresa;
+	}
+
+
+	public void setLocalidadEmpresa(String localidadEmpresa) {
+		this.localidadEmpresa = localidadEmpresa;
+	}
+
+
+	public String getProvinciaEmpresa() {
+		return provinciaEmpresa;
+	}
+
+
+	public void setProvinciaEmpresa(String provinciaEmpresa) {
+		this.provinciaEmpresa = provinciaEmpresa;
+	}
+
+
+	public String getCodigoPaisEmpresa() {
+		return codigoPaisEmpresa;
+	}
+
+
+	public void setCodigoPaisEmpresa(String codigoPaisEmpresa) {
+		this.codigoPaisEmpresa = codigoPaisEmpresa;
 	}
 
 
