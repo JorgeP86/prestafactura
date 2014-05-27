@@ -51,9 +51,8 @@ public class ClienteRepositoryTest {
 		mongoTemplate.dropCollection("direccionEntrega");
 		mongoTemplate.dropCollection("entidadLegal");
 		mongoTemplate.dropCollection("identificacionFiscal");
-		mongoTemplate.dropCollection("localidad");
-		mongoTemplate.dropCollection("provincia");
 		mongoTemplate.createCollection("cliente");
+		
 		
 		IdentificacionFiscal idFiscal= new IdentificacionFiscal();
 		idFiscal.setIdentificacionFiscal("123456789");
@@ -190,7 +189,6 @@ public class ClienteRepositoryTest {
 		mongoTemplate.dropCollection("direccionEntrega");
 		mongoTemplate.dropCollection("entidadLegal");
 		mongoTemplate.dropCollection("identificacionFiscal");
-		mongoTemplate.dropCollection("localidad");
-		mongoTemplate.dropCollection("provincia");
+		
 	}
 }
