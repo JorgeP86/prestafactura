@@ -85,4 +85,60 @@
 	<definition name="prestaFacturaHomeUser" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/body.jsp"/>
 	</definition>
+	
+		<!-- ROL -->
+	<definition name="altaRolForm" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
+	</definition>
+	<definition name="altaRol" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/altaRol.jsp"/>
+	</definition>
+	<definition name="listadoRoles" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/listadoRoles.jsp"/>
+	</definition>
+	<definition name="editarRol" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/editarRol.jsp"/>
+	</definition>
+	<definition name="busquedaRoles" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/busquedaRol.jsp"></put-attribute>
+	</definition>
+				<!-- errores -->
+	<definition name="errorEliminarRol" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/errorEliminarRol.jsp"/>
+	</definition>
+	<definition name="errorAltaRol" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/errorAltaRol.jsp"/>
+	</definition>
+	
+	<!-- USUARIO -->
+	<definition name="listadoUsuarios" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/listadoUsuarios.jsp"/>
+	</definition>
+	<definition name="altaUsuarioForm" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/altaUsuario.jsp"/>
+	</definition>
+	<definition name="editarUsuario" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
+	</definition>
+	<definition name="errorAltaUsuarioForm" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/errorAltaUsuarioForm.jsp"/>
+	</definition>
+	
+	<!-- CLIENTE -->
+	
+	<definition name="altaClienteForm" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
+	</definition>
+	<definition name="listadoClientes" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/listadoClientes.jsp"></put-attribute>
+	</definition>
+	<definition name="busquedaClientes" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/busquedaCliente.jsp"></put-attribute>
+	</definition>
+				<!-- errores -->
+	<definition name="errorAltaCliente" extends="usuarioTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
+	</definition>
+
+	
 </tiles-definitions>

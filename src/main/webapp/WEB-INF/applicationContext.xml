@@ -39,6 +39,7 @@
 	<bean id="proveedorRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProveedorRepositoryImpl"></bean>
 	<bean id="secuenceIdRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.SecuenceIdRepositoryImpl"></bean>
 	<bean id="localidadRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.LocalidadRepositoryImpl"></bean>
+	<bean id="codigoPaisRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.CodigoPaisRepositoryImpl"></bean>
 	
 	
 	<!-- Service -->
