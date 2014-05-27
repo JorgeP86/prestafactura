@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Error alta Cliente</title>
+<title>Error</title>
 </head>
 <body>
-	<h1><strong>Error dando de alta un nuevo Cliente</strong></h1>
+	<h1><strong>Error accediendo al formulario alta Usuario</strong></h1>
 	<br/>
-	<b>Checkea la clase altaCliente Action o altaCliente.jsp</b>
+	<b>Checkea la clase altaUsuarioFormAction o altaUsuario.jsp</b>
 	<br/>
 	<p>Sorry about that</p>
 </body>

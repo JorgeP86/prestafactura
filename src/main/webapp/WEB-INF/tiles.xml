@@ -57,6 +57,9 @@
 	<definition name="editarUsuario" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionUsuario/editarUsuario.jsp"/>
 	</definition>
+	<definition name="errorAltaUsuarioForm" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionUsuario/errorAltaUsuarioForm.jsp"/>
+	</definition>
 	
 	<!-- CLIENTE -->
 	

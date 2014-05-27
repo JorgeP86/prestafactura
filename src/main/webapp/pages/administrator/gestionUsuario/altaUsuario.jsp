@@ -36,33 +36,38 @@
 	<legend>Alta Nuevo Usuario</legend>
 	<table border="1" width="90%">
 		<tr>
-			<td width="200px">
-				<s:textfield name="nombre" label="Nombre Usuario"  size="20" id="nombreUsuario"/>
+			<td>
+				<s:textfield name="nombre" label="Nombre Usuario" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:textfield name="apellido1" label="Primer Apellido"  size="20" id="apellido1"/>
+			<td>
+				<s:textfield name="apellido1" label="Primer Apellido" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:textfield name="apellido2" label="Segundo Apellido"  size="20" id="apellido2"/>
+			<td>
+				<s:textfield name="apellido2" label="Segundo Apellido" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:textfield name="login" label="Login"  size="20" id="login"/>
+		</tr>
+		<tr>
+			<td>
+				<s:textfield name="login" label="Login" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:password name="password" label="Password"  size="20" id="password"/>
+			<td>
+				<s:password name="password" label="Password" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:password name="password2" label="Repetir Password"  size="20" id="password2"/>
+			<td>
+				<s:password name="password2" label="Repetir Password" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:textfield name="email" label="E-mail"  size="20" id="email"/>
+		</tr>
+		<tr>
+			<td>
+				<s:textfield name="email" label="E-mail" labelposition="left" size="20"/>
 			</td>
-			<td width="100px">
-				<s:textfield name="departamento" label="Departamento"  size="20" id="departamento"/>
+			<td>
+				<s:textfield name="departamento" label="Departamento" labelposition="left" size="20"/>
 			</td>
+			
 			<td colspan="1">
-				<s:select label="Selecciona Rol"  headerKey="1"
-  				headerValue="-- Please Select --" name="nombreRol" list="listRoles" listValue="%{nombre}"/>
+				<s:select label="Selecciona Rol" labelposition="left" headerKey="1"
+  				headerValue="-- Please Select --" name="nombreRol" list="listRoles" listValue="%{nombre}" value="%{nombre}" listKey="%{nombre}" key="%{nombre}"/>
 			</td>
 			
 		</tr>
