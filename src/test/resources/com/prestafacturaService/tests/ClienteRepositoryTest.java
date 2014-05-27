@@ -43,16 +43,6 @@ public class ClienteRepositoryTest {
 	
 	@Before
 	public void setUp(){
-		mongoTemplate.dropCollection("cliente");
-		mongoTemplate.dropCollection("codigoPais");
-		mongoTemplate.dropCollection("datosPropios");
-		mongoTemplate.dropCollection("detallesContacto");
-		mongoTemplate.dropCollection("direccion");
-		mongoTemplate.dropCollection("direccionEntrega");
-		mongoTemplate.dropCollection("entidadLegal");
-		mongoTemplate.dropCollection("identificacionFiscal");
-		mongoTemplate.createCollection("cliente");
-		
 		
 		IdentificacionFiscal idFiscal= new IdentificacionFiscal();
 		idFiscal.setIdentificacionFiscal("123456789");
@@ -77,10 +67,7 @@ public class ClienteRepositoryTest {
 		diCliente.setLocalidad(localidadCliente);
 		diCliente.setPostBox("1001");
 		diCliente.setCodigoPais(codigoPaisCliente);
-		
-		
-		
-		
+
 		//
 		DetallesContacto dcCliente=new DetallesContacto();
 		dcCliente.setDireccionWeb("www.maria.com");
@@ -113,7 +100,6 @@ public class ClienteRepositoryTest {
 		diEntrega.setPostBox("1002");
 		diEntrega.setCodigoPais(cpaisEntrega);
 		
-		
 		///
 		Provincia pEmpresa=new Provincia();
 		pEmpresa=provinciaRepository.obtenerProvinciaByName("Sevilla");
@@ -123,7 +109,6 @@ public class ClienteRepositoryTest {
 		
 		CodigoPais cpaisEmpresa=new CodigoPais();
 		cpaisEmpresa=codigoPaisRepository.ObtenerCodigoPaisByForm("España");
-		
 		
 		
 		Direccion direcccionELegal=new Direccion();
@@ -182,7 +167,6 @@ public class ClienteRepositoryTest {
 	@After
 	public void setDown(){
 		mongoTemplate.dropCollection("cliente");
-		mongoTemplate.dropCollection("codigoPais");
 		mongoTemplate.dropCollection("datosPropios");
 		mongoTemplate.dropCollection("detallesContacto");
 		mongoTemplate.dropCollection("direccion");
