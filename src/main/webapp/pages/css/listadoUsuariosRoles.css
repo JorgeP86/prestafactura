@@ -1,0 +1,32 @@
+@CHARSET "ISO-8859-1";
+
+#busquedaUsuariosRoles{
+	margin-top: 10px;
+	width: 900px;
+}
+#busquedaUsuariosRoles fieldset{
+	width: 670px;
+}
+#busquedaUsuariosRoles table{
+	width: 600px;
+}
+
+#listadoUsuariosRoles{
+	width:900px;
+	margin-top:20px;
+}
+
+#listadoUsuariosRoles table{
+	width:700px;
+	border:1px ridge black;
+}
+
+#listadoUsuariosRoles td {
+	border:1px ridge black;
+}
+
+#enlace_altaUsuarioRol{
+	float:right;
+	margin-top:20px;
+	margin-right:200px;
+}

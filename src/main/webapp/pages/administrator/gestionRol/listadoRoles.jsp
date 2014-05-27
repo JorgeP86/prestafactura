@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script language="JavaScript" src="<s:url value='/pages/js/valida.js'/>"></script>
+<link rel="stylesheet" type="text/css" href="<s:url value='/pages/css/listadoUsuariosRoles.css'/>"/>
 <title>Prestafactura</title>
 </head>
 
@@ -36,7 +37,7 @@
 		<table align="center">
 			<tr>
 				<td width="60%">
-					<s:textfield name="nombreRol" label="Nombre Rol" size="20"/>
+					<s:textfield name="nombreRol" label="Nombre Rol" labelposition="left" size="20"/>
 				</td>
 				<td align="right">
 					<s:submit type="image" src="images/buscar.gif"/>
@@ -94,7 +95,7 @@
 			<s:param name="idRol" value="0" />
 		</s:url> 
 		<a href="<s:property value='#altaRolForm'/>"> 
-			<img alt="alta" src="<s:url value='/images/alta_b.gif'/>" width="93" height="32" border="0" longdesc="Crear nuevo Rol" />
+			<img alt="altaRol" src="<s:url value='/images/alta_b.gif'/>" width="93" height="32" border="0" longdesc="Crear nuevo Rol" />
 		</a>
 	</s:div>
 </body>
