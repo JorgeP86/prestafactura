@@ -72,11 +72,11 @@
 			<tr>
 			<td colspan="1">
 				<s:select label="Selecciona Provincia"  headerKey="1"
-  				headerValue="-- Please Select --" name="provincia" list="listProvincias" listValue="%{provincia}"/>
+  				headerValue="-- Please Select --" name="provincia" list="listProvincias" listValue="%{provincia}" value="%{provincia}" listKey="%{provincia}" key="%{provincia}"/>
 			</td>
 			<td colspan="1">
 				<s:select label="Selecciona Localidad" headerKey="1" headerValue="-- Please Select --"  list="listLocalidades" 
-				listValue="%{localidad}" name="localidad" />
+				listValue="%{localidad}" name="localidad" value="%{localidad}" listKey="%{localidad}" key="%{localidad}"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="codigoPostal" label="Codigo Postal"  size="30"  id="codigoPostal"/>
@@ -85,7 +85,7 @@
 		<tr>
 			<td colspan="1">
 				<s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
-				listValue="%{codigoPais}" name="codigoPais"/>
+				listValue="%{codigoPais}" name="codigoPais" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="posbox" label="Posbox"  size="30"  id="posbox"/>
@@ -114,11 +114,11 @@
 			<tr>
 			<td colspan="1">
 				<s:select label="Selecciona Provincia"  headerKey="1"
-  				headerValue="-- Please Select --" name="provinciaEntrega" list="listProvincias" listValue="provincia"/>			
+  				headerValue="-- Please Select --" name="provinciaEntrega" list="listProvincias" listValue="%{provincia}" value="%{provincia}" listKey="%{provincia}" key="%{provincia}"/>			
   			</td>
 			<td colspan="1">
 				<s:select label="Selecciona Localidad" headerKey="1" headerValue="-- Please Select --"  list="listLocalidades" 
-				listValue="localidad" name="localidadEntrega" />
+				listValue="%{localidad}" name="localidadEntrega" value="%{localidad}" listKey="%{localidad}" key="%{localidad}"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="codigoPostalEntrega" label="Codigo Postal"  size="30"  id="codigoPostalEntrega"/>
@@ -127,7 +127,7 @@
 		<tr>
 			<td colspan="1">
 				<s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
-				listValue="codigoPais" name="codigoPaisEntrega"/>			
+				listValue="%{codigoPais}" name="codigoPaisEntrega" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>			
 			</td>
 			<td colspan="1">
 				<s:textfield name="posboxEntrega" label="Posbox"  size="10"  id="posboxEntrega"/>
@@ -199,11 +199,11 @@
 			<tr>
 			<td colspan="1">
 				<s:select label="Selecciona Provincia"  headerKey="1"
-  				headerValue="-- Please Select --" name="provinciaEmpresa" list="listProvincias" listValue="provincia"/>			
+  				headerValue="-- Please Select --" name="provinciaEmpresa" list="listProvincias" listValue="%{provincia}" value="%{provincia}" listKey="%{provincia}" key="%{provincia}"/>			
   			</td>
 			<td colspan="1">
 				<s:select label="Selecciona Localidad" headerKey="1" headerValue="-- Please Select --"  list="listLocalidades" 
-				listValue="localidad" name="localidadEmpresa" />
+				listValue="%{localidad}" name="localidadEmpresa" value="%{localidad}" listKey="%{localidad}" key="%{localidad}"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="codigoPostalEmpresa" label="Codigo Postal"  size="30"  id="codigoPostalEmpresa"/>
@@ -212,7 +212,7 @@
 		<tr>
 			<td colspan="1">
 				<s:select label="Selecciona País" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
-				listValue="codigoPais" name="codigoPaisEmpresa"/>
+				listValue="%{codigoPais}" name="codigoPaisEmpresa" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>
 			</td>
 			<td colspan="1">
 				<s:textfield name="posboxEmpresa" label="Posbox"  size="30"  id="posboxEmpresa"/>
