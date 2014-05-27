@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
-import com.mongodb.WriteResult;
 import com.prestafacturaService.mongo.dto.Rol;
 
 public class RolRepositoryImpl implements RolRepositoryCustom{
@@ -45,7 +44,7 @@ public class RolRepositoryImpl implements RolRepositoryCustom{
 		Update update= new Update();
 		update.push("nombre",rol.getNombre());
 		update.push("descripcion", rol.getDescripcion());
-		WriteResult w=mongoTemplate.updateFirst(query, update, Rol.class);
+		mongoTemplate.updateFirst(query, update, Rol.class);
 		return mongoTemplate.findById(rol.getID(), Rol.class);
 	}
 

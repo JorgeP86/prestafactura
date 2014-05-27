@@ -3,11 +3,8 @@ package com.prestafacturaService.mongo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.prestafacturaService.mongo.util.CascadeSave;
 
 
 @Document(collection="usuario")
@@ -15,7 +12,6 @@ public class Usuario extends BaseEntity implements Serializable{
 
 	private static final long serialVersionUID = 1065568621461814837L;
 	
-	@Indexed(unique = true)
 	private int idUsuario;
 	private String nombre;
 	private String apellido1;
@@ -26,7 +22,6 @@ public class Usuario extends BaseEntity implements Serializable{
 	private String departamento;
     private Date fechaAlta;
     @DBRef
-    @CascadeSave
 	private Rol rol; 
     
     
@@ -90,6 +85,14 @@ public class Usuario extends BaseEntity implements Serializable{
 	}
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + ", apellido1=" + apellido1
+				+ ", apellido2=" + apellido2 + ", login=" + login
+				+ ", password=" + password + ", email=" + email
+				+ ", departamento=" + departamento + ", fechaAlta=" + fechaAlta
+				+ ", rol=" + rol.getNombre() + "]";
 	}
 
 }

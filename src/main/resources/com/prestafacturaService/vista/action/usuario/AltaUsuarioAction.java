@@ -1,7 +1,6 @@
 package com.prestafacturaService.vista.action.usuario;
 
 import java.util.Date;
-import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +42,7 @@ public class AltaUsuarioAction extends ActionSupport{
     private RolManager rolManager;
 	@Autowired
 	private UsuarioManager usuarioManager;
-    
-    
+        
 	public String execute(){
 		clearFieldErrors();
 	try{
@@ -52,25 +50,30 @@ public class AltaUsuarioAction extends ActionSupport{
 		if(idUsuario==0){ //Alta
 			//Comprobamos que no existe el Usuario con el mismo password y login
 			logger.info("Comenzando alta, comprueba si existe el usuario para crearlo");
-			if(usuarioManager.existeUsuario(login, password)
-					|| usuarioManager.existeNombreUsuario(login)){
+			if(!usuarioManager.existeNombreUsuario(login)){
+				logger.info("CORRECTO. No existe usuario con login:"+ login);
 				if(password.equals(password2)){
-				Rol rolUsuario=rolManager.ObtenerRolByName(nombreRol);
-				Usuario usuarioNuevo=new Usuario();
-				usuarioNuevo.setIdUsuario(new Integer(UUID.randomUUID().toString()));
-				usuarioNuevo.setNombre(nombre);
-				usuarioNuevo.setApellido1(apellido1);
-				usuarioNuevo.setApellido2(apellido2);
-				usuarioNuevo.setDepartamento(departamento);
-				usuarioNuevo.setEmail(email);
-				usuarioNuevo.setLogin(login);
-				usuarioNuevo.setPassword(password);
-				usuarioNuevo.setRol(rolUsuario);
-				usuarioNuevo.setFechaAlta(new Date());
-		
-				usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
-				 logger.info("Creado el usuario Nuevo");
-				return SUCCESS;
+					System.out.println("El rol obtenido del SELECT es:"+ nombreRol);
+					Rol rolUsuario = new Rol();
+					rolUsuario=rolManager.ObtenerRolByName(nombreRol);
+					System.out.println("El rol obtenido es:"+rolUsuario.getNombre());
+					//usuarioNuevo.setIdUsuario(new Integer(UUID.randomUUID().toString()));
+					Usuario usuarioNuevo = new Usuario();
+					usuarioNuevo.setNombre(nombre);
+					usuarioNuevo.setApellido1(apellido1);
+					usuarioNuevo.setApellido2(apellido2);
+					usuarioNuevo.setDepartamento(departamento);
+					usuarioNuevo.setEmail(email);
+					usuarioNuevo.setLogin(login);
+					usuarioNuevo.setPassword(password);
+					usuarioNuevo.setRol(rolUsuario);
+					usuarioNuevo.setFechaAlta(new Date());
+					
+					System.out.println("El Usuario antes de guardar es:"+ usuarioNuevo.toString());
+					usuarioCreado=usuarioManager.saveUsuario(usuarioNuevo);
+					logger.info("Guardado usuario Nuevo");
+					System.out.println("El Usuario guardado es:"+ usuarioCreado.toString());
+					return SUCCESS;
 				}else{
 					addActionError("El password no es correcto");
 				}
@@ -79,7 +82,7 @@ public class AltaUsuarioAction extends ActionSupport{
 				return INPUT;
 			}
 			
-		}if(idUsuario>0){ //Modificación
+		}/*if(idUsuario>0){ //Modificación
 			logger.info("Comienza operacion modificar");
 			if(usuarioManager.existeUsuario(login, password)
 					|| usuarioManager.existeNombreUsuario(login)){
@@ -102,14 +105,12 @@ public class AltaUsuarioAction extends ActionSupport{
 				this.setUsuarioModificado(usuarioModificado);
 				return SUCCESS;
 				
-				
-				
 			}else{
 				addActionError("El usuario ya existe");
 				return INPUT;
 			}
 			
-		}
+		}*/
 		
 		} catch (Exception e){
 			addFieldError("invalidUsuarioAlta","El usuario no se ha creado correctamente");
@@ -244,6 +245,36 @@ public class AltaUsuarioAction extends ActionSupport{
 
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+
+	public String getPassword2() {
+		return password2;
+	}
+
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
+
+
+	public RolManager getRolManager() {
+		return rolManager;
+	}
+
+
+	public void setRolManager(RolManager rolManager) {
+		this.rolManager = rolManager;
+	}
+
+
+	public UsuarioManager getUsuarioManager() {
+		return usuarioManager;
+	}
+
+
+	public void setUsuarioManager(UsuarioManager usuarioManager) {
+		this.usuarioManager = usuarioManager;
 	}
 	
 	

@@ -1,6 +1,5 @@
 package com.prestafacturaService.mongo.dto;
 
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -12,7 +11,7 @@ public class Recurso extends BaseEntity{
 	 */
 	private static final long serialVersionUID = -2887083669831054266L;
 	private boolean enc=false;
-	@Indexed(unique = true)
+	//@Indexed(unique = true)
 	private Integer idpagina;
 	private String path;
 	private String descripcion;

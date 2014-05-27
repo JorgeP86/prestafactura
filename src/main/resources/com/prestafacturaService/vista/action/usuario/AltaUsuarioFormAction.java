@@ -24,7 +24,7 @@ public class AltaUsuarioFormAction extends ActionSupport {
 	
 	@Autowired
 	private RolManager rolManager;
-	
+	private String nombreRol;
 	private List<Rol> listRoles;
 	
 	public String execute() {
@@ -32,6 +32,7 @@ public class AltaUsuarioFormAction extends ActionSupport {
 			logger.info("Obteniendo Roles");
 			listRoles=rolManager.ObtenerRoles();
 			logger.info("Roles Obtenidos");
+			System.out.println("ACCESO A ROLES: El rol obtenido de BD es:"+ listRoles.get(0).getNombre());
 		}catch(Exception e){
 			addActionError("Fallo al obtener datos para el formulario Alta Usuario");
 			return ERROR;
@@ -53,6 +54,14 @@ public class AltaUsuarioFormAction extends ActionSupport {
 
 	public void setListRoles(List<Rol> listRoles) {
 		this.listRoles = listRoles;
+	}
+
+	public String getNombreRol() {
+		return nombreRol;
+	}
+
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
 	}
 	
 	
