@@ -20,5 +20,7 @@
 	<bean id="permisoManager" class="com.prestafacturaService.mongo.manager.PermisoManager"></bean>
 	<bean id="recursoManager" class="com.prestafacturaService.mongo.manager.RecursoManager"></bean>
 	
+	<bean id="recursoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RecursoRepositoryImpl"></bean>
+	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
 </beans>
