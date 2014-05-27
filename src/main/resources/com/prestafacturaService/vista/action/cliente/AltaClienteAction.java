@@ -102,15 +102,15 @@ public class AltaClienteAction extends ActionSupport{
 			
 			if(idCliente==0){ //Alta
 				
-				System.out.print(provincia);
-				System.out.print(codigoPais);
-				System.out.print(localidad);
-				System.out.print(localidadEntrega);
-				System.out.print(provinciaEntrega);
-				System.out.print(codigoPaisEntrega);
-				System.out.print(provinciaEmpresa);
-				System.out.print(localidadEmpresa);
-				System.out.print(codigoPaisEmpresa);
+				System.out.println(provincia);
+				System.out.println(codigoPais);
+				System.out.println(localidad);
+				System.out.println(localidadEntrega);
+				System.out.println(provinciaEntrega);
+				System.out.println(codigoPaisEntrega);
+				System.out.println(provinciaEmpresa);
+				System.out.println(localidadEmpresa);
+				System.out.println(codigoPaisEmpresa);
 				logger.info("Comienza operacion alta cliente");
 				IdentificacionFiscal idFiscal= new IdentificacionFiscal();
 				idFiscal.setIdentificacionFiscal(identificacionFiscal);
@@ -229,16 +229,14 @@ public class AltaClienteAction extends ActionSupport{
 				
 				logger.info("Se procedera a crearse el objeto cliente");
 				Cliente clienteNuevo= new Cliente();
-					clienteNuevo.setNombre(nombreCliente);
-					clienteNuevo.setApellido1(apellidoPCliente);
-					clienteNuevo.setApellido2(apellidoSCliente);
-					clienteNuevo.setIdentificacionFiscal(idFiscal);
-					clienteNuevo.setDireccion(diCliente);
-					clienteNuevo.setDirEntrega(diEntrega);
-					clienteNuevo.setDetallesContacto(dcCliente);
-					clienteNuevo.setEntidadLegal(eLCliente);
-					
-					
+				clienteNuevo.setNombre(nombreCliente);
+				clienteNuevo.setApellido1(apellidoPCliente);
+				clienteNuevo.setApellido2(apellidoSCliente);
+				clienteNuevo.setIdentificacionFiscal(idFiscal);
+				clienteNuevo.setDireccion(diCliente);
+				clienteNuevo.setDirEntrega(diEntrega);
+				clienteNuevo.setDetallesContacto(dcCliente);
+				clienteNuevo.setEntidadLegal(eLCliente);
 				
 				clienteManager.guardarCliente(clienteNuevo);
 				logger.info("Se guarda el Cliente en BD");
