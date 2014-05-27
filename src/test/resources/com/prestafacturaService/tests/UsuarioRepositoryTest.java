@@ -52,19 +52,10 @@ public class UsuarioRepositoryTest {
 		Recurso recurso = new Recurso();
 		
 		recurso = recursoManager.obtenerPaginaBypath("altaUsuario");
-		
-		/*
-		recurso.setAmbito("ambito");
-		recurso.setDescripcion("descripcion");
-		recurso.setEnc(true);
-		recurso.setPath("www.marca.com");
-		*/
 
-		//List<Permiso> permisos = new ArrayList<Permiso>();
 		Rol rol = new Rol();
 		rol.setNombre("Administrador");
 		rol.setDescripcion("descripcion");
-		//rol.setPermisos(permisos);
 		rolManager.saveRol(rol);
 		
 		Permiso permiso = new Permiso();
@@ -104,14 +95,6 @@ public class UsuarioRepositoryTest {
 	
 	@After
 	public void tearDown(){
-		/*
-		template.dropCollection("usuario");
-		template.dropCollection("rol");
-		template.dropCollection("pagina");
-		template.dropCollection("permisos");
-		template.dropCollection("permiso");
-		template.dropCollection("recurso");
-		*/
 	}
 	
 	private static void assertUsuario(List<Usuario> usuarios, String nombre){
