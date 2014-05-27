@@ -1,5 +1,6 @@
 package com.prestafacturaService.tests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +20,6 @@ import com.prestafacturaService.mongo.dto.Localidad;
 import com.prestafacturaService.mongo.dto.Provincia;
 import com.prestafacturaService.mongo.repositories.ClienteRepository;
 import com.prestafacturaService.mongo.repositories.CodigoPaisRepository;
-import com.prestafacturaService.mongo.repositories.DetallesContactoRepository;
-import com.prestafacturaService.mongo.repositories.DireccionRepository;
-import com.prestafacturaService.mongo.repositories.EntidadLegalRepository;
-import com.prestafacturaService.mongo.repositories.IdentificacionFiscalRepository;
 import com.prestafacturaService.mongo.repositories.LocalidadRepository;
 import com.prestafacturaService.mongo.repositories.ProvinciaRepository;
 
@@ -36,14 +33,6 @@ public class ClienteRepositoryTest {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	@Autowired
-	private DireccionRepository direccionRepository;
-	@Autowired
-	private DetallesContactoRepository detallesContactoRepository;
-	@Autowired
-	private EntidadLegalRepository entidadLegalRepository;
-	@Autowired
-	private IdentificacionFiscalRepository identificacionFiscalRepository;
-	@Autowired
 	private ProvinciaRepository provinciaRepository;
 	@Autowired
 	private LocalidadRepository localidadRepository;
@@ -55,11 +44,19 @@ public class ClienteRepositoryTest {
 	@Before
 	public void setUp(){
 		mongoTemplate.dropCollection("cliente");
+		mongoTemplate.dropCollection("codigoPais");
+		mongoTemplate.dropCollection("datosPropios");
+		mongoTemplate.dropCollection("detallesContacto");
+		mongoTemplate.dropCollection("direccion");
+		mongoTemplate.dropCollection("direccionEntrega");
+		mongoTemplate.dropCollection("entidadLegal");
+		mongoTemplate.dropCollection("identificacionFiscal");
+		mongoTemplate.dropCollection("localidad");
+		mongoTemplate.dropCollection("provincia");
 		mongoTemplate.createCollection("cliente");
 		
 		IdentificacionFiscal idFiscal= new IdentificacionFiscal();
 		idFiscal.setIdentificacionFiscal("123456789");
-		identificacionFiscalRepository.save(idFiscal);
 		
 		Provincia provinciaCliente=new Provincia();
 		provinciaCliente=provinciaRepository.obtenerProvinciaByName("Sevilla");
@@ -82,7 +79,6 @@ public class ClienteRepositoryTest {
 		diCliente.setPostBox("1001");
 		diCliente.setCodigoPais(codigoPaisCliente);
 		
-		//direccionRepository.save(diCliente);
 		
 		
 		
@@ -94,7 +90,6 @@ public class ClienteRepositoryTest {
 		dcCliente.setPersonaContacto("maria");
 		dcCliente.setTelefono("954886359");
 		
-		//detallesContactoRepository.save(dcCliente);
 		
 		///
 		Provincia pEntrega=new Provincia();
@@ -119,7 +114,6 @@ public class ClienteRepositoryTest {
 		diEntrega.setPostBox("1002");
 		diEntrega.setCodigoPais(cpaisEntrega);
 		
-		//direccionRepository.save(diEntrega);
 		
 		///
 		Provincia pEmpresa=new Provincia();
@@ -145,7 +139,6 @@ public class ClienteRepositoryTest {
 		direcccionELegal.setPostBox("1003");
 		direcccionELegal.setCodigoPais(cpaisEmpresa);
 		
-		//direccionRepository.save(direcccionELegal);
 		
 		//
 		DetallesContacto dContactoEmpresa=new DetallesContacto();
@@ -154,7 +147,6 @@ public class ClienteRepositoryTest {
 		dContactoEmpresa.setMail("mailEmpresa");
 		dContactoEmpresa.setPersonaContacto("personaContactoEmpresa");
 		dContactoEmpresa.setTelefono("telefonoEmpresa");
-		//detallesContactoRepository.save(dContactoEmpresa);
 		
 		//
 		EntidadLegal eLCliente=new EntidadLegal();
@@ -162,7 +154,6 @@ public class ClienteRepositoryTest {
 		eLCliente.setNombreComercial("nombreComercial");
 		eLCliente.setRazonSocial("razonSocial");
 		eLCliente.setDireccion(direcccionELegal);
-		//entidadLegalRepository.save(eLCliente);
 		
 		
 		Cliente clienteNuevo= new Cliente();
@@ -185,7 +176,21 @@ public class ClienteRepositoryTest {
 	
 	@Test
 	public void test() {
+			
 		
-		
+	}
+	
+	@After
+	public void setDown(){
+		mongoTemplate.dropCollection("cliente");
+		mongoTemplate.dropCollection("codigoPais");
+		mongoTemplate.dropCollection("datosPropios");
+		mongoTemplate.dropCollection("detallesContacto");
+		mongoTemplate.dropCollection("direccion");
+		mongoTemplate.dropCollection("direccionEntrega");
+		mongoTemplate.dropCollection("entidadLegal");
+		mongoTemplate.dropCollection("identificacionFiscal");
+		mongoTemplate.dropCollection("localidad");
+		mongoTemplate.dropCollection("provincia");
 	}
 }

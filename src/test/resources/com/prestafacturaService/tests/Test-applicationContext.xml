@@ -21,6 +21,11 @@
 	<bean id="recursoManager" class="com.prestafacturaService.mongo.manager.RecursoManager"></bean>
 	
 	<bean id="recursoRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.RecursoRepositoryImpl"></bean>
+	<bean id="provinciaRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ProvinciaRepositoryImpl"></bean>
+	<bean id="localidadRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.LocalidadRepositoryImpl"></bean>
+	<bean id="codigoPaisRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.CodigoPaisRepositoryImpl"></bean>
+	<bean id="clienteRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.ClienteRepositoryImpl"></bean>
+	
 	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"/>
 </beans>
