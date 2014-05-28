@@ -9,7 +9,6 @@ import com.prestafacturaService.mongo.util.CascadeSave;
 @Document(collection="cliente")
 public class Cliente extends BaseEntity{
 
-	
 	/**
 	 * 
 	 */

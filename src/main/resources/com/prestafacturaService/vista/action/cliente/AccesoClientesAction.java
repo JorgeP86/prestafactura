@@ -25,25 +25,17 @@ public class AccesoClientesAction extends ActionSupport {
 	private Collection<Cliente> listaClientes;
 
 	public String execute(){
-		 
 		try {
-			 listaClientes=clienteManager.obtenerClientes();
-				logger.info("Obtenida lista de clientes");
-
-			 if(listaClientes.size()==0){
-				 addActionMessage("No hay clientes para mostrar"); 
-			 }
-			 
-			 
-		 }catch(Exception e){
-			 
-			 addActionError("Fallo al realizar el acceso de los clientes");
+			listaClientes=clienteManager.obtenerClientes();
+			logger.info("Obtenida lista de clientes");
+			if(listaClientes.size()==0){
+				addActionMessage("No hay clientes para mostrar"); 
+			}			 
+		}catch(Exception e){			 
+			addActionError("Fallo al realizar el acceso de los clientes");
 			return ERROR;
-		 }
-		 
-
-		 return null;
-		 
+		}
+		return SUCCESS;
 	 }
 
 	public ClienteManager getClienteManager() {

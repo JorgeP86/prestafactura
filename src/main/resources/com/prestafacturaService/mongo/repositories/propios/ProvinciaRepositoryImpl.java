@@ -15,7 +15,7 @@ public class ProvinciaRepositoryImpl implements ProvinciaRepositoryCustom{
 	public Provincia obtenerProvinciaByName(String provincia) {
 		// TODO Auto-generated method stub
 		Query query=new Query();
-		query.addCriteria(Criteria.where(provincia).is(provincia));
+		query.addCriteria(Criteria.where("provincia").is(provincia));
 		return mongoTemplate.findOne(query, Provincia.class);
 	}
 
