@@ -87,10 +87,10 @@
 	</definition>
 	
 	<!-- GESTION FACTURA -->
-	<definition name="altaFactura" extends="administradorTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
+	<definition name="altaFactura" extends="facturaTemplate">
+		<put-attribute name="body" value="/pages/usuario/gestionFactura/altaFactura.jsp"/>
 	</definition>	
-
+	
 	
 		<!-- /////////////    USUARIO   ///////////// -->
 	<definition name="prestaFacturaHomeUser" extends="usuarioTemplate">
