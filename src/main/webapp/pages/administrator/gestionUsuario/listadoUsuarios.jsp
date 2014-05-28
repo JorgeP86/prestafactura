@@ -27,7 +27,7 @@
 <s:div id="busquedaUsuariosRoles">
 	<table>
 		<tr>
-			<td valign="middle">Gesti&oacute;n de Usuario</td>
+			<td id="title">Gesti&oacute;n de Usuario</td>
 		</tr>
 	</table>
 	<s:form action="BusquedaUsuarioAction" namespace="/" method="post">
@@ -92,7 +92,7 @@
 					<td><s:property value="%{rol.nombre}"/>
 					<td>
 						<s:url action="AltaUsuarioAction" var="ModificacionUsuario">
-							<s:param name="idUsuario" value="0"></s:param>
+							<s:param name="idUsuario" value="1"></s:param>
 						</s:url>
 						<s:a href="<s:property value='#ModificacionUsuario'/>">
 							<img alt="editarUsuario" src="<s:url value='/images/modificar_peq.jpg'/>" border="0" longdesc="Editar Usuario"/></s:a>
@@ -119,11 +119,12 @@
 	</s:div>
 	<s:div id="enlace_altaUsuarioRol">
 		<s:url action="AltaUsuarioFormAction" var="altaUsuarioForm">
-			<s:param name="idRol" value="0" />
+			<s:param name="idUsuario" value="0" />
 		</s:url> 
 		<a href="<s:property value='#altaUsuarioForm'/>"> 
 			<img alt="altaUsuario" src="<s:url value='/images/alta_b.gif'/>" width="93" height="32" border="0" longdesc="Crear nuevo Usuario" />
 		</a>
+		<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
 	</s:div>
 </body>
 </html>

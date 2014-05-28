@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="<s:url value='/pages/css/listadoClientes.css'/>"/>
 <script language="JavaScript" src="<s:url value='/pages/js/valida.js'/>"></script>
 <title>Prestafactura</title>
 </head>
@@ -19,91 +20,124 @@
 		};
 	};
 </script>
+--%>
 <body>
-	<s:property value="id"/>
-	<%---------- BUSCAR CLIENTES -----------%>
 
-	<table width="100%" border="0" cellspacing="0" cellpadding="0"
-		class="tabla_lista">
+	<%---------- BUSCAR CLIENTES -----------%>
+<s:div id="busquedaCliente">
+	<table>
 		<tr>
-			<td width="60%" valign="middle">Gesti&oacute;n de Clientes</td>
+			<td id="title">Gesti&oacute;n de Clientes</td>
 		</tr>
 	</table>
 	<s:form action="busquedaClienteAction" namespace="/" method="post">
+		<fieldset>
+		<legend>B&uacute;squeda de Clientes</legend>
 		<table>
 			<tr>
-				<td colspan="8" bgcolor="" class="celda_gris2">B&uacute;squeda
-					de Cliente:</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
 				<td>
-					<s:textfield name="idFiscal" label="Identificacion Fiscal" size="20" id="idFiscalBusqueda"/>
+					<s:textfield name="clienteBusqueda" label="Nombre Cliente" labelposition="left" size="20" id="clienteInput"/>
+					<s:textfield name="idFiscal" label="Identificacion Fiscal" labelposition="left" size="10" id="identFiscalInput"/>
 				</td>
-				
-				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="6" bgcolor="#DBE2EA" class="texto1">
-				<br />
-				<s:submit name="Buscar" type="image" src="<s:url value='/images/buscar.gif'/>"/>
+				<td align="right">
+					<s:submit name="Buscar" type="image" src="images/buscar.gif"/>
 				</td>
-				<td>&nbsp;</td>
 			</tr>
 		</table>
-
+		</fieldset>
 	</s:form>
-	
-	<%----------- LISTAR ROLES ------------%>
+</s:div>
+	<%----------- LISTAR CLIENTES ------------%>
 
-	<body>
-	<s:if test="%{listaClientes!=0}"/>
-			<table  border=0 width="90%" class="recuadro">
-					<tr>
-						<td>Identificacion Fiscal Cliente:</td>
-						<td>Nombre Cliente:</td>
-						<td>Primer Apellido Cliente:</td>
-						<td>Segundo Apellido Cliente:</td>
-						
-						<td>Identificacion Fiscal Empresa:</td>
-						<td>Razón Social:</td>
-						<td>Nombre de la Empresa:</td>
-						
-						<td></td>
-					</tr>
-					<s:iterator value="clientes" status="paginasStatus" var="listaClientes">
-						<tr>
-							<s:if test="%{#listaClientes.nombre!=null}">
-							<td><s:property value="%{#listaClientes.identificacionFiscal}"/></td>
-							<td><s:property value="%{#listaClientes.nombre}"/></td>
-							<td><s:property value="%{#listaClientes.apellido1}"/></td>
-							<td><s:property value="%{#listaClientes.apellido2}"/></td>
-							</s:if>
-							<s:if test="%{#listaClientes.nombreComercial!=null}">
-							<td><s:property value="%{#listaClientes.identificacionFiscal}"/></td>
-							<td><s:property value="%{#listaClientes.razonSocial}"/></td>
-							<td><s:property value="%{#listaClientes.nombreComercial}"/></td>
-							</s:if>
-							<td>
-							
-								<s:url action="AltaClienteAction" var="ModificacionCliente">
-									<s:param name="idCliente" value="0"></s:param>
-								</s:url>
-								<s:a href="<s:property value='#ModificacionCliente'/>">
-									<img alt="editarCliente" src="<s:url value='/images/modificar_peq.jpg'/>" width="93" height="32" border="0" longdesc="Editar Cliente"/></s:a>
-							</td>
-							<td>
-								<s:url action="ModificacionClienteAction" var="BorrarCliente">
-									<s:param name="idCliente" value="0"></s:param>
-								</s:url>
-								<s:a href="<s:property value='#BorrarCliente'/>">
-									<img alt="borrarCliente" src="<s:url value='/images/eliminar_peq.jpg'/>" width="93" height="32" border="0" longdesc="Borrar Cliente"/></s:a>
-								
-							</td>
-						</tr>
-		
-				</s:iterator>
+<s:div id="listadoClientes">
+	<s:if test="%{#listaClientes!=0}">
+		<table id="table_listado">
+			<tr style="background:#97c700">
+				<td>Identificacion Fiscal:</td>
+				<td>Nombre:</td>
+				<td>Primer Apellido:</td>
+				<td>Segundo Apellido:</td>
+				<td>Provincia:</td>
+				<td>Localidad:</td>
+				<td>Razón Social:</td>
+				<td>Nombre Comercial</td>
+				<td colspan="2"></td>
+			</tr>
+			<s:iterator value="listaClientes" status="status" var="cliente">
+				<s:if test="#status.even==true">
+				<tr style="background: #CCCCCC">
+					<s:bean name="idG"></s:bean>
+					<td><s:property value="%{identificacionFiscal.identificacionFiscal}"/></td>
+					<td><s:property value="%{nombre}"/></td>
+					<td><s:property value="%{apellido1}"/></td>
+					<td><s:property value="%{apellido2}"/></td>
+					<td><s:property value="%{#cliente.direccion.provincia.provincia}"/></td>
+					<td><s:property value="%{#cliente.direccion.localidad.localidad}"/></td>
+					<td><s:property value="%{#cliente.entidadLegal.razonSocial}"/></td>
+					<td><s:property value="%{#cliente.entidadLegal.nombreComercial}"/></td>
+					<td>
+						<s:url action="AltaClienteAction" var="editarCliente">
+							<s:param name="idCliente" value="1"></s:param>
+						</s:url>
+						<s:a href="<s:property value='#editarCliente'/>">
+							<img alt="editarCliente" src="<s:url value='/images/modificar_peq.jpg'/>" width="93" height="32" border="0" longdesc="Editar Cliente"/></s:a>
+					</td>
+					<td>
+						<s:url action="ModificacionClienteAction" var="BorrarCliente">
+							<s:param name="idCliente" value="0"></s:param>
+						</s:url>
+						<s:a href="<s:property value='#BorrarCliente'/>">
+							<img alt="borrarCliente" src="<s:url value='/images/eliminar_peq.jpg'/>" width="93" height="32" border="0" longdesc="Borrar Cliente"/>
+						</s:a>
+					</td>
+				</tr>
+				</s:if>
+				<s:else>
+				<tr>
+					<td><s:property value="%{identificacionFiscal.identificacionFiscal}"/></td>
+					<td><s:property value="%{nombre}"/></td>
+					<td><s:property value="%{apellido1}"/></td>
+					<td><s:property value="%{apellido2}"/></td>
+					<td><s:property value="%{#cliente.direccion.provincia.provincia}"/></td>
+					<td><s:property value="%{#cliente.direccion.localidad.localidad}"/></td>
+					<td><s:property value="%{#cliente.entidadLegal.razonSocial}"/></td>
+					<td><s:property value="%{#cliente.entidadLegal.nombreComercial}"/></td>
+					<td>
+						<s:url action="AltaClienteAction" var="editarCliente">
+							<s:param name="idCliente" value="1"></s:param>
+						</s:url>
+						<s:a href="<s:property value='#editarCliente'/>">
+							<img alt="editarCliente" src="<s:url value='/images/modificar_peq.jpg'/>" border="0" longdesc="Editar Cliente"/></s:a>
+					</td>
+					<td>
+						<s:url action="ModificacionClienteAction" var="BorrarCliente">
+							<s:param name="idCliente" value="0"></s:param>
+						</s:url>
+						<s:a href="<s:property value='#BorrarCliente'/>">
+							<img alt="borrarCliente" src="<s:url value='/images/eliminar_peq.jpg'/>" border="0" longdesc="Borrar Cliente"/>
+						</s:a>
+					</td>
+				</tr>
+				</s:else>
+			</s:iterator>
 		</table>
-
+		<s:if test="hasActionErrors()">
+   			<div class="errors">
+      			<s:actionerror/>
+   			</div>
+		</s:if>
+	</s:if>
+</s:div>
+<s:div id="enlace_altaCliente">
+	<s:url action="AltaClienteAction" var="altaClienteForm">
+		<s:param name="idRol" value="0" />
+	</s:url> 
+	<a href="<s:property value='#altaClienteForm'/>"> 
+		<img alt="altaCliente" src="<s:url value='/images/alta_b.gif'/>" width="93" height="32" border="0" longdesc="Crear nuevo Cliente" />
+	</a>
+	<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
+</s:div>
 </body>
 </html>

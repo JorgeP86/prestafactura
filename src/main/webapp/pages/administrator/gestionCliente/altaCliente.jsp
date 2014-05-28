@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="<s:url value='/pages/css/altaCliente.css'/>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <SCRIPT language="JavaScript" src="<s:url value='/pages/js/valida.js'/>"></SCRIPT>
 <title>Gesti&oacute;n Roles</title>
@@ -34,7 +35,8 @@
 </s:div>
 
 <s:form action="AltaClienteAction" name="frc" namespace="/" method="post" styleId="formulario">
-	<s:div id="alta_form">	
+	<s:div id="alta_form">
+	<s:div id="datosPropios">
 	<fieldset>
 	<legend>Datos Propios</legend>
 	<table>
@@ -58,8 +60,8 @@
 		</tr>	
 	</table>
 	</fieldset>
-	
-	
+	</s:div>
+	<s:div id="direccion">
 	<fieldset>
 	<legend>Direccion</legend>
 		<table>
@@ -101,7 +103,8 @@
 		</tr>
 	</table>
 	</fieldset>	
-	
+	</s:div>
+	<s:div id="direccionEntrega">
 	<fieldset>
 	<legend>Direccion de Entrega</legend>	
 	<table>
@@ -144,7 +147,8 @@
 		<tr></tr>
 		</table>
 		</fieldset>
-		
+		</s:div>
+		<s:div id="detallesContacto">
 		<fieldset>
 		<legend>Detalles de Contacto del Cliente</legend>
 		<table>	
@@ -170,7 +174,8 @@
 		<tr></tr>
 		</table>
 		</fieldset>
-		
+		</s:div>
+		<s:div id="entidadLegal">
 		<fieldset>
 		<legend>Entidad Legal</legend>
 		<table>
@@ -188,7 +193,8 @@
 		<tr></tr>
 		</table>
 		</fieldset>
-		
+		</s:div>
+		<s:div id="direccionEmpresa">
 		<fieldset>
 		<legend>Direccion de la Empresa</legend>
 		<table>
@@ -197,10 +203,10 @@
 				<s:textfield name="calleEmpresa" label="Domicilio" labelposition="left" size="30" id="calleEmpresa"/>
 			</td>
 			<td>
-				<s:textfield name="numeroEdificioEmpresa" label="Numero Edificio" labelposition="left" size="30" id="numeroEdificioEmpresa"/>
+				<s:textfield name="numeroEdificioEmpresa" label="Numero Edificio" labelposition="left" size="10" id="numeroEdificioEmpresa"/>
 			</td>
 			<td>
-				<s:textfield name="departamentoEmpresa" label="Departamento" labelposition="left" size="30" id="departamentoEmpresa"/>
+				<s:textfield name="departamentoEmpresa" label="Departamento" labelposition="left" size="10" id="departamentoEmpresa"/>
 			</td>
 		</tr>
 			<tr>
@@ -213,7 +219,7 @@
 				listValue="%{localidad}" name="localidadEmpresa" value="%{localidad}" listKey="%{localidad}" key="%{localidad}"/>
 			</td>
 			<td>
-				<s:textfield name="codigoPostalEmpresa" label="Codigo Postal" labelposition="left" size="30"  id="codigoPostalEmpresa"/>
+				<s:textfield name="codigoPostalEmpresa" label="Codigo Postal" labelposition="left" size="10"  id="codigoPostalEmpresa"/>
 			</td>
 		</tr>
 		<tr>
@@ -222,7 +228,7 @@
 				listValue="%{codigoPais}" name="codigoPaisEmpresa" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>
 			</td>
 			<td>
-				<s:textfield name="posboxEmpresa" label="Posbox" labelposition="left" size="30"  id="posboxEmpresa"/>
+				<s:textfield name="posboxEmpresa" label="Posbox" labelposition="left" size="10"  id="posboxEmpresa"/>
 			</td>
 			<td>
 				<s:textfield name="calleAdicionalEmpresa" label="Calle Adicional" labelposition="left" size="30"  id="calleAdicionalEmpresa"/>
@@ -230,7 +236,8 @@
 		</tr>
 		</table>
 		</fieldset>
-		
+		</s:div>
+		<s:div id="detallesContactoEmpresa">
 		<fieldset>
 		<legend>Detalles de Contacto de la Empresa</legend>
 		<table>
@@ -255,20 +262,20 @@
 			</tr>
 			<s:fielderror name="invalidClienteAlta">
 			</s:fielderror>
-			
 		</table>
 	</fieldset>
+	</s:div>
 	</s:div>
 	<s:div id="buttons">
 	<table>
 		<tr>
 			<td>
-				<s:hidden name="idCliente" value="0"></s:hidden>	
+				<s:hidden name="idCliente" value="0"/>	
 				<s:submit type="image" value="altaCliente" src='images/alta_b.gif'/>			
-			 </td>
-			 <td>
-			 	<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
-			 </td>
+			</td>
+			<td>
+				<a href="<s:url action='home'/>"><img alt="volver" src="<s:url value='/images/volver.gif'/>" width="93" height="32" border="0" longdesc="volver"/></a>
+			</td>
 		</tr>
 	</table>
 	</s:div>

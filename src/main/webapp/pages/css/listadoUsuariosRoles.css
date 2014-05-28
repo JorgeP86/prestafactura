@@ -1,5 +1,9 @@
 @CHARSET "ISO-8859-1";
 
+#title{
+	font-size: xx-large;
+}
+
 #busquedaUsuariosRoles{
 	margin-top: 10px;
 	width: 900px;

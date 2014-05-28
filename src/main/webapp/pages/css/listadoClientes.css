@@ -1,0 +1,35 @@
+@CHARSET "ISO-8859-1";
+
+#title{
+	font-size: xx-large;
+}
+
+#busquedaCliente{
+	margin-top: 10px;
+	width: 1000px;
+}
+#busquedaCliente fieldset{
+	width: 820px;
+}
+#busquedaCliente table{
+	width: 600px;
+}
+
+#listadoClientes{
+	margin-top:20px;
+}
+
+#listadoClientes table{
+	width:850px;
+	border:1px ridge black;
+}
+
+#listadoClientes td {
+	border:1px ridge black;
+}
+
+#enlace_altaCliente{
+	float:right;
+	margin-top:20px;
+	margin-right:200px;
+}
