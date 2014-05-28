@@ -40,6 +40,8 @@
 	<bean id="secuenceIdRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.SecuenceIdRepositoryImpl"></bean>
 	<bean id="localidadRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.LocalidadRepositoryImpl"></bean>
 	<bean id="codigoPaisRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.CodigoPaisRepositoryImpl"></bean>
+	<bean id="facturaRepositoryImpl" class="com.prestafacturaService.mongo.repositories.propios.FacturaRepositoryImpl"></bean>
+	
 	
 	
 	<!-- Service -->
@@ -54,6 +56,7 @@
  	<bean id="secuenceManager" class="com.prestafacturaService.mongo.manager.SecuenceManager"></bean>
  	<bean id="codigoPaisManager" class="com.prestafacturaService.mongo.manager.CodigoPaisManager"></bean>
  	<bean id="localidadManager" class="com.prestafacturaService.mongo.manager.LocalidadManager"></bean>
+ 	<bean id="facturaManager" class="com.prestafacturaService.mongo.manager.FacturaManager"></bean>
  	
  	
  	
@@ -94,6 +97,9 @@
  		<!-- Datos Propios-->
  	<bean id="AccesoDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction"></bean>
  	<bean id="AltaDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction"></bean>
+ 		<!-- Factura-->
+ 	 <bean id="AltaFacturaAction" class="com.prestafacturaService.vista.action.factura.AltaFacturaAction"></bean>
+ 	 <bean id="CargarDatosFormFacturaAction" class="com.prestafacturaService.vista.action.factura.CargarDatosFormFacturaAction"></bean>
  	
  	
  	
