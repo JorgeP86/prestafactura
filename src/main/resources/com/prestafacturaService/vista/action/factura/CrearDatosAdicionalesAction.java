@@ -14,6 +14,10 @@ public class CrearDatosAdicionalesAction  extends ActionSupport implements Servl
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String ERROR = "error";
 	public static final String SUCCESS = "success";
 	

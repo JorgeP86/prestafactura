@@ -56,8 +56,7 @@ public class AltaFacturaAction extends ActionSupport implements
 	// Cabecera
 	private String facturaID;
 	private String tipoFactura;
-	private Double costeContable;
-	private boolean isfacturaRectificativa;
+	private String costeContable;
 	// Datos de Emisión
 	private Date fechaExpedicion;
 	private Date fechaOperacion;
@@ -66,7 +65,7 @@ public class AltaFacturaAction extends ActionSupport implements
 	private String monedaIfact; // moneda de Impuesto
 	private String monedaOfact; // moneda de Operacion
 	private String lengua;
-	private Double porcentajeTC;// Tipo de Cambio
+	private String porcentajeTC;// Tipo de Cambio
 	private Date fechaTipoCambio;// Tipo de Cambio
 	private String calleEntrega;// DireccionEntrega
 	private String numeroEdificioEntrega;// DireccionEntrega
@@ -98,7 +97,13 @@ public class AltaFacturaAction extends ActionSupport implements
 	private String codigoPaisPago;
 	private String postBoxPago;
 	
-	
+	//return today date
+		public Date getTodayDate(){
+	 
+			return new Date();
+		}
+		
+		
 	
 	public String execute(){
 		
@@ -109,7 +114,7 @@ public class AltaFacturaAction extends ActionSupport implements
 		logger.info("Creado el objeto cabecerafactura vacio");
 		cabecerafactura.setFacturaID(facturaID);
 		cabecerafactura.setTipoFactura(tipoFactura);
-		cabecerafactura.setCosteContable(costeContable);
+		cabecerafactura.setCosteContable(new Double(costeContable));
 		logger.info("Creado el objeto cabecerafactura relleno");
 
 //Datos de Emision
@@ -127,7 +132,7 @@ public class AltaFacturaAction extends ActionSupport implements
 		datosEmision.setMonedaOperacion(monedaOperacion);
 		datosEmision.setLengua(lengua);
 		TipoCambio tipoCambio= new TipoCambio();
-		tipoCambio.setPorcentaje(porcentajeTC);
+		tipoCambio.setPorcentaje(new Double(porcentajeTC));
 		tipoCambio.setFechaTipoCambio(fechaTipoCambio);
 		Direccion direccionEntrega= new Direccion();
 		direccionEntrega.setTipodireccion("Entrega");
@@ -313,22 +318,6 @@ public class AltaFacturaAction extends ActionSupport implements
 		this.tipoFactura = tipoFactura;
 	}
 
-	public Double getCosteContable() {
-		return costeContable;
-	}
-
-	public void setCosteContable(Double costeContable) {
-		this.costeContable = costeContable;
-	}
-
-	public boolean isIsfacturaRectificativa() {
-		return isfacturaRectificativa;
-	}
-
-	public void setIsfacturaRectificativa(boolean isfacturaRectificativa) {
-		this.isfacturaRectificativa = isfacturaRectificativa;
-	}
-
 	public Date getFechaExpedicion() {
 		return fechaExpedicion;
 	}
@@ -385,13 +374,6 @@ public class AltaFacturaAction extends ActionSupport implements
 		this.lengua = lengua;
 	}
 
-	public Double getPorcentajeTC() {
-		return porcentajeTC;
-	}
-
-	public void setPorcentajeTC(Double porcentajeTC) {
-		this.porcentajeTC = porcentajeTC;
-	}
 
 	public Date getFechaTipoCambio() {
 		return fechaTipoCambio;
