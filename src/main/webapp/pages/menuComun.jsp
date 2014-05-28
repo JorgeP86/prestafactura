@@ -17,7 +17,7 @@
 			<li class="has-sub"><a href="#"><span>Gesti&oacute;n
 						Factura</span></a>
 				<ul>
-					<li><a href="<s:url action='CrearFacturaAction'/>"><span>Crear Factura</span></a></li>
+					<li><a href="<s:url action='CargarDatosFormFacturaAction'/>"><span>Crear Factura</span></a></li>
 					<li><a href="<s:url action='FacturasRecibidasAction'/>"><span>Facturas recibidas</span></a></li>
 					<li class="last"><a href="<s:url action='FacturasEnviadasAction'/>"><span>Facturas
 								enviadas</span></a></li>

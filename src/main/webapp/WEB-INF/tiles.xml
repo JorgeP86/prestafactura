@@ -21,6 +21,13 @@
 		<put-attribute name="body" value="/pages/body.jsp"/>
 		<put-attribute name="footer" value="/pages/footer.jsp"/>
 	</definition>
+	<definition name="facturaTemplate" template="/templates/templateCrearFactura.jsp">
+		<put-attribute name="title" type="string" value="Usuario Prestafactura"/>
+		<put-attribute name="header" value="/pages/header.jsp"/>
+		<put-attribute name="welcome" value="/pages/welcome.jsp"/>
+		<put-attribute name="body" value="/pages/body.jsp"/>
+		<put-attribute name="footer" value="/pages/footer.jsp"/>
+	</definition>
 	
 	<definition name="prestaFacturaHomeAdmin" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/body.jsp"/>
@@ -45,6 +52,9 @@
 	</definition>
 	<definition name="busquedaRoles" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionRol/busquedaRol.jsp"></put-attribute>
+	</definition>
+	<definition name="errorAltaRol" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionRol/errorAltaRol.jsp"/>
 	</definition>
 	
 	<!-- USUARIO -->
@@ -72,14 +82,15 @@
 	<definition name="busquedaClientes" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/busquedaCliente.jsp"></put-attribute>
 	</definition>
-	
-	<!-- ERRORES -->
-	<definition name="errorAltaRol" extends="administradorTemplate">
-		<put-attribute name="body" value="/pages/administrator/gestionRol/errorAltaRol.jsp"/>
-	</definition>
 	<definition name="errorAltaCliente" extends="administradorTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
 	</definition>
+	
+	<!-- GESTION FACTURA -->
+	<definition name="altaFactura" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
+	</definition>	
+
 	
 		<!-- /////////////    USUARIO   ///////////// -->
 	<definition name="prestaFacturaHomeUser" extends="usuarioTemplate">
