@@ -184,7 +184,19 @@
 			<result name="success" type="tiles">datosPropios</result>
 			<result name="error" type="tiles">errorAltaDatosPropios</result>
 		</action>
-	
+		
+		<!-- Gestion Factura -->
+		<action name="CargarDatosFormFacturaAction"
+			class="com.prestafacturaService.vista.action.factura.CargarDatosFormFacturaAction" method="execute">
+			<result name="success" type="tiles">altaFactura</result>
+			<result name="error" type="tiles">errorAltaFacturaForm</result>
+		</action>
+		<action name="AltaFacturaAction"
+			class="com.prestafacturaService.vista.action.factura.AltaFacturaAction" method="execute">
+			<result name="success" type="tiles">facturasAlmacenadas</result>
+			<result name="error" type="tiles">errorAltaFactura</result>
+		</action>
+		
 <!-- 
 		<interceptors>
 			<interceptor name="authenticationInterceptor"
