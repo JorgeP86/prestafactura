@@ -88,17 +88,17 @@
 	
 	<!-- CLIENTE -->
 	
-	<definition name="altaClienteForm" extends="usuarioTemplate">
+	<definition name="altaClienteFormU" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/altaCliente.jsp"/>
 	</definition>
-	<definition name="listadoClientes" extends="usuarioTemplate">
+	<definition name="listadoClientesU" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/listadoClientes.jsp"></put-attribute>
 	</definition>
-	<definition name="busquedaClientes" extends="usuarioTemplate">
+	<definition name="busquedaClientesU" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/busquedaCliente.jsp"></put-attribute>
 	</definition>
 				<!-- errores -->
-	<definition name="errorAltaCliente" extends="usuarioTemplate">
+	<definition name="errorAltaClienteU" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
 	</definition>
 
