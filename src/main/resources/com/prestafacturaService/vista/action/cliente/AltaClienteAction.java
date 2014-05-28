@@ -118,7 +118,8 @@ public class AltaClienteAction extends ActionSupport{
 
 				
 				Provincia provinciaCliente=new Provincia();
-				provinciaCliente=provinciaManager.obtenerProvinciaByName(provincia);
+				String provinciaselect=new String(provincia.getBytes("UTF-8"),"ISO-8859-1");
+				provinciaCliente=provinciaManager.obtenerProvinciaByName(provinciaselect);
 				
 				System.out.print(provinciaCliente.getProvincia());
 		
