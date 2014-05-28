@@ -45,7 +45,7 @@
 				<s:textfield name="nombreCliente" label="Nombre Cliente/Empresa" labelposition="left" size="20" id="nombreCliente"/>
 			</td>
 			<td>
-				<s:textfield name="identificacionFiscal" label="Identificaci髇 Fiscal" labelposition="left" size="10" id="identificacionFiscal"/>
+				<s:textfield name="identificacionFiscal" label="Identificaci贸n Fiscal" labelposition="left" size="10" id="identificacionFiscal"/>
 			</td>
 		</tr>
 		<tr>
@@ -91,7 +91,7 @@
 		</tr>
 		<tr>
 			<td>
-				<s:select label="Pa韘" labelposition="left" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
+				<s:select label="Pa铆s" labelposition="left" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
 				listValue="%{codigoPais}" name="codigoPais" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>
 			</td>
 			<td>
@@ -134,7 +134,7 @@
 		</tr>
 		<tr>
 			<td>
-				<s:select label="Pa韘" labelposition="left" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
+				<s:select label="Pa铆s" labelposition="left" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
 				listValue="%{codigoPais}" name="codigoPaisEntrega" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>			
 			</td>
 			<td>
@@ -157,7 +157,7 @@
 				<s:textfield name="personaContacto" label="Persona de Contacto" labelposition="left" size="10"  id="personaContacto"/>
 			</td>
 			<td>
-				<s:textfield name="telefono" label="Tel閒ono" labelposition="left" size="10"  id="telefono"/>		
+				<s:textfield name="telefono" label="Tel茅fono" labelposition="left" size="10"  id="telefono"/>		
 			</td>
 			<td>
 				<s:textfield name="fax" label="fax" labelposition="left" size="10"  id="fax"/>
@@ -168,7 +168,7 @@
 				<s:textfield name="mail" label="E-mail" labelposition="left" size="10"  id="mail"/>
 			</td>
 			<td>
-				<s:textfield name="direccionWeb" label="Direcci髇 Web" labelposition="left" size="10"  id="direccionWeb"/>
+				<s:textfield name="direccionWeb" label="Direcci贸n Web" labelposition="left" size="10"  id="direccionWeb"/>
 			</td>
 		</tr>
 		<tr></tr>
@@ -181,7 +181,7 @@
 		<table>
 		<tr>
 			<td>
-				<s:textfield name="razonSocial" label="Raz髇 Social" labelposition="left" size="20"  id="razonSocial"/>
+				<s:textfield name="razonSocial" label="Raz贸n Social" labelposition="left" size="20"  id="razonSocial"/>
 			</td>
 			<td>
 				<s:textfield name="nombreComercial" label="Nombre Comercial" labelposition="left" size="20"  id="nombreComercial"/>
@@ -224,7 +224,7 @@
 		</tr>
 		<tr>
 			<td>
-				<s:select label="Selecciona Pa韘" labelposition="left" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
+				<s:select label="Selecciona Pa铆s" labelposition="left" headerKey="1" headerValue="-- Please Select --"  list="listPais" 
 				listValue="%{codigoPais}" name="codigoPaisEmpresa" value="%{codigoPais}" listKey="%{codigoPais}" key="%{codigoPais}"/>
 			</td>
 			<td>
@@ -246,7 +246,7 @@
 					<s:textfield name="personaContactoEmpresa" label="Persona de Contacto" labelposition="left" size="20"  id="personaContactoEmpresa"/>
 				</td>
 				<td>
-					<s:textfield name="telefonoEmpresa" label="Tel閒ono" labelposition="left" size="10"  id="telefonoEmpresa"/>
+					<s:textfield name="telefonoEmpresa" label="Tel茅fono" labelposition="left" size="10"  id="telefonoEmpresa"/>
 				</td>
 				<td>
 					<s:textfield name="faxEmpresa" label="fax" labelposition="left" size="10"  id="faxEmpresa"/>
@@ -257,7 +257,7 @@
 					<s:textfield name="mailEmpresa" label="E-mail" labelposition="left" size="20"  id="mailEmpresa"/>
 				</td>
 				<td>
-					<s:textfield name="direccionWebEmpresa" label="Direcci髇 Web" labelposition="left" size="20"  id="direccionWebEmpresa"/>
+					<s:textfield name="direccionWebEmpresa" label="Direcci贸n Web" labelposition="left" size="20"  id="direccionWebEmpresa"/>
 				</td>
 			</tr>
 			<s:fielderror name="invalidClienteAlta">
