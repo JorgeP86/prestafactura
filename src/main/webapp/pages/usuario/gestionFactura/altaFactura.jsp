@@ -2,11 +2,13 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+ <sj:head jquerytheme="start"/>
+<!--<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <SCRIPT language="JavaScript" src="<s:url value='/pages/js/valida.js'/>"></SCRIPT>
 <title>Alta Factura</title>
@@ -56,23 +58,19 @@
 	<table width="90%">
 		<tr>
 			<td>	
-				<sx:datetimepicker name="fechaExpedicion" label="Fecha Expedición" 
-				displayFormat="dd-MMM-yyyy" value="%{'todayDate'}"/>
+				<sj:datepicker id="1" name="fechaExpedicion" displayFormat="dd-mm-yy" label="Fecha de Expedicion"/>
 			</td>
 			<td>
-				<sx:datetimepicker name="fechaOperacion" label="Fecha Operación" 
-				displayFormat="dd-MMM-yyyy" value="%{'todayDate'}"/>
+				<sj:datepicker id="2" name="fechaOperacion" displayFormat="dd-mm-yy" label="Fecha de Operacion"/>
 			</td>	
 			</tr>
 			<tr>
 			<td>Periodo de Facturación:</td>
 				<td>
-					<sx:datetimepicker name="fechaInicio" label="Fecha Inicio" 
-					displayFormat="dd-MMM-yyyy" value="%{'todayDate'}"/>
+				<sj:datepicker id="3" name="fechaInicio" displayFormat="dd-mm-yy" label="Fecha Inicio"/>
 				</td>
-				<td>
-					<sx:datetimepicker name="fechaFin" label="Fecha Fin" 
-					displayFormat="dd-MMM-yyyy" value="%{'todayDate'}"/>
+				<td width="100%">
+					<sj:datepicker id="4" name="fechaFin" displayFormat="dd-mm-yy" label="Fecha Fin"/>
 				</td>
 			</tr>
 			<tr>
@@ -88,9 +86,8 @@
 				<td>
 					<s:textfield name="porcentajeTC" label="Porcentaje del Tipo de Cambio" value="" size="30"/>
 				</td>
-				<td>
-					<sx:datetimepicker name="fechaTipoCambio" label="Fecha Tipo del Cambio" 
-					displayFormat="dd-MMM-yyyy" value="%{'todayDate'}"/>
+				<td width="100%">
+					<sj:datepicker id="5" name="fechaTipoCambio" displayFormat="dd-mm-yy" label="Fecha Tipo Cambio" labelposition="left"/>
 				</td>
 			</tr>
 		</table>
