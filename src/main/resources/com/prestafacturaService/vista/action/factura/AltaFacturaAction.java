@@ -58,15 +58,15 @@ public class AltaFacturaAction extends ActionSupport implements
 	private String tipoFactura;
 	private String costeContable;
 	// Datos de Emisión
-	private Date fechaExpedicion;
-	private Date fechaOperacion;
-	private Date fechaInicio; // periodo de facturacion
-	private Date fechaFin;
+	// private Date fechaExpedicion;
+	// private Date fechaOperacion;
+	// private Date fechaInicio; // periodo de facturacion
+	// private Date fechaFin;
 	private String monedaIfact; // moneda de Impuesto
 	private String monedaOfact; // moneda de Operacion
 	private String lengua;
 	private String porcentajeTC;// Tipo de Cambio
-	private Date fechaTipoCambio;// Tipo de Cambio
+	// private Date fechaTipoCambio;// Tipo de Cambio
 	private String calleEntrega;// DireccionEntrega
 	private String numeroEdificioEntrega;// DireccionEntrega
 	private String calleAdicionalEntrega;// DireccionEntrega
@@ -76,8 +76,8 @@ public class AltaFacturaAction extends ActionSupport implements
 	private String provinciaEntrega;// DireccionEntrega
 	private String codigoPaisEntrega;// DireccionEntrega
 	private String postBoxEntrega;// DireccionEntrega
-	
-//Datos de Pago
+
+	// Datos de Pago
 	private Date fechaVencimiento;
 	private Double importeVencimiento;
 	private String metodoDePago;
@@ -96,178 +96,161 @@ public class AltaFacturaAction extends ActionSupport implements
 	private String localidadPago;
 	private String codigoPaisPago;
 	private String postBoxPago;
-	
-	//return today date
-		public Date getTodayDate(){
-	 
-			return new Date();
+
+	private String fechaExpedicion;
+	private String fechaOperacion;
+	private String fechaInicio; // periodo de facturacion
+	private String fechaFin;
+	private String fechaTipoCambio;
+
+	public String execute() {
+
+		try {
+
+			// Cabecera
+			Cabecera cabecerafactura = new Cabecera();
+			logger.info("Creado el objeto cabecerafactura vacio");
+			cabecerafactura.setFacturaID(facturaID);
+			cabecerafactura.setTipoFactura(tipoFactura);
+			cabecerafactura.setCosteContable(new Double(costeContable));
+			logger.info("Creado el objeto cabecerafactura relleno");
+
+			// Datos de Emision
+			DatosEmisionFact datosEmision = new DatosEmisionFact();
+			logger.info("Creado el objeto datosEmision vacio");
+			//datosEmision.setFechaExpedicion(fechaExpedicion);
+			//datosEmision.setFechaOperacion(fechaOperacion);
+			Fechas periodoFacturacion = new Fechas();
+			//periodoFacturacion.setFechaInicio(fechaInicio);
+			//periodoFacturacion.setFechaFin(fechaFin);
+			datosEmision.setPeriodoFacturacion(periodoFacturacion);
+			Moneda monedaImpuesto = monedaManager.ObtenerMoneda(monedaIfact);
+			datosEmision.setMonedaImpuesto(monedaImpuesto);
+			Moneda monedaOperacion = monedaManager.ObtenerMoneda(monedaOfact);
+			datosEmision.setMonedaOperacion(monedaOperacion);
+			datosEmision.setLengua(lengua);
+			TipoCambio tipoCambio = new TipoCambio();
+			tipoCambio.setPorcentaje(new Double(porcentajeTC));
+			//tipoCambio.setFechaTipoCambio(fechaTipoCambio);
+			Direccion direccionEntrega = new Direccion();
+			direccionEntrega.setTipodireccion("Entrega");
+			direccionEntrega.setCalle(calleEntrega);
+			direccionEntrega.setDepartamento(departamentoEntrega);
+			direccionEntrega.setNumeroEdificio(numeroEdificioEntrega);
+			direccionEntrega.setCodigoPostal(codigoPostalEntrega);
+			if (calleAdicionalEntrega != null
+					|| calleAdicionalEntrega.trim().equals("")) {
+				direccionEntrega.setCalleAdicional(calleAdicionalEntrega);
+			}
+			CodigoPais codigoPaisEn = codigoPaisManager
+					.ObtenerCodigoPais(codigoPaisEntrega);
+			direccionEntrega.setCodigoPais(codigoPaisEn);
+			direccionEntrega.setPostBox(postBoxEntrega);
+			Provincia provinciaEnt = provinciaManager
+					.obtenerProvinciaByName(provinciaEntrega);
+			direccionEntrega.setProvincia(provinciaEnt);
+			Localidad loc = new Localidad();
+			for (Localidad p : provinciaEnt.getLocalidades()) {
+				if (p.equals(localidadEntrega)) {
+					loc = p;
+				}
+			}
+			direccionEntrega.setLocalidad(loc);
+			logger.info("Creado el objeto datosEmision relleno");
+
+			// FiguraFactura
+			Set<FiguraFactura> figuraFactura = new HashSet<FiguraFactura>();
+			logger.info("Se crea la lista FiguraFactura vacio");
+
+			if (servletRequest.getSession().getAttribute("figuraFacCliente") != null) {
+				logger.info("Se ha comprobado que la figuraFacCliente es !=null");
+				FiguraFactura figuraCliente = (FiguraFactura) servletRequest
+						.getSession().getAttribute("figuraFacCliente");
+				figuraFactura.add(figuraCliente);
+				logger.info("Se añade la figuraCliente a la lista");
+			}
+			if (servletRequest.getSession().getAttribute("figuraFacDatosP") != null) {
+				logger.info("Se ha comprobado que la figuraFacDatosP es !=null");
+				FiguraFactura figuraDatosPropios = (FiguraFactura) servletRequest
+						.getSession().getAttribute("figuraFacDatosP");
+				figuraFactura.add(figuraDatosPropios);
+				logger.info("Se añade la figuraDatosPropios a la lista");
+			}
+
+			// Datos de Pago
+			Direccion direccionPago = new Direccion();
+			direccionPago.setTipodireccion("Direccion_Pago");
+			direccionPago.setCalle(callePago);
+			direccionPago.setCalleAdicional(calleAdicionalPago);
+			direccionPago.setDepartamento(departamentoPago);
+			direccionPago.setNumeroEdificio(numeroEdificioPago);
+			direccionPago.setPostBox(postBoxPago);
+			direccionPago.setCodigoPostal(codigoPostalPago);
+			Provincia provinciaP = provinciaManager
+					.obtenerProvinciaByName(provinciaPago);
+			direccionPago.setProvincia(provinciaP);
+			Localidad lop = new Localidad();
+			for (Localidad l : provinciaP.getLocalidades()) {
+				if (l.equals(localidadPago))
+					;
+				lop = l;
+			}
+			direccionPago.setLocalidad(lop);
+			CodigoPais codPaisp = codigoPaisManager
+					.ObtenerCodigoPais(codigoPaisPago);
+			direccionPago.setCodigoPais(codPaisp);
+			logger.info("Creado el objeto direccionPago");
+
+			Cuenta cuentaPago = new Cuenta();
+			cuentaPago.setCodigoEntidadFinanciera(codigoEntidadFinanciera);
+			cuentaPago.setCodigoOficina(codigoOficina);
+			cuentaPago.setIbanNumeroCuenta(ibanNumeroCuenta);
+			cuentaPago.setDireccion(direccionPago);
+			logger.info("Creado objeto CuentaPago");
+
+			MetodoPago metodop = new MetodoPago();
+			metodop.setNombre(metodoDePago);
+			logger.info("Creado el objeto MetodoPago");
+
+			DatosPago datosPago = new DatosPago();
+			datosPago.setImporteVencimiento(importeVencimiento);
+			datosPago.setFechaVencimiento(fechaVencimiento);
+			datosPago.setCodigoCanalPago(codigoCanalPago);
+			datosPago.setInfoAdicional(infoAdicional);
+			datosPago.setRefPago(refPago);
+			datosPago.setCuenta(cuentaPago);
+			datosPago.setMetodoPago(metodop);
+			logger.info("Creado el objeto DatosPago");
+
+			// Crear Detalles
+
+			Set<Detalle> detalles = new HashSet();
+			servletRequest.getSession().setAttribute("detalles", detalles);
+
+			Factura nuevaFactura = new Factura();
+			logger.info("Creado el objeto nuevaFactura vacio");
+			nuevaFactura.setCabecera(cabecerafactura);
+			nuevaFactura.setDatosEmisionFact(datosEmision);
+			nuevaFactura.setFiguraFactura(figuraFactura);
+			if (servletRequest.getSession().getAttribute("DatosAdicionales") != null) {
+				DatosAdicionales datosadic = (DatosAdicionales) servletRequest
+						.getSession().getAttribute("DatosAdicionales");
+				nuevaFactura.setDatosAdicionales(datosadic);
+			}
+			nuevaFactura.setDatosPago(datosPago);
+
+		} catch (Exception e) {
+
+			addActionError("Fallo al realizar el alta de la Factura");
+			return ERROR;
 		}
-		
-		
-	
-	public String execute(){
-		
-	try{	
 
-//Cabecera
-		Cabecera cabecerafactura=new Cabecera();
-		logger.info("Creado el objeto cabecerafactura vacio");
-		cabecerafactura.setFacturaID(facturaID);
-		cabecerafactura.setTipoFactura(tipoFactura);
-		cabecerafactura.setCosteContable(new Double(costeContable));
-		logger.info("Creado el objeto cabecerafactura relleno");
-
-//Datos de Emision
-		DatosEmisionFact datosEmision= new DatosEmisionFact();
-		logger.info("Creado el objeto datosEmision vacio");
-		datosEmision.setFechaExpedicion(fechaExpedicion);
-		datosEmision.setFechaOperacion(fechaOperacion);
-		Fechas periodoFacturacion= new Fechas();
-		periodoFacturacion.setFechaInicio(fechaInicio);
-		periodoFacturacion.setFechaFin(fechaFin);
-		datosEmision.setPeriodoFacturacion(periodoFacturacion);
-		Moneda monedaImpuesto=monedaManager.ObtenerMoneda(monedaIfact);
-		datosEmision.setMonedaImpuesto(monedaImpuesto);
-		Moneda monedaOperacion=monedaManager.ObtenerMoneda(monedaOfact);
-		datosEmision.setMonedaOperacion(monedaOperacion);
-		datosEmision.setLengua(lengua);
-		TipoCambio tipoCambio= new TipoCambio();
-		tipoCambio.setPorcentaje(new Double(porcentajeTC));
-		tipoCambio.setFechaTipoCambio(fechaTipoCambio);
-		Direccion direccionEntrega= new Direccion();
-		direccionEntrega.setTipodireccion("Entrega");
-		direccionEntrega.setCalle(calleEntrega);
-		direccionEntrega.setDepartamento(departamentoEntrega);
-		direccionEntrega.setNumeroEdificio(numeroEdificioEntrega);
-		direccionEntrega.setCodigoPostal(codigoPostalEntrega);
-		if(calleAdicionalEntrega!=null ||calleAdicionalEntrega.trim().equals("")){
-			direccionEntrega.setCalleAdicional(calleAdicionalEntrega);
-		}
-		CodigoPais codigoPaisEn=codigoPaisManager.ObtenerCodigoPais(codigoPaisEntrega);
-		direccionEntrega.setCodigoPais(codigoPaisEn);
-		direccionEntrega.setPostBox(postBoxEntrega);
-		Provincia provinciaEnt=provinciaManager.obtenerProvinciaByName(provinciaEntrega);
-		direccionEntrega.setProvincia(provinciaEnt);
-		Localidad loc=new Localidad();
-		for(Localidad p:provinciaEnt.getLocalidades()){
-			if(p.equals(localidadEntrega)){
-				loc=p;
-			}	
-		}
-		direccionEntrega.setLocalidad(loc);
-		logger.info("Creado el objeto datosEmision relleno");
-		
-//FiguraFactura
-		Set<FiguraFactura> figuraFactura=new HashSet<FiguraFactura>();
-		logger.info("Se crea la lista FiguraFactura vacio");
-
-		if(servletRequest.getSession().getAttribute("figuraFacCliente")!=null){
-			logger.info("Se ha comprobado que la figuraFacCliente es !=null");	
-			FiguraFactura figuraCliente=(FiguraFactura)servletRequest.getSession().getAttribute("figuraFacCliente");
-			figuraFactura.add(figuraCliente);
-			logger.info("Se añade la figuraCliente a la lista");
-		}
-		if(servletRequest.getSession().getAttribute("figuraFacDatosP")!=null){
-			logger.info("Se ha comprobado que la figuraFacDatosP es !=null");	
-			FiguraFactura figuraDatosPropios=(FiguraFactura) servletRequest.getSession().getAttribute("figuraFacDatosP");
-			figuraFactura.add(figuraDatosPropios);
-			logger.info("Se añade la figuraDatosPropios a la lista");
-		}
-
-		
-//Datos de Pago
-		Direccion direccionPago= new Direccion();
-		direccionPago.setTipodireccion("Direccion_Pago");
-		direccionPago.setCalle(callePago);
-		direccionPago.setCalleAdicional(calleAdicionalPago);
-		direccionPago.setDepartamento(departamentoPago);
-		direccionPago.setNumeroEdificio(numeroEdificioPago);
-		direccionPago.setPostBox(postBoxPago);
-		direccionPago.setCodigoPostal(codigoPostalPago);
-		Provincia provinciaP=provinciaManager.obtenerProvinciaByName(provinciaPago);
-		direccionPago.setProvincia(provinciaP);
-		Localidad lop=new Localidad();
-		for(Localidad l:provinciaP.getLocalidades()){
-			if(l.equals(localidadPago));
-			lop=l;
-		}
-		direccionPago.setLocalidad(lop);
-		CodigoPais codPaisp= codigoPaisManager.ObtenerCodigoPais(codigoPaisPago);
-		direccionPago.setCodigoPais(codPaisp);
-		logger.info("Creado el objeto direccionPago");
-
-		
-		Cuenta cuentaPago= new Cuenta();
-		cuentaPago.setCodigoEntidadFinanciera(codigoEntidadFinanciera);
-		cuentaPago.setCodigoOficina(codigoOficina);
-		cuentaPago.setIbanNumeroCuenta(ibanNumeroCuenta);
-		cuentaPago.setDireccion(direccionPago);
-		logger.info("Creado objeto CuentaPago");
-		
-		MetodoPago metodop= new MetodoPago();
-		metodop.setNombre(metodoDePago);
-		logger.info("Creado el objeto MetodoPago");
-		
-		DatosPago datosPago=new DatosPago();
-		datosPago.setImporteVencimiento(importeVencimiento);
-		datosPago.setFechaVencimiento(fechaVencimiento);
-		datosPago.setCodigoCanalPago(codigoCanalPago);
-		datosPago.setInfoAdicional(infoAdicional);
-		datosPago.setRefPago(refPago);
-		datosPago.setCuenta(cuentaPago);
-		datosPago.setMetodoPago(metodop);
-		logger.info("Creado el objeto DatosPago");
-		
-
-//Crear Detalles
-		
-		Set<Detalle> detalles= new HashSet();
-		servletRequest.getSession().setAttribute("detalles", detalles);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		Factura nuevaFactura= new Factura();
-		logger.info("Creado el objeto nuevaFactura vacio");
-		nuevaFactura.setCabecera(cabecerafactura);
-		nuevaFactura.setDatosEmisionFact(datosEmision);
-		nuevaFactura.setFiguraFactura(figuraFactura);
-		if(servletRequest.getSession().getAttribute("DatosAdicionales")!=null){
-			DatosAdicionales datosadic=(DatosAdicionales) servletRequest.getSession().getAttribute("DatosAdicionales");
-			nuevaFactura.setDatosAdicionales(datosadic);
-		}
-		nuevaFactura.setDatosPago(datosPago);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}catch (Exception e){
-
-		 addActionError("Fallo al realizar el alta de la Factura");
-		return ERROR;
-	}
-
-		
 		return SUCCESS;
-		
+
 	}
 
+	
+	
 	public HttpServletRequest getServletRequest() {
 		return servletRequest;
 	}
@@ -283,8 +266,6 @@ public class AltaFacturaAction extends ActionSupport implements
 	public void setMonedaManager(MonedaManager monedaManager) {
 		this.monedaManager = monedaManager;
 	}
-
-	
 
 	public ProvinciaManager getProvinciaManager() {
 		return provinciaManager;
@@ -318,38 +299,6 @@ public class AltaFacturaAction extends ActionSupport implements
 		this.tipoFactura = tipoFactura;
 	}
 
-	public Date getFechaExpedicion() {
-		return fechaExpedicion;
-	}
-
-	public void setFechaExpedicion(Date fechaExpedicion) {
-		this.fechaExpedicion = fechaExpedicion;
-	}
-
-	public Date getFechaOperacion() {
-		return fechaOperacion;
-	}
-
-	public void setFechaOperacion(Date fechaOperacion) {
-		this.fechaOperacion = fechaOperacion;
-	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
 	public String getMonedaIfact() {
 		return monedaIfact;
 	}
@@ -372,15 +321,6 @@ public class AltaFacturaAction extends ActionSupport implements
 
 	public void setLengua(String lengua) {
 		this.lengua = lengua;
-	}
-
-
-	public Date getFechaTipoCambio() {
-		return fechaTipoCambio;
-	}
-
-	public void setFechaTipoCambio(Date fechaTipoCambio) {
-		this.fechaTipoCambio = fechaTipoCambio;
 	}
 
 	public String getCalleEntrega() {
@@ -453,6 +393,66 @@ public class AltaFacturaAction extends ActionSupport implements
 
 	public void setPostBoxEntrega(String postBoxEntrega) {
 		this.postBoxEntrega = postBoxEntrega;
+	}
+
+
+
+	public String getFechaExpedicion() {
+		return fechaExpedicion;
+	}
+
+
+
+	public void setFechaExpedicion(String fechaExpedicion) {
+		this.fechaExpedicion = fechaExpedicion;
+	}
+
+
+
+	public String getFechaOperacion() {
+		return fechaOperacion;
+	}
+
+
+
+	public void setFechaOperacion(String fechaOperacion) {
+		this.fechaOperacion = fechaOperacion;
+	}
+
+
+
+	public String getFechaInicio() {
+		return fechaInicio;
+	}
+
+
+
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+
+
+	public String getFechaFin() {
+		return fechaFin;
+	}
+
+
+
+	public void setFechaFin(String fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+
+
+	public String getFechaTipoCambio() {
+		return fechaTipoCambio;
+	}
+
+
+
+	public void setFechaTipoCambio(String fechaTipoCambio) {
+		this.fechaTipoCambio = fechaTipoCambio;
 	}
 
 }

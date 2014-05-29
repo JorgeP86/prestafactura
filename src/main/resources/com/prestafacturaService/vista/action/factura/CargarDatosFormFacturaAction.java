@@ -53,6 +53,12 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 	private List<CodigoPais> listPais;
 	private Collection<Cliente> clientes;
 	
+	private String fechaExpedicion;
+	private String fechaOperacion;
+	private String fechaInicio; // periodo de facturacion
+	private String fechaFin;
+	private String fechaTipoCambio;
+	
 
 	public String execute() {
 
@@ -77,6 +83,7 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 
 	}
 
+	
 	public ProvinciaManager getProvinciaManager() {
 		return provinciaManager;
 	}
@@ -153,6 +160,56 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+
+
+	public String getFechaExpedicion() {
+		return fechaExpedicion;
+	}
+
+
+	public void setFechaExpedicion(String fechaExpedicion) {
+		this.fechaExpedicion = fechaExpedicion;
+	}
+
+
+	public String getFechaOperacion() {
+		return fechaOperacion;
+	}
+
+
+	public void setFechaOperacion(String fechaOperacion) {
+		this.fechaOperacion = fechaOperacion;
+	}
+
+
+	public String getFechaInicio() {
+		return fechaInicio;
+	}
+
+
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+
+	public String getFechaFin() {
+		return fechaFin;
+	}
+
+
+	public void setFechaFin(String fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+
+	public String getFechaTipoCambio() {
+		return fechaTipoCambio;
+	}
+
+
+	public void setFechaTipoCambio(String fechaTipoCambio) {
+		this.fechaTipoCambio = fechaTipoCambio;
 	}
 	
 
