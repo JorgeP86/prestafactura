@@ -48,6 +48,13 @@ public class DatosPropiosRepositoryImpl implements DatosPropiosRepositoryCustom 
 		return mongoTemplate.findAndModify(query, update, DatosPropios.class);
 		
 	}
+
+	public DatosPropios obtenerDatosPropiosByFiscal(
+			String idfiscal) {
+		Query query=new Query();
+		query.addCriteria(Criteria.where("identificacionFiscal").is(idfiscal));
+		return (DatosPropios) mongoTemplate.find(query, DatosPropios.class);
+	}
 	
 }
 
