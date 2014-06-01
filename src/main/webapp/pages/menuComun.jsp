@@ -40,8 +40,12 @@
 					<li class="last"><a href="<s:url action='AccesoProveedorAction'/>"><span>Proveedores</span></a></li>
 				</ul></li>
 				
-			<li class="last"><a href="<s:url action='AccesoGestionDatosPropios'/>"><span>Gesti&oacute;n de
-						Datos Propios</span></a></li>
+			<li class="last"><a href="#"><span>Gesti&oacute;n de
+						Datos Propios</span></a>
+				<ul>
+					<li><a href="<s:url action='AltaDatosPropiosFormAction'/>"><span>Alta Datos Propios</span></a></li>
+					<li class="last"><a href="<s:url action='AccesoDatosPropiosAction'/>"><span>Datos Propios</span></a></li>
+				</ul></li>
 		</ul>
 	</div>
 
