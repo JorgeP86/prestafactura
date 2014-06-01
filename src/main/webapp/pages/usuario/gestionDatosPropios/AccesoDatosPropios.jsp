@@ -41,10 +41,10 @@
 					<td><s:property value="%{datosPropios.entidadLegal.nombreComercial}"/></td>
 				
 				<td>
-						<s:url action="ModificacionDatosPropiosAction" var="BorrarDatos">
-							<s:param name="idCliente" value="0"></s:param>
+						<s:url action="EliminarDatosPropiosAction" var="borrarDatos">
+							<s:param name="identificacionFiscal" value="%{identificacionFiscal}"></s:param>
 						</s:url>
-						<s:a href="<s:property value='#BorrarDatos'/>">
+						<s:a href="<s:property value='#borrarDatos'/>">
 							<img alt="borrarDatos" src="<s:url value='/images/eliminar_peq.jpg'/>" border="0" longdesc="Borrar Datos"/>
 						</s:a>
 					</td>
