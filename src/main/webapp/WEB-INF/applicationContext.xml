@@ -97,10 +97,13 @@
  		<!-- Datos Propios-->
  	<bean id="AccesoDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction"></bean>
  	<bean id="AltaDatosPropiosAction" class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction"></bean>
+ 	<bean id="AltaDatosPropiosFormAction" class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosFormAction"></bean>
+ 	
+ 	
  		<!-- Factura-->
  	 <bean id="AltaFacturaAction" class="com.prestafacturaService.vista.action.factura.AltaFacturaAction"></bean>
  	 <bean id="CargarDatosFormFacturaAction" class="com.prestafacturaService.vista.action.factura.CargarDatosFormFacturaAction"></bean>
- 	
+ 	 <bean id="CargarDatosFormFacturaTablaAction" class="com.prestafacturaService.vista.action.factura.CargarDatosFormFacturaTablaAction"></bean>
  	
  	
  	<bean class="com.prestafacturaService.mongo.util.CascadingMongoEventListener"></bean>
