@@ -55,4 +55,10 @@ public class ClienteManager {
 		// TODO Auto-generated method stub
 		return clienteRepository.buscarClienteBycif(idFiscal);
 	}
+
+	public Integer countClient() {
+		// TODO Auto-generated method stub
+		Integer count=(int)clienteRepository.count();
+		return count;
+	}
 }
