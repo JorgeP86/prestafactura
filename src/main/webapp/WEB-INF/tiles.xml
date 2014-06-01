@@ -92,6 +92,15 @@
 	</definition>	
 	
 	
+				<!-- Datos Propios -->
+	<definition name="datosPropios" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/usuario/gestionDatosPropios/altaDatosPropios.jsp"/>
+	</definition>
+	<definition name="datosPropioslistado" extends="administradorTemplate">
+		<put-attribute name="body" value="/pages/usuario/gestionDatosPropios/AccesoDatosPropios.jsp"></put-attribute>
+	</definition>
+	
+	
 		<!-- /////////////    USUARIO   ///////////// -->
 	<definition name="prestaFacturaHomeUser" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/body.jsp"/>
@@ -112,6 +121,9 @@
 	<definition name="errorAltaClienteU" extends="usuarioTemplate">
 		<put-attribute name="body" value="/pages/administrator/gestionCliente/errorAltaCliente.jsp"/>
 	</definition>
+	
+	
+	
 
 	
 </tiles-definitions>
