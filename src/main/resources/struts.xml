@@ -15,6 +15,7 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" ></result-type>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" ></result-type>	
 		</result-types>
 		
 <!-- Redirecciones -->
@@ -176,11 +177,16 @@
 	<!-- Datos Propios -->		
 		<action name="AccesoDatosPropiosAction"
 			class="com.prestafacturaService.vista.action.datosPropios.AccesoDatosPropiosAction" method="execute">
-			<result name="success" type="tiles">datosPropios</result>
+			<result name="success" type="tiles">datosPropioslistado</result>
 			<result name="error" type="tiles">errorMostrarDatosPropios</result>
 		</action>
 		<action name="AltaDatosPropiosAction"
 			class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosAction" method="execute">
+			<result name="success" type="redirectAction">AccesoDatosPropiosAction</result>
+			<result name="error" type="tiles">errorAltaDatosPropios</result>
+		</action>
+		<action name="AltaDatosPropiosFormAction"
+			class="com.prestafacturaService.vista.action.datosPropios.AltaDatosPropiosFormAction" method="execute">
 			<result name="success" type="tiles">datosPropios</result>
 			<result name="error" type="tiles">errorAltaDatosPropios</result>
 		</action>
@@ -191,6 +197,15 @@
 			<result name="success" type="tiles">altaFactura</result>
 			<result name="error" type="tiles">errorAltaFacturaForm</result>
 		</action>
+		
+		<action name="CargarDatosFormFacturaTablaAction"
+			class="com.prestafacturaService.vista.action.factura.CargarDatosFormFacturaTablaAction" method="execute">
+			<result name="success" type="json">
+			<param name="includeProperties">JSON,gridModel.*,page,records,rows,sidx,sord,total</param>
+			</result>
+		</action>
+		
+		
 		<action name="AltaFacturaAction"
 			class="com.prestafacturaService.vista.action.factura.AltaFacturaAction" method="execute">
 			<result name="success" type="tiles">facturasAlmacenadas</result>
@@ -208,5 +223,8 @@
 		</interceptors>
 -->
 	</package>
+	
+	
+	
 
 </struts>
