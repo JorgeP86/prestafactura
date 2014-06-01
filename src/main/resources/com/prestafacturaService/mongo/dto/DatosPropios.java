@@ -39,6 +39,8 @@ public class DatosPropios extends BaseEntity{
 	@DBRef
 	@CascadeSave
 	private Direccion direccion;
+	
+	
 	public Integer getIdDatosPropios() {
 		return idDatosPropios;
 	}
