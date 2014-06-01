@@ -37,15 +37,21 @@
 		<action name="editarUsuarioForm">
 			<result type="tiles">editarUsuario</result>
 		</action>
-		
+		<action name="AccesoOrderAction" class="com.prestafacturaService.vista.action.order.AccesoOrderAction" method="getPedidos">
+			<result name="success">/pages/exampleService.jsp</result>
+			<result name="error" type="tiles">prestaFacturaHomeAdmin</result>
+		</action>
 		
 <!-- Login -->	
 		<action name="LoginAction"
 			class="com.prestafacturaService.vista.action.login.LoginAction" method="execute">
 			<result name="successA" type="tiles">prestaFacturaHomeAdmin</result>
-			<result name="successU" type="tiles">prestaFacturaHomeUser</result>
+			<result name="successU" type="redirectAction">AccesoOrderAction</result>
 			<result name="error" type="tiles">errorLogin</result>
 			<result name="input">/inicio.jsp</result>
+		</action>
+		<action name="AccesoOrderAction" class="com.prestafacturaService.vista.action.order.AccesoOrderAction" method="getPedidos">
+			<result name="success" type="tiles">prestaFacturaHomeUser</result>
 		</action>
 		<action name="LogoutAction"
 			class="com.prestafacturaService.vista.action.login.LogoutAction" method="execute">
