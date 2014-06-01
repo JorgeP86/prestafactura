@@ -44,9 +44,8 @@ public class ClienteManager {
 		
 	}
 
-	public void eliminarCliente(Integer idCliente) {
-		Cliente clienteBorrar=clienteRepository.obtenerClienteById(idCliente);
-		clienteRepository.delete(clienteBorrar);
+	public void eliminarCliente(Cliente cliente) {
+		clienteRepository.delete(cliente);
 		// TODO Auto-generated method stub
 		
 	}
@@ -61,4 +60,6 @@ public class ClienteManager {
 		Integer count=(int)clienteRepository.count();
 		return count;
 	}
+
+	
 }
