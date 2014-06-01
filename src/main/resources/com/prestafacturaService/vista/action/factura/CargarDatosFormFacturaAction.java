@@ -1,6 +1,5 @@
 package com.prestafacturaService.vista.action.factura;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,12 +11,10 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.prestafacturaService.mongo.dto.Cliente;
 import com.prestafacturaService.mongo.dto.CodigoPais;
 import com.prestafacturaService.mongo.dto.Detalle;
 import com.prestafacturaService.mongo.dto.Localidad;
 import com.prestafacturaService.mongo.dto.Provincia;
-import com.prestafacturaService.mongo.manager.ClienteManager;
 import com.prestafacturaService.mongo.manager.CodigoPaisManager;
 import com.prestafacturaService.mongo.manager.LocalidadManager;
 import com.prestafacturaService.mongo.manager.ProvinciaManager;
@@ -45,21 +42,14 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 	private LocalidadManager localidadManager;
 	@Autowired
 	private CodigoPaisManager codigoPaisManager;
-	@Autowired
-	private ClienteManager clienteManager;
+	
 
 	private List<Provincia> listProvincias;
 	private List<Localidad> listLocalidades;
 	private List<CodigoPais> listPais;
-	private Collection<Cliente> clientes;
 	
-	private String fechaExpedicion;
-	private String fechaOperacion;
-	private String fechaInicio; // periodo de facturacion
-	private String fechaFin;
-	private String fechaTipoCambio;
 	
-
+	
 	public String execute() {
 
 		try {
@@ -71,10 +61,9 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 			listProvincias = provinciaManager.obtenerProvincias();
 			listLocalidades = localidadManager.obtenerLocalidades();
 			listPais = codigoPaisManager.obtenerPais();
-			clientes=clienteManager.obtenerClientes();
-			
+	
 			logger.info("Obtenido los datos para cargar el formulario_AltaFactura");
-
+			
 		} catch (Exception e) {
 			addActionError("Fallo al obtener datos para el formulario AltaFactura");
 			return ERROR;
@@ -82,7 +71,6 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 		return SUCCESS;
 
 	}
-
 	
 	public ProvinciaManager getProvinciaManager() {
 		return provinciaManager;
@@ -138,78 +126,6 @@ public class CargarDatosFormFacturaAction extends ActionSupport implements
 
 	public void setServletRequest(HttpServletRequest servletRequest) {
 		this.servletRequest = servletRequest;
-	}
-
-	public ClienteManager getClienteManager() {
-		return clienteManager;
-	}
-
-	public void setClienteManager(ClienteManager clienteManager) {
-		this.clienteManager = clienteManager;
-	}
-
-	
-
-	public Collection<Cliente> getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(Collection<Cliente> clientes) {
-		this.clientes = clientes;
-	}
-
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
-	}
-
-
-	public String getFechaExpedicion() {
-		return fechaExpedicion;
-	}
-
-
-	public void setFechaExpedicion(String fechaExpedicion) {
-		this.fechaExpedicion = fechaExpedicion;
-	}
-
-
-	public String getFechaOperacion() {
-		return fechaOperacion;
-	}
-
-
-	public void setFechaOperacion(String fechaOperacion) {
-		this.fechaOperacion = fechaOperacion;
-	}
-
-
-	public String getFechaInicio() {
-		return fechaInicio;
-	}
-
-
-	public void setFechaInicio(String fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-
-	public String getFechaFin() {
-		return fechaFin;
-	}
-
-
-	public void setFechaFin(String fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-
-	public String getFechaTipoCambio() {
-		return fechaTipoCambio;
-	}
-
-
-	public void setFechaTipoCambio(String fechaTipoCambio) {
-		this.fechaTipoCambio = fechaTipoCambio;
 	}
 	
 
