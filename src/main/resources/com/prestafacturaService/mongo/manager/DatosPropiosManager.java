@@ -22,7 +22,7 @@ public class DatosPropiosManager {
 		return datosPropiosRepository.existdtPropios(dtpropiosform);
 	}
 
-	public void guardarCliente(DatosPropios datosPropiosNuevo) {
+	public void guardarDatosPropios(DatosPropios datosPropiosNuevo) {
 		// TODO Auto-generated method stub
 		datosPropiosRepository.save(datosPropiosNuevo);
 	}
@@ -35,6 +35,17 @@ public class DatosPropiosManager {
 	public DatosPropios updateCliente(DatosPropios propiosModifica) {
 		// TODO Auto-generated method stub
 		return datosPropiosRepository.updateCliente(propiosModifica);
+	}
+
+	public void eliminarDatoPropio(DatosPropios datospropios) {
+		// TODO Auto-generated method stub
+		datosPropiosRepository.delete(datospropios);
+	}
+
+	public DatosPropios obtenerDatosPropiosByIdFiscal(
+			String idfiscal) {
+		// TODO Auto-generated method stub
+		return datosPropiosRepository.obtenerDatosPropiosByFiscal(idfiscal);
 	}
 	
 	
