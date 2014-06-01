@@ -8,7 +8,6 @@
 		<put-attribute name="title" type="string" value="Administrador Prestafactura"/>
 		<put-attribute name="header" value="/pages/header.jsp"/>
 		<put-attribute name="welcome" value="/pages/welcome.jsp"/>
-		<put-attribute name="menuComun" value="/pages/menuComun.jsp"/>
 		<put-attribute name="menuAdministrador" value="/pages/menuAdministrador.jsp"/>
 		<put-attribute name="body" value="/pages/body.jsp"/>
 		<put-attribute name="footer" value="/pages/footer.jsp"/>
